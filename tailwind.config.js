@@ -10,6 +10,14 @@ module.exports = {
     ],
 
     theme: {
+        colors: {
+            transparent: "transparent",
+            current: "currentColor",
+            "talent-green": "#1E796A",
+            "talent-light-green": "#BCD7D2",
+            "talent-orange": "#F0850B ",
+            "talent-white": "#FFFFFF ",
+        },
         extend: {
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
