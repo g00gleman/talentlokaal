@@ -1,7 +1,9 @@
 
 <x-guest-layout>
 
-<div class="bg-talent-light-green h-80 ml-2 mr-2 rounded-xl ">
+<div class="bg-talent-light-green h-80 ml-2 mr-2 rounded-xl flex justify-center items-center m-64 ">
+        <img src="/images/TalentLokaal_Logo_Klein.png" class=" w-16 h-22">
+
         <x-jet-validation-errors class="mb-4" />
 
         @if (session('status'))
@@ -30,12 +32,13 @@
                 @endif
             </div>
 
-                <x-jet-button class="ml-4 bg-talent-orange w-64 m-5">
-                    <div class=" text-justify"> {{('Log in') }}</div>
+                <x-jet-button class="ml-4 bg-talent-orange w-64 m-5 rounded-full text-talent-white ">
+                     {{('Log in') }}
                 </x-jet-button>
             
         </div>
 
+    </form>
 
 </x-guest-layout>
 
