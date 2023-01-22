@@ -83,10 +83,10 @@
                 </svg>
             </div>
             <div class="justify-center flex -mb-5">
-            <button class=" h-9 ml-4 bg-talent-orange w-64 m-5 rounded-full text-talent-white justify-center shadow-xl">Log in</button>
+                <a href="/login"><button class=" h-9 ml-4 bg-talent-orange w-64 m-5 rounded-full text-talent-white justify-center shadow-xl">Log in</button></a>
         </div>
         <div class="justify-center flex mb-16">
-            <button class=" h-9 ml-4 bg-talent-orange w-64 m-5 rounded-full text-talent-white justify-center shadow-xl"> Registreer</button>
+            <a href="/register"><button class=" h-9 ml-4 bg-talent-orange w-64 m-5 rounded-full text-talent-white justify-center shadow-xl"> Registreer</button></a>
             </div>
         </div>
     </div>
