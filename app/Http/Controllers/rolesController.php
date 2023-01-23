@@ -12,7 +12,7 @@ class rolesController extends Controller
     }
 
     public function getRole($id){
-        return view('roles.single',compact($id));
+        return view('roles.single')->with('id', $id);
     }
 
 }
