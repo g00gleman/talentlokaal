@@ -31,6 +31,8 @@
             @endif
 
             <!-- Page Content -->
+            <!-- this is the page styling for the navbar pages -->
+            <!-- accessable with <x-navbar-layout> with content in here </x-navbar-layout> -->
             <main class="bg-talent-light-green ml-2 mr-2 rounded-xl flex justify-center items-center m-64 w-96">
                 <div>
                     <div class="flex-1 mt-3 ml-5">
@@ -105,6 +107,7 @@
                         </svg>
                     </div>
                     <div class="justify-center flex mb-6">
+                        <!-- all code within <x-navbar-layout>  </x-navbar-layout> is loaded in {{$slot}} -->
                         {{ $slot }}
                     </div>
                 </div>
