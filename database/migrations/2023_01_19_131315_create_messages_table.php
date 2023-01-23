@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
-            $table->longText('Message');
-            $table->string('Sender');
-            $table->string('Receiver');
-            $table->bigInteger('Match_Id');
+            $table->longText('message');
+            $table->string('sender');
+            $table->string('receiver');
+            $table->bigInteger('match_Id');
             $table->timestamps();
         });
     }

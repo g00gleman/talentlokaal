@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('User_Id');
+            $table->bigInteger('user_Id');
             $table->timestamps();
         });
     }

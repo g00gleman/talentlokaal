@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('employee__recruiters', function (Blueprint $table) {
             $table->id();
             // The user_id from an employee
-            $table->bigInteger('Eployee_Id');
+            $table->bigInteger('eployee_Id');
             // The user_id from an recruiter
-            $table->bigInteger('Recruiter_Id');
+            $table->bigInteger('recruiter_Id');
         });
     }
 
