@@ -1,3 +1,3 @@
-<x-app-layout>
+<x-navbar>
     <h2>alle rollen</h2>
-</x-app-layout>
+</x-navbar>
