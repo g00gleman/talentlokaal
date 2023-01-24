@@ -14,20 +14,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// loads the first page of the application
 Route::get('/', function () {
     return view('index');
 });
 
+// these routes are used to define which role the user is
 Route::get('/roles', [rolesController::class, 'allRoles']);
 Route::get('/role/{id}', [rolesController::class, 'getRole']);
 
+// these routes are used to save data to the user table and to the specific role table
+Route::post('registerEmployee', [rolesController::class, 'registerEmployee']);
+Route::post('registerEmployer', [rolesController::class, 'registerEmployer']);
+
+// in this middleware route are all routes define which you need to be logged in to access
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
 
+    // loads the page after being logged in
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
 
-
-    // Registreer account en sla data op in de user en in de speciefieke rol tabel op
 
 });

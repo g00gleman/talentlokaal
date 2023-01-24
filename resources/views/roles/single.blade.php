@@ -73,9 +73,13 @@
                 </svg>
             </div>
             <div class="text-xl text-center">Welkom @if($id == 1) Werknemer @elseif($id == 2) Werkgever @else Recruiter @endif</div>
-            <x-jet-validation-errors class="mb-4" />
+            <x-jet-validation-errors class="mb-4 text-red-500" />
             <div class="justify-center flex mb-6">
-                <form method="POST" action="{{ route('register') }}">
+                    @if($id == 1)
+                    <form method="POST" action="/registerEmployee">
+                    @elseif($id == 2) <form method="POST" action="/registerEmployer">
+                    @else  <form method="POST" action="{{ route('register') }}">
+                    @endif
                     @csrf
                     {{-- firstname --}}
                     <div class="mt-4">
