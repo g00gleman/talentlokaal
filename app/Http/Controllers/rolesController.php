@@ -29,7 +29,7 @@ class rolesController extends Controller
     /**
      * @throws ValidationException
      */
-    public function registerEmployee(Request $request): Redirector|Application|RedirectResponse
+    public function registerEmployee(Request $request): View|Application|RedirectResponse
     {
         // call the registerUser method to register a user
         $newUser = $this->registerUser($request);
@@ -43,13 +43,13 @@ class rolesController extends Controller
         $newEmployee->save();
 
         // go to dashboard page
-        return redirect('dashboard');
+        return view('homepage');
     }
 
     /**
      * @throws ValidationException
      */
-    public function registerEmployer(Request $request): Redirector|Application|RedirectResponse
+    public function registerEmployer(Request $request): View|Application|RedirectResponse
     {
         // call the registerUser method to register a user
         $newUser = $this->registerUser($request);
@@ -62,7 +62,7 @@ class rolesController extends Controller
         $newEmployer->save();
 
         // go to dashboard page
-        return redirect('dashboard');
+        return view('homepage');
     }
 
     /**
