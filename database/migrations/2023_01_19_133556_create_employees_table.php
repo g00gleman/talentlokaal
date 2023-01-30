@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->string('function');
             $table->string('certificate');
-            $table->integer('phoneNumber');
             $table->bigInteger('user_Id');
             $table->timestamps();
         });

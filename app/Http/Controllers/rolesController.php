@@ -5,31 +5,23 @@ namespace App\Http\Controllers;
 use App\Models\employee;
 use App\Models\Employer;
 use App\Models\User;
-use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Contracts\View\View;
-use Illuminate\Http\RedirectResponse;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\ValidationException;
 
 class rolesController extends Controller
 {
 
-    public function allRoles(): Factory|View|Application
+    public function allRoles()
     {
         return view('roles.index');
     }
-    public function getRole($id): Factory|View|Application
+    public function getRole($id)
     {
         return view('roles.single')->with('id', $id);
     }
 
-    /**
-     * @throws ValidationException
-     */
-    public function registerEmployee(Request $request): View|Application|RedirectResponse
+    public function registerEmployee(Request $request)
     {
         // call the registerUser method to register a user
         $newUser = $this->registerUser($request);
@@ -38,18 +30,14 @@ class rolesController extends Controller
         $newEmployee = new employee();
         $newEmployee->function = $request->get('function');
         $newEmployee->certificate = $request->get('certificate');
-        $newEmployee->phoneNumber = $request->get('phoneNumber');
         $newEmployee->user_Id = $newUser->id;
         $newEmployee->save();
 
-        // go to dashboard page
-        return view('homepage');
+        // go to homepage
+        return redirect('dashboard');
     }
 
-    /**
-     * @throws ValidationException
-     */
-    public function registerEmployer(Request $request): View|Application|RedirectResponse
+    public function registerEmployer(Request $request)
     {
         // call the registerUser method to register a user
         $newUser = $this->registerUser($request);
@@ -61,30 +49,37 @@ class rolesController extends Controller
         $newEmployer->user_Id = $newUser->id;
         $newEmployer->save();
 
-        // go to dashboard page
-        return view('homepage');
+        // go to homepage
+        return redirect('dashboard');
     }
 
-    /**
-     * @param Request $request
-     * @return User
-     * @throws ValidationException
-     */
     private function registerUser(Request $request): User
     {
         // validation errors for all form inputs
         $this->validate(request(), [
-            'firstName' => 'required|string|max:255',
-            'lastName' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|confirmed'
+            'phoneNumber' =>  'required|max:10||unique:users',
+            'city' => 'required|string|max:255',
+            'street' => 'required|string|max:255',
+            'houseNumber' => 'required|integer|digits_between:1,5',
+            'postalCode' => 'required|size:6|string',
+            'birthDate' => 'required|before:today|Date',
+            'password' => 'required|min:8|max:20|confirmed'
         ]);
 
+        Carbon::parse($request->get('birthDate'))->format('d/m/Y');
         // save data in user table
         $newUser = new User();
         $newUser->firstName = $request->get('firstName');
         $newUser->lastName = $request->get('lastName');
         $newUser->email = $request->get('email');
+        $newUser->phoneNumber = $request->get('phoneNumber');
+        $newUser->city = $request->get('city');
+        $newUser->street = $request->get('street');
+        $newUser->houseNumber = $request->get('houseNumber');
+        $newUser->postalCode = $request->get('postalCode');
+        $newUser->birthDate = $request->get('birthDate');
         $newUser->password = bcrypt($request->get('password'));
         $newUser->save();
 

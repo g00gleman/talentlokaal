@@ -72,7 +72,7 @@
                     </g>
                 </svg>
             </div>
-            <div class="text-xl text-center">Welkom @if($id == 1) Werknemer @elseif($id == 2) Werkgever @else Recruiter @endif</div>
+            <div class="text-xl text-center font-bold text-talent-green">Welkom @if($id == 1) Werknemer @elseif($id == 2) Werkgever @else Recruiter @endif</div>
             <x-jet-validation-errors class="mb-4 text-red-500" />
             <div class="justify-center flex mb-6">
                     @if($id == 1)
@@ -83,17 +83,32 @@
                     @csrf
                     {{-- firstname --}}
                     <div class="mt-4">
-                        <x-jet-input id="firstName" class=" px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="text" name="firstName" :value="old('firstName')" required autofocus placeholder="Voornaam" />
-                    </div>
-                    {{-- lastname --}}
-                    <div class="mt-4">
-                        <x-jet-input id="lastName" class=" px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="text" name="lastName" :value="old('lastName')" required autofocus placeholder="Achternaam" />
+                        <x-jet-input id="name" class=" px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="text" name="name" :value="old('name')" required autofocus placeholder="Naam" />
                     </div>
                     {{-- phonenumber --}}
                     <div class="mt-4">
                         <x-jet-input id="phoneNumber" class=" px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="tel" name="phoneNumber" :value="old('phoneNumber')" required autofocus placeholder="Telefoon nummer" />
                     </div>
-
+                    {{-- city --}}
+                    <div class="mt-4">
+                        <x-jet-input id="city" class=" px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="text" name="city" :value="old('city')" required autofocus placeholder="Plaats" />
+                    </div>
+                    {{-- street --}}
+                    <div class="mt-4">
+                        <x-jet-input id="street" class=" px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="text" name="street" :value="old('street')" required autofocus placeholder="Straatnaam" />
+                    </div>
+                    {{-- housenumber --}}
+                    <div class="mt-4">
+                        <x-jet-input id="houseNumber" class=" px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="number" name="houseNumber" :value="old('houseNumber')" required autofocus placeholder="Huisnummer" />
+                    </div>
+                    {{-- postalcode --}}
+                    <div class="mt-4">
+                        <x-jet-input id="postalCode" class=" px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="text" name="postalCode" :value="old('postalCode')" required autofocus placeholder="Postcode" />
+                    </div>
+                    {{-- birthdate --}}
+                    <div class="mt-4">
+                        <x-jet-input id="birthDate" class=" px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="date" name="birthDate" :value="old('birthDate')" required autofocus placeholder="Geboorte datum" />
+                    </div>
                     @if($id == 1)
                     {{-- function --}}
                     <div class="mt-4">
