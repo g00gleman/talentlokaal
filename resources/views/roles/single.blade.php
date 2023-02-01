@@ -72,7 +72,7 @@
                     </g>
                 </svg>
             </div>
-            <div class="text-xl text-center font-bold text-talent-green">Welkom @if($id == 1) Werknemer @elseif($id == 2) Werkgever @else Recruiter @endif</div>
+            <div class="text-xl text-center font-bold text-talent-green"> Welkom @if($id == 1) Werknemer @elseif($id == 2) Werkgever @else Recruiter @endif</div>
             <x-jet-validation-errors class="mb-4 text-red-500" />
             <div class="justify-center flex mb-6">
                     @if($id == 1)
@@ -81,52 +81,52 @@
                     @else  <form method="POST" action="{{ route('register') }}">
                     @endif
                     @csrf
-                    {{-- firstname --}}
+                    {{-- name --}}
                     <div class="mt-4">
-                        <x-jet-input id="name" class=" px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="text" name="name" :value="old('name')" required autofocus placeholder="Naam" />
+                        <x-jet-input id="name" class=" px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="text" name="naam" :value="old('naam')" required autofocus placeholder="Naam" />
                     </div>
                     {{-- phonenumber --}}
                     <div class="mt-4">
-                        <x-jet-input id="phoneNumber" class=" px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="tel" name="phoneNumber" :value="old('phoneNumber')" required autofocus placeholder="Telefoon nummer" />
+                        <x-jet-input id="phoneNumber" class=" px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="tel" name="telefoonnummer" :value="old('telefoonnummer')" required autofocus placeholder="Telefoon nummer" />
                     </div>
                     {{-- city --}}
                     <div class="mt-4">
-                        <x-jet-input id="city" class=" px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="text" name="city" :value="old('city')" required autofocus placeholder="Plaats" />
+                        <x-jet-input id="city" class=" px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="text" name="plaats" :value="old('plaats')" required autofocus placeholder="Plaats" />
                     </div>
                     {{-- street --}}
                     <div class="mt-4">
-                        <x-jet-input id="street" class=" px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="text" name="street" :value="old('street')" required autofocus placeholder="Straatnaam" />
+                        <x-jet-input id="street" class=" px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="text" name="straat" :value="old('straat')" required autofocus placeholder="Straatnaam" />
                     </div>
                     {{-- housenumber --}}
                     <div class="mt-4">
-                        <x-jet-input id="houseNumber" class=" px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="number" name="houseNumber" :value="old('houseNumber')" required autofocus placeholder="Huisnummer" />
+                        <x-jet-input id="houseNumber" class=" px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="number" name="huisnummer" :value="old('huisnummer')" required autofocus placeholder="Huisnummer" />
                     </div>
                     {{-- postalcode --}}
                     <div class="mt-4">
-                        <x-jet-input id="postalCode" class=" px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="text" name="postalCode" :value="old('postalCode')" required autofocus placeholder="Postcode" />
+                        <x-jet-input id="postalCode" class=" px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="text" name="postcode" :value="old('postcode')" required autofocus placeholder="Postcode" />
                     </div>
                     {{-- birthdate --}}
                     <div class="mt-4">
-                        <x-jet-input id="birthDate" class=" px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="date" name="birthDate" :value="old('birthDate')" required autofocus placeholder="Geboorte datum" />
+                        <x-jet-input id="birthDate" class=" px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="date" name="geboortedatum" :value="old('geboortedatum')" required autofocus placeholder="Geboorte datum" />
                     </div>
                     @if($id == 1)
                     {{-- function --}}
                     <div class="mt-4">
-                        <x-jet-input id="function" class=" px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="text" name="function" :value="old('function')" required autofocus placeholder="Functie" />
+                        <x-jet-input id="function" class=" px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="text" name="functie" :value="old('functie')" required autofocus placeholder="Functie" />
                     </div>
                     {{-- certificate --}}
                     <div class="mt-4">
-                        <x-jet-input id="certificate" class=" px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="text" name="certificate" :value="old('certificate')" required autofocus placeholder="Certificaat" />
+                        <x-jet-input id="certificate" class=" px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="text" name="diploma" :value="old('diploma')" required autofocus placeholder="Diploma's" />
                     </div>
 
                     @elseif($id == 2)
                     {{-- companyname --}}
                     <div class="mt-4">
-                        <x-jet-input id="companyName" class=" px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="text" name="companyName" :value="old('companyName')" required autofocus placeholder="Bedrijfsnaam" />
+                        <x-jet-input id="companyName" class=" px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="text" name="bedrijfsnaam" :value="old('bedrijfsnaam')" required autofocus placeholder="Bedrijfsnaam" />
                     </div>
                     {{-- websiteurl --}}
                     <div class="mt-4">
-                        <x-jet-input id="websiteUrl" class=" px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="text" name="websiteUrl" :value="old('websiteUrl')" required autofocus placeholder="Link naar website" />
+                        <x-jet-input id="websiteUrl" class=" px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="text" name="websitelink" :value="old('websitelink')" required autofocus placeholder="Link naar website" />
                     </div>
                     @else
                         Hier moet de recruiter komen
@@ -139,11 +139,11 @@
 
                     <div class="mt-4">
 
-                        <x-jet-input id="password" class="px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="password" name="password" required placeholder="Wachtwoord" />
+                        <x-jet-input id="password" class="px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="password" name="wachtwoord" required placeholder="Wachtwoord" />
                     </div>
 
                     <div class="mt-4">
-                        <x-jet-input id="password_confirmation" class="px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="password" name="password_confirmation" required placeholder="Herhaal wachtwoord" />
+                        <x-jet-input id="password_confirmation" class="px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="password" name="wachtwoord_confirmation" required placeholder="Herhaal wachtwoord" />
                     </div>
 
 
