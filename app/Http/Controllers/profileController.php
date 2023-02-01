@@ -13,12 +13,9 @@ class profileController extends Controller
     //
     public function viewProfile()
     {
-//        $user = User::with('employee','employer')->where('id', Auth::id())->get();
-        $employee = employee::with('user')->where('user_id', Auth::id())->get();
-        $employer = Employer::with('user')->where('user_id', Auth::id())->get();
-        return view('profiles.index')->with([
-            'employee' => $employee,
-            'employer' => $employer
-        ]);
+        $user = User::with('employee','employer')->find(Auth::id())->first();
+
+        return view('profiles.index')->with('user', $user);
+
     }
 }

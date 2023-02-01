@@ -325,6 +325,7 @@
                 <div
                     class="col-span-4 text-xs flex items-center font-bold text-talent-orange"
                 >
+                    @dd($user)
                     @if($user->employee !== null)
                         {{ $user->employee->certificate }}
                     @elseif($user->employer !== null)
