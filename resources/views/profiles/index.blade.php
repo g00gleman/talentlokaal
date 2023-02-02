@@ -219,7 +219,17 @@
             {{ $user->name }}
         </div>
         <div class="mt-2 text-talent-green">
-            {{ $user->employee->description }}
+            @if(empty($user->employee->description))
+                <p>Voeg een beschrijving aan uw profiel toe</p>
+                <form action="/dashboard/description/{{$user->employee->id}}" method="post">
+                    @csrf
+                    @method('put')
+                    <textarea name="description" id="" cols="30" rows="10"></textarea>
+                    <button type="submit">Opslaan</button>
+                </form>
+            @else
+                {{ $user->employee->description }}
+            @endif
         </div>
     </div>
 </div>

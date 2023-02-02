@@ -30,7 +30,6 @@ class rolesController extends Controller
         $this->validate(request(), [
             'functie' => 'string|max:255',
             'diploma' => 'string|max:255',
-            'description' => 'required',
         ]);
 
         // save data in employee table

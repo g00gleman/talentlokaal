@@ -18,7 +18,15 @@ class profileController extends Controller
         return view('profiles.index')->with('user', $user);
 
     }
+    // save description
+    public function description(Request $request, $id){
+        $employee = employee::find($id);
+        $employee->description = $request->get('description');
+        $employee->user_id = Auth::id();
+        $employee->save();
 
+        return redirect('dashboard/profile');
+    }
     // return edit form page with all old userdata
     public function edit($id){
         $editUser = User::find($id);
@@ -54,7 +62,7 @@ class profileController extends Controller
         $updateUser->save();
 
         // return to the profile page after updating
-        return redirect('/profile');
+        return redirect('dashboard/profile');
     }
 
     // delete specific user when click on delete btn
