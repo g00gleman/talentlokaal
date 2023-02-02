@@ -43,7 +43,7 @@ class rolesController extends Controller
         return redirect('dashboard');
     }
 
-    public function registerEmployer(Request $request)
+public function registerEmployer(Request $request)
     {
         // call the registerUser method to register a user
         $newUser = $this->registerUser($request);
@@ -64,7 +64,7 @@ class rolesController extends Controller
         return redirect('dashboard');
     }
 
-    private function registerUser(Request $request): User
+private function registerUser(Request $request): User
     {
         // validation errors for all form inputs
         $this->validate(request(), [

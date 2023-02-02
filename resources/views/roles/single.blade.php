@@ -73,7 +73,13 @@
                     </g>
                 </svg>
             </div>
-            <div class="text-xl text-center font-bold text-talent-green"> Welkom @if($id == 1) Werknemer @elseif($id == 2) Werkgever @else Recruiter @endif</div>
+        </div>
+        <div class="tracking-widest text-talent-green flex text-center text-2xl justify-center mb-10 mt-9">Welkom bij Talent Lokaal!</div>
+        <div class=" text-center justify-center flex text-lg text-talent-light-green ">Vul hier uw gegvens in <br/> voor het aanmaken van een account</div>
+     <div class="flex justify-center items-center">
+            <div class=" bg-talent-light-green ml-2 mr-2 rounded-xl flex justify-center items-center mt-12 mb-5 w-96">
+            {{-- <div class="text-xl text-center font-bold text-talent-green">Welkom @if($id == 1) Werknemer @elseif($id == 2) Werkgever @else Recruiter @endif</div> --}}
+           
             <x-jet-validation-errors class="mb-4 text-red-500" />
             <div class="justify-center flex mb-6">
                     @if($id == 1)
@@ -83,70 +89,115 @@
                     @endif
                     @csrf
                     {{-- name --}}
-                    <div class="mt-4">
-                        <x-jet-input id="name" class=" px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="text" name="naam" :value="old('naam')" required autofocus placeholder="Vul hier je naam in" />
+                    
+                    <div class=" flex mt-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" w-10 h-10 mr-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                          </svg>
+                        <x-jet-input  id="name" class=" underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange" type="text" name="naam" :value="old('naam')" required autofocus placeholder="Vul hier je naam in" />
                     </div>
                     {{-- phonenumber --}}
-                    <div class="mt-4">
-                        <x-jet-input id="phoneNumber" class=" px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="tel" name="telefoonnummer" :value="old('telefoonnummer')" required autofocus placeholder="Vul hier je telefoon nummer in" />
+                    <div class=" flex mt-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 mr-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+                          </svg>
+                          
+                        <x-jet-input id="phoneNumber" class="  underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange" type="tel" name="telefoonnummer" :value="old('telefoonnummer')" required autofocus placeholder="Vul hier je telefoon nummer in" />
                     </div>
                     {{-- city --}}
-                    <div class="mt-4">
-                        <x-jet-input id="city" class=" px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="text" name="plaats" :value="old('plaats')" required autofocus placeholder="Vul hier je plaats in" />
+                    <div class=" flex mt-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 mr-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                          </svg>
+                          
+                        <x-jet-input id="city" class=" underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange" type="text" name="plaats" :value="old('plaats')" required autofocus placeholder="Vul hier je plaats in" />
                     </div>
                     {{-- street --}}
-                    <div class="mt-4">
-                        <x-jet-input id="street" class=" px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="text" name="straat" :value="old('straat')" required autofocus placeholder="Vul hier je straatnaam in" />
+                    <div class=" flex mt-4">
+                        <div class="w-10 h-10 mr-5">
+                        </div>
+                        <x-jet-input id="street" class=" underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange" type="text" name="straat" :value="old('straat')" required autofocus placeholder="Vul hier je straatnaam in" />
                     </div>
                     {{-- housenumber --}}
-                    <div class="mt-4">
-                        <x-jet-input id="houseNumber" class=" px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="number" name="huisnummer" :value="old('huisnummer')" required autofocus placeholder="Vul hier je huisnummer in" />
+                    <div class=" flex mt-4">
+                        <div class="w-10 h-10 mr-5">
+                        </div>
+                        <x-jet-input id="houseNumber" class=" underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange" type="number" name="huisnummer" :value="old('huisnummer')" required autofocus placeholder="Vul hier je huisnummer in" />
                     </div>
                     {{-- postalcode --}}
-                    <div class="mt-4">
-                        <x-jet-input id="postalCode" class=" px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="text" name="postcode" :value="old('postcode')" required autofocus placeholder="Vul hier je postcode in" />
+                    <div class=" flex mt-4">
+                        <div class="w-10 h-10 mr-5">
+                        </div>
+                        <x-jet-input id="postalCode" class=" underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange" type="text" name="postcode" :value="old('postcode')" required autofocus placeholder="Vul hier je postcode in" />
                     </div>
                     {{-- birthdate --}}
-                    <div class="mt-4">
-                        <x-jet-input id="birthDate" class=" px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="date" name="geboortedatum" :value="old('geboortedatum')" required autofocus placeholder="Geboorte datum" />
+                    <div class=" flex mt-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 mr-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" />
+                          </svg>
+                          
+                        <x-jet-input id="birthDate" class=" underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange" type="date" name="geboortedatum" :value="old('geboortedatum')" required autofocus placeholder="Geboorte datum" />
                     </div>
                     @if($id == 1)
                     {{-- function --}}
-                    <div class="mt-4">
-                        <x-jet-input id="function" class=" px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="text" name="functie" :value="old('functie')" required autofocus placeholder="Vul hier je functie in" />
+                    <div class=" flex mt-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 mr-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z" />
+                          </svg>
+                          
+                        <x-jet-input id="function" class=" px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange" type="text" name="functie" :value="old('functie')" required autofocus placeholder="Vul hier je functie in" />
                     </div>
                     {{-- certificate --}}
-                    <div class="mt-4">
-                        <x-jet-input id="certificate" class=" px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="text" name="diploma" :value="old('diploma')" required autofocus placeholder="Vul hier je diploma in"/>
+                    <div class=" flex mt-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 mr-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" />
+                          </svg>
+                          
+                        <x-jet-input id="certificate" class=" underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange" type="text" name="diploma" :value="old('diploma')" required autofocus placeholder="Vul hier je diploma in"/>
                     </div>
 
                     @elseif($id == 2)
                     {{-- companyname --}}
-                    <div class="mt-4">
-                        <x-jet-input id="companyName" class=" px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="text" name="bedrijfsnaam" :value="old('bedrijfsnaam')" required autofocus placeholder="Vul hier je bedrijfsnaam in" />
+                    <div class=" flex mt-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 mr-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21" />
+                          </svg>
+                          
+                        <x-jet-input id="companyName" class=" underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange" type="text" name="bedrijfsnaam" :value="old('bedrijfsnaam')" required autofocus placeholder="Vul hier je bedrijfsnaam in" />
                     </div>
                     {{-- websiteurl --}}
-                    <div class="mt-4">
-                        <x-jet-input id="websiteUrl" class=" px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="text" name="websitelink" :value="old('websitelink')" required autofocus placeholder="Link naar website" />
+                    <div class=" flex mt-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 mr-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+                          </svg>
+                          
+                        <x-jet-input id="websiteUrl" class=" underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange" type="text" name="websitelink" :value="old('websitelink')" required autofocus placeholder="Link naar website" />
                     </div>
                     @else
                         Hier moet de recruiter komen
                     @endif
 
-                    <div class="mt-4">
-
-                        <x-jet-input id="email" class="px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="email" name="email" :value="old('email')" required placeholder="Vul hier je email in" />
+                    <div class=" flex mt-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 mr-5">
+                            <path stroke-linecap="round" d="M16.5 12a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 10-2.636 6.364M16.5 12V8.25" />
+                          </svg>
+                          
+                        <x-jet-input id="email" class="underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange" type="email" name="email" :value="old('email')" required placeholder="Vul hier je email in" />
                     </div>
 
-                    <div class="mt-4">
-                        <x-jet-input id="password" class="px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="password" name="wachtwoord" required placeholder="Vul hier je wachtwoord in" />
+                    <div class=" flex mt-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-10 h-10 mr-5">
+                            <path fill-rule="evenodd" d="M12 1.5a5.25 5.25 0 00-5.25 5.25v3a3 3 0 00-3 3v6.75a3 3 0 003 3h10.5a3 3 0 003-3v-6.75a3 3 0 00-3-3v-3c0-2.9-2.35-5.25-5.25-5.25zm3.75 8.25v-3a3.75 3.75 0 10-7.5 0v3h7.5z" clip-rule="evenodd" />
+                          </svg>
+                        <x-jet-input id="password" class=" underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange" type="password" name="wachtwoord" required placeholder="Vul hier je wachtwoord in" />
                     </div>
 
-                    <div class="mt-4">
-                        <x-jet-input id="password_confirmation" class="px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="password" name="wachtwoord_confirmation" required placeholder="Herhaal wachtwoord" />
+                    <div class=" flex mt-4">
+                        <div class="w-10 h-10 mr-5">
+                        </div>
+                        <x-jet-input id="password_confirmation" class=" underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange" type="password" name="wachtwoord_confirmation" required placeholder="Herhaal wachtwoord" />
                     </div>
-
-
                     @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
                         <div class="mt-4">
                             <x-jet-label for="terms">
@@ -163,19 +214,20 @@
                             </x-jet-label>
                         </div>
                     @endif
-
                     <div class="flex items-center justify-end mt-4">
                         <a class="none-underline text-sm text-talent-white hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
-                            {{ __('Login als je al een account hebt?') }}
+                            {{ __('Already registered?') }}
                         </a>
                     </div>
-            </div>
-            <div class="justify-center flex mb-11">
-                <x-jet-button class="ml-4 bg-talent-orange w-64 m-5 rounded-full text-talent-white justify-center shadow-xl">
+                </div>
+        </div>
+    </div>
+            <div class=" flex justify-center ">
+                <x-jet-button class="ml-4 bg-talent-orange w-44 m-5 rounded-full text-talent-white justify-center shadow-xl">
                     {{ __('Volgende >') }}
                 </x-jet-button>
-            </div>
-            </div>
-        </div>
+                </div> 
+            
         </form>
+
 </x-guest-layout>
