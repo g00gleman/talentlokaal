@@ -106,7 +106,7 @@
             <div
                 class="mt-12 flex justify-center text-2xl text-talent-green font-bold mb-12"
             >
-                Welkom terug Sophie!
+                Welkom terug  {{ Auth::user()->name }}
             </div>
                 <div class="flex justify-center">
                     <a href="/dashboard/profile">

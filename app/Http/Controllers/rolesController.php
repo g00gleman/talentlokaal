@@ -30,12 +30,14 @@ class rolesController extends Controller
         $this->validate(request(), [
             'functie' => 'string|max:255',
             'diploma' => 'string|max:255',
+            'description' => 'required',
         ]);
 
         // save data in employee table
         $newEmployee = new employee();
         $newEmployee->function = $request->get('functie');
         $newEmployee->certificate = $request->get('diploma');
+        $newUser->description = $request->get('description');
         $newEmployee->user_Id = $newUser->id;
         $newEmployee->save();
 

@@ -211,22 +211,15 @@
 <div class="flex justify-center mt-24">
     <div class="customCard">
         <div class="flex justify-center">
-            <img
-                src="https://cdn.discordapp.com/attachments/917847940985401386/1067783697325109430/klaveren-vrouwke-2.png"
-                alt=""
-                class="w-32 h-32 rounded-full"
-            />
+                <img class="h-20 w-20 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
         </div>
-        <img src="" alt="" />
         <div
             class="flex justify-center mt-2 text-talent-orange font-bold text-3xl"
         >
-            Sophie Jansen
+            {{ $user->name }}
         </div>
         <div class="mt-2 text-talent-green">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-            Velit iure sequi ullam fugit! Similique sapiente debitis
-            veniam ad magni incidunt.
+            {{ $user->employee->description }}
         </div>
     </div>
 </div>
@@ -325,14 +318,7 @@
                 <div
                     class="col-span-4 text-xs flex items-center font-bold text-talent-orange"
                 >
-                    @dd($user)
-                    @if($user->employee !== null)
-                        {{ $user->employee->certificate }}
-                    @elseif($user->employer !== null)
-                        {{ Auth::user()->firstname }} {{ Auth::user()->lastname }}
-
-                    @endif
-
+                    {{ $user->name }}
                 </div>
                 <!-- adres -->
                 <div class="col-span-1">
@@ -359,7 +345,7 @@
                 <div
                     class="col-span-4 text-xs flex items-center font-bold text-talent-orange"
                 >
-                    Valkdreef 47 4835 MD Breda
+                    {{ $user->city }} {{ $user->street }} {{ $user->houseNumber }} {{ $user->postalCode }}
                 </div>
                 <!-- job -->
                 <div class="col-span-1">
@@ -381,7 +367,7 @@
                 <div
                     class="col-span-4 text-xs flex items-center font-bold text-talent-orange"
                 >
-                    Interieur Styling
+                    {{ $user->employee->function }}
                 </div>
                 <!-- job-2? -->
                 <div class="col-span-1">
@@ -403,7 +389,7 @@
                 <div
                     class="col-span-4 text-xs flex items-center font-bold text-talent-orange"
                 >
-                    Interior Design and Styling
+                    {{ $user->employee->certificate }}
                 </div>
             </div>
         </div>

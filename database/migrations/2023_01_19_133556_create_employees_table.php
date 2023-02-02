@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('function')->nullable();
             $table->string('certificate')->nullable();
+            $table->longText('description');
             $table->bigInteger('user_Id');
             $table->timestamps();
         });
