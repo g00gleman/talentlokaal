@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 class profileController extends Controller
 {
     // return the index view with specific userdata
-    public function viewProfile()
+    public function index()
     {
         $user = User::with('employee')->find(Auth::id());
 
@@ -20,12 +20,34 @@ class profileController extends Controller
     }
     // save description
     public function description(Request $request, $id){
-        $employee = employee::find($id);
-        $employee->description = $request->get('description');
-        $employee->user_id = Auth::id();
-        $employee->save();
+        $this->validate(request(), [
+            'description' => 'description|string',
+        ]);
+        $user = User::find($id);
+        $user->description = $request->get('description');
+        $user->save();
 
-        return redirect('dashboard/profile');
+        return redirect(route('dashboard.manageProfile.index'));
+    }
+    // save description
+    public function pitch(Request $request, $id){
+        $this->validate(request(), [
+            'pitch' => 'required|file|mimetypes:video/mp4',
+        ]);
+
+        $user = User::find($id);
+        // example
+        // pitch = stevens pitch
+        $pitch = $request->file('pitch');
+        //  pitch = stevens_pitch
+        $savePitch = time().'.'.$pitch->getClientOriginalExtension();
+        // move stevens_pitch in the map called public/pitch
+        $pitch->move(public_path('pitch'), $savePitch);
+        // store stevens_pitch in user table database
+            $user->pitch = $savePitch;
+        $user->save();
+
+        return redirect(route('dashboard.manageProfile.index'));
     }
     // return edit form page with all old userdata
     public function edit($id){
@@ -62,7 +84,7 @@ class profileController extends Controller
         $updateUser->save();
 
         // return to the profile page after updating
-        return redirect('dashboard/profile');
+        return redirect(route('dashboard.manageProfile.index'));
     }
 
     // delete specific user when click on delete btn

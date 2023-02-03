@@ -35,9 +35,11 @@ Route::group(['prefix' => 'dashboard' , 'middleware' => 'auth', 'as' => 'dashboa
     Route::get('/', function () {
         return view('homepage');
     });
+    // update your profile with a description or pitch
     Route::put('/description/{id}', [profileController::class, 'description']);
+    Route::put('/pitch/{id}', [profileController::class, 'pitch']);
+
     Route::resource('manageProfile', profileController::class);
     // view profile page
-    Route::get('/profile', [profileController::class, 'viewProfile']);
 
 });

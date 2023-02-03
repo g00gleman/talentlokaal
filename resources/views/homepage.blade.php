@@ -109,7 +109,7 @@
                 Welkom terug  {{ Auth::user()->name }}
             </div>
                 <div class="flex justify-center">
-                    <a href="/dashboard/profile">
+                    <a href="{{ route('dashboard.manageProfile.index') }}">
                     <div
                         class="flex justify-between w-28 h-8 bg-talent-orange rounded-full"
                     >

@@ -137,33 +137,35 @@
                     Vragenlijst
                 </div>
             </div>
-            <div
-                class="flex justify-between mt-3 w-32 h-8 bg-talent-orange rounded-full"
-            >
+            <a href="{{ route('dashboard.manageProfile.edit', $user->id) }}">
                 <div
-                    class="flex h-full ml-2 mr-1 items-center text-talent-white"
+                    class="flex justify-between mt-3 w-32 h-8 bg-talent-orange rounded-full"
                 >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke-width="1.5"
-                        stroke="currentColor"
-                        class="w-6 h-6"
+                    <div
+                        class="flex h-full ml-2 mr-1 items-center text-talent-white"
                     >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
-                        />
-                    </svg>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                            class="w-6 h-6"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
+                            />
+                        </svg>
+                    </div>
+                    <div
+                        class="flex mr-7 text-center h-full items-center text-xs select-none text-talent-white font-bold"
+                    >
+                        Profiel wijzigen
+                    </div>
                 </div>
-                <div
-                    class="flex mr-7 text-center h-full items-center text-xs select-none text-talent-white font-bold"
-                >
-                    Profiel wijzigen
-                </div>
-            </div>
+            </a>
         </div>
     </div>
 </div>
@@ -219,16 +221,16 @@
             {{ $user->name }}
         </div>
         <div class="mt-2 text-talent-green">
-            @if(empty($user->employee->description))
-                <p>Voeg een beschrijving aan uw profiel toe</p>
-                <form action="/dashboard/description/{{$user->employee->id}}" method="post">
+            @if(empty($user->description))
+                <p>Geef extra info over u en voeg een beschrijving toe</p>
+                <form action="/dashboard/description/{{$user->id}}" method="post">
                     @csrf
                     @method('put')
                     <textarea name="description" id="" cols="30" rows="10"></textarea>
                     <button type="submit">Opslaan</button>
                 </form>
             @else
-                {{ $user->employee->description }}
+                {{ $user->description }}
             @endif
         </div>
     </div>
@@ -262,19 +264,27 @@
             Kennismaking pitch
         </div>
         <div class="mt-2 flex justify-center">
-            <iframe
-                width="250"
-                height="240"
-                src="https://www.youtube.com/embed/PJKhmfMF_yc"
-            >
-            </iframe>
-            <!-- <video width="320" height="240" controls>
-                <source
-                    src=""
-                    type="video/mp4"
-                />
-                Your browser does not support the video tag.
-            </video> -->
+            @if(empty($user->pitch))
+                <p>Maak uw profiel persoonlijker en voeg een pitch toe</p>
+                <form action="/dashboard/pitch/{{$user->id}}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    @method('put')
+                    <input type="file" name="pitch" id=""/>
+                    <button type="submit">Upload</button>
+                </form>
+            @else
+                @php
+                    $baseurl = env('APP_URL');
+                @endphp
+                <video width="320" height="240" controls="controls">
+                    <source
+                        src="{{ asset($baseurl. '/pitch/'.$user->pitch) }}"
+                        type="video/mp4"
+                    />
+                    Your browser does not support the video tag.
+                </video>
+            @endif
+
         </div>
     </div>
 </div>
