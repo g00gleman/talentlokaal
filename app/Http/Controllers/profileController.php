@@ -52,7 +52,8 @@ class profileController extends Controller
     // return edit form page with all old userdata
     public function edit($id){
         $editUser = User::find($id);
-        return view('profiles.edit')->with('editUser', $editUser);
+        // dd($editUser);
+        return view('profiles.edit')->with('user', $editUser);
     }
 
     // update specific user when click on update btn
