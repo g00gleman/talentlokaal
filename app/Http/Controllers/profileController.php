@@ -21,7 +21,7 @@ class profileController extends Controller
     // save description
     public function description(Request $request, $id){
         $this->validate(request(), [
-            'description' => 'description|string',
+            'description' => 'required|string',
         ]);
         $user = User::find($id);
         $user->description = $request->get('description');

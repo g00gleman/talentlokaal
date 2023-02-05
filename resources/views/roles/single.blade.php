@@ -77,7 +77,7 @@
         <div class="tracking-widest text-talent-green flex text-center text-2xl justify-center mb-10 mt-9">Welkom bij Talent Lokaal!</div>
         <div class=" text-center justify-center flex text-lg text-talent-light-green ">Vul hier uw gegvens in <br/> voor het aanmaken van een account</div>
      <div class="flex justify-center items-center">
-            <div class=" bg-talent-light-green ml-2 mr-2 rounded-xl flex justify-center items-center mt-12 mb-5 w-96">
+            <div class=" bg-talent-light-green ml-2 mr-2 flex-col rounded-xl flex justify-center items-center mt-12 mb-5 w-96">
             {{-- <div class="text-xl text-center font-bold text-talent-green">Welkom @if($id == 1) Werknemer @elseif($id == 2) Werkgever @else Recruiter @endif</div> --}}
 
             <x-jet-validation-errors class="mb-4 text-red-500" />

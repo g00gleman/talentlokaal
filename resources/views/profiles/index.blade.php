@@ -266,6 +266,8 @@
         <div class="mt-2 flex justify-center">
             @if(empty($user->pitch))
                 <p>Maak uw profiel persoonlijker en voeg een pitch toe</p>
+
+                <x-jet-validation-errors class="mb-4 text-red-500" />
                 <form action="/dashboard/pitch/{{$user->id}}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('put')
