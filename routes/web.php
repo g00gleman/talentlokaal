@@ -41,6 +41,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'as' => 'dashboar
     // update your profile with a description or pitch
     Route::put('/description/{id}', [profileController::class, 'description']);
     Route::put('/pitch/{id}', [profileController::class, 'pitch']);
+    Route::put('/editSmallInfo/{id}', [profileController::class, 'editSmallInfo']);
 
     Route::resource('manageProfile', profileController::class);
     // view profile page
