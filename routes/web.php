@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\profileController;
 use App\Http\Controllers\rolesController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,12 +29,17 @@ Route::post('registerEmployee', [rolesController::class, 'registerEmployee']);
 Route::post('registerEmployer', [rolesController::class, 'registerEmployer']);
 
 // in this middleware route are all routes define which you need to be logged in to access
-Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
+Route::group(['prefix' => 'dashboard' , 'middleware' => 'auth', 'as' => 'dashboard.'], function() {
 
     // loads the page after being logged in
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/', function () {
+        return view('homepage');
+    });
+    // update your profile with a description or pitch
+    Route::put('/description/{id}', [profileController::class, 'description']);
+    Route::put('/pitch/{id}', [profileController::class, 'pitch']);
 
+    Route::resource('manageProfile', profileController::class);
+    // view profile page
 
 });
