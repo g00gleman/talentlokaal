@@ -6449,6 +6449,18 @@
         },
         {
             "name": "dragon-code/support",
+<<<<<<< HEAD
+            "version": "v6.10.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/TheDragonCode/support.git",
+                "reference": "1379a6c56a8b964d58a284c80578d13ebd7d8c3a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/TheDragonCode/support/zipball/1379a6c56a8b964d58a284c80578d13ebd7d8c3a",
+                "reference": "1379a6c56a8b964d58a284c80578d13ebd7d8c3a",
+=======
             "version": "v6.9.0",
             "source": {
                 "type": "git",
@@ -6459,6 +6471,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/TheDragonCode/support/zipball/d7cc5116d8665a1a13c8092b7832eae851390d8c",
                 "reference": "d7cc5116d8665a1a13c8092b7832eae851390d8c",
+>>>>>>> 77fd1931cc3053f0a757c09ccddf3e47bb94e276
                 "shasum": ""
             },
             "require": {
@@ -6548,7 +6561,11 @@
                     "type": "yoomoney"
                 }
             ],
+<<<<<<< HEAD
+            "time": "2023-02-02T15:58:52+00:00"
+=======
             "time": "2022-12-28T09:27:20+00:00"
+>>>>>>> 77fd1931cc3053f0a757c09ccddf3e47bb94e276
         },
         {
             "name": "fakerphp/faker",
@@ -6742,6 +6759,18 @@
         },
         {
             "name": "laravel-lang/attributes",
+<<<<<<< HEAD
+            "version": "v2.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Laravel-Lang/attributes.git",
+                "reference": "2b11c7ece66cb26cdf59746460593451484af89a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Laravel-Lang/attributes/zipball/2b11c7ece66cb26cdf59746460593451484af89a",
+                "reference": "2b11c7ece66cb26cdf59746460593451484af89a",
+=======
             "version": "v2.1.1",
             "source": {
                 "type": "git",
@@ -6752,6 +6781,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/Laravel-Lang/attributes/zipball/fd50ffcee9a472df1bf6567f4670de69d6adbc92",
                 "reference": "fd50ffcee9a472df1bf6567f4670de69d6adbc92",
+>>>>>>> 77fd1931cc3053f0a757c09ccddf3e47bb94e276
                 "shasum": ""
             },
             "require": {
@@ -6809,7 +6839,11 @@
             ],
             "support": {
                 "issues": "https://github.com/Laravel-Lang/attributes/issues",
+<<<<<<< HEAD
+                "source": "https://github.com/Laravel-Lang/attributes/tree/v2.1.2"
+=======
                 "source": "https://github.com/Laravel-Lang/attributes/tree/v2.1.1"
+>>>>>>> 77fd1931cc3053f0a757c09ccddf3e47bb94e276
             },
             "funding": [
                 {
@@ -6817,6 +6851,22 @@
                     "type": "open_collective"
                 }
             ],
+<<<<<<< HEAD
+            "time": "2023-02-05T09:34:20+00:00"
+        },
+        {
+            "name": "laravel-lang/lang",
+            "version": "12.15.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Laravel-Lang/lang.git",
+                "reference": "be6eea3ac215d525269ed82647caa983bdccab5b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Laravel-Lang/lang/zipball/be6eea3ac215d525269ed82647caa983bdccab5b",
+                "reference": "be6eea3ac215d525269ed82647caa983bdccab5b",
+=======
             "time": "2023-01-26T07:41:39+00:00"
         },
         {
@@ -6831,6 +6881,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/Laravel-Lang/lang/zipball/7168d4bb3008d6d3c5c2802293dbfd42fcd9d9a2",
                 "reference": "7168d4bb3008d6d3c5c2802293dbfd42fcd9d9a2",
+>>>>>>> 77fd1931cc3053f0a757c09ccddf3e47bb94e276
                 "shasum": ""
             },
             "require": {
@@ -6892,7 +6943,11 @@
                     "type": "open_collective"
                 }
             ],
+<<<<<<< HEAD
+            "time": "2023-02-03T18:11:16+00:00"
+=======
             "time": "2023-01-30T10:43:55+00:00"
+>>>>>>> 77fd1931cc3053f0a757c09ccddf3e47bb94e276
         },
         {
             "name": "laravel-lang/publisher",

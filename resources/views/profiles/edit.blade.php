@@ -302,10 +302,16 @@
                     </svg>
                 </div>
                 <div
-                    class="col-span-4 text-xs flex items-center font-bold text-talent-orange"
+                    class="col-span-4 text-xs flex flex-col items-center font-bold text-talent-orange"
                 >
                 <input type="text" value="
-                    {{ $user->city && $user->street && $user->houseNumber && $user->postalCode}}">
+                    {{ $user->city }}">
+                    <input type="text" value="
+                    {{ $user->street }} ">
+                    <input type="text" value="
+                    {{  $user->houseNumber }} ">
+                    <input type="text" value="
+                    {{ $user->postalCode}}">
                 </div>
                 <!-- job -->
                 <div class="col-span-1">
