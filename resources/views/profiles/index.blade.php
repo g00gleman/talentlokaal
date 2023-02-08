@@ -8,6 +8,7 @@
     @vite('resources/css/app.css')
 </head>
 <body class="bg-talent-green">
+@include('components.navbar.index')
 <div class="w-full h-64 bg-talent-white rounded-b-3xl">
     <div class="flex">
         <!-- Logo -->
@@ -82,26 +83,6 @@
                 </g>
             </svg>
         </div>
-        <!-- Hamburger Menu Button -->
-        <div class="flex-1 mt-5 mr-5">
-            <div class="flex justify-end">
-                <div class=""></div>
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    class="w-12 h-12 bg-talent-light-green rounded-full p-2 text-talent-green"
-                >
-                    <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                    />
-                </svg>
-            </div>
-        </div>
     </div>
     <div
         class="mt-8 flex justify-center text-2xl text-talent-green font-bold"
@@ -110,33 +91,35 @@
     </div>
     <div class="flex justify-center">
         <div>
-            <div
-                class="flex justify-between mt-5 w-32 h-8 bg-talent-orange rounded-full"
-            >
+            <a href="/dashboard/survey">
                 <div
-                    class="flex h-full ml-2 mr-1 items-center text-talent-white"
+                    class="flex justify-between mt-5 w-32 h-8 bg-talent-orange rounded-full"
                 >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke-width="1.5"
-                        stroke="currentColor"
-                        class="w-6 h-6"
+                    <div
+                        class="flex h-full ml-2 mr-1 items-center text-talent-white"
                     >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z"
-                        />
-                    </svg>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                            class="w-6 h-6"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z"
+                            />
+                        </svg>
+                    </div>
+                    <div
+                        class="flex mr-7 text-center h-full items-center text-xs select-none text-talent-white font-bold"
+                    >
+                        Vragenlijst
+                    </div>
                 </div>
-                <div
-                    class="flex mr-7 text-center h-full items-center text-xs select-none text-talent-white font-bold"
-                >
-                    Vragenlijst
-                </div>
-            </div>
+            </a>
             <a href="{{ route('dashboard.manageProfile.edit', $user->id) }}">
                 <div
                     class="flex justify-between mt-3 w-32 h-8 bg-talent-orange rounded-full"
@@ -256,19 +239,19 @@
     <div class="customSpacing"></div>
 </div>
 
-<div class="flex justify-center">
+<div class="flex justify-center mb-12">
     <div class="customCard">
         <div
-            class="flex justify-center text-xl font-bold text-talent-green"
+            class="flex justify-center text-xl font-bold text-talent-green mb-6"
         >
             Kennismaking pitch
         </div>
-        <div class="mt-2 flex justify-center">
+        <div class="mt-2 flex justify-center flex-col items-center">
             @if(empty($user->pitch))
                 <p>Maak uw profiel persoonlijker en voeg een pitch toe</p>
 
                 <x-jet-validation-errors class="mb-4 text-red-500" />
-                <form action="/dashboard/pitch/{{$user->id}}" method="post" enctype="multipart/form-data">
+                <form action="/dashboard/pitch/{{$user->id}}" method="post" enctype="multipart/form-data" class="flex flex-col items-center gap-6 mt-6">
                     @csrf
                     @method('put')
                     <input type="file" name="pitch" id=""/>
@@ -280,7 +263,7 @@
                 @endphp
                 <video width="320" height="240" controls="controls">
                     <source
-                        src="{{ asset($baseurl. '/pitch/'.$user->pitch) }}"
+                        src="{{ asset($baseurl. '/files/'.$user->pitch) }}"
                         type="video/mp4"
                     />
                     Your browser does not support the video tag.
@@ -290,6 +273,37 @@
         </div>
     </div>
 </div>
+
+@if(isset($user->employee))
+    <div class="flex justify-center">
+        <div class="customCard">
+            <div
+                class="flex justify-center text-xl font-bold text-talent-green mb-6"
+            >
+                Curriculum vitae
+            </div>
+            <div class="mt-2 flex justify-center flex-col text-center">
+                @if(empty($user->employee->cv))
+                    <p>Breidt uw profiel uit en voeg een CV toe</p>
+
+                    <x-jet-validation-errors class="mb-4 text-red-500" />
+                    <form action="/dashboard/cv/{{$user->id}}" method="post" enctype="multipart/form-data" class="flex flex-col items-center gap-6 mt-6">
+                        @csrf
+                        @method('put')
+                        <input type="file" name="cv" id=""/>
+                        <button type="submit">Upload</button>
+                    </form>
+                @else
+                    @php
+                        $baseurl = env('APP_URL');
+                    @endphp
+                    <a href="" download="{{ $baseurl }}/files/{{ $user->employee->cv }}">Download CV</a>
+                @endif
+
+            </div>
+        </div>
+    </div>
+@endif
 
 <div class="flex justify-end">
     <div class="customArrowbtn">
@@ -370,49 +384,53 @@
                     {{ $user->city }} {{ $user->street }} {{ $user->houseNumber }} {{ $user->postalCode }}
                 </div>
                 <!-- job -->
-                <div class="col-span-1">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke-width="1.5"
-                        stroke="currentColor"
-                        class="w-6 h-6"
+                @if(isset($user->function))
+                    <div class="col-span-1">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                            class="w-6 h-6"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z"
+                            />
+                        </svg>
+                    </div>
+                    <div
+                        class="col-span-4 text-xs flex items-center font-bold text-talent-orange"
                     >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z"
-                        />
-                    </svg>
-                </div>
-                <div
-                    class="col-span-4 text-xs flex items-center font-bold text-talent-orange"
-                >
-                    {{ $user->employee->function }}
-                </div>
-                <!-- job-2? -->
-                <div class="col-span-1">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke-width="1.5"
-                        stroke="currentColor"
-                        class="w-6 h-6"
+                        {{ $user->employee->function }}
+                    </div>
+                @endif
+                <!-- certificate -->
+                @if(isset($user->certificate))
+                    <div class="col-span-1">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                            class="w-6 h-6"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z"
+                            />
+                        </svg>
+                    </div>
+                    <div
+                        class="col-span-4 text-xs flex items-center font-bold text-talent-orange"
                     >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z"
-                        />
-                    </svg>
-                </div>
-                <div
-                    class="col-span-4 text-xs flex items-center font-bold text-talent-orange"
-                >
-                    {{ $user->employee->certificate }}
-                </div>
+                        {{ $user->employee->certificate }}
+                    </div>
+                @endif
             </div>
         </div>
     </div>

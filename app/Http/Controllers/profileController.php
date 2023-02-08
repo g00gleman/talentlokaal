@@ -38,28 +38,27 @@ class profileController extends Controller
         $user = User::find($id);
         // example
         // pitch = stevens pitch
+        // files = stevens files
         $pitch = $request->file('pitch');
         //  pitch = stevens_pitch
+        //  files = stevens_pitch
         $savePitch = time().'.'.$pitch->getClientOriginalExtension();
         // move stevens_pitch in the map called public/pitch
         $pitch->move(public_path('pitch'), $savePitch);
+        // move stevens_pitch in the map called public/files
+        $pitch->move(public_path('files'), $savePitch);
         // store stevens_pitch in user table database
             $user->pitch = $savePitch;
         $user->save();
 
         return redirect(route('dashboard.manageProfile.index'));
     }
-    // return edit form page with all old userdata
-    public function edit($id){
-        $editUser = User::find($id);
-        // dd($editUser);
-        return view('profiles.edit')->with('user', $editUser);
-    }
 
     // update specific user when click on update btn
     public function update($id, Request $request){
         $updateUser = User::find($id);
         // validation errors for all form inputs
+    public function cv(Request $request, $id){
         $this->validate(request(), [
             'naam' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
@@ -70,6 +69,7 @@ class profileController extends Controller
             'postcode' => 'required|size:6|string',
             'geboortedatum' => 'required|before:today|Date',
             'wachtwoord' => 'required|min:8|max:20|confirmed'
+            'cv' => 'file|mimes:doc,docx,pdf,png,jpg,jpeg',
         ]);
 
         $updateUser->name = $request->get('naam');
@@ -83,13 +83,33 @@ class profileController extends Controller
         $updateUser->password = bcrypt($request->get('wachtwoord'));
         // save all data
         $updateUser->save();
+        $user = User::with('employee')->find($id);
+        // example
+        // files = stevens files
+        $cv = $request->file('cv');
+        //  files = stevens_pitch
+        $saveCv = time().'.'.$cv->getClientOriginalExtension();
+        // move stevens_pitch in the map called public/files
+        $cv->move(public_path('files'), $saveCv);
+        // store stevens_pitch in user table database
+
+        $user->employee->cv = $saveCv;
+        $user->employee->save();
 
         // return to the profile page after updating
         return redirect(route('dashboard.manageProfile.index'));
     }
 
+    // return edit form page with all old userdata
+    public function edit($id){
+        $editUser = User::find($id);
+        // dd($editUser);
+        return view('profiles.edit')->with('user', $editUser);
+    }
 
     public function editSmallInfo($id, Request $request){
+    // update specific user profile when click on update btn
+    public function update($id, Request $request){
         $updateUser = User::find($id);
         $updateEmployee = employee::find($id);
         // validation errors for all form inputs
