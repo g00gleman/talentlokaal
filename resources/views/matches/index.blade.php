@@ -1,5 +1,6 @@
 <x-guest-layout>
     <body class="bg-talent-green">
+        @include('components.navbar.index')
         <div class="w-full h-64 bg-talent-white rounded-b-3xl">
             <div class="flex">
                 <!-- Logo -->
@@ -74,26 +75,8 @@
                         </g>
                     </svg>
                 </div>
-                <!-- Hamburger Menu Button -->
-                <div class="flex-1 mt-5 mr-5">
-                    <div class="flex justify-end">
-                        <div class=""></div>
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke-width="1.5"
-                            stroke="currentColor"
-                            class="w-12 h-12 bg-talent-light-green rounded-full p-2 text-talent-green"
-                        >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                            />
-                        </svg>
-                    </div>
-                </div>
+                
+               
             </div>
             <div
                 class="mt-12 flex justify-center text-2xl text-talent-green font-bold mb-12"
@@ -103,12 +86,9 @@
 
         </div>
     </div>
-    <div class=" flex justify-center items-center">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" text-talent-white w-16 h-16 mr-5">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
-      </svg>
-    </div>
-    <div class="flex justify-center">
+   <div class="flex">   
+
+    <div class="flex justify-center items-center"> 
     <div class="w-72 bg-talent-white rounded-xl mt-10 flex items-center ">
     
         <div class=" flex-1 ml-5 mt-5 text-talent-green">
@@ -121,8 +101,38 @@
         </div>
         
     </div>
+    
     <div class=" flex-2 mr-5 ml-5 ">
     <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Vanamo_Logo.png"  width="50px" height="50px ">
     </div>
+    
+    </div>
+    <div class="w-72 bg-talent-white rounded-xl mt-10 flex items-center ">
+    
+        <div class=" flex-1 ml-5 mt-5 text-talent-green">
+            Bedrijf: Nordal<br/>
+       
+            Functie: Interieurstylist
+       
+        <div class=" mb-5 text-talent-orange">
+            Match percentage: 75%
+        </div>
+        
+    </div>
+    
+    <div class=" flex-2 mr-5 ml-5 ">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Vanamo_Logo.png"  width="50px" height="50px ">
+    </div>
+    
 </div>
+    
+</div>
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" text-talent-white w-16 h-16 mr-5">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
+  </svg>
+
+</div>
+
+
+
     </x-guest-layout>
