@@ -72,7 +72,7 @@
                         </svg>
                     </div>
                     <div class="flex mr-7 text-center h-full items-center text-xs select-none text-talent-white font-bold">
-                        Profiel wijzigen
+                        Vragenlijst 
                     </div>
                 </div>
             </a>
