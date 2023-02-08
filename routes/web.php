@@ -19,6 +19,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
+Route::get('/survey', function () {
+    return view('survey.index');
+});
 
 // these routes are used to define which role the user is
 Route::get('/roles', [rolesController::class, 'allRoles']);
@@ -29,7 +32,7 @@ Route::post('registerEmployee', [rolesController::class, 'registerEmployee']);
 Route::post('registerEmployer', [rolesController::class, 'registerEmployer']);
 
 // in this middleware route are all routes define which you need to be logged in to access
-Route::group(['prefix' => 'dashboard' , 'middleware' => 'auth', 'as' => 'dashboard.'], function() {
+Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'as' => 'dashboard.'], function () {
 
     // loads the page after being logged in
     Route::get('/', function () {
@@ -43,4 +46,9 @@ Route::group(['prefix' => 'dashboard' , 'middleware' => 'auth', 'as' => 'dashboa
     Route::resource('manageProfile', profileController::class);
     // view profile page
 
+    Route::get('/matches', function () {
+        return view('matches.index');
+    });
 });
+
+
