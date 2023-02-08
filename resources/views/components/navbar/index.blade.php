@@ -42,6 +42,7 @@
                 display: none;
                 height: 100vh;
                 width: 100vw;
+                z-index: 999;
             }
 
             .overlay {

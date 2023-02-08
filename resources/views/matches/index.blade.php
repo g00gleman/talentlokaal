@@ -79,24 +79,54 @@
                
             </div>
             <div
-                class="mt-12 flex justify-center text-2xl text-talent-green font-bold mb-12"
+                class="mt-12 flex justify-center text-2xl text-talent-green font-bold"
             >
                 Matches
             </div>
+            <div class=" flex justify-center mt-8 mr-24">
+                <form>
+                    <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                            <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                        </div>
+                        <input type="search" id="default-search" class="block shadow-lg h-10 p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-full bg-gray-50 focus:ring-talent-green focus:border-talent-green dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-talent-green dark:focus:border-talent-green w-64" placeholder="Zoek match..." required>
+
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-    <div class=" flex justify-center items-center">
+    <div class="flex justify-center items-center">
    <div class="flex">
 
     <div class="flex flex-col justify-center items-center"> 
-    <div class="w-72 bg-talent-white rounded-xl mt-10 flex items-center ">
+    <div class=" shadow-lg -mb-6 w-72 bg-talent-white rounded-xl mt-10 flex items-center ">
     
-        <div class=" flex-1 ml-5 mt-5 text-talent-green">
+        <div class="  text-sm flex-1 ml-5 mt-5 text-talent-green">
             Bedrijf: Nordal<br/>
        
             Functie: Interieurstylist
        
-        <div class=" mb-5 text-talent-orange">
+        <div class="  text-sm mb-5 text-talent-orange">
+            Match percentage: 75%
+        </div>
+        
+    </div>
+    
+    <div class=" flex-2 mr-5 ml-3 ">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Vanamo_Logo.png"  width="50px" height="50px ">
+    </div>
+    
+    </div>
+    <div class=" shadow-lg -mb-6 w-72 bg-talent-white rounded-xl mt-10 flex items-center ">
+    
+        <div class="  text-sm flex-1 ml-5 mt-5 text-talent-green">
+            Bedrijf: Nordal<br/>
+       
+            Functie: Interieurstylist
+       
+        <div class="  text-sm mb-5 text-talent-orange">
             Match percentage: 75%
         </div>
         
@@ -106,31 +136,38 @@
     <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Vanamo_Logo.png"  width="50px" height="50px ">
     </div>
     
-    </div>
-    <div class="w-72 bg-talent-white rounded-xl mt-10 flex items-center ">
     
-        <div class=" flex-1 ml-5 mt-5 text-talent-green">
-            Bedrijf: Nordal<br/>
-       
-            Functie: Interieurstylist
-       
-        <div class=" mb-5 text-talent-orange">
-            Match percentage: 75%
-        </div>
-        
-    </div>
+</div>
+
+<div class=" shadow-lg -mb-6 w-72 bg-talent-white rounded-xl mt-10 flex items-center ">
     
-    <div class=" flex-2 mr-5 ml-5 ">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Vanamo_Logo.png"  width="50px" height="50px ">
+    <div class="  text-sm flex-1 ml-5 mt-5 text-talent-green">
+        Bedrijf: Nordal<br/>
+   
+        Functie: Interieurstylist
+   
+    <div class="  text-sm mb-5 text-talent-orange">
+        Match percentage: 75%
     </div>
     
 </div>
 
+<div class=" flex-2 mr-5 ml-5 ">
+<img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Vanamo_Logo.png"  width="50px" height="50px ">
+</div>
+
+
+</div>
+
+
     </div>
     
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" text-talent-white w-16 h-16 mr-5">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" text-talent-white h-14 ml-4">
         <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
       </svg>
+
+
+      
 
 </div> 
 
