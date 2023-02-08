@@ -65,6 +65,9 @@
                             d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                     </svg>
                 </div>
+                <div class="flex mr-7 text-center h-full items-center text-xs select-none text-talent-white font-bold">
+                    Vragenlijst
+                </div>
             </div>
         </div>
         <div class="mt-8 flex justify-center text-2xl text-talent-green font-bold">
@@ -80,9 +83,8 @@
                                 d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" />
                         </svg>
                     </div>
-                    <div
-                        class="flex mr-7 text-center h-full items-center text-xs select-none text-talent-white font-bold">
-                        Vragenlijst
+                    <div class="flex mr-7 text-center h-full items-center text-xs select-none text-talent-white font-bold">
+                        Profiel wijzigen
                     </div>
                 </div>
                 <a href="{{ route('dashboard.manageProfile.edit', $user->id) }}">
@@ -287,6 +289,33 @@
             </div>
         </div>
     </div>
+</div>
+
+
+<div class="flex justify-center mb-10">
+    <div class="customCard">
+        <div
+            class="flex justify-center text-xl font-bold text-talent-green"
+        >
+            Persoongegevens
+        </div>
+        <div class="flex justify-center mt-8">
+            <div class="">
+
+
+                <a href="{{ route('dashboard.manageProfile.edit', $user->id) }}">
+                    <div class="px-3 py-2 bg-talent-white rounded-full">
+                        <div class="text-center h-full select-none bg-red-500 font-bold">
+                            Account verwijderen
+                        </div>
+                    </div>
+                </a>
+
+
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 
 </html>
