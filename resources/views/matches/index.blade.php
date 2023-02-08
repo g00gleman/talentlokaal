@@ -83,12 +83,12 @@
             >
                 Matches
             </div>
-
         </div>
     </div>
-   <div class="flex">   
+    <div class=" flex justify-center items-center">
+   <div class="flex">
 
-    <div class="flex justify-center items-center"> 
+    <div class="flex flex-col justify-center items-center"> 
     <div class="w-72 bg-talent-white rounded-xl mt-10 flex items-center ">
     
         <div class=" flex-1 ml-5 mt-5 text-talent-green">
@@ -125,13 +125,15 @@
     </div>
     
 </div>
-    
-</div>
-<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" text-talent-white w-16 h-16 mr-5">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
-  </svg>
 
-</div>
+    </div>
+    
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" text-talent-white w-16 h-16 mr-5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
+      </svg>
+
+</div> 
+
 
 
 
