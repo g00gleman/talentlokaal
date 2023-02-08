@@ -42,4 +42,9 @@ Route::group(['prefix' => 'dashboard' , 'middleware' => 'auth', 'as' => 'dashboa
     Route::resource('manageProfile', profileController::class);
     // view profile page
 
+    Route::get('/matches', function () {
+        return view('matches.index');
+    });
 });
+
+
