@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
+            $table->string('cv')->nullable();
             $table->string('function')->nullable();
             $table->string('certificate')->nullable();
             $table->bigInteger('user_Id');

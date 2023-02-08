@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\profileController;
 use App\Http\Controllers\rolesController;
+use App\Http\Controllers\surveyController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,9 +20,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
-Route::get('/survey', function () {
-    return view('survey.index');
-});
 
 // these routes are used to define which role the user is
 Route::get('/roles', [rolesController::class, 'allRoles']);
@@ -38,13 +36,19 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'as' => 'dashboar
     Route::get('/', function () {
         return view('homepage');
     });
-    // update your profile with a description or pitch
+
+    // update your profile with a description, files or cv
     Route::put('/description/{id}', [profileController::class, 'description']);
     Route::put('/pitch/{id}', [profileController::class, 'pitch']);
-    Route::put('/editSmallInfo/{id}', [profileController::class, 'editSmallInfo']);
+    Route::put('/cv/{id}', [profileController::class, 'cv']);
 
+    // update profile info
     Route::resource('manageProfile', profileController::class);
-    // view profile page
+
+    //click on survey button to see the survey
+    Route::get('/survey', [surveyController::class, 'displaySurvey']);
+
+
 
     Route::get('/matches', function () {
         return view('matches.index');
