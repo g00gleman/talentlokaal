@@ -29,6 +29,7 @@ class profileController extends Controller
 
         return redirect(route('dashboard.manageProfile.index'));
     }
+
     // save description
     public function pitch(Request $request, $id){
         $this->validate(request(), [

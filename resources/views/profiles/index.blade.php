@@ -10,6 +10,7 @@
 </head>
 
 <body class="bg-talent-green">
+@include('components.navbar.index')
 <div class="w-full h-64 bg-talent-white rounded-b-3xl">
     <div class="flex">
         <!-- Logo -->
@@ -54,39 +55,27 @@
                 </g>
             </svg>
         </div>
-        <!-- Hamburger Menu Button -->
-        <div class="flex-1 mt-5 mr-5">
-            <div class="flex justify-end">
-                <div class=""></div>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                     stroke="currentColor"
-                     class="w-12 h-12 bg-talent-light-green rounded-full p-2 text-talent-green">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                          d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                </svg>
-            </div>
-            <div class="flex mr-7 text-center h-full items-center text-xs select-none text-talent-white font-bold">
-                Vragenlijst
-            </div>
-        </div>
+
     </div>
     <div class="mt-8 flex justify-center text-2xl text-talent-green font-bold">
         Profiel
     </div>
     <div class="flex justify-center">
         <div>
-            <div class="flex justify-between mt-5 w-32 h-8 bg-talent-orange rounded-full">
-                <div class="flex h-full ml-2 mr-1 items-center text-talent-white">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                         stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                              d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" />
-                    </svg>
+            <a href="/dashboard/survey">
+                <div class="flex justify-between mt-5 w-32 h-8 bg-talent-orange rounded-full">
+                    <div class="flex h-full ml-2 mr-1 items-center text-talent-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                             stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                  d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" />
+                        </svg>
+                    </div>
+                    <div class="flex mr-7 text-center h-full items-center text-xs select-none text-talent-white font-bold">
+                        Profiel wijzigen
+                    </div>
                 </div>
-                <div class="flex mr-7 text-center h-full items-center text-xs select-none text-talent-white font-bold">
-                    Profiel wijzigen
-                </div>
-            </div>
+            </a>
             <a href="{{ route('dashboard.manageProfile.edit', $user->id) }}">
                 <div class="flex justify-between mt-3 w-32 h-8 bg-talent-orange rounded-full">
                     <div class="flex h-full ml-2 mr-1 items-center text-talent-white">
