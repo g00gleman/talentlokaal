@@ -131,9 +131,7 @@
                         />
                     </svg>
                 </div>
-                <div
-                    class="flex mr-7 text-center h-full items-center text-xs select-none text-talent-white font-bold"
-                >
+                <div class="flex mr-7 text-center h-full items-center text-xs select-none text-talent-white font-bold">
                     Vragenlijst
                 </div>
             </div>
@@ -159,9 +157,7 @@
                             />
                         </svg>
                     </div>
-                    <div
-                        class="flex mr-7 text-center h-full items-center text-xs select-none text-talent-white font-bold"
-                    >
+                    <div class="flex mr-7 text-center h-full items-center text-xs select-none text-talent-white font-bold">
                         Profiel wijzigen
                     </div>
                 </div>
@@ -413,6 +409,32 @@
                 >
                     {{ $user->employee->certificate }}
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="flex justify-center mb-10">
+    <div class="customCard">
+        <div
+            class="flex justify-center text-xl font-bold text-talent-green"
+        >
+            Persoongegevens
+        </div>
+        <div class="flex justify-center mt-8">
+            <div class="">
+
+
+                <a href="{{ route('dashboard.manageProfile.edit', $user->id) }}">
+                    <div class="px-3 py-2 bg-talent-white rounded-full">
+                        <div class="text-center h-full select-none bg-red-500 font-bold">
+                            Account verwijderen
+                        </div>
+                    </div>
+                </a>
+
+
             </div>
         </div>
     </div>
