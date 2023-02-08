@@ -88,6 +88,43 @@ class profileController extends Controller
         return redirect(route('dashboard.manageProfile.index'));
     }
 
+
+    public function editSmallInfo($id, Request $request){
+        $updateUser = User::find($id);
+        $updateEmployee = employee::find($id);
+        // validation errors for all form inputs
+        // $this->validate(request(), [
+            // 'naam' => 'required|string|max:255',
+            // 'email' => 'required|string|email|max:255|unique:users',
+            // 'telefoonnummer' =>  'required|max:10|unique:App\Models\User,phoneNumber',
+            // 'plaats' => 'required|string|max:255',
+            // 'straat' => 'required|string|max:255',
+            // 'huisnummer' => 'required|integer|digits_between:1,5',
+            // 'postcode' => 'required|size:7|string',
+            // 'geboortedatum' => 'required|before:today|Date',
+        // ]);
+
+        $updateUser->name = $request->get('name');
+        // $updateUser->email = $request->get('email');
+        // $updateUser->phoneNumber = $request->get('telefoonnummer');
+        $updateUser->city = $request->get('city');
+        $updateUser->street = $request->get('street');
+        $updateUser->houseNumber = $request->get('houseNumber');
+        $updateUser->postalCode = $request->get('postalCode');
+
+        $updateEmployee->function = $request->get('employeeFunction');
+        $updateEmployee->certificate = $request->get('employeeCertificate');
+
+        // $updateUser->birthDate = $request->get('geboortedatum');
+
+        // save all data
+        $updateUser->save();
+        $updateEmployee->save();
+
+        // return to the profile page after updating
+        return redirect(route('dashboard.manageProfile.index'));
+    }
+
     // delete specific user when click on delete btn
     public function destroy($id){
         User::destroy($id);
