@@ -47,7 +47,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'as' => 'dashboar
 
     //click on survey button to see the survey
     Route::get('/survey', [surveyController::class, 'displaySurvey']);
-
+    Route::get('/logout', [profileController::class, 'logout']);
 
 
     Route::get('/matches', function () {

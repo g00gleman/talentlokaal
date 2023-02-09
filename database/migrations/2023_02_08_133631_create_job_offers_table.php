@@ -13,12 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('answers', function (Blueprint $table) {
+        Schema::create('job_offers', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('questionId');
-            $table->bigInteger('employeeId')->nullable();
-            $table->bigInteger('jobOfferId')->nullable();
-            $table->tinyInteger('score');
+            $table->string('function');
+            $table->bigInteger('employeeId');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('answers');
+        Schema::dropIfExists('job_offers');
     }
 };

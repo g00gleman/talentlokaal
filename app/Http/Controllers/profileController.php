@@ -52,7 +52,11 @@ class profileController extends Controller
 
         return redirect(route('dashboard.manageProfile.index'));
     }
-
+    public function logout(){
+        Auth::logout();
+        Session()->flush();
+        return redirect('/');
+    }
     public function cv(Request $request, $id){
         $this->validate(request(), [
             'cv' => 'file|mimes:doc,docx,pdf,png,jpg,jpeg',
@@ -123,7 +127,7 @@ class profileController extends Controller
 
         Auth::logout();
         Session()->flush();
-        
+
         $user = User::find($id);
         $employee = employee::where('user_id', $id)->first();
         $employer = Employer::where('user_id', $id)->first();
