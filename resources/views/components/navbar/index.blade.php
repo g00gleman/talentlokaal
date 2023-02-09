@@ -178,16 +178,7 @@
                         </a>
                         <div class="bar"></div>
 
-                        <form
-                            method="POST"
-                            action="{{ route('logout') }}"
-                            x-data
-                        >
-                            @csrf
-                            <a
-                                href="{{ route('logout') }}"
-                                @click.prevent="$root.submit();"
-                            >
+                        <a href="/dashboard/logout">
                                 <div class="item">
                                     <div class="item-i">
                                         <i
@@ -198,8 +189,7 @@
                                         {{ __("Log Out") }}
                                     </div>
                                 </div>
-                            </a>
-                        </form>
+                        </a>
                         <div class="bar"></div>
                     </div>
                 </div>
