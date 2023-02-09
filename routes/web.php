@@ -4,6 +4,7 @@ use App\Http\Controllers\profileController;
 use App\Http\Controllers\rolesController;
 use App\Http\Controllers\surveyController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Redirect;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,10 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'as' => 'dashboar
     });
     Route::get('/support', function () {
         return view('support.index');
+    });
+
+    Route::get('/redirect-back', function () {
+        return Redirect::to(url()->previous());
     });
 
     // update your profile with a description, files or cv
