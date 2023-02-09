@@ -36,6 +36,9 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'as' => 'dashboar
     Route::get('/', function () {
         return view('homepage');
     });
+    Route::get('/support', function () {
+        return view('support.index');
+    });
 
     // update your profile with a description, files or cv
     Route::put('/description/{id}', [profileController::class, 'description']);
@@ -54,5 +57,3 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'as' => 'dashboar
         return view('matches.index');
     });
 });
-
-
