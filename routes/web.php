@@ -53,6 +53,10 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'as' => 'dashboar
     Route::get('/matches', function () {
         return view('matches.index');
     });
+
+    Route::get('/single', function () {
+        return view('matches.single');
+    });
 });
 
 
