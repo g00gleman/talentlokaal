@@ -61,5 +61,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'as' => 'dashboar
 
     Route::resource('matches', MatchesController::class);
 
-
+    Route::get('/single', function () {
+        return view('matches.single');
+    });
 });
