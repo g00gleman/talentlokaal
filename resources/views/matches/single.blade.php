@@ -1,8 +1,4 @@
 <x-guest-layout>
-    <head>
-        <script src="https://kit.fontawesome.com/8e80fea8d7.js" crossorigin="anonymous"></script>
-    </head>
-    <body class="bg-talent-green">
         @include('components.navbar.index')
         <div class="w-full h-64 bg-talent-white rounded-b-3xl">
             <div class="flex">
@@ -86,13 +82,12 @@
             >
                 Matches
             </div>
-            <div class="flex  gap-6 justify-center items-center mt-10 ">
+            <div class="flex gap-4 justify-center items-center mt-10 ">
 
-                <button class=" bg-talent-orange w-20 rounded-full "><i class="fa-thin fa-phone"></i>Bellen</button>
-                <button class=" bg-talent-orange w-20 rounded-full"> Chatten </button>
-                <button class=" bg-talent-orange w-20 rounded-full"> Mailen </button>
+                <button class=" text-talent-white bg-talent-orange w-28 rounded-full h-8 text-sm "><i class=" mr-2 fa-solid fa-phone text-talent-white"></i>Bellen</button>
+                <button class=" text-talent-white bg-talent-orange w-28 rounded-full h-8 text-sm"> <i class=" mr-2 fa-regular fa-envelope text-talent-white"></i>Mailen </button>
+                <button class=" text-talent-white bg-talent-orange w-28 rounded-full h-8 text-sm"><i class=" mr-2 fa-regular fa-comments text-talent-white"></i></i> Chatten </button>
 
             </div>
-        </body>
 </x-guest-layout>
 
