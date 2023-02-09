@@ -4,6 +4,7 @@ use App\Http\Controllers\profileController;
 use App\Http\Controllers\rolesController;
 use App\Http\Controllers\surveyController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Redirect;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,13 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'as' => 'dashboar
     Route::get('/', function () {
         return view('homepage');
     });
+    Route::get('/support', function () {
+        return view('support.index');
+    });
+
+    Route::get('/redirect-back', function () {
+        return Redirect::to(url()->previous());
+    });
 
     // update your profile with a description, files or cv
     Route::put('/description/{id}', [profileController::class, 'description']);
@@ -47,7 +55,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'as' => 'dashboar
 
     //click on survey button to see the survey
     Route::get('/survey', [surveyController::class, 'displaySurvey']);
-
+    Route::get('/logout', [profileController::class, 'logout']);
 
 
     Route::get('/matches', function () {
@@ -58,5 +66,3 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'as' => 'dashboar
         return view('matches.single');
     });
 });
-
-

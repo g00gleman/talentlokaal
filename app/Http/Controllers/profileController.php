@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\employee;
 use App\Models\Employer;
 use App\Models\User;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Spatie\LaravelIgnition\Recorders\DumpRecorder\Dump;
 
 class profileController extends Controller
 {
@@ -50,7 +52,11 @@ class profileController extends Controller
 
         return redirect(route('dashboard.manageProfile.index'));
     }
-
+    public function logout(){
+        Auth::logout();
+        Session()->flush();
+        return redirect('/');
+    }
     public function cv(Request $request, $id){
         $this->validate(request(), [
             'cv' => 'file|mimes:doc,docx,pdf,png,jpg,jpeg',
@@ -118,6 +124,22 @@ class profileController extends Controller
 
     // delete specific user when click on delete btn
     public function destroy($id){
-        User::destroy($id);
+
+        Auth::logout();
+        Session()->flush();
+
+        $user = User::find($id);
+        $employee = employee::where('user_id', $id)->first();
+        $employer = Employer::where('user_id', $id)->first();
+
+        if(isset($employee)) {
+            $user->destroy($id);
+            $user->employee->delete();
+        }
+        elseif(isset($employer)){
+            $user->destroy($id);
+            $user->employer->delete();
+        }
+        return redirect('/');
     }
 }

@@ -6,43 +6,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
         @vite('resources/css/app.css')
-        <style>
-            .question {
-                padding-top: 15px;
-                padding-bottom: 15px;
-                width: 100vw;
-                background-color: #bcd7d2;
-                border-radius: 16px;
-                display: flex;
-                flex-direction: column;
-                margin-top: 18px;
-                justify-content: center;
-                align-items: center;
-                padding-left: 35px;
-                padding-right: 35px;
-                font-size: 13px;
-                font-weight: bold;
-                color: white;
-            }
-
-            .answer {
-                margin-top: 10px;
-                gap: 50px;
-                font-size: 17px;
-                color: #ef840c;
-                display: flex;
-            }
-
-            .option {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 30px;
-                height: 30px;
-                border-radius: 100px;
-                cursor: pointer;
-            }
-        </style>
     </head>
     <body class="bg-talent-green">
         @include('components.navbar.index')
@@ -126,94 +89,58 @@
             <div
                 class="mt-8 flex justify-center text-2xl text-talent-green font-bold mb-6"
             >
-                Vragenlijst
+                Support
             </div>
-            <div class="flex justify-center text-center">
-                <div class="text-sm text-talent-orange font-bold mb-12 w-3/4">
-                    Vraag #: Lorem ipsum dolor sit. Lorem ipsum dolor sit amet,
-                    consectetur adipisicing elit.
-                </div>
+            <div class="flex justify-between mr-2 ml-2 mt-12 gap-4">
+                <a
+                    class="w-full h-8 rounded-full flex items-center justify-center text-center text-talent-white bg-talent-orange"
+                    href=""
+                >
+                    <i class="fa-solid fa-phone mr-1"></i>
+                    Bellen
+                </a>
+                <a
+                    class="w-full h-8 rounded-full flex items-center justify-center text-center text-talent-white bg-talent-orange"
+                    href=""
+                >
+                    <i class="fa-solid fa-envelope mr-1"></i>
+                    Mailen
+                </a>
+                <a
+                    class="w-full h-8 rounded-full flex items-center justify-center text-center text-talent-white bg-talent-orange"
+                    href=""
+                >
+                    <i class="fa-solid fa-comments mr-1"></i>
+                    Chatten
+                </a>
             </div>
         </div>
-        <div class="content">
-            @foreach($questions as $question)
-                <div class="question">
-                    {{ $question->question }}
-                    <div class="answer">
-                        <div class="option" onclick="answer1()" id="option1">1</div>
-                        <div class="option" onclick="answer2()" id="option2">2</div>
-                        <div class="option" onclick="answer3()" id="option3">3</div>
-                        <div class="option" onclick="answer4()" id="option4">4</div>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-        <style>
-            .Pagination {
-                position: absolute;
-                right: 25px;
-                bottom: 15px;
-                display: flex;
-                justify-content: space-between;
-                width: 18vw;
-            }
 
-            .button {
-                font-size: 26px;
-                font-weight: bold;
-                color: lightgray;
-                opacity: 0.8;
+        <style>
+            .content {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .customCard {
+                margin-top: 60px;
+                border-radius: 22px;
+                padding: 40px;
+                background-color: white;
+                color: #1f796a;
+                width: 90vw;
+                height: auto;
             }
         </style>
-        <div class="Pagination">
-            <div class="button"><</div>
-            <div class="button">></div>
+
+        <div class="content">
+            <div class="customCard">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus
+                tempora eveniet maxime, fuga perspiciatis aperiam veritatis aut
+                hic porro similique, doloribus expedita ipsam et, illo quae.
+                Voluptatibus praesentium tenetur autem temporibus esse maiores
+                ipsa molestias? Accusantium nesciunt quos vero in?
+            </div>
         </div>
     </body>
-    <script>
-        function answer1() {
-            var one = document.getElementById("option1");
-            var two = document.getElementById("option2");
-            var three = document.getElementById("option3");
-            var four = document.getElementById("option4");
-
-            one.style.backgroundColor = "#1f796a";
-            two.style.backgroundColor = "#bcd7d2";
-            three.style.backgroundColor = "#bcd7d2";
-            four.style.backgroundColor = "#bcd7d2";
-        }
-        function answer2() {
-            var one = document.getElementById("option1");
-            var two = document.getElementById("option2");
-            var three = document.getElementById("option3");
-            var four = document.getElementById("option4");
-
-            one.style.backgroundColor = "#bcd7d2";
-            two.style.backgroundColor = "#1f796a";
-            three.style.backgroundColor = "#bcd7d2";
-            four.style.backgroundColor = "#bcd7d2";
-        }
-        function answer3() {
-            var one = document.getElementById("option1");
-            var two = document.getElementById("option2");
-            var three = document.getElementById("option3");
-            var four = document.getElementById("option4");
-
-            one.style.backgroundColor = "#bcd7d2";
-            two.style.backgroundColor = "#bcd7d2";
-            three.style.backgroundColor = "#1f796a";
-            four.style.backgroundColor = "#bcd7d2";
-        }
-        function answer4() {
-            var one = document.getElementById("option1");
-            var two = document.getElementById("option2");
-            var three = document.getElementById("option3");
-            var four = document.getElementById("option4");
-
-            one.style.backgroundColor = "#bcd7d2";
-            two.style.backgroundColor = "#bcd7d2";
-            three.style.backgroundColor = "#bcd7d2";
-            four.style.backgroundColor = "#1f796a";
-        }
-    </script>
 </html>

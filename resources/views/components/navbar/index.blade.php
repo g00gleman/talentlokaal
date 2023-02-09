@@ -67,7 +67,7 @@
                 font-weight: bold;
                 color: white;
                 font-size: 32px;
-                border-top-left-radius: 16px;
+                /* border-top-left-radius: 16px; */
                 border-bottom-left-radius: 16px;
             }
 
@@ -138,7 +138,7 @@
                         </a>
                         <div class="bar"></div>
 
-                        <a href="/">
+                        <a href="dashboard/manageProfile">
                             <div class="item">
                                 <div class="item-i">
                                     <i class="fa-solid fa-user fa-2x"></i>
@@ -178,28 +178,18 @@
                         </a>
                         <div class="bar"></div>
 
-                        <form
-                            method="POST"
-                            action="{{ route('logout') }}"
-                            x-data
-                        >
-                            @csrf
-                            <a
-                                href="{{ route('logout') }}"
-                                @click.prevent="$root.submit();"
-                            >
-                                <div class="item">
-                                    <div class="item-i">
-                                        <i
-                                            class="fa-solid fa-right-from-bracket fa-2x"
-                                        ></i>
-                                    </div>
-                                    <div class="item-text">
-                                        {{ __("Log Out") }}
-                                    </div>
+                        <a href="/dashboard/logout">
+                            <div class="item">
+                                <div class="item-i">
+                                    <i
+                                        class="fa-solid fa-right-from-bracket fa-2x"
+                                    ></i>
                                 </div>
-                            </a>
-                        </form>
+                                <div class="item-text">
+                                    {{ __("Log Out") }}
+                                </div>
+                            </div>
+                        </a>
                         <div class="bar"></div>
                     </div>
                 </div>

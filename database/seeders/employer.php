@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
+use Carbon\Carbon;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class employer extends Seeder
 {
@@ -14,6 +16,16 @@ class employer extends Seeder
      */
     public function run()
     {
-        //
+        $employer = [
+            [
+                'id' => 1,
+                'companyName' => 'barrocintens',
+                'websiteURL' => 'https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley',
+                'user_Id' => 2,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+        ];
+        DB::table('employers')->insert($employer);
     }
 }
