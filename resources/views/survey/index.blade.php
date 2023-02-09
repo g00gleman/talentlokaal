@@ -136,16 +136,17 @@
             </div>
         </div>
         <div class="content">
-            <div class="question">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Dolore, explicabo!
-                <div class="answer">
-                    <div class="option" onclick="answer1()" id="option1">1</div>
-                    <div class="option" onclick="answer2()" id="option2">2</div>
-                    <div class="option" onclick="answer3()" id="option3">3</div>
-                    <div class="option" onclick="answer4()" id="option4">4</div>
+            @foreach($questions as $question)
+                <div class="question">
+                    {{ $question->question }}
+                    <div class="answer">
+                        <div class="option" onclick="answer1()" id="option1">1</div>
+                        <div class="option" onclick="answer2()" id="option2">2</div>
+                        <div class="option" onclick="answer3()" id="option3">3</div>
+                        <div class="option" onclick="answer4()" id="option4">4</div>
+                    </div>
                 </div>
-            </div>
+            @endforeach
         </div>
         <style>
             .Pagination {
