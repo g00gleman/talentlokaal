@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MatchesController;
 use App\Http\Controllers\profileController;
 use App\Http\Controllers\rolesController;
 use App\Http\Controllers\surveyController;
@@ -58,7 +59,5 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'as' => 'dashboar
     Route::get('/logout', [profileController::class, 'logout']);
 
 
-    Route::get('/matches', function () {
-        return view('matches.index');
-    });
+    Route::resource('matches', MatchesController::class);
 });

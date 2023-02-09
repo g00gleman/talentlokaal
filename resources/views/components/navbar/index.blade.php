@@ -138,7 +138,7 @@
                         </a>
                         <div class="bar"></div>
 
-                        <a href="dashboard/manageProfile">
+                        <a href="{{ route('dashboard.manageProfile.index') }}">
                             <div class="item">
                                 <div class="item-i">
                                     <i class="fa-solid fa-user fa-2x"></i>
@@ -148,7 +148,7 @@
                         </a>
                         <div class="bar"></div>
 
-                        <a href="/">
+                        <a href="{{ route('dashboard.matches.index') }}">
                             <div class="item">
                                 <div class="item-i">
                                     <i class="fa-solid fa-heart fa-2x"></i>
@@ -158,7 +158,7 @@
                         </a>
                         <div class="bar"></div>
 
-                        <a href="/">
+                        <a href="/dashboard">
                             <div class="item">
                                 <div class="item-i">
                                     <i class="fa-solid fa-inbox fa-2x"></i>
