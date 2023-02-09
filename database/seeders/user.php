@@ -28,6 +28,18 @@ class user extends Seeder
                 'postalCode' => '4751 PX',
                 'password' => bcrypt('adminadmin')
             ],
+            [
+                'id' => 2,
+                'name' => 'Rick',
+                'email' => 'admin@admin.com',
+                'birthDate' => now(),
+                'phoneNumber' => '0612345671',
+                'city' => 'breda',
+                'street' => 'rodeweg',
+                'houseNumber' => '6',
+                'postalCode' => '4751 PD',
+                'password' => bcrypt('adminadmin')
+            ],
         ];
         DB::table('users')->insert($users);
     }

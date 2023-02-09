@@ -137,7 +137,7 @@
                         </a>
                         <div class="bar"></div>
 
-                        <a href="/">
+                        <a href="dashboard/manageProfile">
                             <div class="item">
                                 <div class="item-i">
                                     <i class="fa-solid fa-user fa-2x"></i>
