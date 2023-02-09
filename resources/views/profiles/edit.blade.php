@@ -9,6 +9,7 @@
     <script src="https://kit.fontawesome.com/8e80fea8d7.js" crossorigin="anonymous"></script>
 </head>
 <body class="bg-talent-green">
+@include('components.navbar.index')
 <div class="w-full h-64 bg-talent-white rounded-b-3xl">
     <div class="flex">
         <!-- Logo -->
@@ -83,26 +84,7 @@
                 </g>
             </svg>
         </div>
-        <!-- Hamburger Menu Button -->
-        <div class="flex-1 mt-5 mr-5">
-            <div class="flex justify-end">
-                <div class=""></div>
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    class="w-12 h-12 bg-talent-light-green rounded-full p-2 text-talent-green"
-                >
-                    <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                    />
-                </svg>
-            </div>
-        </div>
+
     </div>
     <div
         class="mt-8 flex justify-center text-2xl text-talent-green font-bold"
@@ -163,13 +145,17 @@
             {{ $user->name }}
         </div>
         <div class="mt-2 text-talent-green">
-            <p>Geef extra info over u en voeg een beschrijving toe</p>
-            <form action="/dashboard/description/{{$user->id}}" method="post">
-                @csrf
-                @method('put')
-                <textarea name="description" id="" cols="30" rows="10">{{ $user->description }}</textarea>
-                <button type="submit">Opslaan</button>
-            </form>
+            @if(!($user->description == ""))
+                <p>Geef extra info over u en voeg een beschrijving toe</p>
+                <form action="/dashboard/description/{{$user->id}}" method="post">
+                    @csrf
+                    @method('put')
+                    <textarea name="description" id="" cols="30" rows="10">{{ $user->description }}</textarea>
+                    <button type="submit">Opslaan</button>
+                </form>
+            @else
+                <p class="text-center">Voeg eerst een beschrijving toe op de profile pagina</p>
+            @endif
         </div>
     </div>
 </div>
@@ -202,7 +188,7 @@
             Kennismaking pitch
         </div>
         <div class="mt-2 flex justify-center">
-            @if(empty($user->pitch))
+                @if(!($user->pitch == ""))
                 <p>Maak uw profiel persoonlijker en voeg een pitch toe</p>
                 <form action="/dashboard/pitch/{{$user->id}}" method="post" enctype="multipart/form-data">
                     @csrf
@@ -211,16 +197,7 @@
                     <button type="submit">Upload</button>
                 </form>
             @else
-                @php
-                    $baseurl = env('APP_URL');
-                @endphp
-                <video width="320" height="240" controls="controls">
-                    <source
-                        src="{{ asset($baseurl. '/pitch/'.$user->pitch) }}"
-                        type="video/mp4"
-                    />
-                    Your browser does not support the video tag.
-                </video>
+                <p>Voeg eerst een pitch toe op de profile pagina</p>
             @endif
 
         </div>
@@ -246,7 +223,7 @@
     </div>
     <div class="customSpacing"></div>
 </div>
-<form action="/dashboard/editSmallInfo/{{$user->id}}" method="post">
+<form action="{{ route('dashboard.manageProfile.update', $user->id) }}" method="post">
     @csrf
     @method('put')
 
