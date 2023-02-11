@@ -92,6 +92,10 @@
         align-items: end;
         justify-content: center;
     }
+
+    .active {
+        color: #ef840c;
+    }
 </style>
 
 <div class="menu" id="menu">
@@ -130,6 +134,10 @@
                     <div></div>
                     <div>Log uit</div>
                 </a>
+                <button onclick="check()" class="nav-content-btn">
+                    <div></div>
+                    <div>Check</div>
+                </button>
             </div>
         </div>
     </div>
@@ -141,5 +149,24 @@
     }
     function closeMenu() {
         document.getElementById("menu").style.display = "none";
+    }
+
+    const btnNav = document.querySelector(".nav-content-btn");
+
+    const btnNavList = document.querySelectorAll(".nav-content-btn");
+
+    btnFilterList.forEach((btnNav) => {
+        btnNav.addEventListener("click", () => {
+            document.querySelector(".active")?.classList.remove("active");
+            btnNav.classList.add("active");
+        });
+    });
+
+    function check() {
+        const url = window.location.href;
+
+        const lastSegment = url.split("/").pop();
+
+        console.log(lastSegment); // "playlist"
     }
 </script>
