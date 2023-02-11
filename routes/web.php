@@ -23,6 +23,10 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/introduction', function () {
+    return view('RegisterIntro.index');
+});
+
 // these routes are used to define which role the user is
 Route::get('/roles', [rolesController::class, 'allRoles']);
 Route::get('/role/{id}', [rolesController::class, 'getRole']);
@@ -41,6 +45,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'as' => 'dashboar
     Route::get('/support', function () {
         return view('support.index');
     });
+
 
     Route::get('/redirect-back', function () {
         return Redirect::to(url()->previous());
