@@ -168,8 +168,6 @@
             document.getElementById("inbox").classList.add("active");
         } else if (lastSegment == "support") {
             document.getElementById("support").classList.add("active");
-        } else if (lastSegment == "logout") {
-            document.getElementById("logOut").classList.add("active");
         }
     }
 </script>
