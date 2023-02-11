@@ -5,7 +5,7 @@
     stroke-width="1.5"
     stroke="currentColor"
     class="menuIcon"
-    onclick="openMenu()"
+    onclick="openMenu(); check();"
 >
     <path
         stroke-linecap="round"
@@ -104,13 +104,14 @@
         <div class="menu-content-nav">
             <div class="nav-top">Menu</div>
             <div class="nav-content">
-                <a href="/dashboard" class="nav-content-btn">
+                <a href="/dashboard" class="nav-content-btn" id="home">
                     <div></div>
                     <div>Home</div>
                 </a>
                 <a
                     href="{{ route('dashboard.manageProfile.index') }}"
                     class="nav-content-btn"
+                    id="profile"
                 >
                     <div></div>
                     <div>Profiel</div>
@@ -118,26 +119,27 @@
                 <a
                     href="{{ route('dashboard.matches.index') }}"
                     class="nav-content-btn"
+                    id="matches"
                 >
                     <div></div>
                     <div>Matches</div>
                 </a>
-                <a href="/dashboard" class="nav-content-btn">
+                <a href="/inbox" class="nav-content-btn" id="inbox">
                     <div></div>
                     <div>Inbox</div>
                 </a>
-                <a href="/dashboard/support" class="nav-content-btn">
+                <a
+                    href="/dashboard/support"
+                    class="nav-content-btn"
+                    id="support"
+                >
                     <div></div>
                     <div>Support</div>
                 </a>
-                <a href="/dashboard/logout" class="nav-content-btn">
+                <a href="/dashboard/logout" class="nav-content-btn" id="logOut">
                     <div></div>
                     <div>Log uit</div>
                 </a>
-                <button onclick="check()" class="nav-content-btn">
-                    <div></div>
-                    <div>Check</div>
-                </button>
             </div>
         </div>
     </div>
@@ -151,22 +153,23 @@
         document.getElementById("menu").style.display = "none";
     }
 
-    const btnNav = document.querySelector(".nav-content-btn");
-
-    const btnNavList = document.querySelectorAll(".nav-content-btn");
-
-    btnFilterList.forEach((btnNav) => {
-        btnNav.addEventListener("click", () => {
-            document.querySelector(".active")?.classList.remove("active");
-            btnNav.classList.add("active");
-        });
-    });
-
     function check() {
         const url = window.location.href;
 
         const lastSegment = url.split("/").pop();
 
-        console.log(lastSegment); // "playlist"
+        if (lastSegment == "dashboard") {
+            document.getElementById("home").classList.add("active");
+        } else if (lastSegment == "manageProfile") {
+            document.getElementById("profile").classList.add("active");
+        } else if (lastSegment == "matches") {
+            document.getElementById("matches").classList.add("active");
+        } else if (lastSegment == "inbox") {
+            document.getElementById("inbox").classList.add("active");
+        } else if (lastSegment == "support") {
+            document.getElementById("support").classList.add("active");
+        } else if (lastSegment == "logout") {
+            document.getElementById("logOut").classList.add("active");
+        }
     }
 </script>
