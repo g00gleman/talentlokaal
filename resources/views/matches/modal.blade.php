@@ -57,6 +57,7 @@
         color: #1f796a;
     }
 </style>
+
 <div class="modal" id="modal">
     <div class="modal-content">
         <div class="modal-content-overlay" onclick="closeModal()"></div>
@@ -83,6 +84,7 @@
         </div>
     </div>
 </div>
+
 <script>
     function openModal() {
         document.getElementById("modal").style.display = "block";
