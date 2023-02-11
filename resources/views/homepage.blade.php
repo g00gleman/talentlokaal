@@ -57,7 +57,7 @@
                 </div>
             </div>
             <div class="mt-12 flex justify-center text-2xl text-talent-green font-bold mb-12">
-                Welkom terug {{ Auth::user()->name }}
+                Welkom {{ Auth::user()->name }}
             </div>
             <div class="flex justify-center">
                 <a href="{{ route('dashboard.manageProfile.index') }}">

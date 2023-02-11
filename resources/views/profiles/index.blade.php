@@ -72,7 +72,7 @@
                         </svg>
                     </div>
                     <div class="flex mr-7 text-center h-full items-center text-xs select-none text-talent-white font-bold">
-                        Profiel wijzigen
+                       Vragenlijst
                     </div>
                 </div>
                 <a href="{{ route('dashboard.manageProfile.edit', $user->id) }}">
@@ -104,22 +104,7 @@
             max-width: 600px;
         }
 
-        .customArrowbtn {
-            margin-top: 25px;
-            margin-bottom: 25px;
-            margin-right: 15px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #bcd7d2;
-            width: 25px;
-            height: 25px;
-            border-radius: 100px;
-        }
-
-        .customSpacing {
-            height: 50px;
-        }
+        
 
         @media only screen and (min-width: 450px) {
             .customArrowbtn {
@@ -154,7 +139,7 @@
             <div class="flex justify-center mt-2 text-talent-orange font-bold text-3xl">
                 {{ $user->name }}
             </div>
-            <div class="mt-2 text-talent-green">
+            <!-- <div class="mt-2 text-talent-green">
                 @if (empty($user->description))
                     <p>Geef extra info over u en voeg een beschrijving toe</p>
                     <form action="/dashboard/description/{{ $user->id }}" method="post">
@@ -166,10 +151,12 @@
                 @else
                     {{ $user->description }}
                 @endif
-            </div>
+            </div> -->
         </div>
     </div>
 
+
+    <!-- **Dit in een if state zetten  -->
     @include('components.scrollTop.index')
 
     <div class="flex justify-center">
@@ -201,10 +188,11 @@
             </div>
         </div>
     </div>
+    <!-- **end de if state hier -->
 
     @include('components.scrollTop.index')
 
-    <div class="flex justify-center">
+    <div class="flex justify-center mb-10">
         <div class="customCard">
             <div class="flex justify-center text-xl font-bold text-talent-green">
                 Persoongegevens
@@ -261,8 +249,10 @@
             </div>
         </div>
     </div>
-    @include('components.scrollTop.index')
+
+    <!-- @include('components.scrollTop.index')
     <div class="flex justify-center mb-10">
+
     <div class="customCard">
         <div
             class="flex justify-center text-xl font-bold text-talent-green"
@@ -284,7 +274,7 @@
 
             </div>
         </div>
-    </div>
+    </div> -->
 </div>
 
 
