@@ -51,10 +51,15 @@
         height: 30vh;
     }
     .filter-list-item {
-        width: 225px;
+        width: 240px;
+        font-size: large;
         text-align: start;
         font-weight: bolder;
         color: #1f796a;
+    }
+
+    .active {
+        color: #ef840c;
     }
 </style>
 
@@ -64,21 +69,13 @@
         <div class="modal-content-filter">
             <div class="filter-title">Filteren</div>
             <div class="filter-list">
-                <button>
-                    <div class="filter-list-item">Datum: Nieuw naar oud</div>
+                <button class="filter-list-item">Datum: Nieuw naar oud</button>
+                <button class="filter-list-item">Datum: Oud naar nieuw</button>
+                <button class="filter-list-item">
+                    Percentage: Hoog naar laag
                 </button>
-                <button>
-                    <div class="filter-list-item">Datum: Oud naar nieuw</div>
-                </button>
-                <button>
-                    <div class="filter-list-item">
-                        Percentage: Hoog naar laag
-                    </div>
-                </button>
-                <button>
-                    <div class="filter-list-item">
-                        Percentage: Laag naar Hoog
-                    </div>
+                <button class="filter-list-item">
+                    Percentage: Laag naar Hoog
                 </button>
             </div>
         </div>
@@ -93,4 +90,15 @@
     function closeModal() {
         document.getElementById("modal").style.display = "none";
     }
+
+    const btnFilter = document.querySelector(".filter-list-item");
+
+    const btnFilterList = document.querySelectorAll(".filter-list-item");
+
+    btnFilterList.forEach((btnFilter) => {
+        btnFilter.addEventListener("click", () => {
+            document.querySelector(".active")?.classList.remove("active");
+            btnFilter.classList.add("active");
+        });
+    });
 </script>
