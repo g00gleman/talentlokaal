@@ -23,9 +23,6 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/introduction', function () {
-    return view('RegisterIntro.index');
-});
 
 // these routes are used to define which role the user is
 Route::get('/roles', [rolesController::class, 'allRoles']);
@@ -69,4 +66,6 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'as' => 'dashboar
     Route::get('/single', function () {
         return view('matches.single');
     });
+
+    Route::get('/introduction', [profileController::class, 'viewDescription']);
 });

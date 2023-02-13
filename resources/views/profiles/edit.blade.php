@@ -281,22 +281,7 @@
                                 <input
                                     name="city"
                                     type="text"
-                                    value="{{ $user->city }}"
-                                />
-                                <input
-                                    name="street"
-                                    type="text"
-                                    value="{{ $user->street }} "
-                                />
-                                <input
-                                    name="houseNumber"
-                                    type="text"
-                                    value="{{ $user->houseNumber }} "
-                                />
-                                <input
-                                    name="postalCode"
-                                    type="text"
-                                    value="{{ $user->postalCode }}"
+                                    value="{{ $user->adress }}"
                                 />
                             </div>
 

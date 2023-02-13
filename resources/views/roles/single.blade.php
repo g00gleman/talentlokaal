@@ -74,7 +74,7 @@
                 </svg>
             </div>
         </div>
-        <div class="tracking-widest text-talent-green flex text-center text-2xl justify-center mb-10 mt-9">Welkom bij Talent Lokaal!</div>
+        <div class="tracking-widest text-talent-green flex text-center text-2xl justify-center mb-10 mt-9">Welkom bij TalentLokaal!</div>
         <div class=" text-center justify-center flex text-lg text-talent-light-green ">Vul hier uw gegvens in <br/> voor het aanmaken van een account</div>
      <div class="flex justify-center items-center">
             <div class=" bg-talent-light-green ml-2 mr-2 flex-col rounded-xl flex justify-center items-center mt-12 mb-5 w-96">
@@ -104,32 +104,14 @@
 
                         <x-jet-input id="phoneNumber" class="  underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange" type="tel" name="telefoonnummer" :value="old('telefoonnummer')" required autofocus placeholder="Vul hier je telefoon nummer in" />
                     </div>
-                    {{-- city --}}
+                    {{-- adress --}}
                     <div class=" flex mt-4">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 mr-5">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
                             <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
                           </svg>
 
-                        <x-jet-input id="city" class=" underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange" type="text" name="plaats" :value="old('plaats')" required autofocus placeholder="Vul hier je plaats in" />
-                    </div>
-                    {{-- street --}}
-                    <div class=" flex mt-4">
-                        <div class="w-10 h-10 mr-5">
-                        </div>
-                        <x-jet-input id="street" class=" underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange" type="text" name="straat" :value="old('straat')" required autofocus placeholder="Vul hier je straatnaam in" />
-                    </div>
-                    {{-- housenumber --}}
-                    <div class=" flex mt-4">
-                        <div class="w-10 h-10 mr-5">
-                        </div>
-                        <x-jet-input id="houseNumber" class=" underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange" type="number" name="huisnummer" :value="old('huisnummer')" required autofocus placeholder="Vul hier je huisnummer in" />
-                    </div>
-                    {{-- postalcode --}}
-                    <div class=" flex mt-4">
-                        <div class="w-10 h-10 mr-5">
-                        </div>
-                        <x-jet-input id="postalCode" class=" underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange" type="text" name="postcode" :value="old('postcode')" required autofocus placeholder="Vul hier je postcode in" />
+                        <x-jet-input id="adres" class=" underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange" type="text" name="adres" :value="old('adres')" required autofocus placeholder="Vul hier je adres in" />
                     </div>
                     {{-- birthdate --}}
                     <div class=" flex mt-4">

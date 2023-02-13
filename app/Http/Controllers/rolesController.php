@@ -41,7 +41,7 @@ class rolesController extends Controller
         $newEmployee->save();
 
         // go to homepage
-        return redirect('dashboard');
+        return redirect('/dashboard/introduction');
     }
 
 public function registerEmployer(Request $request)
@@ -62,7 +62,7 @@ public function registerEmployer(Request $request)
         $newEmployer->save();
 
         // go to homepage
-        return redirect('dashboard');
+        return redirect('/dashboard/introduction');
     }
 
 private function registerUser(Request $request): User
@@ -72,10 +72,7 @@ private function registerUser(Request $request): User
             'naam' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'telefoonnummer' =>  'required|max:10|unique:App\Models\User,phoneNumber',
-            'plaats' => 'required|string|max:255',
-            'straat' => 'required|string|max:255',
-            'huisnummer' => 'required|integer|digits_between:1,5',
-            'postcode' => 'required|size:6|string',
+            'adres' => 'required|string|max:255',
             'geboortedatum' => 'required|before:today|Date',
             'wachtwoord' => 'required|min:8|max:20|confirmed'
         ]);
@@ -85,10 +82,7 @@ private function registerUser(Request $request): User
         $newUser->name = $request->get('naam');
         $newUser->email = $request->get('email');
         $newUser->phoneNumber = $request->get('telefoonnummer');
-        $newUser->city = $request->get('plaats');
-        $newUser->street = $request->get('straat');
-        $newUser->houseNumber = $request->get('huisnummer');
-        $newUser->postalCode = $request->get('postcode');
+        $newUser->adress = $request->get('adres');
         $newUser->birthDate = $request->get('geboortedatum');
         $newUser->password = bcrypt($request->get('wachtwoord'));
         $newUser->save();

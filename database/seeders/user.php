@@ -22,10 +22,7 @@ class user extends Seeder
                 'email' => 'admin@admin',
                 'birthDate' => now(),
                 'phoneNumber' => '0612345678',
-                'city' => 'roosendaal',
-                'street' => 'knipplein',
-                'houseNumber' => '11',
-                'postalCode' => '4751 PX',
+                'adress' => 'meerkade 11 4567WD Roosendaal',
                 'password' => bcrypt('adminadmin')
             ],
             [
@@ -34,10 +31,7 @@ class user extends Seeder
                 'email' => 'admin@admin.com',
                 'birthDate' => now(),
                 'phoneNumber' => '0612345671',
-                'city' => 'breda',
-                'street' => 'rodeweg',
-                'houseNumber' => '6',
-                'postalCode' => '4751 PD',
+                'adress' => 'achtersteven 71 9275BF Eindhoven',
                 'password' => bcrypt('adminadmin')
             ],
         ];

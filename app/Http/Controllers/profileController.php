@@ -20,6 +20,10 @@ class profileController extends Controller
         return view('profiles.index')->with('user', $user);
 
     }
+    // load the view RegisterIntro to add description
+    public function viewDescription(){
+        return view('RegisterIntro.index');
+    }
     // save description
     public function description(Request $request, $id){
         $this->validate(request(), [
@@ -104,11 +108,8 @@ class profileController extends Controller
         $updateUser->name = $request->get('name');
         // $updateUser->email = $request->get('email');
         // $updateUser->phoneNumber = $request->get('telefoonnummer');
-        $updateUser->city = $request->get('city');
-        $updateUser->street = $request->get('street');
-        $updateUser->houseNumber = $request->get('houseNumber');
-        $updateUser->postalCode = $request->get('postalCode');
-
+        $updateUser->adress = $request->get('adres');
+//            dd( $request->get('employeeFunction'));
         $updateEmployee->function = $request->get('employeeFunction');
         $updateEmployee->certificate = $request->get('employeeCertificate');
 

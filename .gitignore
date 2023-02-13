@@ -24,3 +24,8 @@ Homestead.json
 package-lock.json
 *.mp4
 
+.idea/vcs.xml
+.idea/talentlokaal.iml
+.idea/php.xml
+.idea/inspectionProfiles/Project_Default.xml
+.idea/php.xml
