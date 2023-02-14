@@ -9,11 +9,11 @@
             src="https://kit.fontawesome.com/8e80fea8d7.js"
             crossorigin="anonymous"
         ></script>
-        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="/redirectBack/style.css" />
     </head>
 
     <body>
-        <a href="/redirect-back">
+        <a href="/redirect">
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
