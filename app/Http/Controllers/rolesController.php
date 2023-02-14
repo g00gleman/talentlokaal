@@ -71,7 +71,7 @@ private function registerUser(Request $request): User
         $this->validate(request(), [
             'naam' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'telefoonnummer' =>  'required|max:10|unique:App\Models\User,phoneNumber',
+            'telefoonnummer' =>  'required|unique:App\Models\User,phoneNumber',
             'adres' => 'required|string|max:255',
             'geboortedatum' => 'required|before:today|Date',
             'wachtwoord' => 'required|min:8|max:20|confirmed'
