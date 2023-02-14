@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
+    <link href="/profiles/style.css" type="text/css" rel="stylesheet" />
+
     @vite('resources/css/app.css')
 </head>
 
@@ -94,64 +96,19 @@
         </div>
     </div>
 
-    <style>
-        .customCard {
-            border-radius: 12px;
-            background-color: #bcd7d2;
-            padding: 25px;
-            width: 90%;
-            min-width: 300px;
-            max-width: 600px;
-        }
-
-
-
-        @media only screen and (min-width: 450px) {
-            .customArrowbtn {
-                display: none;
-            }
-        }
-
-        @media only screen and (max-width: 450px) {
-            .customSpacing {
-                display: block;
-            }
-        }
-
-        .formBtn {
-            padding-top: 8px;
-            padding-bottom: 8px;
-            padding-left: 16px;
-            padding-right: 16px;
-            border-radius: 100px;
-            background-color: #ef840c;
-            color: white;
-            font-weight: bold;
-        }
-    </style>
-
     <div class="flex justify-center mt-24">
         <div class="customCard">
             <div class="flex justify-center">
-                <img class="h-20 w-20 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}"
+                    <img class="h-20 w-20 rounded-full object-cover" src="{{ $user->getProfilePhotoUrlAttribute() }}"
                     alt="{{ Auth::user()->name }}" />
             </div>
             <div class="flex justify-center mt-2 text-talent-orange font-bold text-3xl">
                 {{ $user->name }}
             </div>
-            <!-- <div class="mt-2 text-talent-green">
-                @if (empty($user->description))
-                    <p>Geef extra info over u en voeg een beschrijving toe</p>
-                    <form action="/dashboard/description/{{ $user->id }}" method="post">
-                        @csrf
-                        @method('put')
-                        <textarea name="description" class="w-full h-32 mt-2" id=""></textarea>
-                        <div class="flex justify-end mt-2" ><button class="formBtn" type="submit">Opslaan</button></div>
-                    </form>
-                @else
+                @if(isset($user->description))
                     {{ $user->description }}
                 @endif
-            </div> -->
+            </div>
         </div>
     </div>
 

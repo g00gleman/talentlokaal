@@ -69,7 +69,7 @@ class profileController extends Controller
         $user = User::with('employee')->find($id);
         // example
         // files = stevens files
-        $cv = $request->file('cv');
+        $cv = $request->get('cv');
         //  files = stevens_pitch
         $saveCv = time().'.'.$cv->getClientOriginalExtension();
         // move stevens_pitch in the map called public/files
