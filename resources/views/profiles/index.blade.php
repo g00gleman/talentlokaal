@@ -165,26 +165,13 @@
                 Kennismaking pitch
             </div>
             <div class="mt-2 flex flex-col justify-center">
-                @if (empty($user->pitch))
-                    <p>Maak uw profiel persoonlijker en voeg een pitch toe</p>
-
-                    <x-jet-validation-errors class="mb-4 text-red-500" />
-                    <form action="/dashboard/pitch/{{ $user->id }}" method="post" enctype="multipart/form-data">
-                        @csrf
-                        @method('put')
-                        <input type="file" name="pitch" id="" />
-                        <button type="submit">Upload</button>
-                    </form>
-                @else
-                    @php
-                        $baseurl = env('APP_URL');
-                    @endphp
-                    <video width="320" height="240" controls="controls">
-                        <source src="{{ asset($baseurl . '/pitch/' . $user->pitch) }}" type="video/mp4" />
-                        Your browser does not support the video tag.
-                    </video>
-                @endif
-
+                @php
+                    $baseurl = env('APP_URL');
+                @endphp
+                <video width="320" height="240" controls="controls">
+                    <source src="{{ asset($baseurl . '/pitch/' . $user->pitch) }}" type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
             </div>
         </div>
     </div>
@@ -224,7 +211,7 @@
                         {{ $user->adress }}
                     </div>
                     <!-- job -->
-                    @if(isset($user->function))
+                    @if(isset($user->employee))
                         <div class="col-span-1">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -235,9 +222,8 @@
                         <div class="col-span-4 text-xs flex items-center font-bold text-talent-orange">
                             {{ $user->employee->function }}
                         </div>
-                    @endif
+
                     <!-- job-2? -->
-                    @if(isset($user->certificate))
                         <div class="col-span-1">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
