@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             // toevoegen bij registreren
             $table->string('name');
-            $table->string('phoneNumber')->unique();
+            $table->string('phoneNumber', 255)->unique();
             $table->string('adress', 255);
             $table->timestamp('birthDate');
             $table->string('email')->unique();
