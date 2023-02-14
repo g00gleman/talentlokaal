@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
+    <link href="/profiles/style.css" type="text/css" rel="stylesheet" />
+
     @vite('resources/css/app.css')
 </head>
 
@@ -93,42 +95,6 @@
             </div>
         </div>
     </div>
-
-    <style>
-        .customCard {
-            border-radius: 12px;
-            background-color: #bcd7d2;
-            padding: 25px;
-            width: 90%;
-            min-width: 300px;
-            max-width: 600px;
-        }
-
-        
-
-        @media only screen and (min-width: 450px) {
-            .customArrowbtn {
-                display: none;
-            }
-        }
-
-        @media only screen and (max-width: 450px) {
-            .customSpacing {
-                display: block;
-            }
-        }
-
-        .formBtn {
-            padding-top: 8px;
-            padding-bottom: 8px;
-            padding-left: 16px;
-            padding-right: 16px;
-            border-radius: 100px;
-            background-color: #ef840c;
-            color: white;
-            font-weight: bold;
-        }
-    </style>
 
     <div class="flex justify-center mt-24">
         <div class="customCard">

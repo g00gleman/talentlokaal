@@ -10,27 +10,6 @@
             crossorigin="anonymous"
         ></script>
         <link rel="stylesheet" href="style.css" />
-        <style>
-            html,
-            body {
-                margin: 0px;
-                padding: 0px;
-            }
-
-            .menuIcon {
-                width: 50px;
-                height: 50px;
-                padding: 10px;
-                background-color: #bcd7d2;
-                color: #1e796a;
-                border-radius: 100px;
-                top: 0;
-                right: 0;
-                position: absolute;
-                margin-right: 15px;
-                margin-top: 15px;
-            }
-        </style>
     </head>
 
     <body>
@@ -51,4 +30,5 @@
             </svg>
         </a>
     </body>
+    <script src="/redirectBack/app.js"></script>
 </html>

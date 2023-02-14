@@ -10,11 +10,12 @@
             src="https://kit.fontawesome.com/8e80fea8d7.js"
             crossorigin="anonymous"
         ></script>
+        <link href="/profiles/style.css" type="text/css" rel="stylesheet" />
     </head>
 
     <body class="bg-talent-green">
         @include('components.navbar.index')
-        <div class="w-full h-64 bg-talent-white rounded-b-3xl">
+        <div class="w-full h-64 bg-talent-white rounded-b-3xl" id="top">
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex-1 mt-3 ml-5">
@@ -97,46 +98,6 @@
             </div>
         </div>
 
-        <style>
-            .customCard {
-                border-radius: 12px;
-                background-color: #bcd7d2;
-                padding: 25px;
-                width: 90%;
-                min-width: 300px;
-                max-width: 600px;
-            }
-
-            .customArrowbtn {
-                margin-top: 25px;
-                margin-bottom: 25px;
-                margin-right: 15px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                background-color: #bcd7d2;
-                width: 25px;
-                height: 25px;
-                border-radius: 100px;
-            }
-
-            .customSpacing {
-                height: 50px;
-            }
-
-            @media only screen and (min-width: 450px) {
-                .customArrowbtn {
-                    display: none;
-                }
-            }
-
-            @media only screen and (max-width: 450px) {
-                .customSpacing {
-                    display: block;
-                }
-            }
-        </style>
-
         <div class="flex justify-center mt-24">
             <div class="customCard">
                 <div class="flex justify-center">
@@ -177,25 +138,7 @@
             </div>
         </div>
 
-        <div class="flex justify-end">
-            <div class="customArrowbtn">
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    class="w-4 h-4 text-talent-green"
-                >
-                    <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M4.5 15.75l7.5-7.5 7.5 7.5"
-                    />
-                </svg>
-            </div>
-            <div class="customSpacing"></div>
-        </div>
+        @include('components.scrollTop.index')
 
         <div class="flex justify-center">
             <div class="customCard">
@@ -223,25 +166,7 @@
             </div>
         </div>
 
-        <div class="flex justify-end">
-            <div class="customArrowbtn">
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    class="w-4 h-4 text-talent-green"
-                >
-                    <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M4.5 15.75l7.5-7.5 7.5 7.5"
-                    />
-                </svg>
-            </div>
-            <div class="customSpacing"></div>
-        </div>
+        @include('components.scrollTop.index')
         <form
             action="{{ route('dashboard.manageProfile.update', $user->id) }}"
             method="post"
