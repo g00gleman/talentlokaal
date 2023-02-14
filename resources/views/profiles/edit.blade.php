@@ -406,7 +406,7 @@
             </div>
         </div>
 
-        @include('components.scrollTop.index')
+        <!-- @include('components.scrollTop.index') -->
 
         <div class="flex justify-center">
             <div class="customCard">
@@ -434,7 +434,8 @@
             </div>
         </div>
 
-        @include('components.scrollTop.index')
+        <!-- @include('components.scrollTop.index') -->
+
         <form
             action="{{ route('dashboard.manageProfile.update', $user->id) }}"
             method="post"
@@ -520,5 +521,6 @@
                 </div>
             </div>
         </form>
+        @include('components.scrollTop.index')
     </body>
 </html>
