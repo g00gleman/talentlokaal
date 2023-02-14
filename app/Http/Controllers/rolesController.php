@@ -8,6 +8,8 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use SplFileInfo;
 
 class rolesController extends Controller
 {
@@ -74,8 +76,21 @@ private function registerUser(Request $request): User
             'telefoonnummer' =>  'required|unique:App\Models\User,phoneNumber',
             'adres' => 'required|string|max:255',
             'geboortedatum' => 'required|before:today|Date',
+//            'profielfoto' => 'file|mimes:jpg,jpeg,png,bmp,gif,svg,webp',
             'wachtwoord' => 'required|min:8|max:20|confirmed'
         ]);
+        // get the image out of form
+        $image = $request->get('profielfoto');
+        // get the path to store the image in project
+        $path = '/storage/public/'.$image;
+        // get info about the file
+        $fileInfo = new SplFileInfo($path);
+        // get the exention from the info
+        $extension = $fileInfo->getExtension();
+        // new file name for image
+        $imageNewFileName = time(). "." . $extension;
+        // replace old filename with the new one and save it into storage/public
+        Storage::disk('local')->put($imageNewFileName, $image);
 
         // save data in user table
         $newUser = new User();
@@ -84,6 +99,7 @@ private function registerUser(Request $request): User
         $newUser->phoneNumber = $request->get('telefoonnummer');
         $newUser->adress = $request->get('adres');
         $newUser->birthDate = $request->get('geboortedatum');
+        $newUser->profile_photo_path = $imageNewFileName;
         $newUser->password = bcrypt($request->get('wachtwoord'));
         $newUser->save();
 
