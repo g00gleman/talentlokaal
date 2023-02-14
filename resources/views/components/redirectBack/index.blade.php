@@ -9,32 +9,11 @@
             src="https://kit.fontawesome.com/8e80fea8d7.js"
             crossorigin="anonymous"
         ></script>
-        <link rel="stylesheet" href="style.css" />
-        <style>
-            html,
-            body {
-                margin: 0px;
-                padding: 0px;
-            }
-
-            .menuIcon {
-                width: 50px;
-                height: 50px;
-                padding: 10px;
-                background-color: #bcd7d2;
-                color: #1e796a;
-                border-radius: 100px;
-                top: 0;
-                right: 0;
-                position: absolute;
-                margin-right: 15px;
-                margin-top: 15px;
-            }
-        </style>
+        <link rel="stylesheet" href="/redirectBack/style.css" />
     </head>
 
     <body>
-        <a href="">
+        <a href="{{ URL::previous() }}">
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -51,4 +30,5 @@
             </svg>
         </a>
     </body>
+    <script src="/redirectBack/app.js"></script>
 </html>

@@ -43,8 +43,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'as' => 'dashboar
         return view('support.index');
     });
 
-
-    Route::get('/redirect-back', function () {
+    Route::get('/redirect', function () {
         return Redirect::to(url()->previous());
     });
 
