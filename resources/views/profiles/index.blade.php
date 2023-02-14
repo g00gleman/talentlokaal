@@ -73,8 +73,9 @@
                                 d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" />
                         </svg>
                     </div>
-                    <div class="flex mr-7 text-center h-full items-center text-xs select-none text-talent-white font-bold">
-                       Vragenlijst
+                    <div
+                        class="flex mr-7 text-center h-full items-center text-xs select-none text-talent-white font-bold">
+                        Vragenlijst
                     </div>
                 </div>
                 <a href="{{ route('dashboard.manageProfile.edit', $user->id) }}">
@@ -99,17 +100,17 @@
     <div class="flex justify-center mt-24">
         <div class="customCard">
             <div class="flex justify-center">
-                    <img class="h-20 w-20 rounded-full object-cover" src="{{ $user->getProfilePhotoUrlAttribute() }}"
+                <img class="h-20 w-20 rounded-full object-cover" src="{{ $user->getProfilePhotoUrlAttribute() }}"
                     alt="{{ Auth::user()->name }}" />
             </div>
             <div class="flex justify-center mt-2 text-talent-orange font-bold text-3xl">
                 {{ $user->name }}
             </div>
-                @if(isset($user->description))
-                    {{ $user->description }}
-                @endif
-            </div>
+            @if (isset($user->description))
+                {{ $user->description }}
+            @endif
         </div>
+    </div>
     </div>
 
 
@@ -134,7 +135,7 @@
     </div>
     <!-- **end de if state hier -->
 
-    @include('components.scrollTop.index')
+    {{-- @include('components.scrollTop.index') --}}
 
     <div class="flex justify-center mb-10">
         <div class="customCard">
@@ -145,8 +146,8 @@
                 <div class="grid grid-cols-5 gap-2">
                     <!-- Name -->
                     <div class="col-span-1">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                            stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
                         </svg>
@@ -168,7 +169,7 @@
                         {{ $user->adress }}
                     </div>
                     <!-- job -->
-                    @if(isset($user->employee))
+                    @if (isset($user->employee))
                         <div class="col-span-1">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -180,7 +181,7 @@
                             {{ $user->employee->function }}
                         </div>
 
-                    <!-- job-2? -->
+                        <!-- job-2? -->
                         <div class="col-span-1">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -196,6 +197,8 @@
             </div>
         </div>
     </div>
+
+    @include('components.scrollTop.index')
 
     <!-- @include('components.scrollTop.index')
     <div class="flex justify-center mb-10">
@@ -222,7 +225,7 @@
             </div>
         </div>
     </div> -->
-</div>
+    </div>
 
 
 
