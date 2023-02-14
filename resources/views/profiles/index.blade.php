@@ -99,25 +99,16 @@
     <div class="flex justify-center mt-24">
         <div class="customCard">
             <div class="flex justify-center">
-                <img class="h-20 w-20 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}"
+                    <img class="h-20 w-20 rounded-full object-cover" src="{{ $user->getProfilePhotoUrlAttribute() }}"
                     alt="{{ Auth::user()->name }}" />
             </div>
             <div class="flex justify-center mt-2 text-talent-orange font-bold text-3xl">
                 {{ $user->name }}
             </div>
-            <!-- <div class="mt-2 text-talent-green">
-                @if (empty($user->description))
-                    <p>Geef extra info over u en voeg een beschrijving toe</p>
-                    <form action="/dashboard/description/{{ $user->id }}" method="post">
-                        @csrf
-                        @method('put')
-                        <textarea name="description" class="w-full h-32 mt-2" id=""></textarea>
-                        <div class="flex justify-end mt-2" ><button class="formBtn" type="submit">Opslaan</button></div>
-                    </form>
-                @else
+                @if(isset($user->description))
                     {{ $user->description }}
                 @endif
-            </div> -->
+            </div>
         </div>
     </div>
 
