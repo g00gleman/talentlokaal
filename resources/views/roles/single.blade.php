@@ -179,7 +179,7 @@
                         {{$message}}
                         @enderror
                         </div>
-                        
+
                         {{-- certificate --}}
                         <div class=" flex mt-4">
                             <svg version="1.0" xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 mr-5"
@@ -324,6 +324,7 @@
                     @error('profielfoto')
                     {{$message}}
                     @enderror
+                    {{--password--}}
                     </div>
                     <div class=" flex mt-4">
                         <svg version="1.0" xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 mr-5"
@@ -341,6 +342,7 @@
                     @error('wachtwoord')
                     {{$message}}
                     @enderror
+                    {{--password confirm--}}
                     </div>
 
                     <div class=" flex mt-4">
