@@ -497,8 +497,6 @@
                     Kennismaking pitch
                 </div>
                 <div class="mt-2 flex justify-center">
-                    @if (!($user->pitch == ''))
-                    <p>Maak uw profiel persoonlijker en voeg een pitch toe</p>
                     <form
                         action="/dashboard/pitch/{{ $user->id }}"
                         method="post"
@@ -508,9 +506,6 @@
                         <input type="file" name="pitch" id="" />
                         <button type="submit">Upload</button>
                     </form>
-                    @else
-                    <p>Voeg eerst een pitch toe op de profile pagina</p>
-                    @endif
                 </div>
             </div>
         </div>
@@ -564,6 +559,7 @@
                             </div>
 
                             <!-- job -->
+                            @if (isset($user->employee))
                             <div class="col-span-1 mx-auto my-auto">
                                 <i class="fa-solid fa-briefcase"></i>
                             </div>
@@ -604,6 +600,7 @@
                                     Opslaan
                                 </button>
                             </div>
+                            @endif
                         </div>
                     </div>
                 </div>

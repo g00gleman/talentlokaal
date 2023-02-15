@@ -92,11 +92,11 @@ class profileController extends Controller
         // validation errors for all form inputs
         $this->validate(request(), [
             'naam' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'telefoonnummer' =>  'required|max:255|unique:App\Models\User,phoneNumber',
+            // 'email' => 'required|string|email|max:255|unique:users',
+            // 'telefoonnummer' =>  'required|max:255|unique:App\Models\User,phoneNumber',
             'adres' => 'required|string|max:255',
-            'geboortedatum' => 'required|before:today|Date',
-            'profielfoto' => 'image',
+            // 'geboortedatum' => 'required|before:today|Date',
+            // 'profielfoto' => 'image',
         ]);
 
         $updateUser->name = $request->get('name');
