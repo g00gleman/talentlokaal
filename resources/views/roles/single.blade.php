@@ -393,7 +393,8 @@
                 {{ __('Volgende >') }}
             </x-jet-button>
         </div>
-
+    </div>
+    </div>
         </form>
 
 </x-guest-layout>
