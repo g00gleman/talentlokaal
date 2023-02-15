@@ -40,7 +40,7 @@
         top: 0;
         right: 0;
         height: 100vh;
-        width: 60vw;
+        width: 75vw;
         background-color: white;
         border-bottom-left-radius: 16px;
         border-top-left-radius: 16px;
@@ -72,7 +72,7 @@
     }
 
     .nav-content-btn {
-        width: 60vw;
+        width: 75vw;
         height: 10vh;
         /* background-color: #bcd7d2; */
         color: #1e796a;

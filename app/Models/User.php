@@ -71,7 +71,7 @@ class User extends Authenticatable
     {
         return $this->hasOne(employee::class, 'user_Id');
     }
-    public function getProfilePhotoUrlAttribute()
+    public function getProfilePhotoUrlAttribute(): string
     {
         // if there is no custom profile photo uploaded then return a default profile photo
         if (empty($this->profile_photo_path)) return $this->defaultProfilePhotoUrl();
@@ -80,5 +80,13 @@ class User extends Authenticatable
         $fileInfo =new SplFileInfo($image);
         // data:image/imageExtension(jpg,png,ect.);base64, the content of the image base 64 encoded
         return "data:image/".$fileInfo->getExtension().";base64,".base64_encode(file_get_contents($image));
+    }
+    public function getProfilePitchUrlAttribute(){
+        // if there is no custom profile photo uploaded then return a default profile photo
+        if (empty($this->pitch)) return "";
+        // get the video out of the storage/app folder in this project
+        $video = Storage::disk('local')->path($this->pitch);
+
+        return "data:video/mp4;base64,".base64_encode(file_get_contents($video));
     }
 }
