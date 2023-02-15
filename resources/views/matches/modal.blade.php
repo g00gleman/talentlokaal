@@ -63,9 +63,9 @@
     }
 </style>
 
-<div class="modal" id="modal">
+<div class="modal" id="modalmatch">
     <div class="modal-content">
-        <div class="modal-content-overlay" onclick="closeModal()"></div>
+        <div class="modal-content-overlay" onclick="closeModalMatch()"></div>
         <div class="modal-content-filter">
             <div class="filter-title">Filteren</div>
             <div class="filter-list">
@@ -83,12 +83,12 @@
 </div>
 
 <script>
-    function openModal() {
-        document.getElementById("modal").style.display = "block";
+    function openModalMatch() {
+        document.getElementById("modalmatch").style.display = "block";
     }
 
-    function closeModal() {
-        document.getElementById("modal").style.display = "none";
+    function closeModalMatch() {
+        document.getElementById("modalmatch").style.display = "none";
     }
 
     const btnFilter = document.querySelector(".filter-list-item");

@@ -98,6 +98,274 @@
             </div>
         </div>
 
+        <!-- <style>
+            .accordion-center {
+                display: flex;
+                justify-content: center;
+                margin-top: 50px;
+            }
+
+            .accordion {
+                margin-left: 20px;
+                margin-right: 20px;
+                padding: 20px;
+                border-radius: 12px;
+                width: 100%;
+                background-color: #bcd7d2;
+            }
+
+            .dropdown-panel {
+                margin-top: 10px;
+                margin-left: 20px;
+                margin-right: 20px;
+                padding: 20px;
+                border-radius: 12px;
+                background-color: #bcd7d2;
+                display: none;
+            }
+
+            .panel-content {
+                display: flex;
+                justify-content: center;
+            }
+
+            .center-content {
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .inputText {
+                border: none;
+                border-radius: 2px;
+            }
+
+            .inputTextarea {
+                border: none;
+                border-radius: 2px;
+                min-height: 100px;
+            }
+
+            .inputButton {
+                background-color: #ef840c;
+                height: 35px;
+                border-radius: 4px;
+                font-weight: bold;
+                color: white;
+                cursor: pointer;
+            }
+
+            .icon {
+                display: flex;
+                justify-content: end;
+            }
+
+            .data {
+                display: grid;
+                gap: 5px;
+                column-gap: 10px;
+                grid-template-columns: 1fr 2fr 2fr;
+            }
+
+            .data_item_left {
+                display: flex;
+                justify-content: start;
+            }
+            .data_item_right {
+                display: flex;
+                justify-content: end;
+            }
+
+            .personalData {
+                font-weight: bold;
+                color: #1f796a;
+                font-size: 22px;
+            }
+        </style> -->
+
+        <!-- <div class="item">
+            <div class="accordion-center">
+                <button class="accordion" onclick="openProfile()">
+                    <div class="profile-picture">
+                        <div class="flex justify-center">
+                            <img
+                                class="h-20 w-20 rounded-full object-cover"
+                                src="{{ Auth::user()->profile_photo_url }}"
+                                alt="{{ Auth::user()->name }}"
+                            />
+                        </div>
+                    </div>
+                    <div class="profile-username">
+                        <div
+                            class="flex justify-center mt-2 text-talent-orange font-bold text-3xl"
+                        >
+                            {{ $user->name }}
+                        </div>
+                    </div>
+                    <div class="profile-content">
+                        <div class="mt-2 text-talent-green">
+                            @if (!($user->description == ''))
+                            <p>
+                                Geef extra info over u en voeg een beschrijving
+                                toe
+                            </p>
+                            <form
+                                action="/dashboard/description/{{ $user->id }}"
+                                method="post"
+                            >
+                                @csrf @method('put')
+                                <textarea
+                                    name="description"
+                                    id=""
+                                    cols="30"
+                                    rows="10"
+                                    >{{ $user->description }}</textarea
+                                >
+                                <button type="submit">Opslaan</button>
+                            </form>
+                            @else
+                            <p class="text-center">
+                                Voeg eerst een beschrijving toe op de profile
+                                pagina
+                            </p>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="icon">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 15"
+                            stroke-width="3"
+                            stroke="currentColor"
+                            class="w-8 h-8 text-talent-green"
+                            id="profileIcon"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                            />
+                        </svg>
+                    </div>
+                </button>
+            </div>
+            <div class="dropdown-panel" id="profileBlock">
+                <div class="panel-content">
+                    <form action="" class="center-content">
+                        <input
+                            type="text"
+                            class="inputText"
+                            placeholder="Gebruikersnaam"
+                        />
+                        <textarea
+                            name=""
+                            id=""
+                            class="inputTextarea"
+                            placeholder="Beschrijving"
+                        ></textarea>
+                        <input
+                            type="submit"
+                            value="Opslaan"
+                            class="inputButton"
+                        />
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="accordion-center">
+                <button class="accordion" onclick="openPersonal()">
+                    <div class="personalData">Persoonsgegevens</div>
+                    <div class="data">
+                        <div class="user_icon data_item_right">*</div>
+                        <div class="user data_item_left">Username</div>
+                        <div class="user_data data_item_left">Admin</div>
+                        <div class="location_icon data_item_right">*</div>
+                        <div class="location data_item_left">Location</div>
+                        <div class="location_data data_item_left">RSD</div>
+                        <div class="job_icon data_item_right">*</div>
+                        <div class="job data_item_left">Job</div>
+                        <div class="job_data data_item_left">Developer</div>
+                        <div class="certificate_icon data_item_right">*</div>
+                        <div class="certificate data_item_left">
+                            Certificate
+                        </div>
+                        <div class="certificate_data data_item_left">MBO 4</div>
+                    </div>
+                    <div class="icon">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 15"
+                            stroke-width="3"
+                            stroke="currentColor"
+                            class="w-8 h-8 text-talent-green"
+                            id="profileIcon"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                            />
+                        </svg>
+                    </div>
+                </button>
+            </div>
+            <div class="dropdown-panel" id="personalBlock">
+                <div class="panel-content">
+                    <form action="" class="center-content">
+                        <input
+                            type="text"
+                            class="inputText"
+                            placeholder="Gebruikersnaam"
+                        />
+                        <textarea
+                            name=""
+                            id=""
+                            class="inputTextarea"
+                            placeholder="Beschrijving"
+                        ></textarea>
+                        <input
+                            type="submit"
+                            value="Opslaan"
+                            class="inputButton"
+                        />
+                    </form>
+                </div>
+            </div>
+        </div> -->
+        <script>
+            // var profile = document.getElementById("profileBlock");
+            // var personal = document.getElementById("personalBlock");
+
+            // // var profileIcon = document.getElementById("profileIcon");
+
+            // profile.style.display = "none";
+            // personal.style.display = "none";
+
+            // function openProfile() {
+            //     if (profile.style.display == "none") {
+            //         profile.style.display = "block";
+            //         // profileIcon.style.transform = "rotate(180deg)";
+            //     } else if (profile.style.display == "block") {
+            //         profile.style.display = "none";
+            //         // profileIcon.style.transform = "rotate(-180deg)";
+            //     }
+            // }
+
+            // function openPersonal() {
+            //     if (personal.style.display == "none") {
+            //         personal.style.display = "block";
+            //         // profileIcon.style.transform = "rotate(180deg)";
+            //     } else if (personal.style.display == "block") {
+            //         personal.style.display = "none";
+            //         // profileIcon.style.transform = "rotate(-180deg)";
+            //     }
+            // }
+        </script>
+
         <div class="flex justify-center mt-24">
             <div class="customCard">
                 <div class="flex justify-center">
@@ -138,7 +406,7 @@
             </div>
         </div>
 
-        @include('components.scrollTop.index')
+        <!-- @include('components.scrollTop.index') -->
 
         <div class="flex justify-center">
             <div class="customCard">
@@ -166,7 +434,8 @@
             </div>
         </div>
 
-        @include('components.scrollTop.index')
+        <!-- @include('components.scrollTop.index') -->
+
         <form
             action="{{ route('dashboard.manageProfile.update', $user->id) }}"
             method="post"
@@ -252,5 +521,6 @@
                 </div>
             </div>
         </form>
+        @include('components.scrollTop.index')
     </body>
 </html>

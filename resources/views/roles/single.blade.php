@@ -56,7 +56,7 @@
                 <x-jet-validation-errors class="mb-4 text-red-500" />
                 <div class="justify-center flex mb-6">
                     @if ($id == 1)
-                    <form method="POST" action="/registerEmployee">
+                    <form method="POST" action="/registerEmployee" enctype="multipart/form-data">
                     @elseif($id == 2) <form method="POST" action="/registerEmployer">
                     @else  <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                     @endif
@@ -175,8 +175,8 @@
                             </svg>
                             <div
                                 class="px-5 flex items-center border-none content-center  mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange bg-talent-white text-talent-orange underline">
-                                <input type="file" name="profielfoto" id="upload" hidden />
-                                <label for="upload" class="">Upload hier je profielfoto</label>
+                                <input type="file" name="profielfoto" id="upload" accept=".jpg,.jpeg,.png,.bmp,.gif,.svg,.webp"     hidden/>
+                                    <label for="upload" class="">Upload hier je profielfoto</label>
                             </div>
                         </div>
                         {{-- certificate --}}
