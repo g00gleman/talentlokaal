@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
@@ -72,8 +73,12 @@ class User extends Authenticatable
     }
     public function getProfilePhotoUrlAttribute()
     {
+        // if there is no custom profile photo uploaded then return a default profile photo
+        if (empty($this->profile_photo_path)) return $this->defaultProfilePhotoUrl();
+        // get the image out of the storage/app folder in this project
         $image = Storage::disk('local')->path($this->profile_photo_path);
-        $fileInfo = new SplFileInfo($image);
-        return "data:image/".$fileInfo->getExtension().";base64,".base64_encode(file_get_contents($image ));;
+        // data:image/imageExtension(jpg,png,ect.);base64, the content of the image base 64 encoded
+        $fileInfo =new SplFileInfo($image);
+        return "data:image/".$fileInfo->getExtension().";base64,".base64_encode(file_get_contents($image));
     }
 }

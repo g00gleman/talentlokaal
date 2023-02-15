@@ -1,4 +1,149 @@
 <link rel="stylesheet" href="/navbar/style.css" />
+
+<style>
+    .menuIcon {
+        width: 50px;
+        height: 50px;
+        padding: 10px;
+        background-color: #bcd7d2;
+        color: #1e796a;
+        border-radius: 100px;
+        top: 0;
+        right: 0;
+        position: absolute;
+        margin-right: 15px;
+        margin-top: 15px;
+    }
+
+    .menu {
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        display: none;
+    }
+
+    .menu-content {
+        display: flex;
+    }
+
+    .menu-content-overlay {
+        height: 100vh;
+        width: 100vw;
+        background-color: black;
+        opacity: 0.5;
+        z-index: 2;
+    }
+
+    .menu-content-nav {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 60vw;
+        background-color: white;
+        border-bottom-left-radius: 16px;
+        border-top-left-radius: 16px;
+        z-index: 3;
+    }
+
+    .nav-top {
+        height: 15vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #bcd7d2;
+        font-size: 48px;
+        font-weight: bold;
+        color: white;
+        border-bottom-left-radius: 16px;
+        border-top-left-radius: 16px;
+        margin-bottom: 10px;
+    }
+
+    .nav-content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .nav-content-end {
+        display: flex;
+        align-items: end;
+    }
+
+    .nav-content-btn {
+        width: 60vw;
+        height: 10vh;
+        /* background-color: #bcd7d2; */
+        color: #1e796a;
+        font-weight: bold;
+        font-size: 24px;
+        border-bottom: solid 1px black;
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        padding-left: 40px;
+    }
+
+    .active {
+        color: #ef840c;
+    }
+
+    .modal {
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        display: none;
+    }
+
+    .modal-content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .modal-content-overlay {
+        height: 100vh;
+        background-color: black;
+        opacity: 0.5;
+        z-index: 1;
+    }
+
+    .modal-content-box {
+        height: 25vh;
+        width: 80vw;
+        background-color: white;
+        z-index: 2;
+        position: absolute;
+        top: 32.5vh;
+        left: 10vw;
+        border-radius: 16px;
+    }
+
+    .box-top {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 12.5vh;
+        color: #1e796a;
+        font-weight: bold;
+    }
+    .box-content {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        height: 7.5vh;
+    }
+    .box-content-btn {
+        background-color: #ef840c;
+        padding-left: 40px;
+        padding-right: 40px;
+        padding-top: 3px;
+        padding-bottom: 3px;
+        border-radius: 100px;
+        color: white;
+    }
+</style>
+
 <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -22,7 +167,7 @@
             <div class="nav-top">Menu</div>
             <div class="nav-content">
                 <a href="/dashboard" class="nav-content-btn" id="home">
-                    <div>
+                    <div class="nav-content-end">
                         <svg
                             version="1.0"
                             xmlns="http://www.w3.org/2000/svg"
@@ -48,14 +193,14 @@
                             </g>
                         </svg>
                     </div>
-                    <div>Home</div>
+                    <div class="nav-content-end">Home</div>
                 </a>
                 <a
                     href="{{ route('dashboard.manageProfile.index') }}"
                     class="nav-content-btn"
                     id="profile"
                 >
-                    <div>
+                    <div class="nav-content-end">
                         <svg
                             version="1.0"
                             xmlns="http://www.w3.org/2000/svg"
@@ -80,14 +225,14 @@
                             </g>
                         </svg>
                     </div>
-                    <div>Profiel</div>
+                    <div class="nav-content-end">Profiel</div>
                 </a>
                 <a
                     href="{{ route('dashboard.matches.index') }}"
                     class="nav-content-btn"
                     id="matches"
                 >
-                    <div>
+                    <div class="nav-content-end">
                         <svg
                             version="1.0"
                             xmlns="http://www.w3.org/2000/svg"
@@ -110,10 +255,10 @@
                             </g>
                         </svg>
                     </div>
-                    <div>Matches</div>
+                    <div class="nav-content-end">Matches</div>
                 </a>
                 <a href="/inbox" class="nav-content-btn" id="inbox">
-                    <div>
+                    <div class="nav-content-end">
                         <svg
                             version="1.0"
                             xmlns="http://www.w3.org/2000/svg"
@@ -144,14 +289,14 @@
                             </g>
                         </svg>
                     </div>
-                    <div>Inbox</div>
+                    <div class="nav-content-end">Inbox</div>
                 </a>
                 <a
                     href="/dashboard/support"
                     class="nav-content-btn"
                     id="support"
                 >
-                    <div>
+                    <div class="nav-content-end">
                         <svg
                             version="1.0"
                             xmlns="http://www.w3.org/2000/svg"
@@ -182,14 +327,14 @@
                             </g>
                         </svg>
                     </div>
-                    <div>Support</div>
+                    <div class="nav-content-end">Support</div>
                 </a>
 
                 <button
                     class="nav-content-btn"
                     onclick="openModal(); closeMenu();"
                 >
-                    <div>
+                    <div class="nav-content-end">
                         <svg
                             version="1.0"
                             xmlns="http://www.w3.org/2000/svg"
@@ -216,7 +361,7 @@
                             </g>
                         </svg>
                     </div>
-                    <div class="flex justify-start">Log uit</div>
+                    <div class="flex justify-start items-end">Log uit</div>
                 </button>
             </div>
         </div>

@@ -115,9 +115,9 @@
 
 
     <!-- **Dit in een if state zetten  -->
-    @include('components.scrollTop.index')
 
-    <div class="flex justify-center">
+
+    <div class="flex mt-12  justify-center">
         <div class="customCard">
             <div class="flex justify-center text-xl font-bold text-talent-green">
                 Kennismaking pitch
@@ -137,7 +137,7 @@
 
     {{-- @include('components.scrollTop.index') --}}
 
-    <div class="flex justify-center mb-10">
+    <div class="flex justify-center mt-12">
         <div class="customCard">
             <div class="flex justify-center text-xl font-bold text-talent-green">
                 Persoongegevens
