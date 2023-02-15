@@ -137,12 +137,12 @@
                 </div>
             </div>
             <div
-                class="mt-8 flex justify-center text-2xl text-talent-green font-bold"
+                class="font-sans font-bold mt-8 flex justify-center text-2xl text-talent-green "
             >
                 Welkom bij Talentlokaal!
             </div>
             <div
-                class="mt-4 ml-2 mr-2 text-center flex justify-center text-lg text-talent-light-green font-bold"
+                class=" font-sans mt-4 ml-2 mr-2 text-center flex justify-center text-lg text-talent-light-green font-bold"
             >
                 Vul hier uw gegevens in voor het aanmaken van een account
             </div>
@@ -164,7 +164,7 @@
             <button type="submit">
             <div class="flex justify-end">
                 <div
-                    class="w-44 h-auto bg-talent-orange text-talent-white font-bold flex justify-center items-center padding-margin-btn"
+                    class=" font-sans  w-44 h-auto bg-talent-orange text-talent-white font-bold flex justify-center items-center padding-margin-btn"
                 >
                     Volgende >
                 </div>

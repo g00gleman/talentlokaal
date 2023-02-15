@@ -87,7 +87,7 @@
                 </svg>
             </div>
 
-            <div class="text-talent-white font-bold ml-1">Matches</div>
+            <div class="text-talent-white font-bold ml-1 text-2xl">Matches</div>
         </div>
 
         <!-- slider voor matches -->
@@ -97,7 +97,7 @@
                 <div class="w-80 bg-talent-white rounded-xl p-5">
                     <div class="flex">
                     <div class="flex flex-col">
-                    <div class="text-talent-green text-xl">Match 1</div>
+                    <div class="font-bold text-talent-green text-xl">Match 1</div>
                     <div class="opacity-30 text-sm italic"> Match 2 dagen geleden</div>
                     </div>
                     <div class=" ml-20">
@@ -108,7 +108,7 @@
                     <div class=" font-bold">Functie:</div>
                     <div class="">Test</div>
                     <div class=" font-bold">Bedrijf:</div>
-                    <div class="">Test2:</div>
+                    <div class="">Test2</div>
                     <div class=" font-bold">Status:</div>
                     <div class="">Verzonden</div>
                     </div>
