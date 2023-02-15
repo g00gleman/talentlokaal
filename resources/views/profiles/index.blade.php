@@ -130,7 +130,7 @@
                     $baseurl = env('APP_URL');
                 @endphp
                 <video width="320" height="240" controls="controls">
-                    <source src="{{ asset($baseurl . '/pitch/' . $user->pitch) }}" type="video/mp4" />
+                    <source src="{{ $user->getProfilePitchUrlAttribute() }}" type="video/mp4" />
                         Your browser does not support the video tag.
                 </video>
                 @endif

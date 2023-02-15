@@ -39,17 +39,15 @@ class profileController extends Controller
         $this->validate(request(), [
             'pitch' => 'required|file|mimetypes:video/mp4',
         ]);
+        // get the video out of form
+        $video = $request->file('pitch');
+        // new file name for image
+        $newVideoFileName = time(). "." . $video->getExtension();
+        // replace old filename with the new one and save it into storage/public
+        Storage::disk('local')->put($newVideoFileName,  $video->get());
 
         $user = User::find($id);
-        // example
-        // files = stevens files
-        $pitch = $request->file('pitch');
-        //  files = stevens_pitch
-        $savePitch = time().'.'.$pitch->getClientOriginalExtension();
-        // move stevens_pitch in the map called public/files
-        $pitch->move(public_path('files'), $savePitch);
-        // store stevens_pitch in user table database
-        $user->pitch = $savePitch;
+        $user->pitch = $newVideoFileName;
         $user->save();
 
         return redirect(route('dashboard.manageProfile.index'));
