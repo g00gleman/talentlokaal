@@ -70,27 +70,21 @@ public function registerEmployer(Request $request)
 private function registerUser(Request $request): User
     {
         // validation errors for all form inputs
-        $this->validate(request(), [
+        $data = $this->validate(request(), [
             'naam' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'telefoonnummer' =>  'required|unique:App\Models\User,phoneNumber',
             'adres' => 'required|string|max:255',
             'geboortedatum' => 'required|before:today|Date',
-//            'profielfoto' => 'file|mimes:jpg,jpeg,png,bmp,gif,svg,webp',
+            'profielfoto' => 'image',
             'wachtwoord' => 'required|min:8|max:20|confirmed'
         ]);
         // get the image out of form
-        $image = $request->get('profielfoto');
-        // get the path to store the image in project
-        $path = '/storage/public/'.$image;
-        // get info about the file
-        $fileInfo = new SplFileInfo($path);
-        // get the exention from the info
-        $extension = $fileInfo->getExtension();
+        $image = $request->file('profielfoto');
         // new file name for image
-        $imageNewFileName = time(). "." . $extension;
+        $imageNewFileName = time(). "." . $image->getExtension();
         // replace old filename with the new one and save it into storage/public
-        Storage::disk('local')->put($imageNewFileName, $image);
+        Storage::disk('local')->put($imageNewFileName,  $image->get());
 
         // save data in user table
         $newUser = new User();

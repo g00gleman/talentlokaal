@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+
 use Illuminate\Support\Facades\Storage;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
@@ -72,6 +74,6 @@ class User extends Authenticatable
     {
         $image = Storage::disk('local')->path($this->profile_photo_path);
         $fileInfo = new SplFileInfo($image);
-        return "data:image/".$fileInfo->getExtension().";base64,".base64_encode(file_get_contents($image));
+        return "data:image/".$fileInfo->getExtension().";base64,".base64_encode(file_get_contents($image ));;
     }
 }
