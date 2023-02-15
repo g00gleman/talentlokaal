@@ -381,8 +381,6 @@
                     {{ $user->name }}
                 </div>
                 <div class="mt-2 text-talent-green">
-                    @if (!($user->description == ''))
-                    <p>Geef extra info over u en voeg een beschrijving toe</p>
                     <form
                         action="/dashboard/description/{{ $user->id }}"
                         method="post"
@@ -403,11 +401,6 @@
                             </button>
                         </div>
                     </form>
-                    @else
-                    <p class="text-center">
-                        Voeg eerst een beschrijving toe op de profile pagina
-                    </p>
-                    @endif
                 </div>
             </div>
         </div>
@@ -422,8 +415,6 @@
                     Kennismaking pitch
                 </div>
                 <div class="mt-2 flex justify-center">
-                    @if (!($user->pitch == ''))
-                    <p>Maak uw profiel persoonlijker en voeg een pitch toe</p>
                     <form
                         action="/dashboard/pitch/{{ $user->id }}"
                         method="post"
@@ -433,9 +424,6 @@
                         <input type="file" name="pitch" id="" />
                         <button type="submit">Upload</button>
                     </form>
-                    @else
-                    <p>Voeg eerst een pitch toe op de profile pagina</p>
-                    @endif
                 </div>
             </div>
         </div>
@@ -481,7 +469,7 @@
                                 class="col-span-4 text-xs flex items-center font-bold text-talent-orange"
                             >
                                 <input
-                                    name="city"
+                                    name="adress"
                                     type="text"
                                     class="w-full shadow-md focus:ring-talent-orange border-none rounded-md"
                                     value="{{ $user->adress }}"

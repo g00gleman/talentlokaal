@@ -26,9 +26,6 @@ class profileController extends Controller
     }
     // save description
     public function description(Request $request, $id){
-        $this->validate(request(), [
-            'description' => 'required|string',
-        ]);
         $user = User::find($id);
         $user->description = $request->get('description');
         $user->save();
@@ -51,7 +48,7 @@ class profileController extends Controller
         // move stevens_pitch in the map called public/files
         $pitch->move(public_path('files'), $savePitch);
         // store stevens_pitch in user table database
-            $user->pitch = $savePitch;
+        $user->pitch = $savePitch;
         $user->save();
 
         return redirect(route('dashboard.manageProfile.index'));
@@ -108,7 +105,7 @@ class profileController extends Controller
         $updateUser->name = $request->get('name');
         // $updateUser->email = $request->get('email');
         // $updateUser->phoneNumber = $request->get('telefoonnummer');
-        $updateUser->adress = $request->get('adres');
+        $updateUser->adress = $request->get('adress');
 //            dd( $request->get('employeeFunction'));
         $updateEmployee->function = $request->get('employeeFunction');
         $updateEmployee->certificate = $request->get('employeeCertificate');

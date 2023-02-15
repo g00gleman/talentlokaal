@@ -123,14 +123,16 @@
                 Kennismaking pitch
             </div>
             <div class="mt-2 flex flex-col justify-center">
+                @if (isset($user->pitch))
                 @php
                     $baseurl = env('APP_URL');
                 @endphp
                 <video width="320" height="240" controls="controls">
                     <source src="{{ asset($baseurl . '/pitch/' . $user->pitch) }}" type="video/mp4" />
-                    Your browser does not support the video tag.
+                        Your browser does not support the video tag.
                 </video>
-            </div>
+                @endif
+                </div>
         </div>
     </div>
     <!-- **end de if state hier -->
