@@ -1,7 +1,7 @@
 <link href="/scrollToTop/style.css" type="text/css" rel="stylesheet" />
 
 <div class="flex justify-end">
-    <button onclick="scrollToTop()" class="customArrowbtn">
+    <button onclick="scrollToTop()" class="customArrowbtn shadow-md">
         <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
