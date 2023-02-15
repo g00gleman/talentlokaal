@@ -17,6 +17,7 @@ module.exports = {
             "talent-light-green": "#BCD7D2",
             "talent-orange": "#F0850B ",
             "talent-white": "#FFFFFF ",
+            "talent-red":"#ff0000",
         },
         extend: {
             fontFamily: {

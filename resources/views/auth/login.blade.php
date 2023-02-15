@@ -87,11 +87,11 @@
             @csrf
 
             <div>
-                <x-jet-input id="email" class=" px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="email" name="email" :value="old('email')"  placeholder="Email-adres" required autofocus />
+                <x-jet-input id="email" class=" focus:ring-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="email" name="email" :value="old('email')"  placeholder="Email-adres" required autofocus />
             </div>
 
             <div class="mt-4">
-                <x-jet-input id="password" class=" px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="password" name="password"  placeholder="Wachtwooord"  required autocomplete="current-password" />
+                <x-jet-input id="password" class=" focus:ring-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="password" name="password"  placeholder="Wachtwooord"  required autocomplete="current-password" />
             </div>
 
       
