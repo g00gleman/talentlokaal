@@ -19,7 +19,7 @@ class employer extends Seeder
         $employer = [
             [
                 'id' => 1,
-                'companyName' => 'barrocintens',
+                'companyName' => 'Curio',
                 'websiteURL' => 'https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley',
                 'user_Id' => 2,
                 'created_at' => Carbon::now(),
