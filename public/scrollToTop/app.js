@@ -7,7 +7,7 @@ function scrollToTop() {
     });
 }
 
-window.addEventListener("scroll", (event) => {
-    let scroll = this.scrollY;
-    console.log(scroll);
-});
+// window.addEventListener("scroll", (event) => {
+//     let scroll = this.scrollY;
+//     console.log(scroll);
+// });

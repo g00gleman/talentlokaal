@@ -391,11 +391,17 @@
                         <textarea
                             name="description"
                             id=""
-                            cols="30"
-                            rows="10"
+                            class="w-full border-none rounded-md mt-2 mb-2 focus:ring-talent-orange shadow-md"
                             >{{ $user->description }}</textarea
                         >
-                        <button type="submit">Opslaan</button>
+                        <div class="flex justify-end">
+                            <button
+                                type="submit"
+                                class="bg-talent-orange shadow-md pl-5 pr-5 pt-1 pb-1 text-talent-white font-bold rounded-full"
+                            >
+                                Opslaan
+                            </button>
+                        </div>
                     </form>
                     @else
                     <p class="text-center">
@@ -408,7 +414,7 @@
 
         <!-- @include('components.scrollTop.index') -->
 
-        <div class="flex justify-center">
+        <div class="flex mt-12 justify-center">
             <div class="customCard">
                 <div
                     class="flex justify-center text-xl font-bold text-talent-green"
@@ -439,6 +445,7 @@
         <form
             action="{{ route('dashboard.manageProfile.update', $user->id) }}"
             method="post"
+            class="mt-12"
         >
             @csrf @method('put')
 
@@ -461,6 +468,7 @@
                                 <input
                                     name="name"
                                     type="text"
+                                    class="w-full shadow-md focus:ring-talent-orange border-none rounded-md"
                                     value="{{ $user->name }}"
                                 />
                             </div>
@@ -470,11 +478,12 @@
                                 <i class="fa-solid fa-location-dot"></i>
                             </div>
                             <div
-                                class="col-span-4 text-xs flex flex-col items-center font-bold text-talent-orange"
+                                class="col-span-4 text-xs flex items-center font-bold text-talent-orange"
                             >
                                 <input
                                     name="city"
                                     type="text"
+                                    class="w-full shadow-md focus:ring-talent-orange border-none rounded-md"
                                     value="{{ $user->adress }}"
                                 />
                             </div>
@@ -489,6 +498,7 @@
                                 <input
                                     name="employeeFunction"
                                     type="text"
+                                    class="w-full shadow-md focus:ring-talent-orange border-none rounded-md"
                                     value="{{ $user->employee->function }}"
                                 />
                             </div>
@@ -504,13 +514,16 @@
                                 <input
                                     name="employeeCertificate"
                                     type="text"
+                                    class="w-full shadow-md focus:ring-talent-orange border-none rounded-md"
                                     value="{{ $user->employee->certificate }}"
                                 />
                             </div>
 
-                            <div class="col-span-5 text-center">
+                            <div
+                                class="col-span-5 flex justify-end text-center"
+                            >
                                 <button
-                                    class="border border-black rounded-xl px-3 py-"
+                                    class="bg-talent-orange shadow-md pl-5 pr-5 pt-1 pb-1 text-talent-white font-bold rounded-full"
                                     type="submit"
                                 >
                                     Opslaan
