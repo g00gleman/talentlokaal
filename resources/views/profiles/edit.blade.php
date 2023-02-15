@@ -518,7 +518,12 @@
                     >
                         @csrf @method('put')
                         <input type="file" name="pitch" id="" />
-                        <button type="submit">Upload</button>
+                        <button
+                            type="submit"
+                            class="bg-talent-orange shadow-md pl-5 pr-5 pt-1 pb-1 text-talent-white font-bold rounded-full"
+                        >
+                            Upload
+                        </button>
                     </form>
                 </div>
             </div>
