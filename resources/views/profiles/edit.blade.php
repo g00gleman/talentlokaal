@@ -382,6 +382,7 @@
 
         <div class="flex justify-center mt-24">
             <div class="customCard">
+                @if (!isset($user->profile_photo_url))
                 <div class="flex justify-center">
                     <img
                         class="h-20 w-20 rounded-full object-cover"
@@ -389,14 +390,63 @@
                         alt="{{ Auth::user()->name }}"
                     />
                 </div>
+                @elseif (isset($user->profile_photo_url))
+                {{-- profilePhoto --}}
+                <form
+                    action="/dashboard/profileFoto/{{ $user->id }}"
+                    method="post" enctype="multipart/form-data">
+                    @csrf
+                    @method('put')
+                    <div class=" flex mt-4">
+                        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 mr-5"
+                        viewBox="0 0 50 50" style="" preserveAspectRatio="xMidYMid meet">
+                            <g fill="#000000FF" stroke="#000000FF">
+                                <path
+                                    d="M 7.000 25.000 L 7.000 48.000 21.500 48.000 C 30.500 48.000 36.000 47.621 36.000 47.000 C 36.000 46.383 30.833 46.000 22.500 46.000 L 9.000 46.000 9.000 25.000 L 9.000 4.000 18.500 4.000 L 28.000 4.000 28.000 10.500 L 28.000 17.000 34.500 17.000 L 41.000 17.000 41.000 22.941 C 41.000 26.209 41.450 29.160 42.000 29.500 C 42.634 29.892 43.000 27.251 43.000 22.280 L 43.000 14.442 36.723 8.221 L 30.446 2.000 18.723 2.000 L 7.000 2.000 7.000 25.000 M 34.235 15.000 L 30.000 15.000 30.000 10.765 L 30.000 6.529 34.235 10.765 L 38.471 15.000 34.235 15.000 " />
+                            </g>
+                            <g fill="#000000FF" stroke="#000000FF">
+                                <path
+                                    d="M 36.750 35.453 C 34.688 37.865 33.000 40.101 33.000 40.420 C 33.000 40.739 34.125 41.000 35.500 41.000 C 37.796 41.000 38.000 41.367 38.000 45.500 C 38.000 49.976 38.019 50.000 41.500 50.000 C 44.981 50.000 45.000 49.976 45.000 45.500 C 45.000 41.367 45.204 41.000 47.500 41.000 C 48.875 41.000 49.982 40.663 49.959 40.250 C 49.896 39.096 42.342 30.996 41.364 31.033 C 40.889 31.051 38.813 33.040 36.750 35.453 M 43.230 42.750 C 42.953 46.190 42.356 48.000 41.500 48.000 C 39.881 48.000 38.915 38.100 40.348 36.200 C 42.205 33.737 43.685 37.101 43.230 42.750 " />
+                            </g>
+                            <g fill="#000000FF" stroke="#000000FF">
+                                <path
+                                    d="M 13.000 35.000 C 13.000 35.600 17.000 36.000 23.000 36.000 C 29.000 36.000 33.000 35.600 33.000 35.000 C 33.000 34.400 29.000 34.000 23.000 34.000 C 17.000 34.000 13.000 34.400 13.000 35.000 " />
+                            </g>
+                            <g fill="#000000FF" stroke="#000000FF">
+                                <path
+                                    d="M 13.000 23.000 C 13.000 23.600 17.000 24.000 23.000 24.000 C 29.000 24.000 33.000 23.600 33.000 23.000 C 33.000 22.400 29.000 22.000 23.000 22.000 C 17.000 22.000 13.000 22.400 13.000 23.000 " />
+                            </g>
+                            <g fill="#000000FF" stroke="#000000FF">
+                                <path
+                                    d="M 13.000 29.000 C 13.000 29.583 16.333 30.000 21.000 30.000 C 25.667 30.000 29.000 29.583 29.000 29.000 C 29.000 28.417 25.667 28.000 21.000 28.000 C 16.333 28.000 13.000 28.417 13.000 29.000 " />
+                            </g>
+                        </svg>
+                        <div
+                            class="px-5 flex items-center border-none content-center  mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange bg-talent-white text-talent-orange underline">
+                            <input type="file" name="profielfoto" id="upload" accept=".jpg,.jpeg,.png,.bmp,.gif,.svg,.webp"     hidden/>
+                            <label for="upload" class="">Upload hier uw profielfoto</label>
+                        </div>
+                    </div>
+                    <div class="flex justify-end">
+                        <button
+                            type="submit"
+                            class="bg-talent-orange shadow-md pl-5 pr-5 pt-1 pb-1 text-talent-white font-bold rounded-full"
+                        >
+                            Opslaan
+                        </button>
+                    </div>
+                </form>
+                @endif
+                <div class="text-sm flex justify-center items-center text-talent-red">
+                @error('profielfoto')
+                {{$message}}
+                @enderror
                 <div
                     class="flex justify-center mt-2 text-talent-orange font-bold text-3xl"
                 >
                     {{ $user->name }}
                 </div>
                 <div class="mt-2 text-talent-green">
-                    @if (!($user->description == ''))
-
                     <form
                         action="/dashboard/description/{{ $user->id }}"
                         method="post"
@@ -417,11 +467,6 @@
                             </button>
                         </div>
                     </form>
-                    @else
-                    <p class="text-center">
-                        Voeg eerst een beschrijving toe op de profile pagina
-                    </p>
-                    @endif
                 </div>
             </div>
         </div>
@@ -436,8 +481,6 @@
                     Kennismaking pitch
                 </div>
                 <div class="mt-2 flex justify-center">
-                    @if (!($user->pitch == ''))
-                    <p>Maak uw profiel persoonlijker en voeg een pitch toe</p>
                     <form
                         action="/dashboard/pitch/{{ $user->id }}"
                         method="post"
@@ -447,9 +490,6 @@
                         <input type="file" name="pitch" id="" />
                         <button type="submit">Upload</button>
                     </form>
-                    @else
-                    <p>Voeg eerst een pitch toe op de profile pagina</p>
-                    @endif
                 </div>
             </div>
         </div>
@@ -495,7 +535,7 @@
                                 class="col-span-4 text-xs flex items-center font-bold text-talent-orange"
                             >
                                 <input
-                                    name="city"
+                                    name="adress"
                                     type="text"
                                     class="w-full focus:ring-talent-orange border-none rounded-md"
                                     value="{{ $user->adress }}"

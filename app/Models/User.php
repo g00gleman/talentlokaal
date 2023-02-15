@@ -77,8 +77,8 @@ class User extends Authenticatable
         if (empty($this->profile_photo_path)) return $this->defaultProfilePhotoUrl();
         // get the image out of the storage/app folder in this project
         $image = Storage::disk('local')->path($this->profile_photo_path);
-        // data:image/imageExtension(jpg,png,ect.);base64, the content of the image base 64 encoded
         $fileInfo =new SplFileInfo($image);
+        // data:image/imageExtension(jpg,png,ect.);base64, the content of the image base 64 encoded
         return "data:image/".$fileInfo->getExtension().";base64,".base64_encode(file_get_contents($image));
     }
 }

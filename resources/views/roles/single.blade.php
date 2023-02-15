@@ -45,9 +45,9 @@
                 </svg>
             </div>
         </div>
-        <div class="tracking-widest text-talent-green flex text-center text-2xl justify-center mb-10 mt-9">Welkom bij
+        <div class=" font-sans font-bold tracking-widest text-talent-green flex text-center text-2xl justify-center mb-10 mt-9">Welkom bij
             TalentLokaal!</div>
-        <div class=" text-center justify-center flex text-lg text-talent-light-green ">Vul hier uw gegvens in <br />
+        <div class=" font-sans font-bold text-center justify-center flex text-lg text-talent-light-green ">Vul hier uw gegvens in <br />
             voor het aanmaken van een account</div>
         <div class="flex justify-center items-center">
             <div
@@ -74,7 +74,7 @@
                             </g>
                         </svg>
                         <x-jet-input id="name"
-                            class=" focus:ring-talent-orange underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange"
+                            class=" font-sans focus:ring-talent-orange underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange"
                             type="text" name="naam" :value="old('naam')" required autofocus
                             placeholder="Vul hier uw naam in" />
                     </div>
@@ -92,7 +92,7 @@
                         </svg>
 
                         <x-jet-input id="phoneNumber"
-                            class=" focus:ring-talent-orange underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange"
+                            class=" font-sans focus:ring-talent-orange underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange"
                             type="tel" name="telefoonnummer" :value="old('telefoonnummer')" required autofocus
                             placeholder="Vul hier uw telefoonnummer in" />
                     </div>
@@ -116,7 +116,7 @@
                         </svg>
 
                         <x-jet-input id="adres"
-                            class="focus:ring-talent-orange underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange"
+                            class="font-sans focus:ring-talent-orange underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange"
                             type="text" name="adres" :value="old('adres')" required autofocus
                             placeholder="Vul hier uw adres in" />
                     </div>
@@ -140,7 +140,7 @@
                         </svg>
 
                         <x-jet-input id="birthDate"
-                            class=" focus:ring-talent-orange underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange"
+                            class=" font-sans focus:ring-talent-orange underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange"
                             type="text" name="geboortedatum" :value="old('geboortedatum')" required autofocus
                             placeholder="Vul hier uw geboorte datum in" id="dategeboortedatum" />
                     </div>
@@ -170,7 +170,7 @@
                             </svg>
 
                             <x-jet-input id="function"
-                                class=" focus:ring-talent-orange underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange"
+                                class=" font-sans focus:ring-talent-orange underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange"
                                 type="text" name="functie" :value="old('functie')" required autofocus
                                 placeholder="Vul hier uw functie in" />
                         </div>
@@ -179,9 +179,9 @@
                         {{$message}}
                         @enderror
                         </div>
-                        
+
                         {{-- certificate --}}
-                        <div class=" flex mt-1">
+                        <div class=" flex mt-4">
                             <svg version="1.0" xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 mr-5"
                                 viewBox="0 0 50 50" style="" preserveAspectRatio="xMidYMid meet">
                                 <g fill="#000000FF" stroke="#000000FF">
@@ -222,9 +222,14 @@
                                 </g>
                             </svg>
                             <x-jet-input id="certificate"
-                                class=" focus:ring-talent-orange underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange"
+                                class=" font-sans focus:ring-talent-orange underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange"
                                 type="text" name="diploma" :value="old('diploma')" required autofocus
                                 placeholder="Vul hier uw diploma in" />
+                        </div>
+                        <div class="text-sm flex justify-center items-center text-talent-red">
+                            @error('diploma')
+                            {{$message}}
+                            @enderror
                         </div>
                     @elseif($id == 2)
                         {{-- companyname --}}
@@ -236,7 +241,7 @@
                             </svg>
 
                             <x-jet-input id="companyName"
-                                class=" focus:ring-talent-orange underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange"
+                                class=" font-sans focus:ring-talent-orange underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange"
                                 type="text" name="bedrijfsnaam" :value="old('bedrijfsnaam')" required autofocus
                                 placeholder="Vul hier uw bedrijfsnaam in" />
                         </div>
@@ -254,7 +259,7 @@
                             </svg>
 
                             <x-jet-input id="websiteUrl"
-                                class=" focus:ring-talent-orange underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange"
+                                class=" font-sans focus:ring-talent-orange underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange"
                                 type="text" name="websitelink" :value="old('websitelink')" required autofocus
                                 placeholder="Link naar website" />
                         </div>
@@ -275,7 +280,7 @@
                         </svg>
 
                         <x-jet-input id="email"
-                            class=" focus:ring-talent-orange underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange"
+                            class=" font-sans focus:ring-talent-orange underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange"
                             type="email" name="email" :value="old('email')" required
                             placeholder="Vul hier uw email in" />
                     </div>
@@ -310,7 +315,7 @@
                             </g>
                         </svg>
                         <div
-                            class="px-5 flex items-center border-none content-center  mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange bg-talent-white text-talent-orange underline">
+                            class=" font-sans px-5 flex items-center border-none content-center  mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange bg-talent-white text-talent-orange underline">
                             <input type="file" name="profielfoto" id="upload" accept=".jpg,.jpeg,.png,.bmp,.gif,.svg,.webp"     hidden/>
                                 <label for="upload" class="">Upload hier uw profielfoto</label>
                         </div>
@@ -319,6 +324,7 @@
                     @error('profielfoto')
                     {{$message}}
                     @enderror
+                    {{--password--}}
                     </div>
                     <div class=" flex mt-4">
                         <svg version="1.0" xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 mr-5"
@@ -329,20 +335,21 @@
                             </g>
                         </svg>
                         <x-jet-input id="password"
-                            class=" focus:ring-talent-orange underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange"
+                            class=" font-sans focus:ring-talent-orange underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange"
                             type="password" name="wachtwoord" required placeholder="Vul hier uw wachtwoord in" />
                     </div>
                     <div class="text-sm flex justify-center items-center text-talent-red">
                     @error('wachtwoord')
                     {{$message}}
                     @enderror
+                    {{--password confirm--}}
                     </div>
 
                     <div class=" flex mt-4">
                         <div class="w-10 h-10 mr-5">
                         </div>
                         <x-jet-input id="password_confirmation"
-                            class=" focus:ring-talent-orange underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange"
+                            class=" font-sans focus:ring-talent-orange underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange"
                             type="password" name="wachtwoord_confirmation" required
                             placeholder="Herhaal wachtwoord" />
                     </div>
@@ -382,7 +389,7 @@
         </div>
         <div class=" flex justify-center ">
             <x-jet-button
-                class="ml-4 bg-talent-orange w-44 m-5 rounded-full text-talent-white justify-center shadow-xl">
+                class=" font-bold focus:ring-talent-orange ml-4 font-sans bg-talent-orange w-44 m-5 rounded-full text-talent-white justify-center shadow-xl">
                 {{ __('Volgende >') }}
             </x-jet-button>
         </div>

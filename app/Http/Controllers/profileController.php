@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Spatie\LaravelIgnition\Recorders\DumpRecorder\Dump;
 
 class profileController extends Controller
@@ -26,9 +27,6 @@ class profileController extends Controller
     }
     // save description
     public function description(Request $request, $id){
-        $this->validate(request(), [
-            'description' => 'required|string',
-        ]);
         $user = User::find($id);
         $user->description = $request->get('description');
         $user->save();
@@ -51,7 +49,7 @@ class profileController extends Controller
         // move stevens_pitch in the map called public/files
         $pitch->move(public_path('files'), $savePitch);
         // store stevens_pitch in user table database
-            $user->pitch = $savePitch;
+        $user->pitch = $savePitch;
         $user->save();
 
         return redirect(route('dashboard.manageProfile.index'));
@@ -108,7 +106,7 @@ class profileController extends Controller
         $updateUser->name = $request->get('name');
         // $updateUser->email = $request->get('email');
         // $updateUser->phoneNumber = $request->get('telefoonnummer');
-        $updateUser->adress = $request->get('adres');
+        $updateUser->adress = $request->get('adress');
 //            dd( $request->get('employeeFunction'));
         $updateEmployee->function = $request->get('employeeFunction');
         $updateEmployee->certificate = $request->get('employeeCertificate');
@@ -142,5 +140,25 @@ class profileController extends Controller
             $user->employer->delete();
         }
         return redirect('/');
+    }
+
+    public function profileFoto( Request $request,$id){
+
+        $data = $this->validate(request(), [
+            'profielfoto' => 'image',
+        ]);
+        // get the image out of form
+        $image = $request->file('profielfoto');
+        // new file name for image
+        $imageNewFileName = time(). "." . $image->getExtension();
+        // replace old filename with the new one and save it into storage/public
+        Storage::disk('local')->put($imageNewFileName,  $image->get());
+
+        // save data in user table
+        $newUser = User::find($id);
+        $newUser->profile_photo_path = $imageNewFileName;
+        $newUser->save();
+
+        return redirect(route('dashboard.manageProfile.index'));
     }
 }
