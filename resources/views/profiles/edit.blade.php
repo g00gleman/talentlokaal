@@ -366,6 +366,20 @@
             // }
         </script>
 
+        <style>
+            input[type="text"] {
+                background: rgba(0, 0, 0, 0);
+                border: none;
+                outline: none;
+            }
+
+            textarea {
+                background: rgba(0, 0, 0, 0);
+                border: none;
+                outline: none;
+            }
+        </style>
+
         <div class="flex justify-center mt-24">
             <div class="customCard">
                 @if (!isset($user->profile_photo_url))
@@ -441,7 +455,7 @@
                         <textarea
                             name="description"
                             id=""
-                            class="w-full border-none rounded-md mt-2 mb-2 focus:ring-talent-orange shadow-md"
+                            class="w-full border-none rounded-md mt-2 mb-2 focus:ring-talent-orange"
                             >{{ $user->description }}</textarea
                         >
                         <div class="flex justify-end">
@@ -508,7 +522,7 @@
                                 <input
                                     name="name"
                                     type="text"
-                                    class="w-full shadow-md focus:ring-talent-orange border-none rounded-md"
+                                    class="w-full focus:ring-talent-orange border-none rounded-md"
                                     value="{{ $user->name }}"
                                 />
                             </div>
@@ -523,7 +537,7 @@
                                 <input
                                     name="adress"
                                     type="text"
-                                    class="w-full shadow-md focus:ring-talent-orange border-none rounded-md"
+                                    class="w-full focus:ring-talent-orange border-none rounded-md"
                                     value="{{ $user->adress }}"
                                 />
                             </div>
@@ -538,7 +552,7 @@
                                 <input
                                     name="employeeFunction"
                                     type="text"
-                                    class="w-full shadow-md focus:ring-talent-orange border-none rounded-md"
+                                    class="w-full focus:ring-talent-orange border-none rounded-md"
                                     value="{{ $user->employee->function }}"
                                 />
                             </div>
@@ -554,7 +568,7 @@
                                 <input
                                     name="employeeCertificate"
                                     type="text"
-                                    class="w-full shadow-md focus:ring-talent-orange border-none rounded-md"
+                                    class="w-full focus:ring-talent-orange border-none rounded-md"
                                     value="{{ $user->employee->certificate }}"
                                 />
                             </div>
@@ -572,6 +586,15 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="col-span-5 text-center">
+                <button
+                    disabled
+                    class="bg-talent-orange shadow-md w-11/12 pt-2 pb-2 text-talent-white font-bold rounded-full"
+                    type="submit"
+                >
+                    Opslaan gewijzigde gegevens (disabled)
+                </button>
             </div>
         </form>
         @include('components.scrollTop.index')
