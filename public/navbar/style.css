@@ -17,7 +17,7 @@
     height: 100vh;
     position: absolute;
     top: 0;
-    display: block;
+    display: none;
 }
 
 .menu-content {
