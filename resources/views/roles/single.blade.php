@@ -91,7 +91,7 @@
                         <x-jet-input id="phoneNumber"
                             class="  underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange"
                             type="tel" name="telefoonnummer" :value="old('telefoonnummer')" required autofocus
-                            placeholder="Vul hier je telefoon nummer in" />
+                            placeholder="Vul hier je telefoonnummer in" />
                     </div>
                     {{-- adress --}}
                     <div class=" flex mt-4">

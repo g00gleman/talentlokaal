@@ -78,7 +78,7 @@
             </div>
             </a>
         </div>
-        <div class="flex justify-center mt-64">
+        <div class="flex justify-center mt-60">
             <div class="text-talent-white">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7">
                     <path fill-rule="evenodd"
