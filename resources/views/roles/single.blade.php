@@ -57,7 +57,7 @@
                 <div class="justify-center flex mb-6">
                     @if ($id == 1)
                     <form method="POST" action="/registerEmployee" enctype="multipart/form-data">
-                    @elseif($id == 2) <form method="POST" action="/registerEmployer">
+                    @elseif($id == 2) <form method="POST" action="/registerEmployer" enctype="multipart/form-data">
                     @else  <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                     @endif
                     @csrf

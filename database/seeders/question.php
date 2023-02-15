@@ -19,52 +19,66 @@ class question extends Seeder
         //
         $questions = [
             [
-                'id' => 1,
-                'question' => 'Vraag 1',
+                'question' => 'Mijn ideale organisatie legt de nadruk op doelen stellen',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
-                'id' => 2,
-                'question' => 'Vraag 2',
+                'question' => 'Mijn ideale organisatie legt de nadruk op stabiliteit en efficientie',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
-                'id' => 3,
-                'question' => 'Vraag 3',
+                'question' => 'Mijn ideale organisatie legt de nadruk op persoonlijke ontwikkeling',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
-                'id' => 4,
-                'question' => 'Vraag 4',
+                'question' => 'Mijn ideale organisatie legt de nadruk op creativiteit',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
-                'id' => 5,
-                'question' => 'Vraag 5',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ],            [
-                'id' => 6,
-                'question' => 'Vraag 6',
+                'question' => 'Mijn ideale organisatie staat voor waarden en tradities',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
-                'id' => 7,
-                'question' => 'Vraag 6',
+                'question' => 'Mijn ideale organisatie staat voor saamhorigheid',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
-                'id' => 8,
-                'question' => 'Vraag 7',
+                'question' => 'Mijn ideale organisatie staat voor een gezonde planeet',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
+            [
+                'question' => 'Mijn ideale organisatie staat voor persoonlijke welvaart',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'question' => 'Mijn ideale organisatie staat voor waarden en tradities',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'question' => 'Mijn ideale organisatie staat voor saamhorigheid',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'question' => 'Mijn ideale organisatie staat voor een gezonde planeet',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'question' => 'Mijn ideale organisatie staat voor persoonlijke welvaart',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+
         ];
         DB::table('questions')->insert($questions);
     }
