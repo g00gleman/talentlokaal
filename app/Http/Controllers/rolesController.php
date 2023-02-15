@@ -70,7 +70,7 @@ public function registerEmployer(Request $request)
 private function registerUser(Request $request): User
     {
         // validation errors for all form inputs
-        $data = $this->validate(request(), [
+        $this->validate(request(), [
             'naam' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'telefoonnummer' =>  'required|max:255|unique:App\Models\User,phoneNumber',

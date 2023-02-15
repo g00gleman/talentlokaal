@@ -92,16 +92,14 @@ class profileController extends Controller
         $updateUser = User::find($id);
         $updateEmployee = employee::find($id);
         // validation errors for all form inputs
-        // $this->validate(request(), [
-            // 'naam' => 'required|string|max:255',
-            // 'email' => 'required|string|email|max:255|unique:users',
-            // 'telefoonnummer' =>  'required|max:10|unique:App\Models\User,phoneNumber',
-            // 'plaats' => 'required|string|max:255',
-            // 'straat' => 'required|string|max:255',
-            // 'huisnummer' => 'required|integer|digits_between:1,5',
-            // 'postcode' => 'required|size:7|string',
-            // 'geboortedatum' => 'required|before:today|Date',
-        // ]);
+        $this->validate(request(), [
+            'naam' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'telefoonnummer' =>  'required|max:255|unique:App\Models\User,phoneNumber',
+            'adres' => 'required|string|max:255',
+            'geboortedatum' => 'required|before:today|Date',
+            'profielfoto' => 'image',
+        ]);
 
         $updateUser->name = $request->get('name');
         // $updateUser->email = $request->get('email');
