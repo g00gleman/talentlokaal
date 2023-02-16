@@ -76,7 +76,7 @@ private function registerUser(Request $request): User
             'telefoonnummer' =>  'required|max:255|unique:App\Models\User,phoneNumber',
             'adres' => 'required|string|max:255',
             'geboortedatum' => 'required|before:today|Date',
-            'profielfoto' => 'image',
+            'profielfoto' => 'mimes:jpg,jpeg,png', 'max:1024',
             'wachtwoord' => 'required|min:8|max:20|confirmed'
         ]);
         // get the image out of form

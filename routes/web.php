@@ -49,9 +49,6 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'as' => 'dashboar
 
     // update your profile with a description, files or cv
     Route::put('/description/{id}', [profileController::class, 'description']);
-    Route::put('/profileFoto/{id}', [profileController::class, 'profileFoto']);
-    Route::put('/pitch/{id}', [profileController::class, 'pitch']);
-    Route::put('/cv/{id}', [profileController::class, 'cv']);
 
     // update profile info
     Route::resource('manageProfile', profileController::class);

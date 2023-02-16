@@ -132,7 +132,6 @@
                 <div class=" flex justify-center items-center">
                 <video width="320" height="240" controls="controls" >
                     <source src="{{ $user->getProfilePitchUrlAttribute() }}" type="video/mp4" />
-                        Your browser does not support the video tag.
                 </video>
                 </div>
                 @endif

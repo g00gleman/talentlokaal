@@ -392,13 +392,7 @@
                     @elseif (!isset($user->profile_photo_url))
                     {{-- profilePhoto --}}
 
-                    <form
-                        action="/dashboard/profileFoto/{{ $user->id }}"
-                        method="post"
-                        enctype="multipart/form-data"
-                        class="w-full"
-                    >
-                        @csrf @method('put')
+
                         <div class="flex">
                             <svg
                                 version="1.0"
@@ -448,15 +442,6 @@
                                 >
                             </div>
                         </div>
-                        <div class="flex justify-end">
-                            <button
-                                type="submit"
-                                class="bg-talent-orange shadow-md mb-2 mt-2 pl-5 pr-5 pt-1 pb-1 text-talent-white font-bold rounded-full"
-                            >
-                                Opslaan
-                            </button>
-                        </div>
-                    </form>
 
                     <div
                         class="text-sm flex justify-center items-center text-talent-red"
@@ -470,33 +455,25 @@
                     ></div>
                     @endif
                 </div>
-
+                <form
+                    action="{{ route('dashboard.manageProfile.update', $user->id) }}"
+                    method="post"
+                    enctype="multipart/form-data"
+                    class="w-full"
+                >
+                    @csrf @method('put')
                 <div
                     class="flex justify-center mt-2 text-talent-orange font-bold text-3xl"
                 >
                     {{ $user->name }}
                 </div>
                 <div class="mt-2 text-talent-green">
-                    <form
-                        action="/dashboard/description/{{ $user->id }}"
-                        method="post"
-                    >
-                        @csrf @method('put')
                         <textarea
-                            name="description"
+                            name="beschrijving"
                             id=""
                             class="w-full border-none rounded-md mt-2 mb-2 focus:ring-talent-orange"
                             >{{ $user->description }}</textarea
                         >
-                        <div class="flex justify-end">
-                            <button
-                                type="submit"
-                                class="bg-talent-orange shadow-md pl-5 pr-5 pt-1 pb-1 text-talent-white font-bold rounded-full"
-                            >
-                                Opslaan
-                            </button>
-                        </div>
-                    </form>
                 </div>
             </div>
         </div>
@@ -511,32 +488,13 @@
                     Kennismaking pitch
                 </div>
                 <div class="mt-2 flex justify-center">
-                    <form
-                        action="/dashboard/pitch/{{ $user->id }}"
-                        method="post"
-                        enctype="multipart/form-data"
-                    >
-                        @csrf @method('put')
                         <input type="file" name="pitch" id="" />
-                        <button
-                            type="submit"
-                            class="bg-talent-orange shadow-md pl-5 pr-5 pt-1 pb-1 text-talent-white font-bold rounded-full"
-                        >
-                            Upload
-                        </button>
-                    </form>
                 </div>
             </div>
         </div>
 
         <!-- @include('components.scrollTop.index') -->
 
-        <form
-            action="{{ route('dashboard.manageProfile.update', $user->id) }}"
-            method="post"
-            class="mt-12"
-        >
-            @csrf @method('put')
 
             <div class="flex justify-center mb-10">
                 <div class="customCard">
@@ -572,7 +530,7 @@
                                 class="col-span-4 text-xs flex items-center font-bold text-talent-orange"
                             >
                                 <input
-                                    name="name"
+                                    name="naam"
                                     type="text"
                                     class="w-full focus:ring-talent-orange border-none rounded-md"
                                     value="{{ $user->name }}"
@@ -604,7 +562,7 @@
                                 class="col-span-4 text-xs flex items-center font-bold text-talent-orange"
                             >
                                 <input
-                                    name="city"
+                                    name="adres"
                                     type="text"
                                     class="w-full focus:ring-talent-orange border-none rounded-md"
                                     value="{{ $user->adress }}"
@@ -642,7 +600,7 @@
                                 class="col-span-4 text-xs flex items-center font-bold text-talent-orange"
                             >
                                 <input
-                                    name="employeeFunction"
+                                    name="functie"
                                     type="text"
                                     class="w-full focus:ring-talent-orange border-none rounded-md"
                                     value="{{ $user->employee->function }}"
@@ -710,7 +668,7 @@
                                 class="col-span-4 text-xs flex items-center font-bold text-talent-orange"
                             >
                                 <input
-                                    name="employeeCertificate"
+                                    name="diploma"
                                     type="text"
                                     class="w-full focus:ring-talent-orange border-none rounded-md"
                                     value="{{ $user->employee->certificate }}"
@@ -720,28 +678,21 @@
                             <div
                                 class="col-span-5 flex justify-end text-center"
                             >
-                                <button
-                                    class="bg-talent-orange shadow-md pl-5 pr-5 pt-1 pb-1 text-talent-white font-bold rounded-full"
-                                    type="submit"
-                                >
-                                    Opslaan
-                                </button>
                             </div>
                             @endif
                         </div>
                     </div>
                 </div>
             </div>
-        </form>
         <div class="col-span-5 text-center">
             <button
-                disabled
-                class="bg-talent-orange bg-opacity-60 shadow-md w-11/12 pt-2 pb-2 text-talent-white font-bold rounded-full"
+                class="bg-talent-orange shadow-md w-11/12 pt-2 pb-2 text-talent-white font-bold rounded-full"
                 type="submit"
             >
-                Opslaan gewijzigde gegevens (disabled)
+                Opslaan gewijzigde gegevens
             </button>
         </div>
+        </form>
         @include('components.scrollTop.index')
     </body>
 </html>
