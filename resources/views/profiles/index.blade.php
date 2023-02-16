@@ -132,7 +132,6 @@
                 <div class=" flex justify-center items-center">
                 <video width="320" height="240" controls="controls" >
                     <source src="{{ $user->getProfilePitchUrlAttribute() }}" type="video/mp4" />
-                        Your browser does not support the video tag.
                 </video>
                 </div>
                 @endif
@@ -245,6 +244,10 @@
                         <div class="col-span-4 text-base flex items-center font-bold text-talent-orange">
                             {{ $user->employee->certificate }}
                         </div>
+                    @endif
+                    @if(isset($user->employer))
+                        {{ $user->employer->companyName }}
+                        {{ $user->employer->websiteUrl }}
                     @endif
                 </div>
             </div>

@@ -392,13 +392,7 @@
                     @elseif (!isset($user->profile_photo_url))
                     {{-- profilePhoto --}}
 
-                    <form
-                        action="/dashboard/profileFoto/{{ $user->id }}"
-                        method="post"
-                        enctype="multipart/form-data"
-                        class="w-full"
-                    >
-                        @csrf @method('put')
+
                         <div class="flex">
                             <svg
                                 version="1.0"
@@ -448,15 +442,6 @@
                                 >
                             </div>
                         </div>
-                        <div class="flex justify-end">
-                            <button
-                                type="submit"
-                                class="bg-talent-orange shadow-md mb-2 mt-2 pl-5 pr-5 pt-1 pb-1 text-talent-white font-bold rounded-full"
-                            >
-                                Opslaan
-                            </button>
-                        </div>
-                    </form>
 
                     <div
                         class="text-sm flex justify-center items-center text-talent-red"
@@ -470,33 +455,25 @@
                     ></div>
                     @endif
                 </div>
-
+                <form
+                    action="{{ route('dashboard.manageProfile.update', $user->id) }}"
+                    method="post"
+                    enctype="multipart/form-data"
+                    class="w-full"
+                >
+                    @csrf @method('put')
                 <div
                     class="flex justify-center mt-2 text-talent-orange font-bold text-3xl"
                 >
                     {{ $user->name }}
                 </div>
                 <div class="mt-2 text-talent-green">
-                    <form
-                        action="/dashboard/description/{{ $user->id }}"
-                        method="post"
-                    >
-                        @csrf @method('put')
                         <textarea
-                            name="description"
+                            name="beschrijving"
                             id=""
                             class="w-full border-none rounded-md mt-2 mb-2 focus:ring-talent-orange"
                             >{{ $user->description }}</textarea
                         >
-                        <div class="flex justify-end">
-                            <button
-                                type="submit"
-                                class="bg-talent-orange shadow-md pl-5 pr-5 pt-1 pb-1 text-talent-white font-bold rounded-full"
-                            >
-                                Opslaan
-                            </button>
-                        </div>
-                    </form>
                 </div>
             </div>
         </div>
@@ -511,27 +488,13 @@
                     Kennismaking pitch
                 </div>
                 <div class="mt-2 flex justify-center">
-                    <form
-                        action="/dashboard/pitch/{{ $user->id }}"
-                        method="post"
-                        enctype="multipart/form-data"
-                    >
-                        @csrf @method('put')
                         <input type="file" name="pitch" id="" />
-                        <button type="submit">Upload</button>
-                    </form>
                 </div>
             </div>
         </div>
 
         <!-- @include('components.scrollTop.index') -->
 
-        <form
-            action="{{ route('dashboard.manageProfile.update', $user->id) }}"
-            method="post"
-            class="mt-12"
-        >
-            @csrf @method('put')
 
             <div class="flex justify-center mb-10">
                 <div class="customCard">
@@ -567,7 +530,7 @@
                                 class="col-span-4 text-xs flex items-center font-bold text-talent-orange"
                             >
                                 <input
-                                    name="name"
+                                    name="naam"
                                     type="text"
                                     class="w-full focus:ring-talent-orange border-none rounded-md"
                                     value="{{ $user->name }}"
@@ -599,7 +562,7 @@
                                 class="col-span-4 text-xs flex items-center font-bold text-talent-orange"
                             >
                                 <input
-                                    name="city"
+                                    name="adres"
                                     type="text"
                                     class="w-full focus:ring-talent-orange border-none rounded-md"
                                     value="{{ $user->adress }}"
@@ -637,7 +600,7 @@
                                 class="col-span-4 text-xs flex items-center font-bold text-talent-orange"
                             >
                                 <input
-                                    name="employeeFunction"
+                                    name="functie"
                                     type="text"
                                     class="w-full focus:ring-talent-orange border-none rounded-md"
                                     value="{{ $user->employee->function }}"
@@ -705,7 +668,7 @@
                                 class="col-span-4 text-xs flex items-center font-bold text-talent-orange"
                             >
                                 <input
-                                    name="employeeCertificate"
+                                    name="diploma"
                                     type="text"
                                     class="w-full focus:ring-talent-orange border-none rounded-md"
                                     value="{{ $user->employee->certificate }}"
@@ -715,28 +678,59 @@
                             <div
                                 class="col-span-5 flex justify-end text-center"
                             >
-                                <button
-                                    class="bg-talent-orange shadow-md pl-5 pr-5 pt-1 pb-1 text-talent-white font-bold rounded-full"
-                                    type="submit"
-                                >
-                                    Opslaan
-                                </button>
                             </div>
+                            @endif
+                            @if(isset($user->employer))
+                                {{-- companyname --}}
+                                <div class=" flex mt-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                         stroke-width="1.5" stroke="currentColor" class="w-10 h-10 mr-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                              d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21" />
+                                    </svg>
+
+                                    <x-jet-input id="companyName"
+                                                 class=" font-sans focus:ring-talent-orange underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange"
+                                                 type="text" name="bedrijfsnaam" :value="old('bedrijfsnaam')" required autofocus
+                                                 placeholder="Vul hier uw bedrijfsnaam in" />
+                                </div>
+                                <div class="text-sm flex justify-center items-center text-talent-red">
+                                    @error('bedrijfsnaam')
+                                    {{$message}}
+                                    @enderror
+                                </div>
+                                {{-- websiteurl --}}
+                                <div class=" flex mt-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                         stroke-width="1.5" stroke="currentColor" class="w-10 h-10 mr-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                              d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+                                    </svg>
+
+                                    <x-jet-input id="websiteUrl"
+                                                 class=" font-sans focus:ring-talent-orange underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange"
+                                                 type="text" name="websitelink" :value="old('websitelink')" required autofocus
+                                                 placeholder="Link naar website" />
+                                </div>
+                                <div class="text-sm flex justify-center items-center text-talent-red">
+                                    @error('websitelink')
+                                    {{$message}}
+                                    @enderror
+                                </div>
                             @endif
                         </div>
                     </div>
                 </div>
             </div>
-        </form>
         <div class="col-span-5 text-center">
             <button
-                disabled
-                class="bg-talent-orange bg-opacity-60 shadow-md w-11/12 pt-2 pb-2 text-talent-white font-bold rounded-full"
+                class="bg-talent-orange shadow-md w-11/12 pt-2 pb-2 text-talent-white font-bold rounded-full"
                 type="submit"
             >
-                Opslaan gewijzigde gegevens (disabled)
+                Opslaan gewijzigde gegevens
             </button>
         </div>
+        </form>
         @include('components.scrollTop.index')
     </body>
 </html>

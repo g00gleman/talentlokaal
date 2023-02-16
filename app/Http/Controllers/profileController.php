@@ -34,49 +34,31 @@ class profileController extends Controller
         return redirect(route('dashboard.manageProfile.index'));
     }
 
-    // save description
-    public function pitch(Request $request, $id){
-        $this->validate(request(), [
-            'pitch' => 'required|file|mimetypes:video/mp4',
-        ]);
-        // get the video out of form
-        $video = $request->file('pitch');
-        // new file name for image
-        $newVideoFileName = time(). "." . $video->getExtension();
-        // replace old filename with the new one and save it into storage/public
-        Storage::disk('local')->put($newVideoFileName,  $video->get());
-
-        $user = User::find($id);
-        $user->pitch = $newVideoFileName;
-        $user->save();
-
-        return redirect(route('dashboard.manageProfile.index'));
-    }
     public function logout(){
         Auth::logout();
         Session()->flush();
         return redirect('/');
     }
-    public function cv(Request $request, $id){
-        $this->validate(request(), [
-            'cv' => 'file|mimes:doc,docx,pdf,png,jpg,jpeg',
-        ]);
-
-        $user = User::with('employee')->find($id);
-        // example
-        // files = stevens files
-        $cv = $request->get('cv');
-        //  files = stevens_pitch
-        $saveCv = time().'.'.$cv->getClientOriginalExtension();
-        // move stevens_pitch in the map called public/files
-        $cv->move(public_path('files'), $saveCv);
-        // store stevens_pitch in user table database
-
-        $user->employee->cv = $saveCv;
-        $user->employee->save();
-
-        return redirect(route('dashboard.manageProfile.index'));
-    }
+//    public function cv(Request $request, $id){
+//        $this->validate(request(), [
+//            'cv' => 'file|mimes:doc,docx,pdf,png,jpg,jpeg',
+//        ]);
+//
+//        $user = User::with('employee')->find($id);
+//        // example
+//        // files = stevens files
+//        $cv = $request->get('cv');
+//        //  files = stevens_pitch
+//        $saveCv = time().'.'.$cv->getClientOriginalExtension();
+//        // move stevens_pitch in the map called public/files
+//        $cv->move(public_path('files'), $saveCv);
+//        // store stevens_pitch in user table database
+//
+//        $user->employee->cv = $saveCv;
+//        $user->employee->save();
+//
+//        return redirect(route('dashboard.manageProfile.index'));
+//    }
 
     // return edit form page with all old userdata
     public function edit($id){
@@ -87,31 +69,45 @@ class profileController extends Controller
 
     // update specific user profile when click on update btn
     public function update($id, Request $request){
-        $updateUser = User::find($id);
-        $updateEmployee = employee::find($id);
         // validation errors for all form inputs
         $this->validate(request(), [
             'naam' => 'required|string|max:255',
-            // 'email' => 'required|string|email|max:255|unique:users',
-            // 'telefoonnummer' =>  'required|max:255|unique:App\Models\User,phoneNumber',
             'adres' => 'required|string|max:255',
-            // 'geboortedatum' => 'required|before:today|Date',
             // 'profielfoto' => 'image',
+            'pitch' => 'required|file|mimetypes:video/mp4',
+            'beschrijving' => 'string|',
         ]);
+        // pitch
+        // get the video out of form
+        $video = $request->file('pitch');
+        // new file name for image
+        $newVideoFileName = time(). "." . $video->getExtension();
+        // replace old filename with the new one and save it into storage/public
+        Storage::disk('local')->put($newVideoFileName,  $video->get());
 
-        $updateUser->name = $request->get('name');
-        // $updateUser->email = $request->get('email');
-        // $updateUser->phoneNumber = $request->get('telefoonnummer');
-        $updateUser->adress = $request->get('adress');
-//            dd( $request->get('employeeFunction'));
-        $updateEmployee->function = $request->get('employeeFunction');
-        $updateEmployee->certificate = $request->get('employeeCertificate');
-
-        // $updateUser->birthDate = $request->get('geboortedatum');
-
-        // save all data
+        // update user table
+        $updateUser = User::find($id);
+        $updateUser->name = $request->get('naam');
+        $updateUser->pitch = $newVideoFileName;
+        $updateUser->description = $request->get('beschrijving');
+        $updateUser->adress = $request->get('adres');
         $updateUser->save();
-        $updateEmployee->save();
+
+        if (isset($updateUser->employee)){
+            // update employee table
+            $updateEmployee = employee::find($updateUser->employee->id);
+            $updateEmployee->function = $request->get('functie');
+            $updateEmployee->certificate = $request->get('diploma');
+            $updateEmployee->save();
+        }elseif (isset($updateUser->employer)){
+            // update employer table
+            $updateEmployee = Employer::find($updateUser->employer->id);
+            $updateEmployee->companyName = $request->get('bedrijfsnaam');
+            $updateEmployee->websiteUrl = $request->get('websitelink');
+            $updateEmployee->save();
+        }else
+
+
 
         // return to the profile page after updating
         return redirect(route('dashboard.manageProfile.index'));
