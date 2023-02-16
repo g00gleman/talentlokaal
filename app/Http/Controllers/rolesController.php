@@ -79,12 +79,7 @@ private function registerUser(Request $request): User
             'profielfoto' => 'mimes:jpg,jpeg,png', 'max:1024',
             'wachtwoord' => 'required|min:8|max:20|confirmed'
         ]);
-        // get the image out of form
-        $image = $request->file('profielfoto');
-        // new file name for image
-        $imageNewFileName = time(). "." . $image->getExtension();
-        // replace old filename with the new one and save it into storage/public
-        Storage::disk('local')->put($imageNewFileName,  $image->get());
+
 
         // save data in user table
         $newUser = new User();
@@ -93,7 +88,15 @@ private function registerUser(Request $request): User
         $newUser->phoneNumber = $request->get('telefoonnummer');
         $newUser->adress = $request->get('adres');
         $newUser->birthDate = $request->get('geboortedatum');
-        $newUser->profile_photo_path = $imageNewFileName;
+        // get the image out of form
+        $image = $request->file('profielfoto');
+        if (isset($image)){
+            // new file name for image
+            $imageNewFileName = time(). "." . $image->getExtension();
+            // replace old filename with the new one and save it into storage/public
+            Storage::disk('local')->put($imageNewFileName,  $image->get());
+            $newUser->profile_photo_path = $imageNewFileName;
+        }
         $newUser->password = bcrypt($request->get('wachtwoord'));
         $newUser->save();
 

@@ -245,6 +245,10 @@
                             {{ $user->employee->certificate }}
                         </div>
                     @endif
+                    @if(isset($user->employer))
+                        {{ $user->employer->companyName }}
+                        {{ $user->employer->websiteUrl }}
+                    @endif
                 </div>
             </div>
         </div>

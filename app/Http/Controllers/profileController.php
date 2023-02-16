@@ -34,24 +34,6 @@ class profileController extends Controller
         return redirect(route('dashboard.manageProfile.index'));
     }
 
-    // save description
-    public function pitch(Request $request, $id){
-        $this->validate(request(), [
-            'pitch' => 'required|file|mimetypes:video/mp4',
-        ]);
-        // get the video out of form
-        $video = $request->file('pitch');
-        // new file name for image
-        $newVideoFileName = time(). "." . $video->getExtension();
-        // replace old filename with the new one and save it into storage/public
-        Storage::disk('local')->put($newVideoFileName,  $video->get());
-
-        $user = User::find($id);
-        $user->pitch = $newVideoFileName;
-        $user->save();
-
-        return redirect(route('dashboard.manageProfile.index'));
-    }
     public function logout(){
         Auth::logout();
         Session()->flush();
@@ -111,11 +93,20 @@ class profileController extends Controller
         $updateUser->adress = $request->get('adres');
         $updateUser->save();
 
-        // update employee table
-        $updateEmployee = employee::find($id);
-        $updateEmployee->function = $request->get('functie');
-        $updateEmployee->certificate = $request->get('diploma');
-        $updateEmployee->save();
+        if (isset($updateUser->employee)){
+            // update employee table
+            $updateEmployee = employee::find($updateUser->employee->id);
+            $updateEmployee->function = $request->get('functie');
+            $updateEmployee->certificate = $request->get('diploma');
+            $updateEmployee->save();
+        }elseif (isset($updateUser->employer)){
+            // update employer table
+            $updateEmployee = Employer::find($updateUser->employer->id);
+            $updateEmployee->companyName = $request->get('bedrijfsnaam');
+            $updateEmployee->websiteUrl = $request->get('websitelink');
+            $updateEmployee->save();
+        }else
+
 
 
         // return to the profile page after updating

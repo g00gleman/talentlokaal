@@ -680,6 +680,44 @@
                             >
                             </div>
                             @endif
+                            @if(isset($user->employer))
+                                {{-- companyname --}}
+                                <div class=" flex mt-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                         stroke-width="1.5" stroke="currentColor" class="w-10 h-10 mr-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                              d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21" />
+                                    </svg>
+
+                                    <x-jet-input id="companyName"
+                                                 class=" font-sans focus:ring-talent-orange underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange"
+                                                 type="text" name="bedrijfsnaam" :value="old('bedrijfsnaam')" required autofocus
+                                                 placeholder="Vul hier uw bedrijfsnaam in" />
+                                </div>
+                                <div class="text-sm flex justify-center items-center text-talent-red">
+                                    @error('bedrijfsnaam')
+                                    {{$message}}
+                                    @enderror
+                                </div>
+                                {{-- websiteurl --}}
+                                <div class=" flex mt-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                         stroke-width="1.5" stroke="currentColor" class="w-10 h-10 mr-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                              d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+                                    </svg>
+
+                                    <x-jet-input id="websiteUrl"
+                                                 class=" font-sans focus:ring-talent-orange underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange"
+                                                 type="text" name="websitelink" :value="old('websitelink')" required autofocus
+                                                 placeholder="Link naar website" />
+                                </div>
+                                <div class="text-sm flex justify-center items-center text-talent-red">
+                                    @error('websitelink')
+                                    {{$message}}
+                                    @enderror
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>
