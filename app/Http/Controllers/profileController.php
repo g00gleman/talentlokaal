@@ -74,40 +74,50 @@ class profileController extends Controller
             'naam' => 'required|string|max:255',
             'adres' => 'required|string|max:255',
             // 'profielfoto' => 'image',
-            'pitch' => 'required|file|mimetypes:video/mp4',
-            'beschrijving' => 'string|',
+            'pitch' => 'file|mimetypes:video/mp4',
+            'beschrijving' => 'string',
         ]);
-        // pitch
-        // get the video out of form
-        $video = $request->file('pitch');
-        // new file name for image
-        $newVideoFileName = time(). "." . $video->getExtension();
-        // replace old filename with the new one and save it into storage/public
-        Storage::disk('local')->put($newVideoFileName,  $video->get());
 
         // update user table
         $updateUser = User::find($id);
+
+        $pitch = $request->file('pitch');
+        if (isset($pitch)){
+            // if they oploaded a pitch
+            // new file name for pitch
+            $newVideoFileName = time(). "." . $pitch->getExtension();
+            // replace old filename with the new one and save it into storage/public
+            Storage::disk('local')->put($newVideoFileName,  $pitch->get());
+            $updateUser->pitch = $newVideoFileName;
+        }
         $updateUser->name = $request->get('naam');
-        $updateUser->pitch = $newVideoFileName;
         $updateUser->description = $request->get('beschrijving');
         $updateUser->adress = $request->get('adres');
         $updateUser->save();
 
         if (isset($updateUser->employee)){
+            $this->validate(request(), [
+                'functie' => 'string|max:255',
+                'diploma' => 'string|max:255',
+            ]);
             // update employee table
             $updateEmployee = employee::find($updateUser->employee->id);
             $updateEmployee->function = $request->get('functie');
             $updateEmployee->certificate = $request->get('diploma');
             $updateEmployee->save();
         }elseif (isset($updateUser->employer)){
+            $this->validate(request(), [
+                'bedrijfsnaam' => 'required|string|max:255',
+                'websitelink' => 'string|active_url|max:255',
+            ]);
             // update employer table
             $updateEmployee = Employer::find($updateUser->employer->id);
             $updateEmployee->companyName = $request->get('bedrijfsnaam');
             $updateEmployee->websiteUrl = $request->get('websitelink');
             $updateEmployee->save();
-        }else
+        }else{
 
-
+        }
 
         // return to the profile page after updating
         return redirect(route('dashboard.manageProfile.index'));

@@ -221,8 +221,11 @@
                     Kennismaking pitch
                 </div>
                 <div class="mt-2 flex justify-center">
-                        <input type="file" name="pitch" id="" />
+                        <input type="file" name="pitch" id="" accept=".mp4" />
                 </div>
+                @error('pitch')
+                {{ $message }}
+                @enderror
             </div>
         </div>
 
