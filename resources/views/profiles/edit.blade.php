@@ -272,6 +272,9 @@
                                     value="{{ $user->name }}"
                                     placeholder="Voeg een naam toe"
                                 />
+                                @error('naam')
+                                {{ $message }}
+                                @enderror
                             </div>
 
                             <!-- adres -->
@@ -305,6 +308,9 @@
                                     value="{{ $user->adress }}"
                                     placeholder="Voeg een adress toe"
                                 />
+                                @error('adres')
+                                {{ $message }}
+                                @enderror
                             </div>
 
                             <!-- job -->
@@ -344,6 +350,9 @@
                                     value="{{ $user->employee->function }}"
                                     placeholder="Voeg een functie toe"
                                 />
+                                @error('functie')
+                                {{ $message }}
+                                @enderror
                             </div>
 
                             <!-- job-2? -->
@@ -413,6 +422,9 @@
                                     value="{{ $user->employee->certificate }}"
                                     placeholder="Voeg een cetificaat toe"
                                 />
+                                @error('certificate')
+                                {{ $message }}
+                                @enderror
                             </div>
 
                             <div
@@ -430,15 +442,18 @@
                                 <div
                                 class="col-span-4 text-xs flex items-center font-bold text-talent-orange"
                             >
-                                    
+
 
                                     <input id="companyName"
                                                  class="w-full focus:ring-talent-orange border-none rounded-md"
-                                                 type="text" name="bedrijfsnaam" :value="old('bedrijfsnaam')" required autofocus
+                                                 type="text" name="bedrijfsnaam" :value="old('bedrijfsnaam')"  autofocus
                                                  placeholder="Vul hier uw bedrijfsnaam in" />
+                                    @error('bedrijfsnaam')
+                                    {{ $message }}
+                                    @enderror
                                 </div>
                                 {{-- websiteurl --}}
-                               
+
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                          stroke-width="1.5" stroke="currentColor" class="w-10 h-10 mr-5">
                                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -449,8 +464,11 @@
                                 >
                                     <input id="websiteUrl"
                                                  class=" w-full focus:ring-talent-orange border-none rounded-md"
-                                                 type="text" name="websitelink" :value="old('websitelink')" required autofocus
+                                                 type="text" name="websitelink" :value="old('websitelink')"  autofocus
                                                  placeholder="Link naar website" />
+                                        @error('websitelink')
+                                        {{ $message }}
+                                        @enderror
                                 </div>
                             @endif
                         </div>

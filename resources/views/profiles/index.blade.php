@@ -246,8 +246,12 @@
                         </div>
                     @endif
                     @if(isset($user->employer))
-                        {{ $user->employer->companyName }}
-                        {{ $user->employer->websiteUrl }}
+                        <div class="col-span-4 text-base flex items-center font-bold text-talent-orange">
+                            {{ $user->employer->companyName }}<br>
+                        </div>
+                        <div class="col-span-4 text-base flex items-center font-bold text-talent-orange">
+                            <a href="{{ $user->employer->websiteUrl }}">Bezoek website</a>
+                        </div>
                     @endif
                 </div>
             </div>
