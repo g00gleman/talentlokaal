@@ -142,6 +142,33 @@
         border-radius: 100px;
         color: white;
     }
+
+    @media only screen and (min-width: 600px) {
+        .menu-content-nav {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100vh;
+            width: 400px;
+            background-color: white;
+            border-bottom-left-radius: 16px;
+            border-top-left-radius: 16px;
+            z-index: 3;
+        }
+
+        .nav-content-btn {
+            width: 400px;
+            height: 10vh;
+            /* background-color: #bcd7d2; */
+            color: #1e796a;
+            font-weight: bold;
+            font-size: 24px;
+            border-bottom: solid 1px black;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            padding-left: 40px;
+        }
+    }
 </style>
 
 <svg
