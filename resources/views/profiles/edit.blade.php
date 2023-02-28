@@ -12,7 +12,7 @@
         ></script>
         <link href="/profiles/style.css" type="text/css" rel="stylesheet" />
         <style>
-            .test{
+            .body-scrollable{
                 height: 100vh;
                 overflow: scroll;
             }
@@ -21,7 +21,7 @@
 
     <body class="bg-talent-green">
         @include('components.navbar.index')
-        <div class="test">
+        <div class="body-scrollable">
         <div class="w-full h-64 bg-talent-white rounded-b-3xl" id="top">
             <div class="flex">
                 <!-- Logo -->
