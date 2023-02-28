@@ -7,6 +7,10 @@
         <title>Document</title>
         @vite('resources/css/app.css')
         <style>
+            .content {
+                display: flex;
+                justify-content: center;
+            }
             .question {
                 padding-top: 15px;
                 padding-bottom: 15px;
@@ -41,6 +45,26 @@
                 height: 30px;
                 border-radius: 100px;
                 cursor: pointer;
+            }
+
+            @media only screen and (min-width: 600px) {
+                .question {
+                    padding-top: 15px;
+                    padding-bottom: 15px;
+                    width: 600px;
+                    background-color: #bcd7d2;
+                    border-radius: 16px;
+                    display: flex;
+                    flex-direction: column;
+                    margin-top: 18px;
+                    justify-content: center;
+                    align-items: center;
+                    padding-left: 35px;
+                    padding-right: 35px;
+                    font-size: 13px;
+                    font-weight: bold;
+                    color: white;
+                }
             }
         </style>
     </head>
@@ -136,26 +160,39 @@
             </div>
         </div>
         <div class="content">
-            @foreach($questions as $question)
+            <div class="questionList">
+                @foreach($questions as $question)
                 <div class="question">
                     {{ $question->question }}
                     <div class="answer">
-                        <div class="option" onclick="answer1()" id="option1">1</div>
-                        <div class="option" onclick="answer2()" id="option2">2</div>
-                        <div class="option" onclick="answer3()" id="option3">3</div>
-                        <div class="option" onclick="answer4()" id="option4">4</div>
+                        <div class="option" onclick="answer1()" id="option1">
+                            1
+                        </div>
+                        <div class="option" onclick="answer2()" id="option2">
+                            2
+                        </div>
+                        <div class="option" onclick="answer3()" id="option3">
+                            3
+                        </div>
+                        <div class="option" onclick="answer4()" id="option4">
+                            4
+                        </div>
                     </div>
                 </div>
-            @endforeach
+                @endforeach
+                <div class="Pagination-end">
+                    <div class="Pagination">
+                        <div class="button"><</div>
+                        <div class="button">></div>
+                    </div>
+                </div>
+            </div>
         </div>
         <style>
             .Pagination {
-                position: absolute;
-                right: 25px;
-                bottom: 15px;
                 display: flex;
                 justify-content: space-between;
-                width: 18vw;
+                width: 75px;
             }
 
             .button {
@@ -164,11 +201,14 @@
                 color: lightgray;
                 opacity: 0.8;
             }
+
+            .Pagination-end {
+                display: flex;
+                justify-content: end;
+                margin-right: 15px;
+                margin-bottom: 15px;
+            }
         </style>
-        <div class="Pagination">
-            <div class="button"><</div>
-            <div class="button">></div>
-        </div>
     </body>
     <script>
         function answer1() {
