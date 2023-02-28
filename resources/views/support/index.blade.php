@@ -130,6 +130,7 @@
                 color: #1f796a;
                 width: 90vw;
                 height: auto;
+                max-width: 600px;
             }
         </style>
 
