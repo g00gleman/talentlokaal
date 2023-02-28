@@ -258,11 +258,12 @@
         </style>
     </body>
     <script>
+        let one = document.getElementById("option1");
+        let two = document.getElementById("option2");
+        let three = document.getElementById("option3");
+        let four = document.getElementById("option4");
+
         function answer1() {
-            var one = document.getElementById("option1");
-            var two = document.getElementById("option2");
-            var three = document.getElementById("option3");
-            var four = document.getElementById("option4");
 
             one.style.backgroundColor = "#1f796a";
             two.style.backgroundColor = "#bcd7d2";
@@ -270,10 +271,6 @@
             four.style.backgroundColor = "#bcd7d2";
         }
         function answer2() {
-            var one = document.getElementById("option1");
-            var two = document.getElementById("option2");
-            var three = document.getElementById("option3");
-            var four = document.getElementById("option4");
 
             one.style.backgroundColor = "#bcd7d2";
             two.style.backgroundColor = "#1f796a";
@@ -281,10 +278,6 @@
             four.style.backgroundColor = "#bcd7d2";
         }
         function answer3() {
-            var one = document.getElementById("option1");
-            var two = document.getElementById("option2");
-            var three = document.getElementById("option3");
-            var four = document.getElementById("option4");
 
             one.style.backgroundColor = "#bcd7d2";
             two.style.backgroundColor = "#bcd7d2";
@@ -292,10 +285,6 @@
             four.style.backgroundColor = "#bcd7d2";
         }
         function answer4() {
-            var one = document.getElementById("option1");
-            var two = document.getElementById("option2");
-            var three = document.getElementById("option3");
-            var four = document.getElementById("option4");
 
             one.style.backgroundColor = "#bcd7d2";
             two.style.backgroundColor = "#bcd7d2";
