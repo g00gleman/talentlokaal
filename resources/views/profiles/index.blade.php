@@ -9,10 +9,17 @@
     <link href="/profiles/style.css" type="text/css" rel="stylesheet" />
 
     @vite('resources/css/app.css')
+    <style>
+        .body-scrollable{
+            height: 100vh;
+            overflow: scroll;
+        }
+    </style>
 </head>
 
 <body class="bg-talent-green">
     @include('components.navbar.index')
+    <div class="body-scrollable">
     <div id="top" class="w-full h-64 bg-talent-white rounded-b-3xl">
         <div class="flex">
             <!-- Logo -->
@@ -112,7 +119,6 @@
                 {{ $user->description }}
             @endif
         </div>
-    </div>
     </div>
 
 
@@ -285,7 +291,7 @@
             </div>
         </div>
     </div> -->
-    </div>
+    </div></div>
 
 
 
