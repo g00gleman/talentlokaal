@@ -11,10 +11,17 @@
             crossorigin="anonymous"
         ></script>
         <link href="/profiles/style.css" type="text/css" rel="stylesheet" />
+        <style>
+            .test{
+                height: 100vh;
+                overflow: scroll;
+            }
+        </style>
     </head>
 
     <body class="bg-talent-green">
         @include('components.navbar.index')
+        <div class="test">
         <div class="w-full h-64 bg-talent-white rounded-b-3xl" id="top">
             <div class="flex">
                 <!-- Logo -->
@@ -475,15 +482,25 @@
                     </div>
                 </div>
             </div>
-        <div class="col-span-5 text-center">
+            <div class="col-span-5 text-center">
+                <button
+                    class="bg-talent-orange shadow-md w-11/12 pt-2 pb-2 text-talent-white font-bold rounded-full"
+                    type="submit"
+                >
+                    Opslaan gewijzigde gegevens
+                </button>
+            </div>
+        </form>
+        <div class="col-span-5 text-center mt-8">
             <button
-                class="bg-talent-orange shadow-md w-11/12 pt-2 pb-2 text-talent-white font-bold rounded-full"
-                type="submit"
+                class="bg-talent-white shadow-md w-11/12 pt-2 pb-2 font-bold rounded-full"
+                onclick="openModalUserDel()"
             >
-                Opslaan gewijzigde gegevens
+                Verwijder account
             </button>
         </div>
-        </form>
+        @include('profiles.deleteModal')
         @include('components.scrollTop.index')
+    </div>
     </body>
 </html>
