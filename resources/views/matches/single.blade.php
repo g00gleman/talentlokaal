@@ -57,7 +57,7 @@
             <button class=" text-talent-white bg-talent-orange w-28 rounded-full h-8 text-sm"> <i
                     class=" mr-2 fa-regular fa-envelope text-talent-white"></i>Mailen </button>
             <button class=" text-talent-white bg-talent-orange w-28 rounded-full h-8 text-sm"><i
-                    class=" mr-2 fa-regular fa-comments text-talent-white"></i></i> Chatten </button>
+                    class=" mr-2 fa-solid fa-comments text-talent-white"></i>Chatten </button>
 
         </div>
 
