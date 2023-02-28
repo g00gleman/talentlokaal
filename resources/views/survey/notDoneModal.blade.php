@@ -20,7 +20,7 @@
     }
 
     .modal-content-box {
-        height: 25vh;
+        height: 22.5vh;
         width: 80vw;
         background-color: white;
         z-index: 2;
@@ -34,17 +34,23 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 15vh;
+        height: 12.5vh;
         color: #1e796a;
         font-weight: bold;
         text-align: center;
+        margin-left: 10px;
+        margin-right: 10px;
+        font-size: 14px;
+        margin-top: 5px;
     }
+
     .box-content {
         display: flex;
         justify-content: space-evenly;
         align-items: center;
         height: 7.5vh;
     }
+
     .box-content-btn {
         background-color: #ef840c;
         padding-left: 40px;
@@ -53,20 +59,21 @@
         padding-bottom: 3px;
         border-radius: 100px;
         color: white;
+        font-weight: bold;
     }
 </style>
 
-<div class="modal" id="modalUserDel">
+<div class="modal" id="modalDone">
     <div class="modal-content">
-        <div class="modal-content-overlay" onclick="closeModalUserDel()"></div>
+        <div class="modal-content-overlay" onclick="closeModalDone()"></div>
         <div class="modal-content-box">
             <div class="box-top">
-                Weet u zeker dat u uw account wilt verwijderen?
+                U heeft nog niet alle vragen beantwoord. Geef eerst antwoord op
+                de vragen voordat u doorgaat.
             </div>
             <div class="box-content">
-                <a href="#" class="box-content-btn"> Ja </a>
-                <button class="box-content-btn" onclick="closeModalUserDel()">
-                    Nee
+                <button class="box-content-btn" onclick="closeModalDone()">
+                    Begrepen
                 </button>
             </div>
         </div>
@@ -74,10 +81,11 @@
 </div>
 
 <script>
-    function openModalUserDel() {
-        document.getElementById("modalUserDel").style.display = "block";
+    function openModalDone() {
+        document.getElementById("modalDone").style.display = "block";
     }
-    function closeModalUserDel() {
-        document.getElementById("modalUserDel").style.display = "none";
+
+    function closeModalDone() {
+        document.getElementById("modalDone").style.display = "none";
     }
 </script>
