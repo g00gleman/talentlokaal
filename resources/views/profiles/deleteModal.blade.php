@@ -34,9 +34,10 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 12.5vh;
+        height: 15vh;
         color: #1e796a;
         font-weight: bold;
+        text-align: center;
     }
     .box-content {
         display: flex;

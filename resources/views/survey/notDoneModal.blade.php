@@ -20,7 +20,7 @@
     }
 
     .modal-content-box {
-        height: 25vh;
+        height: 22.5vh;
         width: 80vw;
         background-color: white;
         z-index: 2;
@@ -38,6 +38,10 @@
         color: #1e796a;
         font-weight: bold;
         text-align: center;
+        margin-left: 10px;
+        margin-right: 10px;
+        font-size: 14px;
+        margin-top: 5px;
     }
 
     .box-content {
@@ -55,6 +59,7 @@
         padding-bottom: 3px;
         border-radius: 100px;
         color: white;
+        font-weight: bold;
     }
 </style>
 
@@ -63,12 +68,12 @@
         <div class="modal-content-overlay" onclick="closeModalDone()"></div>
         <div class="modal-content-box">
             <div class="box-top">
-                U heeft nog niet alle vragen beantwoord.<br />
-                Geef eerst antwoord op de vragen voordat u doorgaat.
+                U heeft nog niet alle vragen beantwoord. Geef eerst antwoord op
+                de vragen voordat u doorgaat.
             </div>
             <div class="box-content">
                 <button class="box-content-btn" onclick="closeModalDone()">
-                    Nee
+                    Begrepen
                 </button>
             </div>
         </div>

@@ -71,10 +71,6 @@
                 height: 100vh;
                 overflow: scroll;
             }
-
-            .button:hover {
-                cursor: pointer;
-            }
         </style>
     </head>
     <body class="bg-talent-green">
