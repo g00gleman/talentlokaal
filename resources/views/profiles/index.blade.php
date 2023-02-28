@@ -218,7 +218,7 @@
                                 </svg>
                         </div>
                         <div class="col-span-4 text-baseflex items-center font-bold text-talent-orange">
-                            {{ $user->employee->function }}
+                            {{ $user->employee->jobCategoryEmployee->categoryName }}
                         </div>
 
                         <!-- job-2? -->
