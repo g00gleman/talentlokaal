@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\employee;
 use App\Models\Employer;
+use App\Models\jobCategory;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -20,7 +21,11 @@ class rolesController extends Controller
     }
     public function getRole($id)
     {
-        return view('roles.single')->with('id', $id);
+        $jobCategories = jobCategory::all();
+        return view('roles.single',[
+            'id' => $id,
+            'jobCategories' => $jobCategories,
+        ]);
     }
 
     public function registerEmployee(Request $request)
@@ -30,13 +35,13 @@ class rolesController extends Controller
 
         // validation errors for employee form inputs
         $this->validate(request(), [
-            'functie' => 'string|max:255',
+            'jobCategory' => 'integer',
             'diploma' => 'string|max:255',
         ]);
 
         // save data in employee table
         $newEmployee = new employee();
-        $newEmployee->function = $request->get('functie');
+        $newEmployee->jobCategory = $request->get('jobCategory');
         $newEmployee->certificate = $request->get('diploma');
         $newUser->description = $request->get('description');
         $newEmployee->user_Id = $newUser->id;

@@ -168,12 +168,15 @@
                             <g fill="#000000FF" stroke="#000000FF">
                             <path d="M 23.000 21.000 C 23.000 22.333 23.667 23.000 25.000 23.000 C 26.333 23.000 27.000 22.333 27.000 21.000 C 27.000 19.667 26.333 19.000 25.000 19.000 C 23.667 19.000 23.000 19.667 23.000 21.000 "/></g>
                             </svg>
+                        <select name="jobCategory" id="jobCategory">
+                            <option value="" selected>Kies een Sector</option>
+                            @foreach($jobCategories as $category)
+                                <option value="{{ $category->id }}">{{ $category->categoryName }}</option>
+                            @endforeach
+                        </select>
 
-                            <x-jet-input id="function"
-                                class=" font-sans focus:ring-talent-orange underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange"
-                                type="text" name="functie" :value="old('functie')"  autofocus
-                                placeholder="Vul hier uw functie in" />
                         </div>
+
                         <div class="text-sm flex justify-center items-center text-talent-red">
                         @error('functie')
                         {{$message}}
