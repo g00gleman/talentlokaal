@@ -81,7 +81,11 @@
                     <!-- Logo -->
                     <div class="mt-3">
                         <div class="flex justify-between w-screen">
-                            <?xml version="1.0" encoding="UTF-8"?><svg
+                            <?
+
+use Ramsey\Uuid\Type\Integer;
+
+xml version="1.0" encoding="UTF-8"?><svg
                                 id="Laag_1"
                                 xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 559.14 263.07"
@@ -186,41 +190,60 @@
             </div>
             <div class="content">
                 <div class="questionList">
+                    <?php 
+                        $vragen = 0;
+                    ?>
                     @foreach($questions as $question)
                     <div class="question">
+                        <?php 
+                            $vragen+=1;
+                            $som = $vragen;
+                            $vraag1 = $som + 0.1;
+                            $vraag2 = $som + 0.2;
+                            $vraag3 = $som + 0.3;
+                            $vraag4 = $som + 0.4;
+                        ?>
                         {{ $question->question }}
-                        <div class="answer">
-                            <div
+                        <div class="answer" id="answer" >
+                            <input
+                                type="radio"
                                 class="option"
-                                onclick="answer1()"
-                                id="option1"
+                                placeholder="1"
+                                value="{{$vraag1}}"
+                                name="{{$som}}"
+                                id="{{$som}}"
                             >
-                                1
-                            </div>
-                            <div
+                            <input
+                                type="radio"
                                 class="option"
-                                onclick="answer2()"
-                                id="option2"
+                                placeholder="2"
+                                value="{{$vraag2}}"
+                                name="{{$som}}"
+                                id="{{$som}}"
                             >
-                                2
-                            </div>
-                            <div
+                            <input
+                                type="radio"
                                 class="option"
-                                onclick="answer3()"
-                                id="option3"
+                                placeholder="3"
+                                value="{{$vraag3}}"
+                                name="{{$som}}"
+                                id="{{$som}}"
                             >
-                                3
-                            </div>
-                            <div
+                            <input
+                                type="radio"
                                 class="option"
-                                onclick="answer4()"
-                                id="option4"
+                                placeholder="4"
+                                value="{{$vraag4}}"
+                                name="{{$som}}"
+                                id="{{$som}}"
                             >
-                                4
-                            </div>
+                                
                         </div>
                     </div>
                     @endforeach
+                    {{-- pagination  --}}
+                    <div hidden>{{ $questions->links() }}</div>
+
                     <div class="Pagination-end">
                         <div class="Pagination">
                             <div class="button" onclick="openModalDone()">
@@ -249,6 +272,20 @@
                 opacity: 0.8;
             }
 
+            .option {
+            border: none;
+            outline: none;
+            padding: 10px 16px;
+            background-color: #f1f1f1;
+            cursor: pointer;
+            font-size: 18px;
+            }
+
+            .active, .option:hover {
+            background-color: #666;
+            color: white;
+            }
+
             .Pagination-end {
                 display: flex;
                 justify-content: end;
@@ -258,38 +295,7 @@
         </style>
     </body>
     <script>
-        let one = document.getElementById("option1");
-        let two = document.getElementById("option2");
-        let three = document.getElementById("option3");
-        let four = document.getElementById("option4");
 
-        function answer1() {
 
-            one.style.backgroundColor = "#1f796a";
-            two.style.backgroundColor = "#bcd7d2";
-            three.style.backgroundColor = "#bcd7d2";
-            four.style.backgroundColor = "#bcd7d2";
-        }
-        function answer2() {
-
-            one.style.backgroundColor = "#bcd7d2";
-            two.style.backgroundColor = "#1f796a";
-            three.style.backgroundColor = "#bcd7d2";
-            four.style.backgroundColor = "#bcd7d2";
-        }
-        function answer3() {
-
-            one.style.backgroundColor = "#bcd7d2";
-            two.style.backgroundColor = "#bcd7d2";
-            three.style.backgroundColor = "#1f796a";
-            four.style.backgroundColor = "#bcd7d2";
-        }
-        function answer4() {
-
-            one.style.backgroundColor = "#bcd7d2";
-            two.style.backgroundColor = "#bcd7d2";
-            three.style.backgroundColor = "#bcd7d2";
-            four.style.backgroundColor = "#1f796a";
-        }
     </script>
 </html>

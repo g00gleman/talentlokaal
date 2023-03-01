@@ -9,7 +9,7 @@ class surveyController extends Controller
 {
     // return view of Survey
     public function displaySurvey(){
-        $questions = questions::all();
+        $questions = questions::paginate(4);
         return view('survey.index')->with([
             'questions' => $questions,
         ]);
