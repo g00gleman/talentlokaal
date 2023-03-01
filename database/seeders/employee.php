@@ -19,7 +19,7 @@ class employee extends Seeder
         $employee = [
             [
                 'id' => 1,
-                'function' => 'Scholier',
+                'jobCategory' => 2,
                 'certificate' => 'MBO',
                 'user_Id' => 1,
                 'created_at' => Carbon::now(),

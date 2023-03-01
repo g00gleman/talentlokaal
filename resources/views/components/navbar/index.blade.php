@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="/navbar/style.css" />
+<!-- <link rel="stylesheet" href="/navbar/style.css" /> -->
 
 <style>
     .menuIcon {
@@ -8,11 +8,6 @@
         background-color: #bcd7d2;
         color: #1e796a;
         border-radius: 100px;
-        top: 0;
-        right: 0;
-        position: absolute;
-        margin-right: 15px;
-        margin-top: 15px;
     }
 
     .menu {
@@ -170,22 +165,6 @@
         }
     }
 </style>
-
-<svg
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke-width="1.5"
-    stroke="currentColor"
-    class="menuIcon"
-    onclick="openMenu(); check();"
->
-    <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-    />
-</svg>
 
 <div class="menu" id="menu">
     <div class="menu-content">
