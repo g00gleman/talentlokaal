@@ -85,6 +85,61 @@
                 border: none;
                 outline: none;
             }
+
+                .wrapper {
+                    width: 100%;
+                }
+
+                h1 {
+                    margin-bottom: 20px;
+                }
+
+                .container-3 {
+                    background-color: #bcd7d2;
+                    border-radius: 8px;
+                    box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+                    margin: 20px 20px;
+                    color: rgb(30 121 106);
+                }
+
+                .question {
+                    font-size: 1.2rem;
+                    font-weight: 400;
+                    padding: 20px 80px 20px 20px;
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    cursor: pointer;
+                    font-weight:bold;
+                }
+
+                .question::after {
+                    content: "\002B";
+                    font-size: 2.2rem;
+                    position: absolute;
+                    right: 20px;
+                    transition: 0.2s;
+                }
+
+                    .question.active::after {
+                    transform: rotate(45deg);
+                }
+
+                .answercont {
+                    max-height: 0;
+                    overflow: hidden;
+                    transition: 0.3s;
+                }
+
+                .answer {
+                    padding: 0 20px 20px;
+                    line-height: 1.5rem;
+                    font-family:'Roboto';
+                    font-size:15px;
+                }
+
+                .question.active + .answercont {
+                }
         </style>
 
         <div class="flex justify-center mt-24">
@@ -189,21 +244,20 @@
 
         <!-- @include('components.scrollTop.index') -->
 
-        <div class="flex mt-12 justify-center">
-            <div class="customCard">
-                <div
-                    class="flex justify-center text-xl font-bold text-talent-green"
-                >
-                    Kennismaking pitch
-                </div>
-                <div class="mt-2 flex justify-center">
-                        <input type="file" name="pitch" id="" accept=".mp4" />
-                </div>
-                @error('pitch')
-                {{ $message }}
-                @enderror
-            </div>
-        </div>
+<div class="wrapper">
+  
+  <div class="container-3">
+      <div class="question" class="text-xl font-bold text-talent-green">
+      Kennismaking pitch
+      </div>
+      <div class="answercont">
+      <div class="answer">
+      <input type="file" name="pitch" id="" accept=".mp4" /><br><br>
+      </div>
+      </div>
+  </div>
+  
+</div>
 
         <!-- @include('components.scrollTop.index') -->
 
@@ -471,5 +525,29 @@
         @include('profiles.deleteModal')
         @include('components.scrollTop.index')
     </div>
+
+        <script>
+
+            let question = document.querySelectorAll(".question");
+
+            question.forEach(question => {
+            question.addEventListener("click", event => {
+                const active = document.querySelector(".question.active");
+                if(active && active !== question ) {
+                active.classList.toggle("active");
+                active.nextElementSibling.style.maxHeight = 0;
+                }
+                question.classList.toggle("active");
+                const answer = question.nextElementSibling;
+                if(question.classList.contains("active")){
+                answer.style.maxHeight = answer.scrollHeight + "px";
+                } else {
+                answer.style.maxHeight = 0;
+                }
+            })
+            })
+
+
+        </script>
     </body>
 </html>
