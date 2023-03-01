@@ -31,7 +31,7 @@ class user extends Seeder
             ],
             [
                 'id' => 2,
-                'name' => 'Rick',
+                'name' => 'werkgever',
                 'email' => 'werkgever@admin.com',
                 'birthDate' => now(),
                 'phoneNumber' => '0612345671',

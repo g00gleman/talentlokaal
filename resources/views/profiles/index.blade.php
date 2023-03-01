@@ -14,7 +14,7 @@
             height: 100vh;
             overflow: scroll;
         }
-        
+
     </style>
 </head>
 
@@ -218,7 +218,7 @@
                                 </svg>
                         </div>
                         <div class="col-span-4 text-baseflex items-center font-bold text-talent-orange">
-                            {{ $user->employee->jobCategoryEmployee->categoryName }}
+                            {{ $categoryName->categoryName}}
                         </div>
 
                         <!-- job-2? -->

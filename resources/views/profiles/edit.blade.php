@@ -34,7 +34,7 @@
                                     .cls-1 {
                                         fill: #ef840c;
                                     }
-    
+
                                     .cls-2 {
                                         fill: #1f796a;
                                     }
@@ -390,13 +390,15 @@
                             <div
                                 class="col-span-4 text-xs flex items-center font-bold text-talent-orange"
                             >
-                                <input
-                                    name="functie"
-                                    type="text"
-                                    class="w-full focus:ring-talent-orange border-none rounded-md"
-                                    value="{{ $user->employee->function }}"
-                                    placeholder="Voeg een functie toe"
-                                />
+                            <select name="jobCategory" id="jobCategory" class="w-full focus:ring-talent-orange border-none rounded-md">
+                                @foreach($jobCategories as $category)
+                                    @if ($category->id == $user->employee->jobCategory)
+                                        <option value="{{ $category->id }}" selected>{{ $category->categoryName }}</option>
+                                    @else
+                                        <option value="{{ $category->id }}">{{ $category->categoryName }}</option>
+                                    @endif
+                                @endforeach
+                            </select>
                                 @error('functie')
                                 {{ $message }}
                                 @enderror

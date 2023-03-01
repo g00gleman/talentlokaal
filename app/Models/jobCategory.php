@@ -13,4 +13,11 @@ class jobCategory extends Model
     {
         return $this->hasMany(employee::class);
     }
+
+    protected $fillable = [
+        'id',
+        'categoryName',
+        'created_at',
+        'updated_at',
+    ];
 }
