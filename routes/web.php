@@ -4,6 +4,7 @@ use App\Http\Controllers\MatchesController;
 use App\Http\Controllers\profileController;
 use App\Http\Controllers\rolesController;
 use App\Http\Controllers\surveyController;
+use App\Http\Controllers\userFileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Redirect;
 
@@ -45,6 +46,11 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'as' => 'dashboar
 
     Route::get('/redirect', function () {
         return Redirect::to(url()->previous());
+    });
+    // get the route of the pitch
+    Route::group(['prefix' => 'userFiles'], function () {
+        Route::get('/pitch/{user}' , [userFileController::class, 'getPitch'])->name('userPitch');
+        Route::get('/cv/{user}', [userFileController::class, 'getCv']);
     });
 
     // update your profile with a description, files or cv
