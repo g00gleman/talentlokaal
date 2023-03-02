@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\employee;
 use App\Models\Employer;
+use App\Models\jobCategory;
 use App\Models\User;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
@@ -17,8 +18,12 @@ class profileController extends Controller
     public function index()
     {
         $user = User::with('employee')->find(Auth::id());
+        $categoryName = jobCategory::where('id', $user->employee->jobCategory)->first();
 
-        return view('profiles.index')->with('user', $user);
+        return view('profiles.index', [
+            'categoryName' => $categoryName,
+            'user' => $user,
+        ]);
 
     }
     // load the view RegisterIntro to add description
@@ -63,8 +68,14 @@ class profileController extends Controller
     // return edit form page with all old userdata
     public function edit($id){
         $editUser = User::find($id);
+
+        $jobCategories = jobCategory::all();
+
         // dd($editUser);
-        return view('profiles.edit')->with('user', $editUser);
+        return view('profiles.edit',[
+            'user' => $editUser,
+            'jobCategories' => $jobCategories,
+        ]);
     }
 
     // update specific user profile when click on update btn
@@ -97,12 +108,12 @@ class profileController extends Controller
 
         if (isset($updateUser->employee)){
             $this->validate(request(), [
-                'functie' => 'string|max:255',
+                'jobCategory' => 'integer',
                 'diploma' => 'string|max:255',
             ]);
             // update employee table
             $updateEmployee = employee::find($updateUser->employee->id);
-            $updateEmployee->function = $request->get('functie');
+            $updateEmployee->jobCategory = $request->get('jobCategory');
             $updateEmployee->certificate = $request->get('diploma');
             $updateEmployee->save();
         }elseif (isset($updateUser->employer)){
