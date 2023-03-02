@@ -97,7 +97,8 @@ private function registerUser(Request $request): User
         $image = $request->file('profielfoto');
         if (isset($image)){
             // new file name for image
-            $imageNewFileName = time(). "." . $image->getExtension();
+            $imageNewFileName = time(). "." . $image->extension();
+
             // replace old filename with the new one and save it into storage/public
             Storage::disk('local')->put($imageNewFileName,  $image->get());
             $newUser->profile_photo_path = $imageNewFileName;

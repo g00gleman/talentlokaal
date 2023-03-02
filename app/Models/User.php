@@ -85,9 +85,7 @@ class User extends Authenticatable
     {
         // if there is no custom profile photo uploaded then return a default profile photo
         if (empty($this->pitch)) return "";
-        // get the video out of the storage/app folder in this project
-        $video = Storage::disk('local')->path($this->pitch);
 
-        return "data:video/mp4;base64,".base64_encode(file_get_contents($video));
+        return "/dashboard/userFiles/pitch/".$this->id;
     }
 }
