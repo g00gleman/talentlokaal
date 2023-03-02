@@ -37,16 +37,6 @@
                 display: flex;
             }
 
-            .option {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 30px;
-                height: 30px;
-                border-radius: 100px;
-                cursor: pointer;
-            }
-
             @media only screen and (min-width: 600px) {
                 .question {
                     padding-top: 15px;
@@ -81,11 +71,7 @@
                     <!-- Logo -->
                     <div class="mt-3">
                         <div class="flex justify-between w-screen">
-                            <?
-
-use Ramsey\Uuid\Type\Integer;
-
-xml version="1.0" encoding="UTF-8"?><svg
+                            <svg
                                 id="Laag_1"
                                 xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 559.14 263.07"
@@ -204,40 +190,109 @@ xml version="1.0" encoding="UTF-8"?><svg
                             $vraag4 = $som + 0.4;
                         ?>
                         {{ $question->question }}
-                        <div class="answer" id="answer" >
-                            <input
+                        <div class="answer" id="answer">
+                            <label class="custom-radio-button">
+                                1
+                                <input
+                                    type="radio"
+                                    name="{{ $som }}"
+                                    value="{{ $vraag1 }}"
+                                />
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="custom-radio-button">
+                                2
+                                <input
+                                    type="radio"
+                                    name="{{ $som }}"
+                                    value="{{ $vraag2 }}"
+                                />
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="custom-radio-button">
+                                3
+                                <input
+                                    type="radio"
+                                    name="{{ $som }}"
+                                    value="{{ $vraag3 }}"
+                                />
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="custom-radio-button">
+                                4
+                                <input
+                                    type="radio"
+                                    name="{{ $som }}"
+                                    value="{{ $vraag4 }}"
+                                />
+                                <span class="checkmark"></span>
+                            </label>
+                            <style>
+                                .custom-radio-button {
+                                    width: 25px;
+                                    height: 25px;
+                                    /* border: 2px solid #1f796a; */
+                                    /* border-radius: 50px; */
+                                    /* display: flex;
+                                    justify-content: center;
+                                    align-items: center; */
+                                }
+
+                                .custom-radio-button .checkmark {
+                                    width: 100%;
+                                    height: 100%;
+                                    border-radius: 50px;
+                                    border: 2px solid #1f796a;
+                                    /* background-color: #ef840c; */
+                                    border-radius: 50%;
+                                    position: relative;
+                                    right: 30%;
+                                    bottom: 95%;
+                                    display: none;
+                                }
+
+                                .custom-radio-button input {
+                                    display: none;
+                                }
+
+                                .custom-radio-button
+                                    input:checked
+                                    + .checkmark {
+                                    display: inline-block;
+                                }
+                            </style>
+                            <!-- <input
                                 type="radio"
                                 class="option"
                                 placeholder="1"
-                                value="{{$vraag1}}"
-                                name="{{$som}}"
-                                id="{{$som}}"
-                            >
+                                value="{{ $vraag1 }}"
+                                name="{{ $som }}"
+                                id="{{ $som }}"
+                            />
                             <input
                                 type="radio"
                                 class="option"
                                 placeholder="2"
-                                value="{{$vraag2}}"
-                                name="{{$som}}"
-                                id="{{$som}}"
-                            >
+                                value="{{ $vraag2 }}"
+                                name="{{ $som }}"
+                                id="{{ $som }}"
+                            />
                             <input
                                 type="radio"
                                 class="option"
                                 placeholder="3"
-                                value="{{$vraag3}}"
-                                name="{{$som}}"
-                                id="{{$som}}"
-                            >
+                                value="{{ $vraag3 }}"
+                                name="{{ $som }}"
+                                id="{{ $som }}"
+                            />
                             <input
                                 type="radio"
                                 class="option"
                                 placeholder="4"
-                                value="{{$vraag4}}"
-                                name="{{$som}}"
-                                id="{{$som}}"
-                            >
-                                
+                                value="{{ $vraag4 }}"
+                                name="{{ $som }}"
+                                id="{{ $som }}"
+                            /> -->
                         </div>
                     </div>
                     @endforeach
@@ -273,17 +328,19 @@ xml version="1.0" encoding="UTF-8"?><svg
             }
 
             .option {
-            border: none;
-            outline: none;
-            padding: 10px 16px;
-            background-color: #f1f1f1;
-            cursor: pointer;
-            font-size: 18px;
+                border: none;
+                outline: none;
+                width: 35px;
+                height: 35px;
+                background-color: #f1f1f1;
+                cursor: pointer;
+                font-size: 18px;
             }
 
-            .active, .option:hover {
-            background-color: #666;
-            color: white;
+            .active,
+            .option:hover {
+                background-color: #1f796a;
+                color: #ef840c;
             }
 
             .Pagination-end {
@@ -294,8 +351,5 @@ xml version="1.0" encoding="UTF-8"?><svg
             }
         </style>
     </body>
-    <script>
-
-
-    </script>
+    <script></script>
 </html>
