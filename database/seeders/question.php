@@ -59,25 +59,11 @@ class question extends Seeder
                 'updated_at' => Carbon::now(),
             ],
             [
-                'question' => 'Mijn ideale organisatie staat voor waarden en tradities',
+                'question' => 'Ik vind het fijn als er wekelijks wordt vergaderd',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
-            [
-                'question' => 'Mijn ideale organisatie staat voor saamhorigheid',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ],
-            [
-                'question' => 'Mijn ideale organisatie staat voor een gezonde planeet',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ],
-            [
-                'question' => 'Mijn ideale organisatie staat voor persoonlijke welvaart',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ],
+        
 
         ];
         DB::table('questions')->insert($questions);
