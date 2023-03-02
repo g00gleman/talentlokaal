@@ -96,7 +96,7 @@ class profileController extends Controller
         if (isset($pitch)){
             // if they oploaded a pitch
             // new file name for pitch
-            $newVideoFileName = time(). "." . $pitch->getExtension();
+            $newVideoFileName = time(). "." . $pitch->extension();
             // replace old filename with the new one and save it into storage/public
             Storage::disk('local')->put($newVideoFileName,  $pitch->get());
             $updateUser->pitch = $newVideoFileName;
