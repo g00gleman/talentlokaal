@@ -1,6 +1,6 @@
 <x-guest-layout>
     @include('components.navbar.index')
-    <div class="w-full h-64 bg-talent-white rounded-b-3xl">
+    <div class="w-full h-64 bg-talent-white rounded-b-3xl" id="top">
         <div class="flex">
             <!-- Logo -->
             <div class=" mt-3">
@@ -92,7 +92,7 @@
             </div>
             </div>
             <div class=" flex justify-center items-center">
-            <div class=" rounded-xl bg-talent-light-green h-72 w-80 mt-14 mb-10 shadow-lg shadow-black">
+            <div class=" rounded-xl bg-talent-light-green h-72 w-80 mt-14  shadow-lg shadow-black">
             <div class="text-talent-green text-center font-bold text-xl mt-5">Bedrijfsgegevens</div>
             <div class="flex justify-center mt-8">
                 <div class="grid grid-cols-5 gap-2 ml-16">
@@ -190,5 +190,7 @@
             </div>
         </div>
     </div>
+    @include('components.scrollTop.index')
 </div>
+
 </x-guest-layout>
