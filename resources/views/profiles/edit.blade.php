@@ -164,10 +164,17 @@
         <!-- @include('components.scrollTop.index') -->
 
 <div class="wrapper">
-  
+
   <div class="container-3">
       <div class="question" class="text-xl font-bold text-talent-green">
       <div class="flex justify-center">
+          <form
+              action="{{ route('dashboard.manageProfile.update', $user->id) }}"
+              method="post"
+              enctype="multipart/form-data"
+              class="w-full"
+          >
+              @csrf @method('put')
                     @if (isset($user->profile_photo_url))
                     <img
                         class="h-20 w-20 rounded-full object-cover"
@@ -259,7 +266,7 @@
       </div>
       </div>
   </div>
-  
+
 
   <div class="container-3">
       <div class="question" class="text-xl font-bold text-talent-green">
