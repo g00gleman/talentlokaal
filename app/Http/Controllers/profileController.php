@@ -17,13 +17,21 @@ class profileController extends Controller
     // return the index view with specific userdata
     public function index()
     {
-        $user = User::with('employee')->find(Auth::id());
-        $categoryName = jobCategory::where('id', $user->employee->jobCategory)->first();
+        $user = Auth::user();
+        if (isset($user->employer)){
+            return view('profiles.index', [
+                'user' => $user,
+            ]);
+        }elseif ($user->employer){
+            $categoryName = jobCategory::where('id', $user->employee()->jobCategory)->first();
 
-        return view('profiles.index', [
-            'categoryName' => $categoryName,
-            'user' => $user,
-        ]);
+            return view('profiles.index', [
+                'categoryName' => $categoryName,
+                'user' => $user,
+            ]);
+        }
+
+
 
     }
     // load the view RegisterIntro to add description
