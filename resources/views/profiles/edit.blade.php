@@ -27,7 +27,7 @@
                 <!-- Logo -->
                 <div class=" mt-3">
                     <div class="flex justify-between w-screen">
-                        <?xml version="1.0" encoding="UTF-8"?><svg id="Laag_1" xmlns="http://www.w3.org/2000/svg"
+                        <svg id="Laag_1" xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 559.14 263.07" class="w-36 ml-5">
                             <defs>
                                 <style>
@@ -105,6 +105,7 @@
 
                 .wrapper {
                     width: 100%;
+                    /* max-width: 600px; */
                 }
 
                 h1 {
@@ -140,6 +141,7 @@
 
                     .question.active::after {
                     transform: rotate(45deg);
+                    /* content: '-'; */
                 }
 
                 .answercont {
@@ -159,9 +161,13 @@
                 }
         </style>
 
-        <div class="flex justify-center mt-24">
-            <div class="customCard">
-                <div class="flex justify-center">
+        <!-- @include('components.scrollTop.index') -->
+
+<div class="wrapper">
+  
+  <div class="container-3">
+      <div class="question" class="text-xl font-bold text-talent-green">
+      <div class="flex justify-center">
                     @if (isset($user->profile_photo_url))
                     <img
                         class="h-20 w-20 rounded-full object-cover"
@@ -233,36 +239,28 @@
                         class="h-0.5 w-full bg-talent-green rounded-full"
                     ></div>
                     @endif
-                </div>
-                <form
-                    action="{{ route('dashboard.manageProfile.update', $user->id) }}"
-                    method="post"
-                    enctype="multipart/form-data"
-                    class="w-full"
-                >
-                    @csrf @method('put')
-                <div
-                    class="flex justify-center mt-2 text-talent-orange font-bold text-3xl"
-                >
+
+                    <div class="flex justify-center mt-7 ml-6 font-bold text-xl">
                     {{ $user->name }}
                 </div>
-                <div class="mt-2 text-talent-green">
+                </div>
+      </div>
+      <div class="answercont">
+      <div class="answer">
+      <div class="mt-2 text-talent-green">
                         <textarea
                             name="beschrijving"
                             id=""
-                            class="w-full border-none rounded-md mt-2 mb-2 focus:ring-talent-orange"
+                            class="w-full h-52 border-none rounded-md mt-2 mb-2 focus:ring-talent-orange"
                             placeholder="Voeg een beschrijving toe"
                             >{{ $user->description }}
-                            </textarea
-                        >
-                </div>
-            </div>
-        </div>
-
-        <!-- @include('components.scrollTop.index') -->
-
-<div class="wrapper">
+                            </textarea>
+                </div><br><br>
+      </div>
+      </div>
+  </div>
   
+
   <div class="container-3">
       <div class="question" class="text-xl font-bold text-talent-green">
       Kennismaking pitch
@@ -273,7 +271,6 @@
       </div>
       </div>
   </div>
-  
 </div>
 
         <!-- @include('components.scrollTop.index') -->
