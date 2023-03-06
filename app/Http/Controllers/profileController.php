@@ -162,24 +162,4 @@ class profileController extends Controller
         }
         return redirect('/');
     }
-
-    public function profileFoto( Request $request,$id){
-
-        $data = $this->validate(request(), [
-            'profielfoto' => 'image',
-        ]);
-        // get the image out of form
-        $image = $request->file('profielfoto');
-        // new file name for image
-        $imageNewFileName = time(). "." . $image->getExtension();
-        // replace old filename with the new one and save it into storage/public
-        Storage::disk('local')->put($imageNewFileName,  $image->get());
-
-        // save data in user table
-        $newUser = User::find($id);
-        $newUser->profile_photo_path = $imageNewFileName;
-        $newUser->save();
-
-        return redirect(route('dashboard.manageProfile.index'));
-    }
 }

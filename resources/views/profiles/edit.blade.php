@@ -102,12 +102,6 @@
                 border: none;
                 outline: none;
             }
-
-                .wrapper {
-                    width: 100%;
-                    /* max-width: 600px; */
-                }
-
                 h1 {
                     margin-bottom: 20px;
                 }
@@ -499,7 +493,7 @@
 
                                     <input id="companyName"
                                                  class="w-full focus:ring-talent-orange border-none rounded-md"
-                                                 type="text" name="bedrijfsnaam" :value="old('bedrijfsnaam')"  autofocus
+                                                 type="text" name="bedrijfsnaam" value="{{ $user->employer->companyName }}"  autofocus
                                                  placeholder="Vul hier uw bedrijfsnaam in" />
                                     @error('bedrijfsnaam')
                                     {{ $message }}
@@ -517,7 +511,7 @@
                                 >
                                     <input id="websiteUrl"
                                                  class=" w-full focus:ring-talent-orange border-none rounded-md"
-                                                 type="text" name="websitelink" :value="old('websitelink')"  autofocus
+                                                 type="text" name="websitelink" value="{{ $user->employer->websiteUrl }}"  autofocus
                                                  placeholder="Link naar website" />
                                         @error('websitelink')
                                         {{ $message }}
