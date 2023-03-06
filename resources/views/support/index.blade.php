@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
-        @vite('resources/css/app.css')
-    </head>
-    <body class="bg-talent-green">
+<x-guest-layout>
         @include('components.navbar.index')
         <div class="w-full h-64 bg-talent-white rounded-b-3xl">
             <div class="flex">
@@ -108,30 +99,17 @@
             >
                 Support
             </div>
-            <div class="flex justify-between mr-2 ml-2 mt-12 gap-4">
-                <a
-                    class="w-full h-8 rounded-full flex items-center justify-center text-center text-talent-white bg-talent-orange"
-                    href=""
-                >
-                    <i class="fa-solid fa-phone mr-1"></i>
-                    Bellen
-                </a>
-                <a
-                    class="w-full h-8 rounded-full flex items-center justify-center text-center text-talent-white bg-talent-orange"
-                    href=""
-                >
-                    <i class="fa-solid fa-envelope mr-1"></i>
-                    Mailen
-                </a>
-                <a
-                    class="w-full h-8 rounded-full flex items-center justify-center text-center text-talent-white bg-talent-orange"
-                    href=""
-                >
-                    <i class="fa-solid fa-comments mr-1"></i>
-                    Chatten
-                </a>
+            <div class="flex gap-4 justify-center items-center mt-10 ">
+
+                <button class=" text-talent-white bg-talent-orange w-28 rounded-full h-8 text-sm "><i
+                        class=" mr-2 fa-solid fa-phone text-talent-white"></i>Bellen</button>
+                <button class=" text-talent-white bg-talent-orange w-28 rounded-full h-8 text-sm"> <i
+                        class=" mr-2 fa-regular fa-envelope text-talent-white"></i>Mailen </button>
+                <button class=" text-talent-white bg-talent-orange w-28 rounded-full h-8 text-sm"><i
+                        class=" mr-2 fa-solid fa-comments text-talent-white"></i>Chatten </button>
+    
             </div>
-        </div>
+       
 
         <style>
             .content {
@@ -160,5 +138,6 @@
                 ipsa molestias? Accusantium nesciunt quos vero in?
             </div>
         </div>
-    </body>
-</html>
+    </div>
+</div>
+</x-guest-layout>

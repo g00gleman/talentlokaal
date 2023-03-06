@@ -37,16 +37,6 @@
                 display: flex;
             }
 
-            .option {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 30px;
-                height: 30px;
-                border-radius: 100px;
-                cursor: pointer;
-            }
-
             @media only screen and (min-width: 600px) {
                 .question {
                     padding-top: 15px;
@@ -81,7 +71,7 @@
                     <!-- Logo -->
                     <div class="mt-3">
                         <div class="flex justify-between w-screen">
-                            <?xml version="1.0" encoding="UTF-8"?><svg
+                            <svg
                                 id="Laag_1"
                                 xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 559.14 263.07"
@@ -186,41 +176,129 @@
             </div>
             <div class="content">
                 <div class="questionList">
+                    <?php 
+                        $vragen = 0;
+                    ?>
                     @foreach($questions as $question)
                     <div class="question">
+                        <?php 
+                            $vragen+=1;
+                            $som = $vragen;
+                            $vraag1 = $som + 0.1;
+                            $vraag2 = $som + 0.2;
+                            $vraag3 = $som + 0.3;
+                            $vraag4 = $som + 0.4;
+                        ?>
                         {{ $question->question }}
-                        <div class="answer">
-                            <div
-                                class="option"
-                                onclick="answer1()"
-                                id="option1"
-                            >
+                        <div class="answer" id="answer">
+                            <label class="custom-radio-button">
                                 1
-                            </div>
-                            <div
-                                class="option"
-                                onclick="answer2()"
-                                id="option2"
-                            >
+                                <input
+                                    type="radio"
+                                    name="{{ $som }}"
+                                    value="{{ $vraag1 }}"
+                                />
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="custom-radio-button">
                                 2
-                            </div>
-                            <div
-                                class="option"
-                                onclick="answer3()"
-                                id="option3"
-                            >
+                                <input
+                                    type="radio"
+                                    name="{{ $som }}"
+                                    value="{{ $vraag2 }}"
+                                />
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="custom-radio-button">
                                 3
-                            </div>
-                            <div
-                                class="option"
-                                onclick="answer4()"
-                                id="option4"
-                            >
+                                <input
+                                    type="radio"
+                                    name="{{ $som }}"
+                                    value="{{ $vraag3 }}"
+                                />
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="custom-radio-button">
                                 4
-                            </div>
+                                <input
+                                    type="radio"
+                                    name="{{ $som }}"
+                                    value="{{ $vraag4 }}"
+                                />
+                                <span class="checkmark"></span>
+                            </label>
+                            <style>
+                                .custom-radio-button {
+                                    width: 25px;
+                                    height: 25px;
+                                    /* border: 2px solid #1f796a; */
+                                    /* border-radius: 50px; */
+                                    /* display: flex;
+                                    justify-content: center;
+                                    align-items: center; */
+                                }
+
+                                .custom-radio-button .checkmark {
+                                    width: 100%;
+                                    height: 100%;
+                                    border-radius: 50px;
+                                    border: 2px solid #1f796a;
+                                    /* background-color: #ef840c; */
+                                    border-radius: 50%;
+                                    position: relative;
+                                    right: 30%;
+                                    bottom: 95%;
+                                    display: none;
+                                }
+
+                                .custom-radio-button input {
+                                    display: none;
+                                }
+
+                                .custom-radio-button
+                                    input:checked
+                                    + .checkmark {
+                                    display: inline-block;
+                                }
+                            </style>
+                            <!-- <input
+                                type="radio"
+                                class="option"
+                                placeholder="1"
+                                value="{{ $vraag1 }}"
+                                name="{{ $som }}"
+                                id="{{ $som }}"
+                            />
+                            <input
+                                type="radio"
+                                class="option"
+                                placeholder="2"
+                                value="{{ $vraag2 }}"
+                                name="{{ $som }}"
+                                id="{{ $som }}"
+                            />
+                            <input
+                                type="radio"
+                                class="option"
+                                placeholder="3"
+                                value="{{ $vraag3 }}"
+                                name="{{ $som }}"
+                                id="{{ $som }}"
+                            />
+                            <input
+                                type="radio"
+                                class="option"
+                                placeholder="4"
+                                value="{{ $vraag4 }}"
+                                name="{{ $som }}"
+                                id="{{ $som }}"
+                            /> -->
                         </div>
                     </div>
                     @endforeach
+                    {{-- pagination  --}}
+                    <div hidden>{{ $questions->links() }}</div>
+
                     <div class="Pagination-end">
                         <div class="Pagination">
                             <div class="button" onclick="openModalDone()">
@@ -249,6 +327,22 @@
                 opacity: 0.8;
             }
 
+            .option {
+                border: none;
+                outline: none;
+                width: 35px;
+                height: 35px;
+                background-color: #f1f1f1;
+                cursor: pointer;
+                font-size: 18px;
+            }
+
+            .active,
+            .option:hover {
+                background-color: #1f796a;
+                color: #ef840c;
+            }
+
             .Pagination-end {
                 display: flex;
                 justify-content: end;
@@ -257,39 +351,5 @@
             }
         </style>
     </body>
-    <script>
-        let one = document.getElementById("option1");
-        let two = document.getElementById("option2");
-        let three = document.getElementById("option3");
-        let four = document.getElementById("option4");
-
-        function answer1() {
-
-            one.style.backgroundColor = "#1f796a";
-            two.style.backgroundColor = "#bcd7d2";
-            three.style.backgroundColor = "#bcd7d2";
-            four.style.backgroundColor = "#bcd7d2";
-        }
-        function answer2() {
-
-            one.style.backgroundColor = "#bcd7d2";
-            two.style.backgroundColor = "#1f796a";
-            three.style.backgroundColor = "#bcd7d2";
-            four.style.backgroundColor = "#bcd7d2";
-        }
-        function answer3() {
-
-            one.style.backgroundColor = "#bcd7d2";
-            two.style.backgroundColor = "#bcd7d2";
-            three.style.backgroundColor = "#1f796a";
-            four.style.backgroundColor = "#bcd7d2";
-        }
-        function answer4() {
-
-            one.style.backgroundColor = "#bcd7d2";
-            two.style.backgroundColor = "#bcd7d2";
-            three.style.backgroundColor = "#bcd7d2";
-            four.style.backgroundColor = "#1f796a";
-        }
-    </script>
+    <script></script>
 </html>
