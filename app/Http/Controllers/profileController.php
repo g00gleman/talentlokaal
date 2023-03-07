@@ -23,7 +23,7 @@ class profileController extends Controller
                 'user' => $user,
             ]);
         }elseif ($user->employer){
-            $categoryName = jobCategory::where('id', $user->employee()->jobCategory)->first();
+            $categoryName = jobCategory::where('id', $user->employer->jobCategory)->first();
 
             return view('profiles.index', [
                 'categoryName' => $categoryName,

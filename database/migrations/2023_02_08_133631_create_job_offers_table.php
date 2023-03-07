@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('function');
             $table->bigInteger('employerId');
+            $table->bigInteger('jobCategoryId');
             $table->timestamps();
         });
     }
