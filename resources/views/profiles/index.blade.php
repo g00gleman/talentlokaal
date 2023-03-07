@@ -234,10 +234,11 @@
                                 <path d="M 23.000 21.000 C 23.000 22.333 23.667 23.000 25.000 23.000 C 26.333 23.000 27.000 22.333 27.000 21.000 C 27.000 19.667 26.333 19.000 25.000 19.000 C 23.667 19.000 23.000 19.667 23.000 21.000 "/></g>
                                 </svg>
                         </div>
+                        @if(isset($user->employer))
                         <div class="col-span-4 text-baseflex items-center font-bold text-talent-orange">
                             {{ $categoryName->categoryName}}
                         </div>
-
+                        @endif
                         <!-- job-2? -->
                         <div class="col-span-1">
                             <svg version="1.0" xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 mr-5"

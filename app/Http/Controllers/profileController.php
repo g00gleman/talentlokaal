@@ -18,7 +18,7 @@ class profileController extends Controller
     public function index()
     {
         $user = Auth::user();
-        if (isset($user->employer)){
+        if (isset($user->employee)){
             return view('profiles.index', [
                 'user' => $user,
             ]);
@@ -44,7 +44,7 @@ class profileController extends Controller
         $user->description = $request->get('description');
         $user->save();
 
-        return redirect(route('dashboard.manageProfile.index'));
+        return redirect('/dashboard');
     }
 
     public function logout(){
