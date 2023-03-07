@@ -161,6 +161,29 @@
 
                 .question.active + .answercont {
                 }
+
+                .custom-file-upload {
+                display: inline-block;
+                padding: 8px 12px;
+                cursor: pointer;
+                font-size: 16px;
+                color: #f0850b;
+                border: solid;
+                border-radius: 5px;
+                transition: background-color 0.3s ease;
+                border-color: #f0850b;
+                }
+                .custom-file-upload:hover {
+                 background:#f0850b;
+                 color:#fff;
+                }
+                .custom-file-upload i {
+                margin-right: 8px;
+                }
+                input[type="file"] {
+                display: none;
+                }
+
         </style>
 
         <!-- @include('components.scrollTop.index') -->
@@ -276,7 +299,14 @@
       </div>
       <div class="answercont">
       <div class="answer">
-      <input type="file" name="pitch" id="" accept=".mp4" /><br><br>
+       <!-- <input type="file" name="pitch" id="" accept=".mp4" /> -->
+       <label for="file-upload" class="custom-file-upload">
+            <i class="fas fa-cloud-upload-alt"></i> Choose File
+        </label>
+        <input id="file-upload" type="file" onchange="showFileName(this)"/>
+        <div id="file-name"></div>
+
+        <br><br> 
       </div>
       </div>
   </div>
@@ -577,6 +607,10 @@
             })
             })
 
+            function showFileName(input) {
+            const fileName = input.files[0].name;
+            document.getElementById("file-name").innerHTML = fileName;
+            }
 
         </script>
     </body>
