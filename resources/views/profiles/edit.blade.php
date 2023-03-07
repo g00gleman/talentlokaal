@@ -104,15 +104,6 @@
                 border: none;
                 outline: none;
             }
-<<<<<<< HEAD
-
-                .wrapper {
-                    max-width: 450px;
-                    margin:auto;
-                }
-
-=======
->>>>>>> 4a0359c1e1ef89518bc5b65b03813fee9cb1ea9d
                 h1 {
                     margin-bottom: 20px;
                 }
