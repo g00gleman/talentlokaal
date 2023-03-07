@@ -7,6 +7,132 @@
         <title>Document</title>
         @vite('resources/css/app.css')
         <style>
+        .modal {
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        display: none;
+    }
+
+    .modal-content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .modal-content-overlay {
+        height: 100vh;
+        background-color: black;
+        opacity: 0.5;
+        z-index: 1;
+    }
+
+    .modal-content-box {
+        height: 22.5vh;
+        width: 80vw;
+        background-color: white;
+        z-index: 2;
+        position: absolute;
+        top: 32.5vh;
+        left: 10vw;
+        border-radius: 16px;
+    }
+
+    .box-top {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 12.5vh;
+        color: #1e796a;
+        font-weight: bold;
+        text-align: center;
+        margin-left: 10px;
+        margin-right: 10px;
+        font-size: 14px;
+        margin-top: 5px;
+    }
+
+    .box-content {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        height: 7.5vh;
+    }
+
+    .box-content-btn {
+        background-color: #ef840c;
+        padding-left: 40px;
+        padding-right: 40px;
+        padding-top: 3px;
+        padding-bottom: 3px;
+        border-radius: 100px;
+        color: white;
+        font-weight: bold;
+    }
+    .modal-save {
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        display: none;
+    }
+
+    .modal-content-save {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .modal-content-overlay-save {
+        height: 100vh;
+        background-color: black;
+        opacity: 0.5;
+        z-index: 1;
+    }
+
+    .modal-content-box-save {
+        height: 25vh;
+        width: 80vw;
+        background-color: white;
+        z-index: 2;
+        position: absolute;
+        top: 32.5vh;
+        left: 10vw;
+        border-radius: 16px;
+    }
+
+    .box-top-save {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 12.5vh;
+        color: #1e796a;
+        font-weight: bold;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    .box-content-save {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        height: 7.5vh;
+    }
+
+    .box-content-btn-save {
+        background-color: #ef840c;
+        padding-left: 10px;
+        padding-right: 10px;
+        /* width: 50px; */
+        padding-top: 3px;
+        padding-bottom: 3px;
+        border-radius: 100px;
+        color: white;
+        display: flex;
+        width: 100px;
+        justify-content: center;
+    }
             .content {
                 display: flex;
                 justify-content: center;
@@ -167,36 +293,49 @@
                 </div>
                 <div class="flex justify-center text-center">
                     <div
-                        class="text-sm text-talent-orange font-bold mb-12 w-3/4"
+                        class="text-xs text-talent-orange font-bold mb-12 w-4/5"
                     >
-                        Vraag #: Lorem ipsum dolor sit. Lorem ipsum dolor sit
-                        amet, consectetur adipisicing elit.
+                        Vul in wat het beste bij u past</br>
+                        (1 is zeer van toepassing, 4 is niet van toepassing) 
                     </div>
                 </div>
             </div>
+
+
             <div class="content">
                 <div class="questionList">
                     <?php 
                         $vragen = 0;
                     ?>
+                    <form 
+                    method="POST"
+                    enctype="multipart/form-data">
+                    @csrf
+
                     @foreach($questions as $question)
-                    <div class="question">
                         <?php 
                             $vragen+=1;
                             $som = $vragen;
-                            $vraag1 = $som + 0.1;
-                            $vraag2 = $som + 0.2;
-                            $vraag3 = $som + 0.3;
-                            $vraag4 = $som + 0.4;
+                            $naam = "vraag$som";
+                            $questionid = "question$som";
+                            $vraag1 = 1;
+                            $vraag2 = 2;
+                            $vraag3 = 3;
+                            $vraag4 = 4;
                         ?>
+
+                    <div id="{{ $questionid }}" class="question">
+
                         {{ $question->question }}
                         <div class="answer" id="answer">
                             <label class="custom-radio-button">
                                 1
                                 <input
                                     type="radio"
-                                    name="{{ $som }}"
+                                    name="{{ $naam }}"
+                                    id="{{ $som }}"
                                     value="{{ $vraag1 }}"
+                                    
                                 />
                                 <span class="checkmark"></span>
                             </label>
@@ -204,7 +343,8 @@
                                 2
                                 <input
                                     type="radio"
-                                    name="{{ $som }}"
+                                    name="{{ $naam }}"
+                                    id="{{ $som }}"
                                     value="{{ $vraag2 }}"
                                 />
                                 <span class="checkmark"></span>
@@ -213,7 +353,8 @@
                                 3
                                 <input
                                     type="radio"
-                                    name="{{ $som }}"
+                                    name="{{ $naam }}"
+                                    id="{{ $som }}"
                                     value="{{ $vraag3 }}"
                                 />
                                 <span class="checkmark"></span>
@@ -222,7 +363,8 @@
                                 4
                                 <input
                                     type="radio"
-                                    name="{{ $som }}"
+                                    name="{{ $naam }}"
+                                    id="{{ $som }}"
                                     value="{{ $vraag4 }}"
                                 />
                                 <span class="checkmark"></span>
@@ -261,57 +403,64 @@
                                     display: inline-block;
                                 }
                             </style>
-                            <!-- <input
-                                type="radio"
-                                class="option"
-                                placeholder="1"
-                                value="{{ $vraag1 }}"
-                                name="{{ $som }}"
-                                id="{{ $som }}"
-                            />
-                            <input
-                                type="radio"
-                                class="option"
-                                placeholder="2"
-                                value="{{ $vraag2 }}"
-                                name="{{ $som }}"
-                                id="{{ $som }}"
-                            />
-                            <input
-                                type="radio"
-                                class="option"
-                                placeholder="3"
-                                value="{{ $vraag3 }}"
-                                name="{{ $som }}"
-                                id="{{ $som }}"
-                            />
-                            <input
-                                type="radio"
-                                class="option"
-                                placeholder="4"
-                                value="{{ $vraag4 }}"
-                                name="{{ $som }}"
-                                id="{{ $som }}"
-                            /> -->
                         </div>
                     </div>
                     @endforeach
-                    {{-- pagination  --}}
-                    <div hidden>{{ $questions->links() }}</div>
-
+                <div class="modal-save" id="modalSave">
+                    <div class="modal-content-save">
+                        <div
+                            class="modal-content-overlay-save"
+                            onclick="closeModalSave()"
+                        ></div>
+                        <div class="modal-content-box-save">
+                            <div class="box-top-save">
+                                U heeft alle vragen ingevuld. <br />
+                                Wilt u de vragenlijst opslaan en afsluiten?
+                            </div>
+                            <div class="box-content-save">
+                                <div class="box-content-btn-save" onclick="closeModalSave()">
+                                    Nee
+                                </div>
+                                <button type="submit" class="box-content-btn-save"> Ja </a>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                <div class="modal" id="modalDone">
+                    <div class="modal-content">
+                        <div class="modal-content-overlay" onclick="closeModalDone()"></div>
+                        <div class="modal-content-box">
+                            <div class="box-top">
+                                U heeft nog niet alle vragen beantwoord. Geef eerst antwoord op
+                                de vragen voordat u doorgaat.
+                            </div>
+                            <div class="box-content">
+                                <div class="box-content-btn" onclick="closeModalDone()">
+                                    Begrepen
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>           
                     <div class="Pagination-end">
                         <div class="Pagination">
-                            <div class="button" onclick="openModalDone()">
+                            <div id="ModalButtonDone" class="button" onclick="openModalDone()">
                                 <
                             </div>
-                            <div class="button" onclick="openModalSave()">
+                            <div id="ModalButtonSave" class="button" onclick="openModalSave()">
                                 >
                             </div>
                         </div>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
+        @if ($errors->any())
+            <script>
+                document.getElementById("modalDone").style.display = "block";
+            </script>
+        @endif
         @include('survey.saveModal') @include('survey.notDoneModal')
         <style>
             .Pagination {
@@ -324,6 +473,13 @@
                 font-size: 26px;
                 font-weight: bold;
                 color: lightgray;
+                opacity: 0.8;
+            }
+
+            .buttonactive {
+                font-size: 26px;
+                font-weight: bold;
+                color: white;
                 opacity: 0.8;
             }
 
@@ -349,7 +505,103 @@
                 margin-right: 15px;
                 margin-bottom: 15px;
             }
+
+            .questioninvisible{
+            display:none;
+            } 
+
         </style>
     </body>
-    <script></script>
+    <script>
+        
+    var refresh = window.location.protocol + "//" + window.location.host + window.location.pathname + '?page=1';    
+    window.history.pushState({ path: refresh }, '', refresh);
+
+    if(window.location.search == "?page=1"){
+    document.getElementById("question5").classList.add("questioninvisible");
+    document.getElementById("question6").classList.add("questioninvisible");
+    document.getElementById("question7").classList.add("questioninvisible");
+    document.getElementById("question8").classList.add("questioninvisible");
+    document.getElementById("question9").classList.add("questioninvisible");
+    document.getElementById("ModalButtonSave").classList.add("buttonactive");
+    document.getElementById("ModalButtonDone").classList.remove("buttonactive");
+    }
+    function openModalSave() {
+        if(window.location.search == "?page=1"){
+            var refresh = window.location.protocol + "//" + window.location.host + window.location.pathname + '?page=2';    
+            window.history.pushState({ path: refresh }, '', refresh);
+            document.getElementById("question1").classList.add("questioninvisible");
+            document.getElementById("question2").classList.add("questioninvisible");
+            document.getElementById("question3").classList.add("questioninvisible");
+            document.getElementById("question4").classList.add("questioninvisible");
+            document.getElementById("question5").classList.remove("questioninvisible");
+            document.getElementById("question6").classList.remove("questioninvisible");
+            document.getElementById("question7").classList.remove("questioninvisible");
+            document.getElementById("question8").classList.remove("questioninvisible");
+            document.getElementById("question9").classList.add("questioninvisible");
+            document.getElementById("ModalButtonDone").classList.add("buttonactive");
+            return;
+        }else if(window.location.search == "?page=2"){
+            var refresh = window.location.protocol + "//" + window.location.host + window.location.pathname + '?page=3';    
+            window.history.pushState({ path: refresh }, '', refresh);
+            document.getElementById("question1").classList.add("questioninvisible");
+            document.getElementById("question2").classList.add("questioninvisible");
+            document.getElementById("question3").classList.add("questioninvisible");
+            document.getElementById("question4").classList.add("questioninvisible");
+            document.getElementById("question5").classList.add("questioninvisible");
+            document.getElementById("question6").classList.add("questioninvisible");
+            document.getElementById("question7").classList.add("questioninvisible");
+            document.getElementById("question8").classList.add("questioninvisible");
+            document.getElementById("question9").classList.remove("questioninvisible");
+            document.getElementById("ModalButtonSave").classList.remove("buttonactive");
+            return;
+
+        }else if(window.location.search == "?page=3");{
+            document.getElementById("modalSave").style.display = "block";
+        }
+
+    }
+
+    function closeModalSave() {
+        document.getElementById("modalSave").style.display = "none";
+    }
+
+    function openModalDone() {
+            if(window.location.search == "?page=2"){
+            var refresh = window.location.protocol + "//" + window.location.host + window.location.pathname + '?page=1';    
+            window.history.pushState({ path: refresh }, '', refresh);
+            document.getElementById("question1").classList.remove("questioninvisible");
+            document.getElementById("question2").classList.remove("questioninvisible");
+            document.getElementById("question3").classList.remove("questioninvisible");
+            document.getElementById("question4").classList.remove("questioninvisible");
+            document.getElementById("question5").classList.add("questioninvisible");
+            document.getElementById("question6").classList.add("questioninvisible");
+            document.getElementById("question7").classList.add("questioninvisible");
+            document.getElementById("question8").classList.add("questioninvisible");
+            document.getElementById("question9").classList.add("questioninvisible");
+            document.getElementById("ModalButtonSave").classList.add("buttonactive");
+            document.getElementById("ModalButtonDone").classList.remove("buttonactive");
+            return;
+
+        }else if(window.location.search == "?page=3"){
+            var refresh = window.location.protocol + "//" + window.location.host + window.location.pathname + '?page=2';    
+            window.history.pushState({ path: refresh }, '', refresh);
+            document.getElementById("question1").classList.add("questioninvisible");
+            document.getElementById("question2").classList.add("questioninvisible");
+            document.getElementById("question3").classList.add("questioninvisible");
+            document.getElementById("question4").classList.add("questioninvisible");
+            document.getElementById("question5").classList.remove("questioninvisible");
+            document.getElementById("question6").classList.remove("questioninvisible");
+            document.getElementById("question7").classList.remove("questioninvisible");
+            document.getElementById("question8").classList.remove("questioninvisible");
+            document.getElementById("question9").classList.add("questioninvisible");
+            document.getElementById("ModalButtonSave").classList.add("buttonactive");
+            return;
+        }
+    }
+
+    function closeModalDone() {
+        document.getElementById("modalDone").style.display = "none";
+    }
+    </script>
 </html>
