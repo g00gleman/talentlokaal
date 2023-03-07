@@ -43,13 +43,16 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'as' => 'dashboar
     Route::get('/support', function () {
         return view('support.index');
     });
+    Route::get('/admin-portal', function () {
+        return view('adminportal.index');
+    });
 
     Route::get('/redirect', function () {
         return Redirect::to(url()->previous());
     });
     // get the route of the pitch
     Route::group(['prefix' => 'userFiles'], function () {
-        Route::get('/pitch/{user}' , [userFileController::class, 'getPitch'])->name('userPitch');
+        Route::get('/pitch/{user}', [userFileController::class, 'getPitch'])->name('userPitch');
         Route::get('/cv/{user}', [userFileController::class, 'getCv']);
     });
 
