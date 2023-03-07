@@ -102,7 +102,7 @@
                             Vragenlijst
                         </div>
                     </div>
-                <a/>
+                </a>
                 <a href="{{ route('dashboard.manageProfile.edit', $user->id) }}">
                     <div class="flex justify-between mt-3 w-32 h-8 bg-talent-orange rounded-full">
                         <div class="flex h-full ml-2 mr-1 items-center text-talent-white">

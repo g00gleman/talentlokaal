@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('employers', function (Blueprint $table) {
             $table->id();
             $table->string('companyName');
+            $table->bigInteger('jobCategory');
             $table->string('websiteUrl')->nullable();
             $table->bigInteger('user_Id');
             $table->timestamps();

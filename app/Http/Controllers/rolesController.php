@@ -32,16 +32,17 @@ class rolesController extends Controller
     {
         // call the registerUser method to register a user
         $newUser = $this->registerUser($request);
-
         // validation errors for employee form inputs
         $this->validate(request(), [
             'jobCategory' => 'integer',
+            'geboortedatum' => 'required|before:today|Date',
             'diploma' => 'string|max:255',
         ]);
 
         // save data in employee table
         $newEmployee = new employee();
         $newEmployee->jobCategory = $request->get('jobCategory');
+        $newEmployee->birthDate = $request->get('geboortedatum');
         $newEmployee->certificate = $request->get('diploma');
         $newUser->description = $request->get('description');
         $newEmployee->user_Id = $newUser->id;
@@ -59,11 +60,13 @@ public function registerEmployer(Request $request)
         // validation errors for employer form inputs
         $this->validate(request(), [
             'bedrijfsnaam' => 'required|string|max:255',
+            'jobCategory' => 'integer',
             'websitelink' => 'string|active_url|max:255',
         ]);
         // save data in employee table
         $newEmployer = new Employer();
         $newEmployer->companyName = $request->get('bedrijfsnaam');
+        $newEmployer->jobCategory = $request->get('jobCategory');
         $newEmployer->websiteUrl = $request->get('websitelink');
         $newEmployer->user_Id = $newUser->id;
         $newEmployer->save();
@@ -80,7 +83,6 @@ private function registerUser(Request $request): User
             'email' => 'required|string|email|max:255|unique:users',
             'telefoonnummer' =>  'required|max:255|unique:App\Models\User,phoneNumber',
             'adres' => 'required|string|max:255',
-            'geboortedatum' => 'required|before:today|Date',
             'profielfoto' => 'mimes:jpg,jpeg,png', 'max:1024',
             'wachtwoord' => 'required|min:8|max:20|confirmed'
         ]);
@@ -92,7 +94,6 @@ private function registerUser(Request $request): User
         $newUser->email = $request->get('email');
         $newUser->phoneNumber = $request->get('telefoonnummer');
         $newUser->adress = $request->get('adres');
-        $newUser->birthDate = $request->get('geboortedatum');
         // get the image out of form
         $image = $request->file('profielfoto');
         if (isset($image)){
