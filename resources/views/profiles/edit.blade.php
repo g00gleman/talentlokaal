@@ -108,6 +108,12 @@
                     margin-bottom: 20px;
                 }
 
+                
+                .wrapper {
+                    max-width: 450px;
+                    margin:auto;
+                }
+
                 .container-3 {
                     background-color: #bcd7d2;
                     border-radius: 8px;
