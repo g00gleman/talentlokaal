@@ -88,22 +88,11 @@
             <div>
                 <x-jet-input id="email" class=" font-sans focus:ring-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="email" name="email" :value="old('email')"  placeholder="Email-adres" required autofocus />
             </div>
-            <div class="text-sm flex justify-center items-center text-talent-red">
-                @error('email')
-                {{$message}}
-                @enderror
-            </div>
+            
 
             <div class="mt-4">
                 <x-jet-input id="password" class=" font-sans focus:ring-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="password" name="password"  placeholder="Wachtwoord"  required autocomplete="current-password" />
             </div>
-            <div class="text-sm flex justify-center items-center text-talent-red">
-                @error('password')
-                {{$message}}
-                @enderror
-            </div>
-
-      
             <div class="flex items-center justify-end mt-4">
                 @if (Route::has('password.request'))
                     <a class=" font-sans font-bold no-underline text-sm text-talent-white hover:text-talent-white rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
@@ -112,13 +101,19 @@
                 @endif
             </div>
         </div>
+         <div class="text-xs flex text-talent-red ml-5 mt-5 mr-5">
+                @error('email')
+                {{$message}}
+                @enderror
+            </div>
 <div class="justify-center flex mb-11">
                 <x-jet-button class=" font-sans font-bold focus:ring-talent-orange ml-4 bg-talent-orange w-64 m-5 rounded-full text-talent-white justify-center shadow-xl ">
                      {{('Log in') }}
                 </x-jet-button>
             </div>
         </div>  	
-    </form></div>
+    </form>
+</div>
 
 </x-guest-layout>
 

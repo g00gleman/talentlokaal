@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('cv')->nullable();
             $table->bigInteger('jobCategory');
+            $table->timestamp('birthDate');
             $table->string('certificate')->nullable();
             $table->bigInteger('user_Id');
             $table->timestamps();

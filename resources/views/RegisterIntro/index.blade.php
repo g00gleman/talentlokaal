@@ -139,7 +139,7 @@
             <div
                 class="font-sans font-bold mt-8 flex justify-center text-2xl text-talent-green "
             >
-                Welkom bij Talentlokaal!
+                Welkom bij TalentLokaal!
             </div>
             <div
                 class=" font-sans mt-4 ml-2 mr-2 text-center flex justify-center text-lg text-talent-light-green font-bold"
@@ -149,7 +149,7 @@
         </div>
         <form action="/dashboard/description/{{ auth()->user()->id }}" method="post">
             <div
-                class="w-auto h-auto bg-talent-light-green flex justify-center items-center padding-margin"
+                class=" w-auto h-auto bg-talent-light-green flex justify-center items-center padding-margin"
             >
                     @csrf
                     @method('put')
@@ -157,8 +157,8 @@
                 <textarea
                     name="description"
                     id=""
-                    class="txtA"
-                    placeholder="Vul hier een introductie over uzelf in"
+                    class="txtA  focus:ring-talent-orange"
+                    placeholder="Vertel kort wat over jezelf "
                 ></textarea>
             </div>
             <button type="submit">
