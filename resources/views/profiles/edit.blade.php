@@ -391,7 +391,7 @@
                             <div
                                 class="col-span-4 text-xs flex items-center font-bold text-talent-orange"
                             >
-                            <select name="jobCategory" id="jobCategory" class="w-full focus:ring-talent-orange border-none rounded-md">
+                            <select name="jobCategory" id="jobCategory" class="w-full focus:ring-talent-orange border-none rounded-md bg-talent-light-green">
                                 @foreach($jobCategories as $category)
                                     @if ($category->id == $user->employee->jobCategory)
                                         <option value="{{ $category->id }}" selected>{{ $category->categoryName }}</option>
