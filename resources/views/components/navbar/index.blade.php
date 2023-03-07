@@ -64,6 +64,7 @@
     .nav-content-end {
         display: flex;
         align-items: end;
+        height: 100%;
     }
 
     .nav-content-btn {
@@ -122,12 +123,14 @@
         color: #1e796a;
         font-weight: bold;
     }
+
     .box-content {
         display: flex;
         justify-content: space-evenly;
         align-items: center;
         height: 7.5vh;
     }
+
     .box-content-btn {
         background-color: #ef840c;
         padding-left: 40px;
@@ -367,7 +370,9 @@
                             </g>
                         </svg>
                     </div>
-                    <div class="flex justify-start items-end">Log uit</div>
+                    <div class="flex justify-start h-full items-end">
+                        Log uit
+                    </div>
                 </button>
             </div>
         </div>
