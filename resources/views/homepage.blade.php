@@ -100,50 +100,50 @@
                 <path fill-rule="evenodd" d="M4.125 3C3.089 3 2.25 3.84 2.25 4.875V18a3 3 0 003 3h15a3 3 0 01-3-3V4.875C17.25 3.839 16.41 3 15.375 3H4.125zM12 9.75a.75.75 0 000 1.5h1.5a.75.75 0 000-1.5H12zm-.75-2.25a.75.75 0 01.75-.75h1.5a.75.75 0 010 1.5H12a.75.75 0 01-.75-.75zM6 12.75a.75.75 0 000 1.5h7.5a.75.75 0 000-1.5H6zm-.75 3.75a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5H6a.75.75 0 01-.75-.75zM6 6.75a.75.75 0 00-.75.75v3c0 .414.336.75.75.75h3a.75.75 0 00.75-.75v-3A.75.75 0 009 6.75H6z" clip-rule="evenodd" />
                 <path d="M18.75 6.75h1.875c.621 0 1.125.504 1.125 1.125V18a1.5 1.5 0 01-3 0V6.75z" />
             </svg>
-            News
+            Nieuws
         </div>
         <!-- *News Slider -->
         <div class="snap-x snap-mandatory w-full flex overflow-scroll scrollbar-hide">
-
             <!-- *Vragenlijst MSG -->
             <!-- TODO: Moet nog in een if state -->
             <div class="snap-start w-full pl-10 pr-10 flex items-center justify-center flex-shrink-0 ">
-                <div class="w-80 bg-talent-white rounded-xl p-5">
+                <a href="/dashboard/survey" class="w-80 bg-talent-white rounded-xl p-5">
                     <div class="flex justify-between">
                         <div class="flex flex-col">
                             <div class="font-bold text-talent-green text-xl">Vragenlijst</div>
                             <div class="opacity-30 text-sm italic">belangrijk!</div>
                         </div>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 flex items-center text-talent-red">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 text-talent-red">
                             <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zM12 8.25a.75.75 0 01.75.75v3.75a.75.75 0 01-1.5 0V9a.75.75 0 01.75-.75zm0 8.25a.75.75 0 100-1.5.75.75 0 000 1.5z" clip-rule="evenodd" />
                         </svg>
                     </div>
-                    <div class="mt-5">Om matches te kunnen te kunnen maken moet u onze vragenlijst invullen</div>
-                </div>
+                    <div class="mt-5">Om matches te kunnen maken moet u onze vragenlijst invullen</div>
+                </a>
             </div>
 
             <!-- *other msgs -->
             <div
                 class="snap-start w-full pl-10 pr-10 h-56 flex items-center justify-center flex-shrink-0 text-talent-green">
                 <div class="w-72 h-48 bg-talent-white rounded-xl p-5">
-                    Match 2
+                    News Item
                 </div>
             </div>
             <div
                 class="snap-start w-full pl-10 pr-10 h-56 flex items-center justify-center flex-shrink-0 text-talent-green">
                 <div class="w-72 h-48 bg-talent-white rounded-xl p-5">
-                    Match 3
+                    News Item
                 </div>
             </div>
             <div
                 class="snap-start w-full pl-10 pr-10 h-56 flex items-center justify-center flex-shrink-0 text-talent-green">
                 <div class="w-72 h-48 bg-talent-white rounded-xl p-5">
-                    Match 4
+                    News Item
                 </div>
             </div>
         </div>
+
         <!-- *Matches -->
-        <div class="flex justify-center mt-6">
+        <div class="flex justify-center">
             <div class="text-talent-white">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class=" mt-0.5 mr-0.5 w-7 h-7">
                     <path fill-rule="evenodd"

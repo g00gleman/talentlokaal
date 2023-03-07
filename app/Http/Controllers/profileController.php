@@ -18,12 +18,12 @@ class profileController extends Controller
     public function index()
     {
         $user = Auth::user();
-        if (isset($user->employer)){
+        if (isset($user->employee)){
             return view('profiles.index', [
                 'user' => $user,
             ]);
         }elseif ($user->employer){
-            $categoryName = jobCategory::where('id', $user->employee()->jobCategory)->first();
+            $categoryName = jobCategory::where('id', $user->employer->jobCategory)->first();
 
             return view('profiles.index', [
                 'categoryName' => $categoryName,
@@ -44,7 +44,7 @@ class profileController extends Controller
         $user->description = $request->get('description');
         $user->save();
 
-        return redirect(route('dashboard.manageProfile.index'));
+        return redirect('/dashboard');
     }
 
     public function logout(){
