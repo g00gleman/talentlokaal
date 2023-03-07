@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\JobOfferController;
 use App\Http\Controllers\MatchesController;
 use App\Http\Controllers\profileController;
 use App\Http\Controllers\rolesController;
@@ -59,11 +60,14 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'as' => 'dashboar
     // update your profile with a description, files or cv
     Route::put('/description/{id}', [profileController::class, 'description']);
 
+    // rousource routes
     // update profile info
     Route::resource('manageProfile', profileController::class);
+    Route::resource('jobOffer', JobOfferController::class);
 
     //click on survey button to see the survey
     Route::get('/survey', [surveyController::class, 'displaySurvey']);
+    Route::post('/survey', [surveyController::class, 'saveSurvey']);
     Route::get('/logout', [profileController::class, 'logout']);
 
 

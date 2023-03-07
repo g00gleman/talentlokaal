@@ -12,10 +12,10 @@
         ></script>
         <link href="/profiles/style.css" type="text/css" rel="stylesheet" />
         <style>
-            .body-scrollable{
+            /* .body-scrollable{
                 height: 100vh;
                 overflow: scroll;
-            }
+            } */
         </style>
     </head>
 
@@ -91,6 +91,8 @@
             </div>
         </div>
         <style>
+
+            
             input[type="text"] {
                 background: rgba(0, 0, 0, 0);
                 border: none;
@@ -102,14 +104,14 @@
                 border: none;
                 outline: none;
             }
-
-                .wrapper {
-                    width: 100%;
-                    /* max-width: 600px; */
-                }
-
                 h1 {
                     margin-bottom: 20px;
+                }
+
+                
+                .wrapper {
+                    max-width: 450px;
+                    margin:auto;
                 }
 
                 .container-3 {
@@ -153,7 +155,7 @@
                 .answer {
                     padding: 0 20px 20px;
                     line-height: 1.5rem;
-                    font-family:'Roboto';
+                    /* font-family:'Roboto'; */
                     font-size:15px;
                 }
 
@@ -164,10 +166,17 @@
         <!-- @include('components.scrollTop.index') -->
 
 <div class="wrapper">
-  
+
   <div class="container-3">
       <div class="question" class="text-xl font-bold text-talent-green">
       <div class="flex justify-center">
+          <form
+              action="{{ route('dashboard.manageProfile.update', $user->id) }}"
+              method="post"
+              enctype="multipart/form-data"
+              class="w-full"
+          >
+              @csrf @method('put')
                     @if (isset($user->profile_photo_url))
                     <img
                         class="h-20 w-20 rounded-full object-cover"
@@ -259,7 +268,7 @@
       </div>
       </div>
   </div>
-  
+
 
   <div class="container-3">
       <div class="question" class="text-xl font-bold text-talent-green">
@@ -271,20 +280,15 @@
       </div>
       </div>
   </div>
-</div>
-
-        <!-- @include('components.scrollTop.index') -->
 
 
-            <div class="flex justify-center mb-10 mt-10">
-                <div class="customCard">
-                    <div
-                        class="flex justify-center text-xl font-bold text-talent-green"
-                    >
-                        Persoongegevens
-                    </div>
-                    <div class="flex justify-center mt-8">
-                        <div class="grid grid-cols-5 gap-2">
+    <div class="container-3">
+      <div class="question" class="text-xl font-bold text-talent-green">
+        Persoongegevens
+      </div>
+        <div class="answercont">
+                    <div class="answer">
+                        <div class="grid grid-cols-5 gap-2 mt-5">
                             <!-- Name -->
                             <div class="col-span-1 mx-auto my-auto">
                                 <svg
@@ -309,7 +313,7 @@
                             <div
                                 class="col-span-4 text-xs flex items-center font-bold text-talent-orange"
                             >
-                                <input
+                                <input 
                                     name="naam"
                                     type="text"
                                     class="w-full focus:ring-talent-orange border-none rounded-md"
@@ -492,7 +496,7 @@
 
                                     <input id="companyName"
                                                  class="w-full focus:ring-talent-orange border-none rounded-md"
-                                                 type="text" name="bedrijfsnaam" :value="old('bedrijfsnaam')"  autofocus
+                                                 type="text" name="bedrijfsnaam" value="{{ $user->employer->companyName }}"  autofocus
                                                  placeholder="Vul hier uw bedrijfsnaam in" />
                                     @error('bedrijfsnaam')
                                     {{ $message }}
@@ -510,7 +514,7 @@
                                 >
                                     <input id="websiteUrl"
                                                  class=" w-full focus:ring-talent-orange border-none rounded-md"
-                                                 type="text" name="websitelink" :value="old('websitelink')"  autofocus
+                                                 type="text" name="websitelink" value="{{ $user->employer->websiteUrl }}"  autofocus
                                                  placeholder="Link naar website" />
                                         @error('websitelink')
                                         {{ $message }}
@@ -518,9 +522,17 @@
                                 </div>
                             @endif
                         </div>
-                    </div>
-                </div>
-            </div>
+                    </div><br><br>
+      </div>
+      </div>
+    
+  </div>
+    </div>
+
+        <!-- @include('components.scrollTop.index') -->
+
+
+    <div class="wrapper">
             <div class="col-span-5 text-center">
                 <button
                     class="bg-talent-orange shadow-md w-11/12 pt-2 pb-2 text-talent-white font-bold rounded-full"
@@ -540,7 +552,9 @@
         </div>
         @include('profiles.deleteModal')
         @include('components.scrollTop.index')
+        </div>
     </div>
+</div>
 
         <script>
 
