@@ -17,13 +17,21 @@ class profileController extends Controller
     // return the index view with specific userdata
     public function index()
     {
-        $user = User::with('employee')->find(Auth::id());
-        $categoryName = jobCategory::where('id', $user->employee->jobCategory)->first();
+        $user = Auth::user();
+        if (isset($user->employee)){
+            return view('profiles.index', [
+                'user' => $user,
+            ]);
+        }elseif ($user->employer){
+            $categoryName = jobCategory::where('id', $user->employer->jobCategory)->first();
 
-        return view('profiles.index', [
-            'categoryName' => $categoryName,
-            'user' => $user,
-        ]);
+            return view('profiles.index', [
+                'categoryName' => $categoryName,
+                'user' => $user,
+            ]);
+        }
+
+
 
     }
     // load the view RegisterIntro to add description
@@ -36,7 +44,7 @@ class profileController extends Controller
         $user->description = $request->get('description');
         $user->save();
 
-        return redirect(route('dashboard.manageProfile.index'));
+        return redirect('/dashboard');
     }
 
     public function logout(){
@@ -153,25 +161,5 @@ class profileController extends Controller
             $user->employer->delete();
         }
         return redirect('/');
-    }
-
-    public function profileFoto( Request $request,$id){
-
-        $data = $this->validate(request(), [
-            'profielfoto' => 'image',
-        ]);
-        // get the image out of form
-        $image = $request->file('profielfoto');
-        // new file name for image
-        $imageNewFileName = time(). "." . $image->getExtension();
-        // replace old filename with the new one and save it into storage/public
-        Storage::disk('local')->put($imageNewFileName,  $image->get());
-
-        // save data in user table
-        $newUser = User::find($id);
-        $newUser->profile_photo_path = $imageNewFileName;
-        $newUser->save();
-
-        return redirect(route('dashboard.manageProfile.index'));
     }
 }

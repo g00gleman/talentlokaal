@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('job_offers', function (Blueprint $table) {
             $table->id();
             $table->string('function');
-            $table->bigInteger('employeeId');
+            $table->bigInteger('employerId');
+            $table->bigInteger('jobCategoryId');
             $table->timestamps();
         });
     }

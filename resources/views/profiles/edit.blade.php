@@ -104,12 +104,15 @@
                 border: none;
                 outline: none;
             }
+<<<<<<< HEAD
 
                 .wrapper {
                     max-width: 450px;
                     margin:auto;
                 }
 
+=======
+>>>>>>> 4a0359c1e1ef89518bc5b65b03813fee9cb1ea9d
                 h1 {
                     margin-bottom: 20px;
                 }
@@ -166,10 +169,17 @@
         <!-- @include('components.scrollTop.index') -->
 
 <div class="wrapper">
-  
+
   <div class="container-3">
       <div class="question" class="text-xl font-bold text-talent-green">
       <div class="flex justify-center">
+          <form
+              action="{{ route('dashboard.manageProfile.update', $user->id) }}"
+              method="post"
+              enctype="multipart/form-data"
+              class="w-full"
+          >
+              @csrf @method('put')
                     @if (isset($user->profile_photo_url))
                     <img
                         class="h-20 w-20 rounded-full object-cover"
@@ -261,7 +271,7 @@
       </div>
       </div>
   </div>
-  
+
 
   <div class="container-3">
       <div class="question" class="text-xl font-bold text-talent-green">
@@ -489,7 +499,7 @@
 
                                     <input id="companyName"
                                                  class="w-full focus:ring-talent-orange border-none rounded-md"
-                                                 type="text" name="bedrijfsnaam" :value="old('bedrijfsnaam')"  autofocus
+                                                 type="text" name="bedrijfsnaam" value="{{ $user->employer->companyName }}"  autofocus
                                                  placeholder="Vul hier uw bedrijfsnaam in" />
                                     @error('bedrijfsnaam')
                                     {{ $message }}
@@ -507,7 +517,7 @@
                                 >
                                     <input id="websiteUrl"
                                                  class=" w-full focus:ring-talent-orange border-none rounded-md"
-                                                 type="text" name="websitelink" :value="old('websitelink')"  autofocus
+                                                 type="text" name="websitelink" value="{{ $user->employer->websiteUrl }}"  autofocus
                                                  placeholder="Link naar website" />
                                         @error('websitelink')
                                         {{ $message }}
