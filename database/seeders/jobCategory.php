@@ -24,11 +24,6 @@ class jobCategory extends Seeder
                 'updated_at' => Carbon::now(),
             ],
             [
-                'categoryName' => 'Algemeen',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ],
-            [
                 'categoryName' => 'Architectuur & Design',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
@@ -178,6 +173,11 @@ class jobCategory extends Seeder
             ],
             [
                 'categoryName' => 'Overheid & Semi-overheid',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'categoryName' => 'Overige',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],

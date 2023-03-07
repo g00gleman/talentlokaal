@@ -174,12 +174,12 @@
               action="{{ route('dashboard.manageProfile.update', $user->id) }}"
               method="post"
               enctype="multipart/form-data"
-              class="w-full"
+              class="w-full flex"
           >
               @csrf @method('put')
                     @if (isset($user->profile_photo_url))
                     <img
-                        class="h-20 w-20 rounded-full object-cover"
+                        class="h-15 w-15 rounded-full object-cover"
                         src="{{ Auth::user()->profile_photo_url }}"
                         alt="{{ Auth::user()->name }}"
                     />
@@ -249,7 +249,7 @@
                     ></div>
                     @endif
 
-                    <div class="flex justify-center mt-7 ml-6 font-bold text-xl">
+                    <div class="flex justify-center mt-4 ml-8 font-bold text-xl">
                     {{ $user->name }}
                 </div>
                 </div>
@@ -391,7 +391,7 @@
                             <div
                                 class="col-span-4 text-xs flex items-center font-bold text-talent-orange"
                             >
-                            <select name="jobCategory" id="jobCategory" class="w-full focus:ring-talent-orange border-none rounded-md">
+                            <select name="jobCategory" id="jobCategory" class="w-full focus:ring-talent-orange border-none rounded-md bg-talent-light-green">
                                 @foreach($jobCategories as $category)
                                     @if ($category->id == $user->employee->jobCategory)
                                         <option value="{{ $category->id }}" selected>{{ $category->categoryName }}</option>
@@ -542,7 +542,7 @@
                 </button>
             </div>
         </form>
-        <div class="col-span-5 text-center mt-8">
+        <div class="col-span-5 text-center mt-4">
             <button
                 class="bg-talent-white shadow-md w-11/12 pt-2 pb-2 font-bold rounded-full"
                 onclick="openModalUserDel()"
