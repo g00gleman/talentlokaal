@@ -88,6 +88,7 @@
         </div>
         <div class="flex justify-center">
             <div>
+                @if(isset($user->employee))
                 <a href="/dashboard/survey">
                     <div class="flex justify-between mt-5 w-32 h-8 bg-talent-orange rounded-full">
                         <div class="flex h-full ml-2 mr-1 items-center text-talent-white">
@@ -103,6 +104,7 @@
                         </div>
                     </div>
                 </a>
+                @endif
                 <a href="{{ route('dashboard.manageProfile.edit', $user->id) }}">
                     <div class="flex justify-between mt-3 w-32 h-8 bg-talent-orange rounded-full">
                         <div class="flex h-full ml-2 mr-1 items-center text-talent-white">

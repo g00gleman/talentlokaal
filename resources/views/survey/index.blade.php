@@ -350,8 +350,7 @@
                             <div class="modal-content-overlay-save" onclick="closeModalSave()"></div>
                             <div class="modal-content-box-save">
                                 <div class="box-top-save">
-                                    U heeft alle vragen ingevuld. <br />
-                                    Wilt u de vragenlijst opslaan en afsluiten?
+                                    Bedankt voor het invullen voor de vragenlijst, de matches worden nu gegenereerd.
                                 </div>
                                 <div class="box-content-save">
                                     <div class="box-content-btn-save" onclick="closeModalSave()">
