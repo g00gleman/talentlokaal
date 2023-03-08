@@ -258,12 +258,15 @@
 
         <form action="{{ route('dashboard.jobOffer.store') }}" method="post">
             @csrf
-            <input type="text" class="" name="function" id="input" placeholder="Voeg vacaturenaam toe">
-            <select class="" name="jobCategoryId" id="select">
-                @foreach($jobCategories as $jobCategory)
-                    <option value="{{ $jobCategory->id }}">{{ $jobCategory->categoryName }}</option>
-                @endforeach
-            </select>
+            <div class="flex flex-col justify-center">
+                <input type="text" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm  font-sans focus:ring-talent-orange underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange" name="function" id="input" placeholder="*Voeg vacaturenaam toe">
+                <select class="text-talent-orange font-sans focus:ring-talent-orange underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange" name="jobCategoryId" id="select">
+                    <option value="" selected>*Kies een sector</option>
+                    @foreach($jobCategories as $jobCategory)
+                        <option value="{{ $jobCategory->id }}">{{ $jobCategory->categoryName }}</option>
+                    @endforeach
+                </select>
+            </div>
         <div class="content">
             <div class="questionList">
                 <?php
