@@ -22,7 +22,7 @@ class rolesController extends Controller
     public function getRole($id)
     {
         $jobCategories = jobCategory::all();
-        return view('roles.single',[
+        return view('roles.single', [
             'id' => $id,
             'jobCategories' => $jobCategories,
         ]);
@@ -52,7 +52,7 @@ class rolesController extends Controller
         return redirect('/dashboard/introduction');
     }
 
-public function registerEmployer(Request $request)
+    public function registerEmployer(Request $request)
     {
         // call the registerUser method to register a user
         $newUser = $this->registerUser($request);
@@ -63,6 +63,7 @@ public function registerEmployer(Request $request)
             'jobCategory' => 'integer',
             'websitelink' => 'string|active_url|max:255',
         ]);
+
         // save data in employee table
         $newEmployer = new Employer();
         $newEmployer->companyName = $request->get('bedrijfsnaam');
@@ -75,7 +76,7 @@ public function registerEmployer(Request $request)
         return redirect('/dashboard/introduction');
     }
 
-private function registerUser(Request $request): User
+    private function registerUser(Request $request): User
     {
         // validation errors for all form inputs
         $this->validate(request(), [
@@ -96,9 +97,9 @@ private function registerUser(Request $request): User
         $newUser->adress = $request->get('adres');
         // get the image out of form
         $image = $request->file('profielfoto');
-        if (isset($image)){
+        if (isset($image)) {
             // new file name for image
-            $imageNewFileName = time(). "." . $image->extension();
+            $imageNewFileName = time() . "." . $image->extension();
 
             // replace old filename with the new one and save it into storage/public
             Storage::disk('local')->put($imageNewFileName,  $image->get());
@@ -111,5 +112,4 @@ private function registerUser(Request $request): User
         Auth::login($newUser);
         return $newUser;
     }
-
 }
