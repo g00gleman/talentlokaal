@@ -202,7 +202,7 @@
               @csrf @method('put')
                     @if (isset($user->profile_photo_url))
                     <img
-                        class="h-15 w-15 rounded-full object-cover"
+                        class="h-20 w-20 rounded-full object-cover"
                         src="{{ Auth::user()->profile_photo_url }}"
                         alt="{{ Auth::user()->name }}"
                     />
@@ -272,7 +272,7 @@
                     ></div>
                     @endif
 
-                    <div class="flex justify-center mt-4 ml-8 font-bold text-xl">
+                    <div class="flex justify-center mt-6 ml-8 font-bold text-xl">
                     {{ $user->name }}
                 </div>
                 </div>
@@ -300,11 +300,13 @@
       <div class="answercont">
       <div class="answer">
        <!-- <input type="file" name="pitch" id="" accept=".mp4" /> -->
+       <p>U kunt alleen mp4 bestanden kiezen</p><br/>
        <label for="file-upload" class="custom-file-upload">
             <i class="fas fa-cloud-upload-alt"></i>Kies bestand
-        </label>
+</label>
         <input id="file-upload" name="pitch" type="file" accept=".mp4" onchange="showFileName(this)"/>
         <div id="file-name"></div>
+        
 
         <br><br> 
       </div>
