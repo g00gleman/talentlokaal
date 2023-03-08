@@ -4,7 +4,7 @@
             @include('components.redirectBack.index')
             <!-- Logo -->
             <div class="flex-1 mt-3 ml-5">
-                <?xml version="1.0" encoding="UTF-8"?><svg id="Laag_1" xmlns="http://www.w3.org/2000/svg"
+                <svg id="Laag_1" xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 559.14 263.07" class="w-36">
                     <defs>
                         <style>
@@ -422,8 +422,8 @@
                         </svg>
                         <div
                             class=" font-sans px-5 flex items-center border-none content-center  mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange bg-talent-white text-talent-orange underline">
-                            <input type="file" name="profielfoto" id="upload" accept=".jpg,.jpeg,.png,.bmp,.gif,.svg,.webp"     hidden/>
-                                <label for="upload" class="">Upload hier uw bedrijfslogo</label>
+                            <input type="file" name="profielfoto" id="upload" accept=".jpg,.jpeg,.png,.bmp,.gif,.svg,.webp" onchange="showFileName(this)" hidden/>
+                                <label for="upload" class="" id="file-name">Upload hier uw bedrijfslogo</label>
                         </div>
                     </div>
                     <div class="text-sm flex justify-center items-center text-talent-red">
@@ -459,8 +459,8 @@
                         </svg>
                         <div
                             class=" font-sans px-5 flex items-center border-none content-center  mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange bg-talent-white text-talent-orange underline">
-                            <input type="file" name="profielfoto" id="upload" accept=".jpg,.jpeg,.png,.bmp,.gif,.svg,.webp"     hidden/>
-                                <label for="upload" class="">Upload hier uw profielfoto</label>
+                            <input type="file" name="profielfoto" id="upload" accept=".jpg,.jpeg,.png,.bmp,.gif,.svg,.webp" onchange="showFileName(this)"    hidden/>
+                                <label for="upload" class="" id="file-name">Upload hier uw profielfoto</label>
                         </div>
                     </div>
                     <div class="text-sm flex justify-center items-center text-talent-red">
@@ -544,5 +544,12 @@
     </div>
     </div>
         </form>
+
+        <script>
+            function showFileName(input) {
+            const fileName = input.files[0].name;
+            document.getElementById("file-name").innerHTML = fileName;
+            }
+        </script>
 
 </x-guest-layout>

@@ -303,7 +303,7 @@
        <label for="file-upload" class="custom-file-upload">
             <i class="fas fa-cloud-upload-alt"></i> Choose File
         </label>
-        <input id="file-upload" type="file" onchange="showFileName(this)"/>
+        <input id="file-upload" type="file" accept=".mp4" onchange="showFileName(this)"/>
         <div id="file-name"></div>
 
         <br><br> 
