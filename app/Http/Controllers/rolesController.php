@@ -61,14 +61,20 @@ class rolesController extends Controller
         $this->validate(request(), [
             'bedrijfsnaam' => 'required|string|max:255',
             'jobCategory' => 'integer',
-            'websitelink' => 'string|active_url|max:255',
+            'websitelink' => 'string|max:255',
         ]);
+
+        $url = $request->get('websitelink');
+
+        if (stripos($url, "http://") === false && stripos($url, "https://") === false) {
+            $url = "http://" . $url;
+        }
 
         // save data in employee table
         $newEmployer = new Employer();
         $newEmployer->companyName = $request->get('bedrijfsnaam');
         $newEmployer->jobCategory = $request->get('jobCategory');
-        $newEmployer->websiteUrl = $request->get('websitelink');
+        $newEmployer->websiteUrl = $url;
         $newEmployer->user_Id = $newUser->id;
         $newEmployer->save();
 
@@ -87,6 +93,7 @@ class rolesController extends Controller
             'profielfoto' => 'mimes:jpg,jpeg,png', 'max:1024',
             'wachtwoord' => 'required|min:8|max:20|confirmed'
         ]);
+
 
 
         // save data in user table
