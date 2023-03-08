@@ -192,6 +192,7 @@
             height: 100vh;
             overflow: scroll;
         }
+
     </style>
 </head>
 
@@ -266,6 +267,12 @@
                         <option value="{{ $jobCategory->id }}">{{ $jobCategory->categoryName }}</option>
                     @endforeach
                 </select>
+                <textarea
+                    name="description"
+                    id="description"
+                    class="text-talent-orange font-sans focus:ring-talent-orange underline decoration-talent-orange px-5 border-none block mt-1 w-64 h-40 rounded-md shadow-xl placeholder:text-talent-orange"
+                    placeholder="Korte beschrijving vacature"
+                ></textarea>
             </div>
         <div class="content">
             <div class="questionList">
@@ -477,6 +484,7 @@
                 path: refresh
             }, '', refresh);
             document.getElementById("input").classList.add("questioninvisible");
+            document.getElementById("description").classList.add("questioninvisible");
             document.getElementById("select").classList.add("questioninvisible");
             document.getElementById("question1").classList.remove("questioninvisible");
             document.getElementById("question2").classList.remove("questioninvisible");
@@ -538,6 +546,7 @@
             }, '', refresh);
             document.getElementById("select").classList.remove("questioninvisible");
             document.getElementById("input").classList.remove("questioninvisible");
+            document.getElementById("description").classList.remove("questioninvisible");
             document.getElementById("question1").classList.add("questioninvisible");
             document.getElementById("question2").classList.add("questioninvisible");
             document.getElementById("question3").classList.add("questioninvisible");
