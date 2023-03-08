@@ -301,9 +301,9 @@
       <div class="answer">
        <!-- <input type="file" name="pitch" id="" accept=".mp4" /> -->
        <label for="file-upload" class="custom-file-upload">
-            <i class="fas fa-cloud-upload-alt"></i> Choose File
+            <i class="fas fa-cloud-upload-alt"></i>Kies bestand
         </label>
-        <input id="file-upload" type="file" accept=".mp4" onchange="showFileName(this)"/>
+        <input id="file-upload" name="pitch" type="file" accept=".mp4" onchange="showFileName(this)"/>
         <div id="file-name"></div>
 
         <br><br> 
