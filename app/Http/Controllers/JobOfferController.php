@@ -23,6 +23,7 @@ class JobOfferController extends Controller
     }
     public function store(Request $request){
         $this->validate(request(), [
+            'description' => 'required|max:255',
             'function' => 'required|string|max:255',
             'jobCategoryId' => 'required|integer',
             'vraag1' => 'bail|required',
@@ -39,6 +40,7 @@ class JobOfferController extends Controller
         $newjobOffer = new jobOffer();
         $newjobOffer->function = $request->get('function');
         $newjobOffer->jobCategoryId = $request->get('jobCategoryId');
+        $newjobOffer->description = $request->get('description');
         $newjobOffer->employerId = Auth::user()->employer->id;
         $newjobOffer->save();
 
