@@ -317,9 +317,9 @@
         </div>
     </div>
 
-    {{-- @include('components.scrollTop.index') --}}
+    @include('components.scrollTop.index')
 
-    <!-- @include('components.scrollTop.index')
+    {{-- <!-- @include('components.scrollTop.index')
     <div class="flex justify-center mb-10">
 
     <div class="customCard">
@@ -343,7 +343,7 @@
 
             </div>
         </div>
-    </div> -->
+    </div> --> --}}
     </div></div>
 
 
