@@ -133,7 +133,7 @@
                                     Vacature toevoegen
                                 </div>
                             </div>
-                        <a/>
+                        </a>
                    @endif
             </div>
         </div>
@@ -148,9 +148,11 @@
             <div class="flex justify-center mt-2 text-talent-orange font-bold text-3xl">
                 {{ $user->name }}
             </div>
+            <div class=" text-talent-green text-base mt-7">
             @if (isset($user->description))
                 {{ $user->description }}
             @endif
+            </div>
         </div>
     </div>
 
@@ -187,7 +189,19 @@
                 Persoongegevens
             </div>
             <div class="flex justify-center mt-8">
+                @if(isset($user->employer))
                 <div class="grid grid-cols-5 gap-2">
+                    <div class="col-span-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    stroke-width="1.5" stroke="currentColor" class="w-10 h-10 mr-5">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21" />
+                </svg>
+                    </div>
+                    <div class="col-span-4 text-base flex items-center font-bold text-talent-orange">
+                        {{ $user->employer->companyName }}<br>
+                    </div>
+                    @endif
                     <!-- Name -->
                     <div class="col-span-1">
                         <svg version="1.0" xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 mr-5"
@@ -286,9 +300,13 @@
                         </div>
                     @endif
                     @if(isset($user->employer))
-                        <div class="col-span-4 text-base flex items-center font-bold text-talent-orange">
-                            {{ $user->employer->companyName }}<br>
-                        </div>
+                    <div class="col-span-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    stroke-width="1.5" stroke="currentColor" class="w-10 h-10 mr-5">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+                    </svg>
+                    </div>
                         <div class="col-span-4 text-base flex items-center font-bold text-talent-orange">
                             <a href="{{ $user->employer->websiteUrl }}">Bezoek website</a>
                         </div>
