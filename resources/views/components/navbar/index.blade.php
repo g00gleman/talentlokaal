@@ -81,7 +81,7 @@
     }
 
     .active {
-        color: #ef840c;
+        color: #ef840c !important;
     }
 
     .modal {
