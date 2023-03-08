@@ -345,38 +345,7 @@
                             </div>
                         </div>
                     @endforeach
-                    <div class="modal-save" id="modalSave">
-                        <div class="modal-content-save">
-                            <div class="modal-content-overlay-save" onclick="closeModalSave()"></div>
-                            <div class="modal-content-box-save">
-                                <div class="box-top-save">
-                                    Bedankt voor het invullen voor de vragenlijst, de matches worden nu gegenereerd.
-                                </div>
-                                <div class="box-content-save">
-                                    <div class="box-content-btn-save" onclick="closeModalSave()">
-                                        Nee
-                                    </div>
-                                    <button type="submit" class="box-content-btn-save"> Ja </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal" id="modalDone">
-                        <div class="modal-content">
-                            <div class="modal-content-overlay" onclick="closeModalDone()"></div>
-                            <div class="modal-content-box">
-                                <div class="box-top">
-                                    U heeft nog niet alle vragen beantwoord. Geef eerst antwoord op
-                                    de vragen voordat u doorgaat.
-                                </div>
-                                <div class="box-content">
-                                    <div class="box-content-btn" onclick="closeModalDone()">
-                                        Begrepen
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
                     <div class="Pagination-end">
                         <div class="Pagination">
                             <div id="ModalButtonDone" class="button" onclick="openModalDone()">
@@ -390,6 +359,39 @@
             </div>
         </div>
     </div>
+    <div class="modal-save" id="modalSave">
+        <div class="modal-content-save">
+            <div class="modal-content-overlay-save" onclick="closeModalSave()"></div>
+            <div class="modal-content-box-save">
+                <div class="box-top-save">
+                    Bedankt voor het invullen voor de vragenlijst, de matches worden nu gegenereerd.
+                </div>
+                <div class="box-content-save">
+                    <div class="box-content-btn-save" onclick="closeModalSave()">
+                        Nee
+                    </div>
+                    <button type="submit" class="box-content-btn-save"> Ja </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="modalDone">
+        <div class="modal-content">
+            <div class="modal-content-overlay" onclick="closeModalDone()"></div>
+            <div class="modal-content-box">
+                <div class="box-top">
+                    U heeft nog niet alle vragen beantwoord. Geef eerst antwoord op
+                    de vragen voordat u doorgaat.
+                </div>
+                <div class="box-content">
+                    <div class="box-content-btn" onclick="closeModalDone()">
+                        Begrepen
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     @if ($errors->any())
         <script>
             document.getElementById("modalDone").style.display = "block";
