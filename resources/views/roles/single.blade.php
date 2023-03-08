@@ -460,7 +460,7 @@
                         <div
                             class=" font-sans px-5 flex items-center border-none content-center  mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange bg-talent-white text-talent-orange underline">
                             <input type="file" name="profielfoto" id="upload" accept=".jpg,.jpeg,.png,.bmp,.gif,.svg,.webp" onchange="showFileName(this)"    hidden/>
-                                <label for="upload" class="" id="file-name">Upload hier uw profielfoto</label>
+                                <label for="upload" class="truncate" id="file-name">Upload hier uw profielfoto</label>
                         </div>
                     </div>
                     <div class="text-sm flex justify-center items-center text-talent-red">
