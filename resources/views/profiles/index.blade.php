@@ -317,33 +317,8 @@
         </div>
     </div>
 
-    {{-- @include('components.scrollTop.index') --}}
+    @include('components.scrollTop.index')
 
-    <!-- @include('components.scrollTop.index')
-    <div class="flex justify-center mb-10">
-
-    <div class="customCard">
-        <div
-            class="flex justify-center text-xl font-bold text-talent-green"
-        >
-            Persoongegevens
-        </div>
-        <div class="flex justify-center mt-8">
-            <div class="">
-
-
-                <a href="{{ route('dashboard.manageProfile.edit', $user->id) }}">
-                    <div class="px-3 py-2 bg-talent-white rounded-full">
-                        <div class="text-center h-full select-none bg-red-500 font-bold">
-                            Account verwijderen
-                        </div>
-                    </div>
-                </a>
-
-
-            </div>
-        </div>
-    </div> -->
     </div></div>
 
 
