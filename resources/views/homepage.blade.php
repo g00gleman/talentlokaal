@@ -103,6 +103,7 @@
             Nieuws
         </div>
         <!-- *News Slider -->
+        @if(Auth::user()->employee())
         <div class="snap-x snap-mandatory w-full flex overflow-scroll scrollbar-hide">
             <!-- *Vragenlijst MSG -->
             <!-- TODO: Moet nog in een if state -->
@@ -117,9 +118,10 @@
                             <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zM12 8.25a.75.75 0 01.75.75v3.75a.75.75 0 01-1.5 0V9a.75.75 0 01.75-.75zm0 8.25a.75.75 0 100-1.5.75.75 0 000 1.5z" clip-rule="evenodd" />
                         </svg>
                     </div>
-                    <div class="mt-5">Om matches te kunnen maken moet u onze vragenlijst invullen</div>
+                    <div class="mt-5">Om specifiekere matches te kunnen genereren, vul de vragenlijst dan in op de profiel pagina.</div>
                 </a>
             </div>
+            @endif
 
             <!-- *other msgs -->
             <div

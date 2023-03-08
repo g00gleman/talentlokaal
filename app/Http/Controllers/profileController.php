@@ -19,12 +19,13 @@ class profileController extends Controller
     {
         $user = Auth::user();
         if (isset($user->employee)){
+            $categoryName = jobCategory::where('id', $user->employee->jobCategory)->first();
             return view('profiles.index', [
                 'user' => $user,
+                'categoryName' => $categoryName,
             ]);
         }elseif ($user->employer){
             $categoryName = jobCategory::where('id', $user->employer->jobCategory)->first();
-
             return view('profiles.index', [
                 'categoryName' => $categoryName,
                 'user' => $user,
