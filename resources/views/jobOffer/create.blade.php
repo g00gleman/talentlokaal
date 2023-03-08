@@ -258,12 +258,15 @@
 
         <form action="{{ route('dashboard.jobOffer.store') }}" method="post">
             @csrf
-            <input type="text" class="" name="function" id="input" placeholder="Voeg vacaturenaam toe">
-            <select class="" name="jobCategoryId" id="select">
-                @foreach($jobCategories as $jobCategory)
-                    <option value="{{ $jobCategory->id }}">{{ $jobCategory->categoryName }}</option>
-                @endforeach
-            </select>
+            <div class="flex flex-col justify-center">
+                <input type="text" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm  font-sans focus:ring-talent-orange underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange" name="function" id="input" placeholder="*Voeg vacaturenaam toe">
+                <select class="text-talent-orange font-sans focus:ring-talent-orange underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange" name="jobCategoryId" id="select">
+                    <option value="" selected>*Kies een sector</option>
+                    @foreach($jobCategories as $jobCategory)
+                        <option value="{{ $jobCategory->id }}">{{ $jobCategory->categoryName }}</option>
+                    @endforeach
+                </select>
+            </div>
         <div class="content">
             <div class="questionList">
                 <?php
@@ -381,10 +384,11 @@
                     <div class="Pagination-end">
                         <div class="Pagination">
                             <div id="ModalButtonDone" class="button" onclick="openModalDone()">
-                                < </div>
-                                    <div id="ModalButtonSave" class="button" onclick="openModalSave()">
-                                        >
-                                    </div>
+                                < 
+                            </div>
+                            <div id="ModalButtonSave" class="button" onclick="openModalSave()">
+                                >
+                            </div>
                             </div>
                         </div>
                 </form>
@@ -453,6 +457,10 @@
     }, '', refresh);
 
     if (window.location.search == "?page=1") {
+        document.getElementById("question1").classList.add("questioninvisible");
+        document.getElementById("question2").classList.add("questioninvisible");
+        document.getElementById("question3").classList.add("questioninvisible");
+        document.getElementById("question4").classList.add("questioninvisible");
         document.getElementById("question5").classList.add("questioninvisible");
         document.getElementById("question6").classList.add("questioninvisible");
         document.getElementById("question7").classList.add("questioninvisible");
@@ -470,14 +478,14 @@
             }, '', refresh);
             document.getElementById("input").classList.add("questioninvisible");
             document.getElementById("select").classList.add("questioninvisible");
-            document.getElementById("question1").classList.add("questioninvisible");
-            document.getElementById("question2").classList.add("questioninvisible");
-            document.getElementById("question3").classList.add("questioninvisible");
-            document.getElementById("question4").classList.add("questioninvisible");
-            document.getElementById("question5").classList.remove("questioninvisible");
-            document.getElementById("question6").classList.remove("questioninvisible");
-            document.getElementById("question7").classList.remove("questioninvisible");
-            document.getElementById("question8").classList.remove("questioninvisible");
+            document.getElementById("question1").classList.remove("questioninvisible");
+            document.getElementById("question2").classList.remove("questioninvisible");
+            document.getElementById("question3").classList.remove("questioninvisible");
+            document.getElementById("question4").classList.remove("questioninvisible");
+            document.getElementById("question5").classList.add("questioninvisible");
+            document.getElementById("question6").classList.add("questioninvisible");
+            document.getElementById("question7").classList.add("questioninvisible");
+            document.getElementById("question8").classList.add("questioninvisible");
             document.getElementById("question9").classList.add("questioninvisible");
             document.getElementById("ModalButtonDone").classList.add("buttonactive");
             return;
@@ -492,6 +500,18 @@
             document.getElementById("question2").classList.add("questioninvisible");
             document.getElementById("question3").classList.add("questioninvisible");
             document.getElementById("question4").classList.add("questioninvisible");
+            document.getElementById("question5").classList.remove("questioninvisible");
+            document.getElementById("question6").classList.remove("questioninvisible");
+            document.getElementById("question7").classList.remove("questioninvisible");
+            document.getElementById("question8").classList.remove("questioninvisible");
+            document.getElementById("question9").classList.add("questioninvisible");
+            return;
+
+        } else if (window.location.search == "?page=3") {
+            var refresh = window.location.protocol + "//" + window.location.host + window.location.pathname + '?page=4';
+            window.history.pushState({
+                path: refresh
+            }, '', refresh);
             document.getElementById("question5").classList.add("questioninvisible");
             document.getElementById("question6").classList.add("questioninvisible");
             document.getElementById("question7").classList.add("questioninvisible");
@@ -499,10 +519,10 @@
             document.getElementById("question9").classList.remove("questioninvisible");
             document.getElementById("ModalButtonSave").classList.remove("buttonactive");
             return;
-
-        } else if (window.location.search == "?page=3"); {
+        }else if (window.location.search == "?page=4") {
             document.getElementById("modalSave").style.display = "block";
         }
+
 
     }
 
@@ -518,10 +538,10 @@
             }, '', refresh);
             document.getElementById("select").classList.remove("questioninvisible");
             document.getElementById("input").classList.remove("questioninvisible");
-            document.getElementById("question1").classList.remove("questioninvisible");
-            document.getElementById("question2").classList.remove("questioninvisible");
-            document.getElementById("question3").classList.remove("questioninvisible");
-            document.getElementById("question4").classList.remove("questioninvisible");
+            document.getElementById("question1").classList.add("questioninvisible");
+            document.getElementById("question2").classList.add("questioninvisible");
+            document.getElementById("question3").classList.add("questioninvisible");
+            document.getElementById("question4").classList.add("questioninvisible");
             document.getElementById("question5").classList.add("questioninvisible");
             document.getElementById("question6").classList.add("questioninvisible");
             document.getElementById("question7").classList.add("questioninvisible");
@@ -533,6 +553,21 @@
 
         } else if (window.location.search == "?page=3") {
             var refresh = window.location.protocol + "//" + window.location.host + window.location.pathname + '?page=2';
+            window.history.pushState({
+                path: refresh
+            }, '', refresh);
+            document.getElementById("question1").classList.remove("questioninvisible");
+            document.getElementById("question2").classList.remove("questioninvisible");
+            document.getElementById("question3").classList.remove("questioninvisible");
+            document.getElementById("question4").classList.remove("questioninvisible");
+            document.getElementById("question5").classList.add("questioninvisible");
+            document.getElementById("question6").classList.add("questioninvisible");
+            document.getElementById("question7").classList.add("questioninvisible");
+            document.getElementById("question8").classList.add("questioninvisible");
+            document.getElementById("question9").classList.add("questioninvisible");
+            return;
+        }else if (window.location.search == "?page=4") {
+            var refresh = window.location.protocol + "//" + window.location.host + window.location.pathname + '?page=3';
             window.history.pushState({
                 path: refresh
             }, '', refresh);
