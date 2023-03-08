@@ -146,7 +146,7 @@
                 <br />
                 Email: info@talentlokaal.nl
                 <br />
-                Telefoon:
+                Telefoon: 065454646
                 <br />
                 Website:
                 <a href="https://www.talentlokaal.nl/" class="underline"
