@@ -29,7 +29,8 @@
         margin-bottom: 15px;
         font-weight: bold;
         font-size: large;
-        color: white;
+        color: #1f796a;
+
         background-color: #bcd7d2;
     }
 
@@ -76,7 +77,7 @@
             margin-bottom: 15px;
             font-weight: bold;
             font-size: large;
-            color: white;
+            color: #1f796a;
             background-color: #bcd7d2;
         }
 
