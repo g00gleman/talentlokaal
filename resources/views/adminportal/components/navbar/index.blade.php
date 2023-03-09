@@ -151,6 +151,10 @@
             transition: 0.3s;
             transform: translateX(4%);
         }
+
+        .navbar {
+            display: block;
+        }
     }
 </style>
 
@@ -294,6 +298,12 @@
 </div>
 
 <script>
+    window.addEventListener("resize", function () {
+        if (window.matchMedia("(min-width: 450px)").matches) {
+            document.getElementById("navbar").style.display = "block";
+        }
+    });
+
     function closeMobileMenu() {
         document.getElementById("navbar").style.display = "none";
     }
