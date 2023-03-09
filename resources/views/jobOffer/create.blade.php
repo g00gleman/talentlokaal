@@ -264,6 +264,12 @@
             <div class="mt-8 flex justify-center text-2xl text-talent-green font-bold mb-6">
                 Vacature
             </div>
+            <div class="flex justify-center text-center">
+                <div class="text-xs text-talent-orange font-bold mb-12 w-4/5">
+                    Vul in wat het beste bij de vacature past</br>
+                    (1 is zeer van toepassing, 4 is niet van toepassing)
+                </div>
+            </div>
         </div>
 
         <form action="{{ route('dashboard.jobOffer.store') }}" method="post">
