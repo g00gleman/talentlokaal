@@ -86,6 +86,6 @@ class User extends Authenticatable
         // if there is no custom profile photo uploaded then return a default profile photo
         if (empty($this->pitch)) return "";
 
-        return "/dashboard/userFiles/pitch/".$this->id;
+        return "/dashboard/userFiles/pitch/".$this->id."?id=".time();
     }
 }
