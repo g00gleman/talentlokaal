@@ -29,7 +29,8 @@
         margin-bottom: 15px;
         font-weight: bold;
         font-size: large;
-        color: white;
+        color: #1f796a;
+
         background-color: #bcd7d2;
     }
 
@@ -43,6 +44,10 @@
 
     .link-last {
         margin-top: 200px;
+    }
+
+    .closeBtn {
+        height: 0;
     }
 
     @media only screen and (max-width: 450px) {
@@ -76,7 +81,7 @@
             margin-bottom: 15px;
             font-weight: bold;
             font-size: large;
-            color: white;
+            color: #1f796a;
             background-color: #bcd7d2;
         }
 
@@ -91,6 +96,52 @@
         .link-last {
             margin-top: 150px;
         }
+
+        .closeBtn {
+            position: absolute;
+            right: 0;
+            width: 50px;
+            height: 50px;
+            border-radius: 666px;
+            margin-top: 10px;
+            margin-right: 10px;
+            background-color: #8fccc1;
+        }
+
+        .closeBtnC {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .iconCloseBtn {
+            height: 35px;
+            width: 35px;
+            color: #1f796a;
+        }
+
+        .openBtn {
+            position: absolute;
+            right: 0;
+            width: 50px;
+            height: 50px;
+            border-radius: 666px;
+            margin-top: 10px;
+            margin-right: 10px;
+            background-color: #8fccc1;
+        }
+
+        .openBtnC {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .iconOpenBtn {
+            height: 35px;
+            width: 35px;
+            color: #1f796a;
+        }
     }
     @media only screen and (min-width: 450px) {
         .link:hover {
@@ -100,12 +151,53 @@
             transition: 0.3s;
             transform: translateX(4%);
         }
+
+        .navbar {
+            display: block;
+        }
     }
 </style>
 
-<div class="navbar">
+<button class="openBtn" onclick="openMobileMenu()">
+    <div class="openBtnC">
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="2.5"
+            stroke="currentColor"
+            class="iconOpenBtn"
+        >
+            <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+            />
+        </svg>
+    </div>
+</button>
+<div class="navbar" id="navbar">
     <div class="logo-sec">
         <div class="logo-1">
+            <button class="closeBtn" onclick="closeMobileMenu()">
+                <div class="closeBtnC">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2.5"
+                        stroke="currentColor"
+                        class="iconCloseBtn"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M6 18L18 6M6 6l12 12"
+                        />
+                    </svg>
+                </div>
+            </button>
+
             <?xml version="1.0" encoding="UTF-8"?><svg
                 id="Laag_1"
                 xmlns="http://www.w3.org/2000/svg"
@@ -204,3 +296,18 @@
         </div>
     </div>
 </div>
+
+<script>
+    window.addEventListener("resize", function () {
+        if (window.matchMedia("(min-width: 450px)").matches) {
+            document.getElementById("navbar").style.display = "block";
+        }
+    });
+
+    function closeMobileMenu() {
+        document.getElementById("navbar").style.display = "none";
+    }
+    function openMobileMenu() {
+        document.getElementById("navbar").style.display = "block";
+    }
+</script>

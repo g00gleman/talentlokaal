@@ -39,9 +39,7 @@ Route::post('registerEmployer', [rolesController::class, 'registerEmployer']);
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'as' => 'dashboard.'], function () {
 
     // loads the page after being logged in
-    Route::get('/', function () {
-        return view('homepage');
-    });
+    Route::get('/', [MatchesController::class, 'home']);
     Route::get('/support', function () {
         return view('support.index');
     });

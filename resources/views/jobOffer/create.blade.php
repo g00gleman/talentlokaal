@@ -193,6 +193,15 @@
             overflow: scroll;
         }
 
+        /* ---------------------------------------------------------------input fields-------------------------------------------------------------------------  */
+
+        .container-input-fields{
+            display: grid;
+            justify-content: center;
+            margin-block:50px;
+        }
+
+
     </style>
 </head>
 
@@ -255,13 +264,19 @@
             <div class="mt-8 flex justify-center text-2xl text-talent-green font-bold mb-6">
                 Vacature
             </div>
+            <div class="flex justify-center text-center">
+                <div class="text-xs text-talent-orange font-bold mb-12 w-4/5">
+                    Vul in wat het beste bij de vacature past</br>
+                    (1 is zeer van toepassing, 4 is niet van toepassing)
+                </div>
+            </div>
         </div>
 
         <form action="{{ route('dashboard.jobOffer.store') }}" method="post">
             @csrf
-            <div class="flex flex-col justify-center">
-                <input type="text" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm  font-sans focus:ring-talent-orange underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange" name="function" id="input" placeholder="*Voeg vacaturenaam toe">
-                <select class="text-talent-orange font-sans focus:ring-talent-orange underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange" name="jobCategoryId" id="select">
+            <div class="container-input-fields" id="container-input-fields">
+                <input type="text" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm  font-sans focus:ring-talent-orange decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange" name="function" id="input" placeholder="*Voeg vacaturenaam toe">
+                <select class="text-talent-orange font-sans focus:ring-talent-orange decoration-talent-orange px-5 border-none block mt-3 w-64 rounded-full shadow-xl placeholder:text-talent-orange" name="jobCategoryId" id="select">
                     <option value="" selected>*Kies een sector</option>
                     @foreach($jobCategories as $jobCategory)
                         <option value="{{ $jobCategory->id }}">{{ $jobCategory->categoryName }}</option>
@@ -270,7 +285,7 @@
                 <textarea
                     name="description"
                     id="description"
-                    class="text-talent-orange font-sans focus:ring-talent-orange underline decoration-talent-orange px-5 border-none block mt-1 w-64 h-40 rounded-md shadow-xl placeholder:text-talent-orange"
+                    class="text-talent-orange font-sans focus:ring-talent-orange decoration-talent-orange px-5 border-none block mt-3 w-64 h-40 rounded-md shadow-xl placeholder:text-talent-orange"
                     placeholder="Korte beschrijving vacature"
                 ></textarea>
             </div>
@@ -391,7 +406,7 @@
                     <div class="Pagination-end">
                         <div class="Pagination">
                             <div id="ModalButtonDone" class="button" onclick="openModalDone()">
-                                < 
+                                <
                             </div>
                             <div id="ModalButtonSave" class="button" onclick="openModalSave()">
                                 >
@@ -413,6 +428,7 @@
             display: flex;
             justify-content: space-between;
             width: 75px;
+            cursor: pointer;
         }
 
         .button {
@@ -483,9 +499,7 @@
             window.history.pushState({
                 path: refresh
             }, '', refresh);
-            document.getElementById("input").classList.add("questioninvisible");
-            document.getElementById("description").classList.add("questioninvisible");
-            document.getElementById("select").classList.add("questioninvisible");
+            document.getElementById("container-input-fields").classList.add("questioninvisible");
             document.getElementById("question1").classList.remove("questioninvisible");
             document.getElementById("question2").classList.remove("questioninvisible");
             document.getElementById("question3").classList.remove("questioninvisible");
@@ -502,8 +516,6 @@
             window.history.pushState({
                 path: refresh
             }, '', refresh);
-            document.getElementById("input").classList.add("questioninvisible");
-            document.getElementById("select").classList.add("questioninvisible");
             document.getElementById("question1").classList.add("questioninvisible");
             document.getElementById("question2").classList.add("questioninvisible");
             document.getElementById("question3").classList.add("questioninvisible");
@@ -544,9 +556,7 @@
             window.history.pushState({
                 path: refresh
             }, '', refresh);
-            document.getElementById("select").classList.remove("questioninvisible");
-            document.getElementById("input").classList.remove("questioninvisible");
-            document.getElementById("description").classList.remove("questioninvisible");
+            document.getElementById("container-input-fields").classList.remove("questioninvisible");
             document.getElementById("question1").classList.add("questioninvisible");
             document.getElementById("question2").classList.add("questioninvisible");
             document.getElementById("question3").classList.add("questioninvisible");
