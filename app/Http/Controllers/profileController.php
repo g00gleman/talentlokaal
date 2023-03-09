@@ -53,26 +53,6 @@ class profileController extends Controller
         Session()->flush();
         return redirect('/');
     }
-//    public function cv(Request $request, $id){
-//        $this->validate(request(), [
-//            'cv' => 'file|mimes:doc,docx,pdf,png,jpg,jpeg',
-//        ]);
-//
-//        $user = User::with('employee')->find($id);
-//        // example
-//        // files = stevens files
-//        $cv = $request->get('cv');
-//        //  files = stevens_pitch
-//        $saveCv = time().'.'.$cv->getClientOriginalExtension();
-//        // move stevens_pitch in the map called public/files
-//        $cv->move(public_path('files'), $saveCv);
-//        // store stevens_pitch in user table database
-//
-//        $user->employee->cv = $saveCv;
-//        $user->employee->save();
-//
-//        return redirect(route('dashboard.manageProfile.index'));
-//    }
 
     // return edit form page with all old userdata
     public function edit($id){
@@ -100,6 +80,16 @@ class profileController extends Controller
 
         // update user table
         $updateUser = User::find($id);
+
+        $image = $request->file('profielfoto');
+        if (isset($image)) {
+            // new file name for image
+            $imageNewFileName = time() . "." . $image->extension();
+
+            // replace old filename with the new one and save it into storage/public
+            Storage::disk('local')->put($imageNewFileName,  $image->get());
+            $updateUser->profile_photo_path = $imageNewFileName;
+        }
 
         $pitch = $request->file('pitch');
         if (isset($pitch)){

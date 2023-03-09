@@ -30,8 +30,6 @@ class rolesController extends Controller
 
     public function registerEmployee(Request $request)
     {
-        // call the registerUser method to register a user
-        $newUser = $this->registerUser($request);
         // validation errors for employee form inputs
         $this->validate(request(), [
             'jobCategory' => 'integer',
@@ -44,6 +42,10 @@ class rolesController extends Controller
         $newEmployee->jobCategory = $request->get('jobCategory');
         $newEmployee->birthDate = $request->get('geboortedatum');
         $newEmployee->certificate = $request->get('diploma');
+
+        // call the registerUser method to register a user
+        $newUser = $this->registerUser($request);
+
         $newUser->description = $request->get('description');
         $newEmployee->user_Id = $newUser->id;
         $newEmployee->save();
@@ -54,9 +56,6 @@ class rolesController extends Controller
 
     public function registerEmployer(Request $request)
     {
-        // call the registerUser method to register a user
-        $newUser = $this->registerUser($request);
-
         // validation errors for employer form inputs
         $this->validate(request(), [
             'bedrijfsnaam' => 'required|string|max:255',
@@ -75,6 +74,10 @@ class rolesController extends Controller
         $newEmployer->companyName = $request->get('bedrijfsnaam');
         $newEmployer->jobCategory = $request->get('jobCategory');
         $newEmployer->websiteUrl = $url;
+
+        // call the registerUser method to register a user
+         $newUser = $this->registerUser($request);
+
         $newEmployer->user_Id = $newUser->id;
         $newEmployer->save();
 
