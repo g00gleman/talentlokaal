@@ -193,6 +193,15 @@
             overflow: scroll;
         }
 
+        /* ---------------------------------------------------------------input fields-------------------------------------------------------------------------  */
+
+        .container-input-fields{
+            display: grid;
+            justify-content: center;
+            margin-block:50px;
+        }
+
+
     </style>
 </head>
 
@@ -259,9 +268,9 @@
 
         <form action="{{ route('dashboard.jobOffer.store') }}" method="post">
             @csrf
-            <div class="flex flex-col justify-center">
-                <input type="text" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm  font-sans focus:ring-talent-orange underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange" name="function" id="input" placeholder="*Voeg vacaturenaam toe">
-                <select class="text-talent-orange font-sans focus:ring-talent-orange underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange" name="jobCategoryId" id="select">
+            <div class="container-input-fields">
+                <input type="text" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm  font-sans focus:ring-talent-orange decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange" name="function" id="input" placeholder="*Voeg vacaturenaam toe">
+                <select class="text-talent-orange font-sans focus:ring-talent-orange decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange" name="jobCategoryId" id="select">
                     <option value="" selected>*Kies een sector</option>
                     @foreach($jobCategories as $jobCategory)
                         <option value="{{ $jobCategory->id }}">{{ $jobCategory->categoryName }}</option>
@@ -270,7 +279,7 @@
                 <textarea
                     name="description"
                     id="description"
-                    class="text-talent-orange font-sans focus:ring-talent-orange underline decoration-talent-orange px-5 border-none block mt-1 w-64 h-40 rounded-md shadow-xl placeholder:text-talent-orange"
+                    class="text-talent-orange font-sans focus:ring-talent-orange decoration-talent-orange px-5 border-none block mt-1 w-64 h-40 rounded-md shadow-xl placeholder:text-talent-orange"
                     placeholder="Korte beschrijving vacature"
                 ></textarea>
             </div>
@@ -413,6 +422,7 @@
             display: flex;
             justify-content: space-between;
             width: 75px;
+            cursor: pointer;
         }
 
         .button {
@@ -483,7 +493,7 @@
             window.history.pushState({
                 path: refresh
             }, '', refresh);
-            document.getElementById("input").classList.add("questioninvisible");
+            document.getElementByClassName("container-input-fields").classList.add("questioninvisible");
             document.getElementById("description").classList.add("questioninvisible");
             document.getElementById("select").classList.add("questioninvisible");
             document.getElementById("question1").classList.remove("questioninvisible");
