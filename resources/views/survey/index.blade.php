@@ -267,7 +267,7 @@
                 <?php
                 $vragen = 0;
                 ?>
-                <form method="POST" enctype="multipart/form-data">
+                <form method="POST">
                     @csrf
 
                     @foreach ($questions as $question)
@@ -355,7 +355,6 @@
                                     </div>
                             </div>
                         </div>
-                </form>
             </div>
         </div>
     </div>
@@ -370,11 +369,12 @@
                     <div class="box-content-btn-save" onclick="closeModalSave()">
                         Nee
                     </div>
-                    <button type="submit" class="box-content-btn-save"> Ja </a>
+                    <button type="submit" class="box-content-btn-save"> Ja </button>
                 </div>
             </div>
         </div>
     </div>
+    </form>
     <div class="modal" id="modalDone">
         <div class="modal-content">
             <div class="modal-content-overlay" onclick="closeModalDone()"></div>
