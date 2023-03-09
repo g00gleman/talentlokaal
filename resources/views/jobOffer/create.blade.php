@@ -268,7 +268,7 @@
 
         <form action="{{ route('dashboard.jobOffer.store') }}" method="post">
             @csrf
-            <div class="container-input-fields">
+            <div class="container-input-fields" id="container-input-fields">
                 <input type="text" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm  font-sans focus:ring-talent-orange decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange" name="function" id="input" placeholder="*Voeg vacaturenaam toe">
                 <select class="text-talent-orange font-sans focus:ring-talent-orange decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange" name="jobCategoryId" id="select">
                     <option value="" selected>*Kies een sector</option>
@@ -400,7 +400,7 @@
                     <div class="Pagination-end">
                         <div class="Pagination">
                             <div id="ModalButtonDone" class="button" onclick="openModalDone()">
-                                < 
+                                <
                             </div>
                             <div id="ModalButtonSave" class="button" onclick="openModalSave()">
                                 >
@@ -493,7 +493,7 @@
             window.history.pushState({
                 path: refresh
             }, '', refresh);
-            document.getElementByClassName("container-input-fields").classList.add("questioninvisible");
+            document.getElementById("container-input-fields").classList.add("questioninvisible");
             document.getElementById("description").classList.add("questioninvisible");
             document.getElementById("select").classList.add("questioninvisible");
             document.getElementById("question1").classList.remove("questioninvisible");
