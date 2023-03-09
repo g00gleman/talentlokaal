@@ -159,11 +159,19 @@
 
         <!-- slider voor matches -->
         <div class="snap-x snap-mandatory w-full flex overflow-scroll mt-6 mb-6 scrollbar-hide">
+        <?php
+        $matches = 0;
+        ?>
+        @if(Auth::user()->employee)
+        @foreach($joboffers as $joboffer)
+        <?php
+        $matches += 1;
+        ?>
             <div class="snap-start w-full pl-10 pr-10 flex items-center justify-center flex-shrink-0 ">
                 <div class="w-80 bg-talent-white rounded-xl p-5">
                     <div class="flex">
                         <div class="flex flex-col">
-                            <div class="font-bold text-talent-green text-xl">Match 1</div>
+                            <div class="font-bold text-talent-green text-xl">Match {{ $matches }}</div>
                             <div class="opacity-30 text-sm italic"> Match 2 dagen geleden</div>
                         </div>
                         <div class=" ml-20">
@@ -173,42 +181,20 @@
                     </div>
                     <div class=" grid grid-cols-2 mt-5">
                         <div class=" font-bold">Functie:</div>
-                        <div class="">Test</div>
+                        <div class="">{{$joboffer->function}}</div>
                         <div class=" font-bold">Bedrijf:</div>
-                        <div class="">Test2</div>
+                        <div class="">{{$joboffer->employer->companyName}}</div>
                         <div class=" font-bold">Status:</div>
                         <div class="">Verzonden</div>
                     </div>
                     <div class=" overflow-y-auto h-32 mt-5">
-                        Testdata omvat alle gegevens die in een informatiesysteem nodig zijn om dit
-                        systeem succesvol te kunnen testen en is als gevolg een van de steunpilaren
-                        van een succesvol testtraject.”
-                        Er is veel aandacht voor testmethodes, maar hoe om
-                        te gaan met testdata komt minder vaak aan de orde.</div>
-                </div>
-
-
-            </div>
-
-            <div
-                class="snap-start w-full pl-10 pr-10 h-56 flex items-center justify-center flex-shrink-0 text-talent-green">
-                <div class="w-72 h-48 bg-talent-white rounded-xl p-5">
-                    Match 2
+                    {{$joboffer->description}}
+                    </div>
                 </div>
             </div>
-            <div
-                class="snap-start w-full pl-10 pr-10 h-56 flex items-center justify-center flex-shrink-0 text-talent-green">
-                <div class="w-72 h-48 bg-talent-white rounded-xl p-5">
-                    Match 3
-                </div>
-            </div>
-            <div
-                class="snap-start w-full pl-10 pr-10 h-56 flex items-center justify-center flex-shrink-0 text-talent-green">
-                <div class="w-72 h-48 bg-talent-white rounded-xl p-5">
-                    Match 4
-                </div>
-            </div>
+            @endforeach
         </div>
+        @endif
     </body>
 
     </html>
