@@ -27,7 +27,9 @@
 <body>
     <div class="body-flex">
         @include('adminportal.components.navbar.index')
-        <div class="content"></div>
+        <div class="content">
+            {{-- TODO: Zet hier de nieuwe zooi in --}}
+        </div>
     </div>
 </body>
 
