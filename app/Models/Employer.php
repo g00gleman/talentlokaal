@@ -13,4 +13,8 @@ class Employer extends Model
     {
         return $this->hasOne(User::class, 'id');
     }
+    public function jobCategory()
+    {
+        return $this->hasOne(jobCategory::class, 'id');
+    }
 }
