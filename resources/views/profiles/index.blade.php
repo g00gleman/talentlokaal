@@ -5,6 +5,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    {{--  disable cashe for this page  --}}
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
     <title>Home</title>
     <link href="/profiles/style.css" type="text/css" rel="stylesheet" />
 
@@ -299,7 +304,7 @@
                             {{ $user->employee->certificate }}
                         </div>
                         @endif
-              
+
                     @if(isset($user->employer))
                     <div class="col-span-1">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
