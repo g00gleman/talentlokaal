@@ -299,7 +299,7 @@
                             {{ $user->employee->certificate }}
                         </div>
                         @endif
-              
+
                     @if(isset($user->employer))
                     <div class="col-span-1">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
