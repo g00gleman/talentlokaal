@@ -78,8 +78,8 @@ class User extends Authenticatable
             //IMPORTANT: Do not change this order
             urlencode($this->name), // name
             200, // image size
-            'F0850B', // background color
-            'FFFFFF', // font color
+            'FFE7D9', // background color
+            'FFA07A', // font color
         ]);
     }
     public function getProfilePhotoUrlAttribute(): string
