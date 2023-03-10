@@ -71,6 +71,17 @@ class User extends Authenticatable
     {
         return $this->hasOne(employee::class, 'user_Id');
     }
+    public function defaultProfilePhotoUrl()
+    {
+    return 'https://ui-avatars.com/api/'. implode('/', [
+
+            //IMPORTANT: Do not change this order
+            urlencode($this->name), // name
+            200, // image size
+            'F0850B', // background color
+            'FFFFFF', // font color
+        ]);
+    }
     public function getProfilePhotoUrlAttribute(): string
     {
         // if there is no custom profile photo uploaded then return a default profile photo
