@@ -23,7 +23,7 @@ class employee extends Model
     {
         return $this->hasOne(jobCategory::class, 'id','jobCategory');
     }
-    public function anwers(){
+    public function answers(){
         return $this->hasMany(answers::class, 'employeeId');
     }
 }

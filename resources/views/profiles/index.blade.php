@@ -26,7 +26,7 @@
             <!-- Logo -->
             <div class=" mt-3">
                 <div class="flex justify-between w-screen">
-                    <?xml version="1.0" encoding="UTF-8"?><svg id="Laag_1" xmlns="http://www.w3.org/2000/svg"
+                    <svg id="Laag_1" xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 559.14 263.07" class="w-36 ml-5">
                         <defs>
                             <style>
@@ -173,7 +173,7 @@
                     $baseurl = env('APP_URL');
                 @endphp
                 <div class=" flex justify-center items-center">
-                <video width="320" height="240" controls="controls" >
+                <video width="320" height="240" controls="controls">
                     <source src="{{ $user->getProfilePitchUrlAttribute() }}" type="video/mp4" />
                 </video>
                 </div>

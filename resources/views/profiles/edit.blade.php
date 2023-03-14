@@ -183,6 +183,11 @@
                 display: none;
                 }
 
+                .file-name-pfp-style{
+                    display:grid;
+                    justify-content:center;
+                }
+
         </style>
 
         <!-- @include('components.scrollTop.index') -->
@@ -218,18 +223,22 @@
                 </textarea>
             </div>
             <div class="flex justify-center ">
-                <label for="file-upload" class="custom-file-upload">
+                <label for="file-upload-pfp" class="custom-file-upload">
                     <i class="fas fa-cloud-upload-alt"></i>Kies bestand
                 </label>
-                <input id="file-upload" name="profielfoto" type="file" accept=".jpg,.jpeg,.png,.bmp,.gif,.svg,.webp" onchange="showFileName(this)" hidden/>
-                <div id="file-name"></div>
+                <input id="file-upload-pfp" name="profielfoto" type="file" accept=".jpg,.jpeg,.png,.bmp,.gif,.svg,.webp" onchange="showFileNamepfp(this)"/>
+            
+
+
+                <br/><br/>
             </div>
+            <div class="file-name-pfp-style" id="file-name-pfp"></div>
         </div>
         
         <!-- <div class="flex">
             <div class="px-5 flex items-center border-none content-center mt-1 w-full rounded-full shadow-xl placeholder:text-talent-orange bg-talent-white text-talent-orange underline">
                 <input type="file" name="profielfoto" id="upload" accept=".jpg,.jpeg,.png,.bmp,.gif,.svg,.webp" onchange="showFileName(this)" hidden/>
-                <label for="upload" class="" id="file-name">Selecteer uw profielfoto</label>
+                <label for="upload" class="" id="file-name">Selecteer uw profielfoto hoi</label>
             </div>
         </div> -->
 
@@ -251,8 +260,9 @@
       <div class="answer">
        <!-- <input type="file" name="pitch" id="" accept=".mp4" /> -->
        <p>U kunt alleen mp4 bestanden kiezen</p><br/>
-       <label for="file-upload" class="custom-file-upload" >
-            <i class="fas fa-cloud-upload-alt"></i>Kies bestand
+       
+       <label for="file-upload" class="custom-file-upload">
+        <i class="fas fa-cloud-upload-alt"></i>Kies bestand
         </label>
         <input id="file-upload" name="pitch" type="file" accept=".mp4" onchange="showFileName(this)"/>
         <div id="file-name"></div>
@@ -562,6 +572,11 @@
             function showFileName(input) {
             const fileName = input.files[0].name;
             document.getElementById("file-name").innerHTML = fileName;
+            }
+            
+            function showFileNamepfp(input) {
+            const fileName = input.files[0].name;
+            document.getElementById("file-name-pfp").innerHTML = fileName;
             }
 
         </script>
