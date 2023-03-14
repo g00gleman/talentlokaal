@@ -64,15 +64,16 @@ class MatchesController extends Controller
                     }
                 }
                 $matchPercentage = $score/$ScoreTotal*100;
-                $scoreArray[$jobOfferEmployeeId] = $matchPercentage;
+                $jobofferEmployee->matchPercentage = $matchPercentage;
+
                 $score = 0;
                 // for each joboffer calculate the match
                 // add the match to an array where you can see all the matches in
             }
         }
-        dd($scoreArray);
+
         return view('matches/index',[
-            'matchPercentage' => $matchPercentage,
+            'joboffersEmployee' => $joboffersEmployee,
         ]);
     }
     public function show($id){
