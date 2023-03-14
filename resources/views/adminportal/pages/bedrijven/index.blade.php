@@ -86,7 +86,7 @@
                                 {{$employer->websiteUrl}}
                             </td>
                             <td class="py-2 px-4 text-right">
-                                <a href="/edit/{{$employer->id}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                <a href="/bedrijven/edit/{{$employer->id}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                             </td>
                             <td class="py-2 px-4 text-right">
                                 <a href="" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</a>
