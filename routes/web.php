@@ -43,9 +43,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'as' => 'dashboar
     Route::get('/support', function () {
         return view('support.index');
     });
-    Route::get('/admin-portal', function () {
-        return view('adminportal.index');
-    });
+
 
     Route::get('/redirect', function () {
         return Redirect::to(url()->previous());
@@ -75,8 +73,23 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'as' => 'dashboar
     Route::get('/single', function () {
         return view('matches.single');
     });
-    Route::get('/admin-portal/bedrijven',[EmployerController::class, 'companies'])->name('adminportal.pages.bedrijven.index');
+    Route::get('/admin-portal/bedrijven', [EmployerController::class, 'companies'])->name('adminportal.pages.bedrijven.index');
+});
+
+Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'as' => 'dashboard.'], function () {
+    Route::get('/dashboard', function () {
+        return view('adminportal.index');
     });
 
-    Route::get('/introduction', [profileController::class, 'viewDescription']);
+    Route::get('/bedrijven', [EmployerController::class, 'companies'])->name('adminportal.pages.bedrijven.index');
 
+    Route::get('/werkzoekende', function () {
+        return view('adminportal.pages.werkzoekende.index');
+    });
+
+    Route::get('/nieuws', function () {
+        return view('adminportal.pages.news.index');
+    });
+});
+
+Route::get('/introduction', [profileController::class, 'viewDescription']);
