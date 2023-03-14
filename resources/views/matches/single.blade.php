@@ -57,12 +57,10 @@
         </div>
         <div class="flex gap-4 justify-center items-center mt-10 ">
 
-            <button class=" text-talent-white bg-talent-orange w-28 rounded-full h-8 text-sm "><i
-                    class=" mr-2 fa-solid fa-phone text-talent-white"></i>Bellen</button>
-            <button class=" text-talent-white bg-talent-orange w-28 rounded-full h-8 text-sm"> <i
-                    class=" mr-2 fa-regular fa-envelope text-talent-white"></i>Mailen </button>
-            <button class=" text-talent-white bg-talent-orange w-28 rounded-full h-8 text-sm"><i
-                    class=" mr-2 fa-solid fa-comments text-talent-white"></i>Chatten </button>
+            <a href="tel:{{ $user->phoneNumber }}" target="_blank" class=" text-talent-white bg-talent-orange w-28 rounded-full h-8 text-sm "><i
+                    class=" mr-2 fa-solid fa-phone text-talent-white"></i>Bellen</a>
+            <a href="mailto:{{ $user->email }}" class=" text-talent-white bg-talent-orange w-28 rounded-full h-8 text-sm"> <i
+                    class=" mr-2 fa-regular fa-envelope text-talent-white"></i>Mailen </a>
 
         </div>
         <div class=" flex justify-center items-center">
@@ -70,24 +68,19 @@
             <div class=" flex justify-center mt-5 mb-2">
             <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Vanamo_Logo.png"  width="75px" height="75px">
             </div>
-            <div class="text-talent-orange text-center font-bold text-3xl">Nordal</div>
-            <div class="text-talent-green text-sm overflow-y-auto h-32 mt-5 ml-5 mr-5 mb-7">Lorem ipsum dolor sit amet, 
-                consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore 
-                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum 
-                dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-                sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+            <div class="text-talent-orange text-center font-bold text-3xl">{{ $user->employer->companyName }}</div>
+            <div class="text-talent-green text-sm overflow-y-auto h-32 mt-5 ml-5 mr-5 mb-7">{{ $user->description }}</div>
         </div>
         </div>
         <div class=" flex justify-center items-center">
             <div class=" rounded-xl bg-talent-light-green h-72 w-80 mt-14 shadow-lg shadow-black">
                 <div class="text-talent-green text-center font-bold text-xl mt-5">Kennismaking pitch</div>
                 <div class=" flex justify-center mt-5">
-                    <iframe width="auto" height="auto" src="https://www.youtube.com/embed/NkGXAFAe3ig" 
-                    title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
-                     clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
-                    </iframe>
+                    @if (isset($user->pitch))
+                        <video width="320" height="240" controls="controls" >
+                            <source src="{{ $user->getProfilePitchUrlAttribute() }}" type="video/mp4" />
+                        </video>
+                    @endif
                 </div>
             </div>
             </div>
@@ -110,7 +103,7 @@
                         </svg>
                     </div>
                     <div class="col-span-4 text-base flex items-center font-bold text-talent-orange">
-                        Nordal
+                        {{$user->employer->companyName}}
                     </div>
                     <div class="col-span-1">
                         <svg version="1.0" xmlns="http://www.w3.org/2000/svg" class="w-10 h-10"
@@ -126,7 +119,7 @@
                     </svg>
                     </div>
                     <div class="col-span-4 text-base flex items-center font-bold text-talent-orange">
-                        Bakkerstraat21
+                        {{$user->adress}}
                     </div>
                     <div class="col-span-1">
                         <svg version="1.0" xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 mr-5" viewBox="0 0 50 50"  preserveAspectRatio="xMidYMid meet">
@@ -139,52 +132,34 @@
                             </svg>
                     </div>
                     <div class="col-span-4 text-baseflex items-center font-bold text-talent-orange">
-                        ICT
+                        {{$user->employer->jobCategorie->categoryName}}
                     </div>
 
                     <div class="col-span-1">
-                        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 mr-5"
-                            viewBox="0 0 50 50"  preserveAspectRatio="xMidYMid meet">
-                            <g fill="#000000FF" stroke="#000000FF">
-                                <path
-                                    d="M 7.000 22.500 C 7.000 42.333 7.065 43.000 9.000 43.000 C 10.333 43.000 11.000 43.667 11.000 45.000 C 11.000 46.879 11.667 47.000 22.000 47.000 C 28.667 47.000 33.000 46.606 33.000 46.000 C 33.000 45.400 29.000 45.000 23.000 45.000 L 13.000 45.000 13.000 26.500 L 13.000 8.000 27.000 8.000 L 41.000 8.000 41.000 20.000 C 41.000 27.333 41.389 32.000 42.000 32.000 C 42.615 32.000 43.000 27.000 43.000 19.000 C 43.000 6.667 42.897 6.000 41.000 6.000 C 39.667 6.000 39.000 5.333 39.000 4.000 C 39.000 2.083 38.333 2.000 23.000 2.000 L 7.000 2.000 7.000 22.500 M 37.000 5.000 C 37.000 5.615 32.000 6.000 24.000 6.000 L 11.000 6.000 11.000 23.500 C 11.000 34.500 10.629 41.000 10.000 41.000 C 9.369 41.000 9.000 34.167 9.000 22.500 L 9.000 4.000 23.000 4.000 C 31.667 4.000 37.000 4.381 37.000 5.000 " />
-                            </g>
-                            <g fill="#000000FF" stroke="#000000FF">
-                                <path
-                                    d="M 35.000 41.500 L 35.000 50.000 42.500 50.000 L 50.000 50.000 50.000 41.500 L 50.000 33.000 42.500 33.000 L 35.000 33.000 35.000 41.500 M 48.000 46.500 C 48.000 47.652 46.722 48.000 42.500 48.000 C 38.278 48.000 37.000 47.652 37.000 46.500 C 37.000 45.348 38.278 45.000 42.500 45.000 C 46.722 45.000 48.000 45.348 48.000 46.500 M 48.000 41.500 C 48.000 42.652 46.722 43.000 42.500 43.000 C 38.278 43.000 37.000 42.652 37.000 41.500 C 37.000 40.348 38.278 40.000 42.500 40.000 C 46.722 40.000 48.000 40.348 48.000 41.500 M 48.000 36.500 C 48.000 37.652 46.722 38.000 42.500 38.000 C 38.278 38.000 37.000 37.652 37.000 36.500 C 37.000 35.348 38.278 35.000 42.500 35.000 C 46.722 35.000 48.000 35.348 48.000 36.500 " />
-                            </g>
-                            <g fill="#000000FF" stroke="#000000FF">
-                                <path
-                                    d="M 18.186 14.471 C 18.447 16.707 18.130 18.120 17.296 18.440 C 14.434 19.538 16.264 21.000 20.500 21.000 C 24.736 21.000 26.566 19.538 23.704 18.440 C 22.870 18.120 22.553 16.707 22.814 14.471 C 23.188 11.261 23.014 11.000 20.500 11.000 C 17.986 11.000 17.812 11.261 18.186 14.471 " />
-                            </g>
-                            <g fill="#000000FF" stroke="#000000FF">
-                                <path
-                                    d="M 16.000 40.000 C 16.000 40.578 19.167 41.000 23.500 41.000 C 27.833 41.000 31.000 40.578 31.000 40.000 C 31.000 39.422 27.833 39.000 23.500 39.000 C 19.167 39.000 16.000 39.422 16.000 40.000 " />
-                            </g>
-                            <g fill="#000000FF" stroke="#000000FF">
-                                <path
-                                    d="M 16.000 28.000 C 16.000 28.578 19.167 29.000 23.500 29.000 C 27.833 29.000 31.000 28.578 31.000 28.000 C 31.000 27.422 27.833 27.000 23.500 27.000 C 19.167 27.000 16.000 27.422 16.000 28.000 " />
-                            </g>
-                            <g fill="#000000FF" stroke="#000000FF">
-                                <path
-                                    d="M 16.000 34.000 C 16.000 34.556 18.667 35.000 22.000 35.000 C 25.333 35.000 28.000 34.556 28.000 34.000 C 28.000 33.444 25.333 33.000 22.000 33.000 C 18.667 33.000 16.000 33.444 16.000 34.000 " />
-                            </g>
-                            <g fill="#000000FF" stroke="#000000FF">
-                                <path
-                                    d="M 29.000 19.000 C 29.000 19.550 31.025 20.000 33.500 20.000 C 35.975 20.000 38.000 19.550 38.000 19.000 C 38.000 18.450 35.975 18.000 33.500 18.000 C 31.025 18.000 29.000 18.450 29.000 19.000 " />
-                            </g>
-                            <g fill="#000000FF" stroke="#000000FF">
-                                <path
-                                    d="M 29.000 14.000 C 29.000 14.550 31.025 15.000 33.500 15.000 C 35.975 15.000 38.000 14.550 38.000 14.000 C 38.000 13.450 35.975 13.000 33.500 13.000 C 31.025 13.000 29.000 13.450 29.000 14.000 " />
-                            </g>
-                            <g fill="#000000FF" stroke="#000000FF">
-                                <path
-                                    d="M 34.000 28.000 C 34.000 28.550 34.900 29.000 36.000 29.000 C 37.100 29.000 38.000 28.550 38.000 28.000 C 38.000 27.450 37.100 27.000 36.000 27.000 C 34.900 27.000 34.000 27.450 34.000 28.000 " />
-                            </g>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                             stroke-width="1.5" stroke="currentColor" class="w-10 h-10 mr-5">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                  d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
                         </svg>
                     </div>
                     <div class="col-span-4 text-base flex items-center font-bold text-talent-orange">
-                       Mbo
+                        <a
+                            href="{{$user->employer->websiteUrl}}"
+                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                        ><script>
+                                urlFixer(
+                                    "{{$user->employer->websiteUrl}}"
+                                );
+
+                                function urlFixer(websiteLink) {
+                                    const wLink = websiteLink;
+
+                                    const fixer =
+                                        wLink.split("/")[(0, 1, 2)];
+
+                                    document.write(fixer);
+                                }
+                            </script></a>
                     </div>
                 </div>
             </div>

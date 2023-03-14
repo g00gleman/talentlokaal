@@ -13,13 +13,24 @@ use Spatie\LaravelIgnition\Recorders\DumpRecorder\Dump;
 
 class EmployerController extends Controller
 {
-    public function companies(jobCategory $jobCategory ){
+    public function companies(jobCategory $jobCategory)
+    {
         $employers = Employer::all();
-        return view('adminportal.pages.bedrijven.index',[
-            'employers' =>$employers,
+        return view('adminportal.pages.bedrijven.index', [
+            'employers' => $employers,
             'jobcategory' => $jobCategory,
-    ]);
-}
+        ]);
+    }
+
+    public function tenEmployers(jobCategory $jobCategory)
+    {
+        $employers = Employer::all()->take(10);
+        return view('adminportal.index', [
+            'employers' => $employers,
+            'jobcategory' => $jobCategory,
+        ]);
+    }
+
     public function getEdit( Employer $employers){
         $jobCategory = jobCategory::all();
         return view('adminportal.pages.bedrijven.edit',[
@@ -27,7 +38,6 @@ class EmployerController extends Controller
         'jobcategorys' => $jobCategory,
 
     ]);
-    
 }
 public function putEdit($id, Request $request)
 {
@@ -73,4 +83,5 @@ public function putEdit($id, Request $request)
         return redirect(route('/bedrijven'));
     }
 }
+
 

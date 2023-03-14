@@ -13,7 +13,7 @@
                                     .cls-1 {
                                         fill: #ef840c;
                                     }
-    
+
                                     .cls-2 {
                                         fill: #1f796a;
                                     }
@@ -85,75 +85,37 @@
     <div class="flex justify-center items-center">
    <div class="flex">
 
-    <div class="flex flex-col justify-center items-center"> 
-    <div class=" shadow-lg -mb-6 w-72 bg-talent-white rounded-xl mt-10 flex items-center ">
-    
-        <div class="  text-sm flex-1 ml-5 mt-5 text-talent-green">
-            Bedrijf: Nordal<br/>
-       
-            Functie: Interieurstylist
-       
-        <div class="  text-sm mb-5 text-talent-orange">
-            Match percentage: 75%
-        </div>
-        
-    </div>
-    
-    <div class=" flex-2 mr-5 ml-3 ">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Vanamo_Logo.png"  width="50px" height="50px ">
-    </div>
-    
-    </div>
-    <div class=" shadow-lg -mb-6 w-72 bg-talent-white rounded-xl mt-10 flex items-center ">
-    
-        <div class="  text-sm flex-1 ml-5 mt-5 text-talent-green">
-            Bedrijf: Nordal<br/>
-       
-            Functie: Interieurstylist
-       
-        <div class="  text-sm mb-5 text-talent-orange">
-            Match percentage: 75%
-        </div>
-        
-    </div>
-    
-    <div class=" flex-2 mr-5 ml-5 ">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Vanamo_Logo.png"  width="50px" height="50px ">
-    </div>
-    
-    
-</div>
+    <div class="flex flex-col justify-center items-center">
+    @foreach($joboffersEmployee as $jobofferEmployee)
+        <a href="/dashboard/single/{{ $jobofferEmployee->employer->user->id }}">
+            <div class=" shadow-lg -mb-6 w-72 bg-talent-white rounded-xl mt-10 flex items-center ">
 
-<div class=" shadow-lg -mb-6 w-72 bg-talent-white rounded-xl mt-10 flex items-center ">
-    
-    <div class="  text-sm flex-1 ml-5 mt-5 text-talent-green">
-        Bedrijf: Nordal<br/>
-   
-        Functie: Interieurstylist
-   
-    <div class="  text-sm mb-5 text-talent-orange">
-        Match percentage: 75%
-    </div>
-    
-</div>
+                <div class="text-sm flex-1 ml-5 mt-5 text-talent-green">
+                    Bedrijf: {{ $jobofferEmployee->employer->companyName }}<br/>
 
-<div class=" flex-2 mr-5 ml-5 ">
-<img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Vanamo_Logo.png"  width="50px" height="50px ">
-</div>
+                    Functie: {{ $jobofferEmployee->function }}
 
+                <div class="  text-sm mb-5 text-talent-orange">
+                    Match percentage: {{ $jobofferEmployee->matchPercentage }}%
+                </div>
 
-</div>
+            </div>
 
+            <div class=" flex-2 mr-5 ml-3 ">
+                <img class="h-20 w-20 rounded-full object-cover" src="{{ $jobofferEmployee->employer->user->getProfilePhotoUrlAttribute() }}" alt="{{ Auth::user()->name }}" />
+            </div>
 
-    </div>
-    
+            </div>
+        </a>
+   @endforeach
+
     <svg onclick="openModalMatch()" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" text-talent-white h-14 ml-4">
         <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
       </svg>
 
 
-      
 
-</div> 
+
+</div>
 @include('matches.modal')
 </x-guest-layout>

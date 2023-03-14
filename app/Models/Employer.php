@@ -11,10 +11,10 @@ class Employer extends Model
     // a
     public function user()
     {
-        return $this->hasOne(User::class, 'id');
+        return $this->hasOne(User::class, 'id', 'user_Id');
     }
 
-    public function jobCategory()
+    public function jobCategorie()
     {
         return $this->hasOne(jobCategory::class, 'id');
     }
