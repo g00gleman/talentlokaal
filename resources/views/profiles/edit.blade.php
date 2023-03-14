@@ -228,7 +228,7 @@
                 <input id="file-upload-pfp" name="profielfoto" type="file" accept=".jpg,.jpeg,.png,.bmp,.gif,.svg,.webp" onchange="showFileNamepfp(this)"/>
                 <div class="file-name-pfp-style" id="file-name-pfp"></div>
 
-                
+
                 <br/><br/>
             </div>
             
@@ -237,7 +237,7 @@
         <!-- <div class="flex">
             <div class="px-5 flex items-center border-none content-center mt-1 w-full rounded-full shadow-xl placeholder:text-talent-orange bg-talent-white text-talent-orange underline">
                 <input type="file" name="profielfoto" id="upload" accept=".jpg,.jpeg,.png,.bmp,.gif,.svg,.webp" onchange="showFileName(this)" hidden/>
-                <label for="upload" class="" id="file-name">Selecteer uw profielfoto</label>
+                <label for="upload" class="" id="file-name">Selecteer uw profielfoto hoi</label>
             </div>
         </div> -->
 
