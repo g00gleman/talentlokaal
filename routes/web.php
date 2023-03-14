@@ -6,6 +6,7 @@ use App\Http\Controllers\profileController;
 use App\Http\Controllers\rolesController;
 use App\Http\Controllers\surveyController;
 use App\Http\Controllers\userFileController;
+use App\Http\Controllers\EmployerController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Redirect;
 
@@ -74,6 +75,8 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'as' => 'dashboar
     Route::get('/single', function () {
         return view('matches.single');
     });
+    Route::get('/admin-portal/bedrijven',[EmployerController::class, 'companies'])->name('adminportal.pages.bedrijven.index');
+    });
 
     Route::get('/introduction', [profileController::class, 'viewDescription']);
-});
+

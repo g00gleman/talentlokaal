@@ -216,14 +216,22 @@
                 <textarea name="beschrijving" id="" class="w-full h-52 border-none rounded-md mt-2 mb-2 focus:ring-talent-orange" placeholder="Voeg een beschrijving toe">
                     {{ $user->description }}
                 </textarea>
-            </div><br><br>
+            </div>
+            <div class="flex justify-center ">
+                <label for="file-upload" class="custom-file-upload">
+                    <i class="fas fa-cloud-upload-alt"></i>Kies bestand
+                </label>
+                <input id="file-upload" name="profielfoto" type="file" accept=".jpg,.jpeg,.png,.bmp,.gif,.svg,.webp" onchange="showFileName(this)" hidden/>
+                <div id="file-name"></div>
+            </div>
         </div>
-        <div class="flex">
+        
+        <!-- <div class="flex">
             <div class="px-5 flex items-center border-none content-center mt-1 w-full rounded-full shadow-xl placeholder:text-talent-orange bg-talent-white text-talent-orange underline">
                 <input type="file" name="profielfoto" id="upload" accept=".jpg,.jpeg,.png,.bmp,.gif,.svg,.webp" onchange="showFileName(this)" hidden/>
                 <label for="upload" class="" id="file-name">Selecteer uw profielfoto</label>
             </div>
-        </div>
+        </div> -->
 
         <div class="text-sm flex justify-center items-center text-talent-red">
             @error('profielfoto')
@@ -245,7 +253,7 @@
        <p>U kunt alleen mp4 bestanden kiezen</p><br/>
        <label for="file-upload" class="custom-file-upload" >
             <i class="fas fa-cloud-upload-alt"></i>Kies bestand
-</label>
+        </label>
         <input id="file-upload" name="pitch" type="file" accept=".mp4" onchange="showFileName(this)"/>
         <div id="file-name"></div>
 
