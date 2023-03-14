@@ -1,12 +1,10 @@
 <style>
     .navbar {
         width: 200px;
+        min-width: 200px;
         height: 100vh;
         background-color: white;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    }
-
-    .logo-sec {
     }
 
     .navbar-links-center {
@@ -142,7 +140,12 @@
             width: 35px;
             color: #1f796a;
         }
+
+        .hide {
+            display: hidden;
+        }
     }
+
     @media only screen and (min-width: 450px) {
         .link:hover {
             /* scale: 1.05; */
@@ -155,6 +158,10 @@
         .navbar {
             display: block;
         }
+    }
+
+    .active {
+        color: #ef840c;
     }
 </style>
 
@@ -282,16 +289,15 @@
     </div>
     <div class="navbar-links-center">
         <div class="navbar-links">
-            <a href="/dashboard/admin-portal" class="link">Dashboard</a>
-            <a href="/dashboard/admin-portal/bedrijven" class="link"
-                >Bedrijven</a
-            >
-            <a href="/dashboard/admin-portal/werkzoekende" class="link"
+            <a href="/admin/dashboard" class="link" id="dashboard">Dashboard</a>
+            <a href="/admin/bedrijven" class="link" id="bedrijven">Bedrijven</a>
+            <a href="/admin/werkzoekende" class="link" id="werkzoekende"
                 >Werkzoekende</a
             >
-            <a href="/dashboard/admin-portal/vacatures" class="link"
+            <!-- <a href="/dashboard/admin-portal/vacatures" class="link"
                 >Vacatures</a
-            >
+            > -->
+            <a href="/admin/nieuws" class="link link" id="nieuws">Nieuws</a>
             <a href="#" class="link link-last">Log uit</a>
         </div>
     </div>
@@ -301,13 +307,33 @@
     window.addEventListener("resize", function () {
         if (window.matchMedia("(min-width: 450px)").matches) {
             document.getElementById("navbar").style.display = "block";
+            document
+                .getElementById("bedrijfContent")
+                .classList.remove("hidden");
+        } else if (window.matchMedia("(max-width: 450px)").matches) {
+            document.getElementById("bedrijfContent").classList.add("hidden");
         }
     });
 
     function closeMobileMenu() {
         document.getElementById("navbar").style.display = "none";
     }
+
     function openMobileMenu() {
         document.getElementById("navbar").style.display = "block";
+    }
+
+    const url = window.location.href;
+
+    const lastSegment = url.split("/").pop();
+
+    if (lastSegment == "dashboard") {
+        document.getElementById("dashboard").classList.add("active");
+    } else if (lastSegment == "bedrijven") {
+        document.getElementById("bedrijven").classList.add("active");
+    } else if (lastSegment == "werkzoekende") {
+        document.getElementById("werkzoekende").classList.add("active");
+    } else if (lastSegment == "nieuws") {
+        document.getElementById("nieuws").classList.add("active");
     }
 </script>
