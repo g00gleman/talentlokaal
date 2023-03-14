@@ -62,10 +62,12 @@ class MatchesController extends Controller
                         }
 
                     }
-
                 }
                 $matchPercentage = $score/$ScoreTotal*100;
                 $scoreArray[] = $matchPercentage;
+                $score = 0;
+                // for each joboffer calculate the match
+                // add the match to an array where you can see all the matches in
             }
         }
         dd($scoreArray);
