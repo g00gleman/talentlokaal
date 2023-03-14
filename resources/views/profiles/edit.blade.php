@@ -183,9 +183,14 @@
                 display: none;
                 }
 
-                .file-name-pfp-style{
+                .input-ken{
                     display:grid;
                     justify-content:center;
+                }
+
+                .input-ken-txt{
+                    max-width:300px;
+                    margin:auto;
                 }
 
         </style>
@@ -229,10 +234,10 @@
                 <input id="file-upload-pfp" name="profielfoto" type="file" accept=".jpg,.jpeg,.png,.bmp,.gif,.svg,.webp" onchange="showFileNamepfp(this)"/>
             
 
-
-                <br/><br/>
+                <br/>
+                <br/>
             </div>
-            <div class="file-name-pfp-style" id="file-name-pfp"></div>
+            <div class="input-ken-txt truncate" id="file-name-pfp"></div>
         </div>
         
         <!-- <div class="flex">
@@ -259,15 +264,14 @@
       <div class="answercont">
       <div class="answer">
        <!-- <input type="file" name="pitch" id="" accept=".mp4" /> -->
-       <p>U kunt alleen mp4 bestanden kiezen</p><br/>
-       
+       <p class="input-ken">U kunt alleen mp4 bestanden kiezen</p><br/>
+    <div class="input-ken">
        <label for="file-upload" class="custom-file-upload">
         <i class="fas fa-cloud-upload-alt"></i>Kies bestand
         </label>
         <input id="file-upload" name="pitch" type="file" accept=".mp4" onchange="showFileName(this)"/>
-        <div id="file-name"></div>
-
-
+    </div>
+    <div class="input-ken-txt truncate" id="file-name"></div>
         <br><br>
       </div>
       </div>
