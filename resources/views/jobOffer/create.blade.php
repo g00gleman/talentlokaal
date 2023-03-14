@@ -301,10 +301,10 @@
                         $som = $vragen;
                         $naam = "vraag$som";
                         $questionid = "question$som";
-                        $vraag1 = 1;
-                        $vraag2 = 2;
-                        $vraag3 = 3;
-                        $vraag4 = 4;
+                        $vraag1 = 0;
+                        $vraag2 = 1;
+                        $vraag3 = 2;
+                        $vraag4 = 3;
                         ?>
 
                         <div id="{{ $questionid }}" class="question">
