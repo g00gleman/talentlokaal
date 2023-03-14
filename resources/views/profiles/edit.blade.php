@@ -184,7 +184,8 @@
                 }
 
                 .file-name-pfp-style{
-                    
+                    display:grid;
+                    justify-content:center;
                 }
 
         </style>
@@ -226,12 +227,12 @@
                     <i class="fas fa-cloud-upload-alt"></i>Kies bestand
                 </label>
                 <input id="file-upload-pfp" name="profielfoto" type="file" accept=".jpg,.jpeg,.png,.bmp,.gif,.svg,.webp" onchange="showFileNamepfp(this)"/>
-                <div class="file-name-pfp-style" id="file-name-pfp"></div>
+            
 
 
                 <br/><br/>
             </div>
-            
+            <div class="file-name-pfp-style" id="file-name-pfp"></div>
         </div>
         
         <!-- <div class="flex">
