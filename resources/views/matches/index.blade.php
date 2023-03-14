@@ -90,12 +90,12 @@
         <div class=" shadow-lg -mb-6 w-72 bg-talent-white rounded-xl mt-10 flex items-center ">
 
             <div class="  text-sm flex-1 ml-5 mt-5 text-talent-green">
-                Bedrijf: {{ $jobofferEmployee->function }}<br/>
+                Bedrijf: {{ $jobofferEmployee->employer->companyName }}<br/>
 
                 Functie: {{ $jobofferEmployee->function }}
 
             <div class="  text-sm mb-5 text-talent-orange">
-                Match percentage: %
+                Match percentage: {{ $jobofferEmployee->matchPercentage }}%
             </div>
 
         </div>
