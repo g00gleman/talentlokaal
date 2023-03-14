@@ -29,6 +29,7 @@
             @include('adminportal.components.navbar.index')
             <div class="flex justify-center m-auto" id="bedrijfContent">
                 <div class="rounded-lg">
+                    asd
                     <table
                         class="w-full text-sm text-left text-talent-orange dark:text-talent-orange rounded-full ml-10 mr-10"
                     >
