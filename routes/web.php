@@ -42,9 +42,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'as' => 'dashboar
     Route::get('/support', function () {
         return view('support.index');
     });
-    Route::get('/admin-portal', function () {
-        return view('adminportal.index');
-    });
+
 
     Route::get('/redirect', function () {
         return Redirect::to(url()->previous());
@@ -76,4 +74,15 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'as' => 'dashboar
     });
 
     Route::get('/introduction', [profileController::class, 'viewDescription']);
+});
+
+Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'as' => 'dashboard.'], function () {
+
+    Route::get('/dashboard', function () {
+        return view('adminportal.index');
+    });
+
+    Route::get('/nieuws', function () {
+        return view('adminportal.pages.news.index');
+    });
 });

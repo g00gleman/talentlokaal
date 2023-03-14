@@ -143,6 +143,7 @@
             color: #1f796a;
         }
     }
+
     @media only screen and (min-width: 450px) {
         .link:hover {
             /* scale: 1.05; */
@@ -155,6 +156,10 @@
         .navbar {
             display: block;
         }
+    }
+
+    .active {
+        color: #ef840c;
     }
 </style>
 
@@ -282,16 +287,23 @@
     </div>
     <div class="navbar-links-center">
         <div class="navbar-links">
-            <a href="/dashboard/admin-portal" class="link">Dashboard</a>
-            <a href="/dashboard/admin-portal/bedrijven" class="link"
+            <a href="/admin/dashboard" class="link" id="dashboard">Dashboard</a>
+            <a
+                href="/dashboard/admin-portal/bedrijven"
+                class="link"
+                id="bedrijven"
                 >Bedrijven</a
             >
-            <a href="/dashboard/admin-portal/werkzoekende" class="link"
+            <a
+                href="/dashboard/admin-portal/werkzoekende"
+                class="link"
+                id="werkzoekende"
                 >Werkzoekende</a
             >
-            <a href="/dashboard/admin-portal/vacatures" class="link"
+            <!-- <a href="/dashboard/admin-portal/vacatures" class="link"
                 >Vacatures</a
-            >
+            > -->
+            <a href="/admin/nieuws" class="link link" id="nieuws">News</a>
             <a href="#" class="link link-last">Log uit</a>
         </div>
     </div>
@@ -307,7 +319,22 @@
     function closeMobileMenu() {
         document.getElementById("navbar").style.display = "none";
     }
+
     function openMobileMenu() {
         document.getElementById("navbar").style.display = "block";
+    }
+
+    const url = window.location.href;
+
+    const lastSegment = url.split("/").pop();
+
+    if (lastSegment == "dashboard") {
+        document.getElementById("dashboard").classList.add("active");
+    } else if (lastSegment == "bedrijven") {
+        document.getElementById("bedrijven").classList.add("active");
+    } else if (lastSegment == "werkzoekende") {
+        document.getElementById("werkzoekende").classList.add("active");
+    } else if (lastSegment == "nieuws") {
+        document.getElementById("nieuws").classList.add("active");
     }
 </script>
