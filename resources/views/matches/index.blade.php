@@ -101,7 +101,7 @@
         </div>
 
         <div class=" flex-2 mr-5 ml-3 ">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Vanamo_Logo.png"  width="50px" height="50px ">
+            <img class="h-20 w-20 rounded-full object-cover" src="{{ $jobofferEmployee->employer->user->getProfilePhotoUrlAttribute() }}" alt="{{ Auth::user()->name }}" />
         </div>
 
         </div>
