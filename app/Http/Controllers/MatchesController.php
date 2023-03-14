@@ -7,7 +7,7 @@ use App\Models\employee;
 use App\Models\jobCategory;
 use App\Models\jobOffer;
 use App\Models\User;
-use Database\Seeders\employer;
+use App\Models\employer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -92,5 +92,11 @@ class MatchesController extends Controller
             return view('homepage');
         }
 
+    }
+    public function single($id){
+        $user = User::with('employer')->find($id);
+        return view('matches.single', [
+            'user' => $user
+        ]);
     }
 }
