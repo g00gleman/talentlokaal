@@ -91,7 +91,7 @@
                                 {{$employer->websiteUrl}}
                             </td>
                             <td class="py-2 px-4 text-right">
-                                <a href="/bedrijven/edit/{{$employer->id}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                <a href="/admin/bedrijven/edit/{{$employer->id}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                             </td>
                             <td class="py-2 px-4 text-right">
                                 <a href="" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</a>
@@ -100,92 +100,7 @@
                         </tr>
                     </tbody>
                 </table>
-=======
-    <body>
-        <div class="body-flex">
-            @include('adminportal.components.navbar.index')
-            <div class="flex justify-center m-auto" id="bedrijfContent">
-                <div class="rounded-lg">
-                    <table
-                        class="w-full text-sm text-left text-talent-orange dark:text-talent-orange rounded-full ml-10 mr-10"
-                    >
-                        <thead
-                            class="text-xs text-talent-orange uppercase bg-talent-green dark:bg-talent-orange shadow-lg dark:text-talent-green"
-                        >
-                            <tr>
-                                <th scope="col" class="py-3 px-6">
-                                    Bedrijfsnaam:
-                                </th>
-                                <th scope="col" class="py-3 px-6">
-                                    Contactpersoon:
-                                </th>
-                                <th scope="col" class="py-3 px-6">Functie:</th>
-                                <th scope="col" class="py-3 px-6">
-                                    Telefoonummer:
-                                </th>
-                                <th scope="col" class="py-3 px-6">adress:</th>
-                                <th scope="col" class="py-3 px-6">email:</th>
-                                <th scope="col" class="py-3 px-6">
-                                    websiteUrl:
-                                </th>
-                                <th scope="col" class="py-3 px-6">
-                                    <span class="sr-only">Edit</span>
-                                </th>
-                                <th scope="col" class="py-3 px-6">
-                                    <span class="sr-only">delete</span>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($employers as $employer)
-                            <tr
-                                class="bg-talent-light-green border-b dark:bg-talent-light-green dark:border-talent-light-green"
-                            >
-                                <th
-                                    scope="row"
-                                    class="py-4 px-6 font-medium dark:text-talent-green whitespace-nowrap"
-                                >
-                                    {{$employer->companyName}}
-                                </th>
-                                <td class="py-4 px-6">
-                                    {{$employer->user->name}}
-                                </td>
-                                <td class="py-4 px-6">
-                                    {{$employer->jobcategory->categoryName}}
-                                </td>
-                                <td class="py-4 px-6">
-                                    {{$employer->user->phoneNumber}}
-                                </td>
-                                <td class="py-4 px-6">
-                                    {{$employer->user->adress}}
-                                </td>
-                                <td class="py-4 px-6">
-                                    {{$employer->user->email}}
-                                </td>
-                                <td class="py-4 px-6">
-                                    {{$employer->websiteUrl}}
-                                </td>
-                                <td class="py-4 px-6 text-right">
-                                    <a
-                                        href=""
-                                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                                        >Edit</a
-                                    >
-                                </td>
-                                <td class="py-4 px-6 text-right">
-                                    <a
-                                        href=""
-                                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                                        >Delete</a
-                                    >
-                                </td>
-                                @endforeach
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
 
-            </div>
         </div>
     </body>
 </html>
