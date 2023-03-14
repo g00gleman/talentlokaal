@@ -11,7 +11,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Redirect;
 
 /*
-|--------------------------------------------------------------------------
+|-------------------------------------
+// these routes are used to define whic-------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
 |
@@ -26,8 +27,7 @@ Route::get('/', function () {
     return view('index');
 });
 
-
-// these routes are used to define which role the user is
+h role the user is
 Route::get('/roles', [rolesController::class, 'allRoles']);
 Route::get('/role/{id}', [rolesController::class, 'getRole']);
 
@@ -74,12 +74,14 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'as' => 'dashboar
         return view('matches.single');
     });
     Route::get('/admin-portal/bedrijven', [EmployerController::class, 'companies'])->name('adminportal.pages.bedrijven.index');
-  
+
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'as' => 'dashboard.'], function () {
     Route::get('/dashboard', function () {
         return view('adminportal.index');
+Route::get('/single/{id}', [MatchesController::class, 'single']);
+    Route::get('/admin-portal/bedrijven',[EmployerController::class, 'companies'])->name('adminportal.pages.bedrijven.index');
     });
 
     Route::get('/bedrijven', [EmployerController::class, 'companies'])->name('adminportal.pages.bedrijven.index');
