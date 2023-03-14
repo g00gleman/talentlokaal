@@ -17,6 +17,10 @@ class jobCategory extends Model
     {
         return $this->hasMany(jobOffer::class, 'jobCategoryId');
     }
+    public function employer()
+    {
+        return $this->hasMany(employer::class);
+    }
 
     protected $fillable = [
         'id',

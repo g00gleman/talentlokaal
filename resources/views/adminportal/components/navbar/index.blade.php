@@ -288,22 +288,14 @@
     <div class="navbar-links-center">
         <div class="navbar-links">
             <a href="/admin/dashboard" class="link" id="dashboard">Dashboard</a>
-            <a
-                href="/dashboard/admin-portal/bedrijven"
-                class="link"
-                id="bedrijven"
-                >Bedrijven</a
-            >
-            <a
-                href="/dashboard/admin-portal/werkzoekende"
-                class="link"
-                id="werkzoekende"
+            <a href="/admin/bedrijven" class="link" id="bedrijven">Bedrijven</a>
+            <a href="/admin/werkzoekende" class="link" id="werkzoekende"
                 >Werkzoekende</a
             >
             <!-- <a href="/dashboard/admin-portal/vacatures" class="link"
                 >Vacatures</a
             > -->
-            <a href="/admin/nieuws" class="link link" id="nieuws">News</a>
+            <a href="/admin/nieuws" class="link link" id="nieuws">Nieuws</a>
             <a href="#" class="link link-last">Log uit</a>
         </div>
     </div>

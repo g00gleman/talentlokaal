@@ -155,7 +155,6 @@
                 .answer {
                     padding: 0 20px 20px;
                     line-height: 1.5rem;
-                    /* font-family:'Roboto'; */
                     font-size:15px;
                 }
 
@@ -252,7 +251,7 @@
       <div class="answer">
        <!-- <input type="file" name="pitch" id="" accept=".mp4" /> -->
        <p>U kunt alleen mp4 bestanden kiezen</p><br/>
-       <label for="file-upload" class="custom-file-upload">
+       <label for="file-upload" class="custom-file-upload" >
             <i class="fas fa-cloud-upload-alt"></i>Kies bestand
         </label>
         <input id="file-upload" name="pitch" type="file" accept=".mp4" onchange="showFileName(this)"/>
