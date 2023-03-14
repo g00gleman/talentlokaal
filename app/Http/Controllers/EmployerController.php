@@ -10,21 +10,30 @@ use Illuminate\Http\Request;
 
 class EmployerController extends Controller
 {
-    public function companies(jobCategory $jobCategory ){
+    public function companies(jobCategory $jobCategory)
+    {
         $employers = Employer::all();
-        return view('adminportal.pages.bedrijven.index',[
-            'employers' =>$employers,
+        return view('adminportal.pages.bedrijven.index', [
+            'employers' => $employers,
             'jobcategory' => $jobCategory,
-    ]);
+        ]);
+    }
+
+    public function tenEmployers(jobCategory $jobCategory)
+    {
+        $employers = Employer::all()->take(10);
+        return view('adminportal.index', [
+            'employers' => $employers,
+            'jobcategory' => $jobCategory,
+        ]);
+    }
+
+    public function getEdit(Employer $employers)
+    {
+
+        return view('adminportal.pages.bedrijven.edit', [
+            'employer' => $employers,
+
+        ]);
+    }
 }
-    public function getEdit(Employer $employers){
-        
-        return view('adminportal.pages.bedrijven.edit',[
-        'employer' => $employers,
-
-    ]);
-}
-}
-
-
-

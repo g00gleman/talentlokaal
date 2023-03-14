@@ -18,29 +18,45 @@ class profileController extends Controller
     public function index()
     {
         $user = Auth::user();
-        if (isset($user->employee)){
+        if (isset($user->employee)) {
             $categoryName = jobCategory::where('id', $user->employee->jobCategory)->first();
             return view('profiles.index', [
                 'user' => $user,
                 'categoryName' => $categoryName,
             ]);
-        }elseif ($user->employer){
+        } elseif ($user->employer) {
             $categoryName = jobCategory::where('id', $user->employer->jobCategory)->first();
             return view('profiles.index', [
                 'categoryName' => $categoryName,
                 'user' => $user,
             ]);
         }
+    }
 
-
-
+    public function getAll(jobCategory $jobCategory)
+    {
+        $employees = employee::all();
+        return view('adminportal.pages.werkzoekende.index', [
+            'employees' => $employees,
+            'jobcategory' => $jobCategory,
+        ]);
+    }
+    public function tenEmployees(jobCategory $jobCategory)
+    {
+        $employees = employee::all()->take(10);
+        return view('adminportal.index', [
+            'employees' => $employees,
+            'jobcategory' => $jobCategory,
+        ]);
     }
     // load the view RegisterIntro to add description
-    public function viewDescription(){
+    public function viewDescription()
+    {
         return view('RegisterIntro.index');
     }
     // save description
-    public function description(Request $request, $id){
+    public function description(Request $request, $id)
+    {
         $user = User::find($id);
         $user->description = $request->get('description');
         $user->save();
@@ -48,27 +64,30 @@ class profileController extends Controller
         return redirect('/dashboard');
     }
 
-    public function logout(){
+    public function logout()
+    {
         Auth::logout();
         Session()->flush();
         return redirect('/');
     }
 
     // return edit form page with all old userdata
-    public function edit($id){
+    public function edit($id)
+    {
         $editUser = User::find($id);
 
         $jobCategories = jobCategory::all();
 
         // dd($editUser);
-        return view('profiles.edit',[
+        return view('profiles.edit', [
             'user' => $editUser,
             'jobCategories' => $jobCategories,
         ]);
     }
 
     // update specific user profile when click on update btn
-    public function update($id, Request $request){
+    public function update($id, Request $request)
+    {
         // validation errors for all form inputs
         $this->validate(request(), [
             'naam' => 'required|string|max:255',
@@ -92,10 +111,10 @@ class profileController extends Controller
         }
 
         $pitch = $request->file('pitch');
-        if (isset($pitch)){
+        if (isset($pitch)) {
             // if they oploaded a pitch
             // new file name for pitch
-            $newVideoFileName = time(). "." . $pitch->extension();
+            $newVideoFileName = time() . "." . $pitch->extension();
             // replace old filename with the new one and save it into storage/public
             Storage::disk('local')->put($newVideoFileName,  $pitch->get());
             $updateUser->pitch = $newVideoFileName;
@@ -105,7 +124,7 @@ class profileController extends Controller
         $updateUser->adress = $request->get('adres');
         $updateUser->save();
 
-        if (isset($updateUser->employee)){
+        if (isset($updateUser->employee)) {
             $this->validate(request(), [
                 'jobCategory' => 'integer',
                 'diploma' => 'string|max:255',
@@ -115,7 +134,7 @@ class profileController extends Controller
             $updateEmployee->jobCategory = $request->get('jobCategory');
             $updateEmployee->certificate = $request->get('diploma');
             $updateEmployee->save();
-        }elseif (isset($updateUser->employer)){
+        } elseif (isset($updateUser->employer)) {
             $this->validate(request(), [
                 'bedrijfsnaam' => 'required|string|max:255',
                 'websitelink' => 'string|active_url|max:255',
@@ -125,8 +144,7 @@ class profileController extends Controller
             $updateEmployee->companyName = $request->get('bedrijfsnaam');
             $updateEmployee->websiteUrl = $request->get('websitelink');
             $updateEmployee->save();
-        }else{
-
+        } else {
         }
 
         // return to the profile page after updating
@@ -134,7 +152,8 @@ class profileController extends Controller
     }
 
     // delete specific user when click on delete btn
-    public function destroy($id){
+    public function destroy($id)
+    {
 
         Auth::logout();
         Session()->flush();
@@ -143,11 +162,10 @@ class profileController extends Controller
         $employee = employee::where('user_id', $id)->first();
         $employer = Employer::where('user_id', $id)->first();
 
-        if(isset($employee)) {
+        if (isset($employee)) {
             $user->destroy($id);
             $user->employee->delete();
-        }
-        elseif(isset($employer)){
+        } elseif (isset($employer)) {
             $user->destroy($id);
             $user->employer->delete();
         }
