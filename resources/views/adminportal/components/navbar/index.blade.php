@@ -1,12 +1,10 @@
 <style>
     .navbar {
         width: 200px;
+        min-width: 200px;
         height: 100vh;
         background-color: white;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    }
-
-    .logo-sec {
     }
 
     .navbar-links-center {
@@ -141,6 +139,10 @@
             height: 35px;
             width: 35px;
             color: #1f796a;
+        }
+
+        .hide {
+            display: hidden;
         }
     }
 
@@ -305,6 +307,11 @@
     window.addEventListener("resize", function () {
         if (window.matchMedia("(min-width: 450px)").matches) {
             document.getElementById("navbar").style.display = "block";
+            document
+                .getElementById("bedrijfContent")
+                .classList.remove("hidden");
+        } else if (window.matchMedia("(max-width: 450px)").matches) {
+            document.getElementById("bedrijfContent").classList.add("hidden");
         }
     });
 

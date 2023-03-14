@@ -183,6 +183,10 @@
                 display: none;
                 }
 
+                .file-name-pfp-style{
+                    
+                }
+
         </style>
 
         <!-- @include('components.scrollTop.index') -->
@@ -218,12 +222,16 @@
                 </textarea>
             </div>
             <div class="flex justify-center ">
-                <label for="file-upload" class="custom-file-upload">
+                <label for="file-upload-pfp" class="custom-file-upload">
                     <i class="fas fa-cloud-upload-alt"></i>Kies bestand
                 </label>
-                <input id="file-upload" name="profielfoto" type="file" accept=".jpg,.jpeg,.png,.bmp,.gif,.svg,.webp" onchange="showFileName(this)" hidden/>
-                <div id="file-name"></div>
+                <input id="file-upload-pfp" name="profielfoto" type="file" accept=".jpg,.jpeg,.png,.bmp,.gif,.svg,.webp" onchange="showFileNamepfp(this)"/>
+                <div class="file-name-pfp-style" id="file-name-pfp"></div>
+
+                
+                <br/><br/>
             </div>
+            
         </div>
         
         <!-- <div class="flex">
@@ -251,8 +259,9 @@
       <div class="answer">
        <!-- <input type="file" name="pitch" id="" accept=".mp4" /> -->
        <p>U kunt alleen mp4 bestanden kiezen</p><br/>
-       <label for="file-upload" class="custom-file-upload" >
-            <i class="fas fa-cloud-upload-alt"></i>Kies bestand
+       
+       <label for="file-upload" class="custom-file-upload">
+        <i class="fas fa-cloud-upload-alt"></i>Kies bestand
         </label>
         <input id="file-upload" name="pitch" type="file" accept=".mp4" onchange="showFileName(this)"/>
         <div id="file-name"></div>
@@ -562,6 +571,11 @@
             function showFileName(input) {
             const fileName = input.files[0].name;
             document.getElementById("file-name").innerHTML = fileName;
+            }
+            
+            function showFileNamepfp(input) {
+            const fileName = input.files[0].name;
+            document.getElementById("file-name-pfp").innerHTML = fileName;
             }
 
         </script>
