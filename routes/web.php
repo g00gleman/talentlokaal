@@ -72,9 +72,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'as' => 'dashboar
 
     Route::resource('matches', MatchesController::class);
 
-    Route::get('/single', function () {
-        return view('matches.single');
-    });
+    Route::get('/single/{id}', [MatchesController::class, 'single']);
     Route::get('/admin-portal/bedrijven',[EmployerController::class, 'companies'])->name('adminportal.pages.bedrijven.index');
     });
 
