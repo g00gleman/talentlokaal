@@ -48,8 +48,9 @@
         height: 0;
     }
 
-    @media only screen and (max-width: 450px) {
+    @media only screen and (max-width: 825px) {
         .navbar {
+            position: absolute;
             width: 100vw;
             height: 100vh;
             background-color: white;
@@ -140,13 +141,9 @@
             width: 35px;
             color: #1f796a;
         }
-
-        .hide {
-            display: hidden;
-        }
     }
 
-    @media only screen and (min-width: 450px) {
+    @media only screen and (min-width: 825px) {
         .link:hover {
             /* scale: 1.05; */
             background-color: #8fccc1;
@@ -307,11 +304,11 @@
     window.addEventListener("resize", function () {
         if (window.matchMedia("(min-width: 450px)").matches) {
             document.getElementById("navbar").style.display = "block";
-            document
-                .getElementById("bedrijfContent")
-                .classList.remove("hidden");
+            // document
+            //     .getElementById("bedrijfContent")
+            //     .classList.remove("hidden");
         } else if (window.matchMedia("(max-width: 450px)").matches) {
-            document.getElementById("bedrijfContent").classList.add("hidden");
+            // document.getElementById("bedrijfContent").classList.add("hidden");
         }
     });
 
