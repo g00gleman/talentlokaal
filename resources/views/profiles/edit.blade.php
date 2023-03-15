@@ -189,7 +189,7 @@
                 }
 
                 .input-ken-txt{
-                    max-width:300px;
+                    max-width:115px;
                     margin:auto;
                 }
 
