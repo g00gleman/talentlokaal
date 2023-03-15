@@ -51,7 +51,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'as' => 'dashboar
     // get the route of the pitch
     Route::group(['prefix' => 'userFiles'], function () {
         Route::get('/pitch/{user}', [userFileController::class, 'getPitch'])->name('userPitch');
-//        Route::get('/cv/{user}', [userFileController::class, 'getCv']);
+        //        Route::get('/cv/{user}', [userFileController::class, 'getCv']);
     });
 
     // update your profile with a description, files or cv
@@ -70,22 +70,20 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'as' => 'dashboar
 
     Route::resource('matches', MatchesController::class);
     Route::get('/single/{id}', [MatchesController::class, 'single']);
-    Route::get('/admin-portal/bedrijven',[EmployerController::class, 'companies'])->name('adminportal.pages.bedrijven.index');
     Route::get('/admin-portal/bedrijven', [EmployerController::class, 'companies'])->name('adminportal.pages.bedrijven.index');
-
+    Route::get('/admin-portal/bedrijven', [EmployerController::class, 'companies'])->name('adminportal.pages.bedrijven.index');
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'as' => 'dashboard.'], function () {
     Route::get('/dashboard', function () {
         return view('adminportal.index');
     });
+    // Route::get('/dashboard', [EmployerController::class, 'tenEmployers'], [profileController::class, 'tenEmployees']);
 
     Route::get('/bedrijven', [EmployerController::class, 'companies'])->name('adminportal.pages.bedrijven.index');
     Route::get('/bedrijven/edit/{employers}', [EmployerController::class, 'getEdit'])->name('adminportal.pages.bedrijven.edit');
 
-    Route::get('/werkzoekende', function () {
-        return view('adminportal.pages.werkzoekende.index');
-    });
+    Route::get('/werkzoekende', [profileController::class, 'getAll'])->name('adminportal.pages.werkzoekende.index');
 
     Route::get('/nieuws', function () {
         return view('adminportal.pages.news.index');
