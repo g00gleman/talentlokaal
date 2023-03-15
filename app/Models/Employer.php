@@ -16,7 +16,7 @@ class Employer extends Model
 
     public function jobCategorie()
     {
-        return $this->hasOne(jobCategory::class, 'id');
+        return $this->hasOne(jobCategory::class, 'id', 'jobCategory');
     }
     public function jobOffers(){
         return $this->hasMany(jobOffer::class, 'employerId');

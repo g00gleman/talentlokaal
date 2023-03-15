@@ -1,4 +1,6 @@
+@include('matches.modal')
 <x-guest-layout>
+
     <body class="bg-talent-green">
         @include('components.navbar.index')
         <div class="w-full h-64 bg-talent-white rounded-b-3xl">
@@ -45,77 +47,77 @@
                                     d="M270.42,165.8c-.52-16.08-13.43-29.41-29.48-30.4-.66-.04-1.31-.06-1.96-.06h-.05c-.65,0-1.3,.02-1.96,.06-16.05,1-28.96,14.33-29.48,30.4-.29,9.11,3.28,17.4,9.21,23.33l14.27,14.25h0l7.96,8,.03-.03,.03,.03,4.6-4.62c1.79-1.8,1.8-4.71,.02-6.52l-7.8-7.91-7.81-7.74c-2.19-2.17-4.18-4.52-5.88-7.08-2.67-4.01-3.71-6.94-3.42-12.27,.4-7.46,4.92-14.19,11.84-17.02,2.87-1.17,5.72-1.71,8.44-1.71,2.72,0,5.57,.54,8.44,1.71,6.92,2.82,11.44,9.56,11.84,17.02,.29,5.34-.76,8.27-3.42,12.27-1.7,2.56-3.7,4.92-5.88,7.08l-2.57,2.55c-1.65,1.64-1.67,4.3-.04,5.96l1.9,1.94c1.66,1.69,4.38,1.71,6.06,.03l5.94-5.93c5.93-5.93,9.51-14.21,9.21-23.33Z" />
                             </g>
                         </svg>
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke-width="1.5"
-                            stroke="currentColor"
-                            class="menuIcon mr-4"
-                            onclick="openMenu(); check();"
-                        >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                            />
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="menuIcon mr-4" onclick="openMenu(); check();">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                         </svg>
                     </div>
                 </div>
             </div>
-            <div
-                class="mt-12 flex justify-center text-2xl text-talent-green font-bold"
-            >
+            <div class="mt-12 flex justify-center text-2xl text-talent-green font-bold">
                 Matches
             </div>
             <div class=" flex justify-center mt-8 mr-24">
                 <form>
-                    <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                    <label for="default-search"
+                        class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
                     <div class="relative">
                         <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                            <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                            <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
                         </div>
-                        <input type="search" id="default-search" class="block shadow-lg h-10 p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-full bg-gray-50 focus:ring-talent-green focus:border-talent-green dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-talent-green dark:focus:border-talent-green w-64" placeholder="Zoek match..." required>
+                        <input type="search" id="default-search"
+                            class="block shadow-lg h-10 p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-full bg-gray-50 focus:ring-talent-green focus:border-talent-green dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-talent-green dark:focus:border-talent-green w-64"
+                            placeholder="Zoek match..." required>
 
                     </div>
                 </form>
             </div>
         </div>
-    </div>
-    <div class="flex justify-center items-center">
-   <div class="flex">
+        </div>
+        <div class="flex justify-center items-center">
+            <div class="flex">
 
-    <div class="flex flex-col justify-center items-center">
-    @foreach($joboffersEmployee as $jobofferEmployee)
-        <a href="/dashboard/single/{{ $jobofferEmployee->employer->user->id }}">
-            <div class=" shadow-lg -mb-6 w-72 bg-talent-white rounded-xl mt-10 flex items-center ">
+                <div class="flex flex-col justify-center items-center">
+                    @foreach ($joboffersEmployee as $jobofferEmployee)
+                        <a href="/dashboard/single/{{ $jobofferEmployee->id }}">
+                            <div class=" shadow-lg -mb-6 w-72 bg-talent-white rounded-xl mt-10 flex items-center ">
 
-                <div class="text-sm flex-1 ml-5 mt-5 text-talent-green">
-                    Bedrijf: {{ $jobofferEmployee->employer->companyName }}<br/>
+                                <div class="text-sm flex-1 ml-5 mt-5 text-talent-green">
+                                    Bedrijf: {{ $jobofferEmployee->employer->companyName }}<br />
 
-                    Functie: {{ $jobofferEmployee->function }}
+                                    Functie: {{ $jobofferEmployee->function }}
 
-                <div class="  text-sm mb-5 text-talent-orange">
-                    Match percentage: {{ $jobofferEmployee->matchPercentage }}%
+                                    <div class="  text-sm mb-5 text-talent-orange">
+                                        Match percentage: {{ $jobofferEmployee->matchPercentage }}%
+                                    </div>
+
+                                </div>
+
+                                <div class=" flex-2 mr-5 ml-3 ">
+                                    <img class="h-20 w-20 rounded-full object-cover"
+                                        src="{{ $jobofferEmployee->employer->user->getProfilePhotoUrlAttribute() }}"
+                                        alt="{{ Auth::user()->name }}" />
+                                </div>
+
+                            </div>
+                        </a>
+                    @endforeach
+
+                    <svg onclick="openModalMatch()" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                        class=" text-talent-white h-14 ml-4">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
+                    </svg>
+
+
+
+
                 </div>
 
-            </div>
-
-            <div class=" flex-2 mr-5 ml-3 ">
-                <img class="h-20 w-20 rounded-full object-cover" src="{{ $jobofferEmployee->employer->user->getProfilePhotoUrlAttribute() }}" alt="{{ Auth::user()->name }}" />
-            </div>
-
-            </div>
-        </a>
-   @endforeach
-
-    <svg onclick="openModalMatch()" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" text-talent-white h-14 ml-4">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
-      </svg>
-
-
-
-
-</div>
-@include('matches.modal')
 </x-guest-layout>
