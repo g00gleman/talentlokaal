@@ -151,7 +151,7 @@
                                     {{ $employer->user->name }}
                                 </td>
                                 <td data-label="Functie">
-                                    {{ $employer->jobCategory->categoryName }}
+                                    {{ $employer->jobCategorie->categoryName }}
                                 </td>
                                 <td data-label="Telefoonummer">
                                     {{ $employer->user->phoneNumber }}
