@@ -78,7 +78,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'as' => 'dashboard.']
     Route::get('/dashboard', function () {
         return view('adminportal.index');
     });
-    // Route::get('/dashboard', [EmployerController::class, 'tenEmployers'], [profileController::class, 'tenEmployees']);
+    Route::get('/dashboard', [profileController::class, 'tenOfEach']);
 
     Route::get('/bedrijven', [EmployerController::class, 'companies'])->name('adminportal.pages.bedrijven.index');
     Route::get('/bedrijven/edit/{employers}', [EmployerController::class, 'getEdit'])->name('adminportal.pages.bedrijven.edit');
