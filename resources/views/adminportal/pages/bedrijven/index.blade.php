@@ -151,7 +151,7 @@
                                     {{ $employer->user->name }}
                                 </td>
                                 <td data-label="Functie">
-                                    {{ $employer->jobCategorie->categoryName }}
+                                    {{ $employer->jobCategory->categoryName }}
                                 </td>
                                 <td data-label="Telefoonummer">
                                     {{ $employer->user->phoneNumber }}
@@ -182,7 +182,7 @@
                                     </a>
                                 </td>
                                 <td data-label="Edit">
-                                    <a href=""
+                                    <a href="/admin/bedrijven/edit/{{ $employer->id }}"
                                         class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                                 </td>
                                 <td data-label="Delete">
