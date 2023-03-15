@@ -66,7 +66,9 @@
         <div class=" flex justify-center items-center">
         <div class=" rounded-xl bg-talent-light-green h-auto w-80 mt-24 shadow-lg shadow-black">
             <div class=" flex justify-center mt-5 mb-2">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Vanamo_Logo.png"  width="75px" height="75px">
+                <img class="h-20 w-20 rounded-full object-cover"
+                     src="{{ $user->getProfilePhotoUrlAttribute() }}"
+                     alt="{{ Auth::user()->name }}" />
             </div>
             <div class="text-talent-orange text-center font-bold text-3xl">{{ $jobOffer->function }}</div>
             <div class="text-talent-green text-sm overflow-y-auto h-32 mt-5 ml-5 mr-5 mb-7">{{ $jobOffer->description }}</div>

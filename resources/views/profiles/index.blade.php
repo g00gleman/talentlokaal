@@ -238,6 +238,7 @@
                     <div class="col-span-4 text-base flex items-center font-bold text-talent-orange">
                         {{ $user->adress }}
                     </div>
+                    @if(isset($user->employee))
                     <div class="col-span-1">
                         <svg version="1.0" xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 mr-5" viewBox="0 0 50 50"  preserveAspectRatio="xMidYMid meet">
                             <g fill="#000000FF" stroke="#000000FF">
@@ -253,7 +254,6 @@
                     </div>
                     <!-- job -->
                         <!-- job-2? -->
-                        @if(isset($user->employee))
                         <div class="col-span-1">
                             <svg version="1.0" xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 mr-5"
                                 viewBox="0 0 50 50"  preserveAspectRatio="xMidYMid meet">
@@ -309,7 +309,7 @@
                     </svg>
                     </div>
                         <div class="col-span-4 text-base flex items-center font-bold text-talent-orange">
-                            <a href="{{ $user->employer->websiteUrl }}">Bezoek website</a>
+                            <a href="{{ $user->employer->websiteUrl }}" target="_blank">Bezoek website</a>
                         </div>
                     @endif
                 </div>
