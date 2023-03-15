@@ -84,7 +84,7 @@
 
                 <div class="flex flex-col justify-center items-center">
                     @foreach ($joboffersEmployee as $jobofferEmployee)
-                        <a href="/dashboard/single/{{ $jobofferEmployee->employer->user->id }}">
+                        <a href="/dashboard/single/{{ $jobofferEmployee->id }}">
                             <div class=" shadow-lg -mb-6 w-72 bg-talent-white rounded-xl mt-10 flex items-center ">
 
                                 <div class="text-sm flex-1 ml-5 mt-5 text-talent-green">

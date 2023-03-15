@@ -94,8 +94,10 @@ class MatchesController extends Controller
 
     }
     public function single($id){
-        $user = User::with('employer')->find($id);
+        $jobOffer = jobOffer::with('employer')->find($id);
+        $user = $jobOffer->employer->user;
         return view('matches.single', [
+            'jobOffer' => $jobOffer,
             'user' => $user
         ]);
     }

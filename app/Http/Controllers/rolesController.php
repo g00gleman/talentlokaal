@@ -59,20 +59,18 @@ class rolesController extends Controller
         // validation errors for employer form inputs
         $this->validate(request(), [
             'bedrijfsnaam' => 'required|string|max:255',
-            'jobCategory' => 'integer',
             'websitelink' => 'string|max:255',
         ]);
 
         $url = $request->get('websitelink');
 
-        if (stripos($url, "http://") === false && stripos($url, "https://") === false) {
+            if (stripos($url, "http://") === false && stripos($url, "https://") === false) {
             $url = "http://" . $url;
         }
 
         // save data in employee table
         $newEmployer = new Employer();
         $newEmployer->companyName = $request->get('bedrijfsnaam');
-        $newEmployer->jobCategory = $request->get('jobCategory');
         $newEmployer->websiteUrl = $url;
 
         // call the registerUser method to register a user
