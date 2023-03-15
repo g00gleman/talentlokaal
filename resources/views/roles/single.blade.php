@@ -79,10 +79,10 @@
                             placeholder="*Vul hier uw voor- en achternaam in" />
                     </div>
                     <div class="text-sm flex justify-center items-center text-talent-red">
-                    @error('naam')
-                    {{$message}}
-                    @enderror
-                    </div>
+                        @error('naam')
+                        {{$message}}
+                        @enderror
+                        </div>
                     @endif
                     @if($id == 2)
                     {{-- companyname --}}
@@ -99,10 +99,10 @@
                             placeholder="*Vul hier uw bedrijfsnaam in" />
                     </div>
                     <div class="text-sm flex justify-center items-center text-talent-red">
-                    @error('bedrijfsnaam')
-                    {{$message}}
-                    @enderror
-                    </div>
+                        @error('bedrijfsnaam')
+                        {{$message}}
+                        @enderror
+                        </div>
                     @endif
                     @if ($id == 2)
                     <div class=" flex mt-4">
@@ -123,10 +123,10 @@
                             placeholder="*Vul hier uw contactpersoon in " />
                     </div>
                     <div class="text-sm flex justify-center items-center text-talent-red">
-                    @error('naam')
-                    {{$message}}
-                    @enderror
-                    </div>
+                        @error('naam')
+                        {{$message}}
+                        @enderror
+                        </div>
                     @endif
                     @if ($id == 2)
                     {{-- function --}}
@@ -149,7 +149,7 @@
                         </div>
 
                         <div class="text-sm flex justify-center items-center text-talent-red">
-                        @error('functie')
+                        @error('jobCategory')
                         {{$message}}
                         @enderror
                         </div>
@@ -168,10 +168,10 @@
                                 placeholder="*Vul hier uw email in" />
                         </div>
                         <div class="text-sm flex justify-center items-center text-talent-red">
-                        @error('email')
+                            @error('email')
                             {{$message}}
                             @enderror
-                        </div>
+                            </div>
                         @endif
                         @if ($id == 2)
                         {{-- adress --}}
@@ -194,10 +194,10 @@
                                 placeholder="*Vul hier uw adres in" />
                         </div>
                         <div class="text-sm flex justify-center items-center text-talent-red">
-                        @error('adres')
-                        {{$message}}
-                        @enderror
-                        </div>
+                            @error('adres')
+                            {{$message}}
+                            @enderror
+                            </div>
                         @endif
                     {{-- phonenumber --}}
                     <div class=" flex mt-4">
@@ -213,10 +213,10 @@
                             placeholder="*Vul hier uw telefoonnummer in" />
                     </div>
                     <div class="text-sm flex justify-center items-center text-talent-red">
-                    @error('telefoonnummer')
-                    {{$message}}
-                    @enderror
-                    </div>
+                        @error('telefoonummer')
+                        {{$message}}
+                        @enderror
+                        </div>
                     @if ($id == 1)
                     {{-- adress --}}
                     <div class=" flex mt-4">
@@ -238,10 +238,10 @@
                             placeholder="*Vul hier uw adres in" />
                     </div>
                     <div class="text-sm flex justify-center items-center text-talent-red">
-                    @error('adres')
-                    {{$message}}
-                    @enderror
-                    </div>
+                        @error('adres')
+                        {{$message}}
+                        @enderror
+                        </div>
                     @endif
                     @if ($id == 1)
                     {{-- birthdate --}}
@@ -297,7 +297,7 @@
                         </div>
 
                         <div class="text-sm flex justify-center items-center text-talent-red">
-                        @error('functie')
+                        @error('jobCategory')
                         {{$message}}
                         @enderror
                         </div>
