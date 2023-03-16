@@ -41,14 +41,19 @@ class profileController extends Controller
             'jobcategory' => $jobCategory,
         ]);
     }
-    public function tenEmployees(jobCategory $jobCategory)
+
+    public function tenOfEach(jobCategory $jobCategory)
     {
         $employees = employee::all()->take(10);
+        $employers = Employer::all()->take(10);
+
         return view('adminportal.index', [
             'employees' => $employees,
+            'employers' => $employers,
             'jobcategory' => $jobCategory,
         ]);
     }
+
     // load the view RegisterIntro to add description
     public function viewDescription()
     {
