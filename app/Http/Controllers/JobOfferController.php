@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\answers;
+use App\Models\Employer;
 use App\Models\jobCategory;
 use App\Models\jobOffer;
 use App\Models\questions;
@@ -12,6 +13,11 @@ use Illuminate\Support\Facades\Auth;
 class JobOfferController extends Controller
 {
     //
+    public function index(){
+        return view('jobOffer/index',[
+            'employer' => Employer::with('jobOffers')->find(Auth::user()->employer)->first(),
+        ]);
+    }
     public function create(){
         $questions = questions::all();
         $jobCategories = jobCategory::all();
@@ -51,17 +57,41 @@ class JobOfferController extends Controller
                 $answer->questionId = $i;
                 $answer->jobOfferId = $newjobOffer->id;
                 $answer->score = (int)$request->input('vraag'.$i);
-                $answer->save(); 
+                $answer->save();
             }else{
                 $answer = answers::where('questionId', $i)->where('employeeId',Auth::user()->employee->id)->first();
                 $answer->questionId = $i;
                 $answer->jobOfferId = $newjobOffer->id;
                 $answer->score = (int)$request->input('vraag'.$i);
-                $answer->save(); 
+                $answer->save();
             }
         }
 
         return redirect(route('dashboard.manageProfile.index'));
 
+    }
+    public function edit($id){
+        return view('jobOffer/edit',[
+            'jobCategories' => jobCategory::all(),
+            'jobOffer' => jobOffer::with('jobCategorie')->find($id),
+        ]);
+    }
+    public function update($id, Request $request){
+        $this->validate(request(), [
+            'description' => 'required|max:255',
+            'function' => 'required|string|max:255',
+            'jobCategoryId' => 'required|integer',
+        ]);
+
+        $updateJobOffer = jobOffer::find($id);
+        $updateJobOffer->function = $request->get('function');
+        $updateJobOffer->jobCategoryId = $request->get('jobCategoryId');
+        $updateJobOffer->description = $request->get('description');
+        $updateJobOffer->employerId = Auth::user()->employer->id;
+        $updateJobOffer->save();
+    }
+    public function destroy($id){
+        jobOffer::destroy($id);
+        return redirect()->back();
     }
 }
