@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\URL;
 class MatchesController extends Controller
 {
     //
-    public function index(){
+    public function index($id = null){
         // check if the user is an employer or employee
         $user = User::with('employee', 'employer')->find(Auth::id());
         $employee = $user->employee;
@@ -43,7 +43,6 @@ class MatchesController extends Controller
 
                 $answersJoboffer = answers::where('jobOfferId', $jobOfferEmployeeId)->get();
 
-//                dd($answersJoboffer);
                 // compare the 9 answers from the joboffer with the 9 answers from the employee in the survey
                 foreach ($answersJoboffer as $answerJoboffer){
                     foreach($answersEmployee as $answerEmployee){
@@ -77,38 +76,43 @@ class MatchesController extends Controller
             }
         }
 
-        return view('matches/index',[
-            'joboffersEmployee' => $joboffersEmployee->where('filterJoboffer',true),
-        ]);
-        //        if ($id == 1){
-//            $joboffersEmployee = $joboffersEmployee->sortBy('created_at');
-//        }
-//        elseif ($id == 2){
-//            $joboffersEmployee->sortBy('created_at');
-//        }elseif ($id == 3){
-//
-//        }elseif($id == 4){
-//            $joboffersEmployee->orderBy('created_at', 'desc');
-//        }else{
-//            return view('matches/index',[
-//                'joboffersEmployee' => $jobofferEmployee,
-//            ]);
-//        }
-//        $currentUrl = url()->current();
-$url = URL::current();
-$parts = Explode('/', $url);
-$id = $parts[count($parts) - 2];
-if ($id == "dashboard"){
-    return view('matches/index',[
-        'joboffersEmployee' => $joboffersEmployee,
-    ]);
-}elseif($id == "admin"){
-    return view('adminportal/pages/matches/index',[
-        'joboffersEmployee' => $joboffersEmployee,
-    ]);
-}else{
 
-}
+        if ($id == 1){
+        return view('matches/index',[
+            'joboffersEmployee' => $joboffersEmployee->where('filterJoboffer',true)->sortByDesc('created_at'),
+        ]);
+       }
+       elseif ($id == 2){
+        return view('matches/index',[
+            'joboffersEmployee' => $joboffersEmployee->where('filterJoboffer',true)->sortBy('created_at'),
+        ]);
+       }elseif ($id == 3){
+        return view('matches/index',[
+            'joboffersEmployee' => $joboffersEmployee->where('filterJoboffer',true)->sortByDesc('matchPercentage'),
+        ]);
+       }elseif($id == 4){
+        return view('matches/index',[
+            'joboffersEmployee' => $joboffersEmployee->where('filterJoboffer',true)->sortBy('matchPercentage'),
+        ]);
+       }else{
+           return view('matches/index',[
+               'joboffersEmployee' => $joboffersEmployee->where('filterJoboffer',true),
+           ]);
+       }
+        $url = URL::current();
+        $parts = Explode('/', $url);
+        $id = $parts[count($parts) - 2];
+        if ($id == "dashboard"){
+            return view('matches/index',[
+                'joboffersEmployee' => $joboffersEmployee->where('filterJoboffer',true),
+            ]);
+        }elseif($id == "admin"){
+            return view('adminportal/pages/matches/index',[
+                'joboffersEmployee' => $joboffersEmployee,
+            ]);
+        }else{
+
+        }
     }
     public function show($id){
         $match = answers::find($id);
