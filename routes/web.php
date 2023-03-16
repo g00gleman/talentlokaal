@@ -7,6 +7,7 @@ use App\Http\Controllers\rolesController;
 use App\Http\Controllers\surveyController;
 use App\Http\Controllers\userFileController;
 use App\Http\Controllers\EmployerController;
+use App\Http\Controllers\NewsController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Redirect;
 
@@ -74,6 +75,8 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'as' => 'dashboar
 
     Route::resource('matches', MatchesController::class);
     Route::get('/single/{id}', [MatchesController::class, 'single']);
+    Route::get('/introduction', [profileController::class, 'viewDescription']);
+
     Route::get('/admin-portal/bedrijven', [EmployerController::class, 'companies'])->name('adminportal.pages.bedrijven.index');
     Route::get('/admin-portal/bedrijven', [EmployerController::class, 'companies'])->name('adminportal.pages.bedrijven.index');
     Route::get('/filter/{id}', [MatchesController::class, 'index']);
@@ -91,11 +94,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'as' => 'dashboard.']
 
     Route::get('/werkzoekende', [profileController::class, 'getAll'])->name('adminportal.pages.werkzoekende.index');
 
+    Route::get('/matches', function () {
+        return view('adminportal.pages.matches.index');
+    });
+
+    Route::get('/nieuws', [NewsController::class, 'getNews'])->name('adminportal.pages.nieuws.index');
     Route::resource('matches', MatchesController::class);
 
     Route::get('/nieuws', function () {
         return view('adminportal.pages.news.index');
     });
 });
-
-

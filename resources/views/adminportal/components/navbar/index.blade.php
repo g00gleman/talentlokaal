@@ -5,6 +5,7 @@
         height: 100vh;
         background-color: white;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        z-index: 999;
     }
 
     .navbar-links-center {
@@ -46,12 +47,6 @@
 
     .closeBtn {
         height: 0;
-    }
-
-    @media only screen and (max-width: 450px) {
-        .link-last {
-            margin-top: 100px;
-        }
     }
 
     @media only screen and (max-width: 825px) {
