@@ -25,7 +25,7 @@
                 <!-- Logo -->
                 <div class=" mt-3">
                     <div class="flex justify-between w-screen">
-                       <svg id="Laag_1" xmlns="http://www.w3.org/2000/svg"
+                        <?xml version="1.0" encoding="UTF-8"?><svg id="Laag_1" xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 559.14 263.07" class="w-36 ml-5">
                             <defs>
                                 <style>
@@ -175,7 +175,8 @@
                             <div class="opacity-30 text-sm italic"> Match 2 dagen geleden</div>
                         </div>
                         <div class=" ml-20">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Vanamo_Logo.png"
+                            <img class="h-15 w-15 rounded-full object-cover" 
+                                src="{{ $joboffer->employer->user->getProfilePhotoUrlAttribute() }}"
                                 width="50px" height="5  0px ">
                         </div>
                     </div>
