@@ -18,7 +18,7 @@ class EmployerController extends Controller
         $employers = Employer::all();
         return view('adminportal.pages.bedrijven.index', [
             'employers' => $employers,
-            'jobcategory' => $jobCategory,
+            '   ' => $jobCategory,
         ]);
     }
 
@@ -46,6 +46,8 @@ public function putEdit($id, Request $request)
         $this->validate(request(), [
             'naam' => 'required|string|max:255',
             'adres' => 'required|string|max:255',
+            'email' => 'required|string|max:255',
+            'telefoonummer' => 'required|string|max:255',
             // 'profielfoto' => 'image',
             'pitch' => 'file|mimetypes:video/mp4',
             'beschrijving' => 'string',
