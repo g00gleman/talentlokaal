@@ -89,6 +89,8 @@ class JobOfferController extends Controller
         $updateJobOffer->description = $request->get('description');
         $updateJobOffer->employerId = Auth::user()->employer->id;
         $updateJobOffer->save();
+
+        return redirect(route('dashboard.jobOffer.index'));
     }
     public function destroy($id){
         jobOffer::destroy($id);
