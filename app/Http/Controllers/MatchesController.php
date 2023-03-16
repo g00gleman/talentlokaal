@@ -26,7 +26,7 @@ class MatchesController extends Controller
         // the max score for each question
         $scoreMax = 3;
         // the max total score means 9 questions times the maxscore of the question (9*4)
-        $ScoreTotal = 36;
+        $ScoreTotal = 27;
 
         $answersEmployee = $employee->answers;
 
@@ -64,15 +64,19 @@ class MatchesController extends Controller
                     }
                 }
                 $matchPercentage = $score/$ScoreTotal*100;
+                if($matchPercentage < 75){
+                    $jobofferEmployee->filterJoboffer = false; 
+                }else{
+                    $jobofferEmployee->filterJoboffer = true; 
+                }
                 $jobofferEmployee->matchPercentage = (int)$matchPercentage;
                 $score = 0;
                 // for each joboffer calculate the match
                 // add the match to an array where you can see all the matches in
             }
         }
-
         return view('matches/index',[
-            'joboffersEmployee' => $joboffersEmployee,
+            'joboffersEmployee' => $joboffersEmployee->where('filterJoboffer',true),
         ]);
     }
     public function show($id){
@@ -84,7 +88,7 @@ class MatchesController extends Controller
         $user = Auth::user();
         $employee = $user->employee;
         if($employee){
-        $joboffers = $employee->jobCategorie->jobOffer;
+        $joboffers = $employee->jobCategorie->jobOffer->take(5);
         return view('homepage')->with([
             'joboffers' => $joboffers,
         ]);
