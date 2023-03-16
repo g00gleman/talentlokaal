@@ -69,14 +69,16 @@
         <div class="modal-content-filter">
             <div class="filter-title">Filteren</div>
             <div class="filter-list">
-                <button class="filter-list-item">Datum: Nieuw naar oud</button>
-                <button class="filter-list-item">Datum: Oud naar nieuw</button>
-                <button class="filter-list-item">
-                    Percentage: Hoog naar laag
-                </button>
-                <button class="filter-list-item">
-                    Percentage: Laag naar Hoog
-                </button>
+                <form action="" id="filter-form">
+                    <button class="filter-list-item" id="filterButton" onclick="" value="1">Datum: Nieuw naar oud</button>
+                    <button class="filter-list-item" id="filterButton" value="2">Datum: Oud naar nieuw</button>
+                    <button class="filter-list-item" id="filterButton" value="3">
+                        Percentage: Hoog naar laag
+                    </button>
+                    <button class="filter-list-item" value="4">
+                        Percentage: Laag naar Hoog
+                    </button>
+                </form>
             </div>
         </div>
     </div>
@@ -94,9 +96,10 @@
     const btnFilter = document.querySelector(".filter-list-item");
 
     const btnFilterList = document.querySelectorAll(".filter-list-item");
-
+    let actionValue = document.getElementById('filter-form');
     btnFilterList.forEach((btnFilter) => {
         btnFilter.addEventListener("click", () => {
+            actionValue.setAttribute("action", '/dashboard/filter/'+btnFilter.value);
             document.querySelector(".active")?.classList.remove("active");
             btnFilter.classList.add("active");
         });

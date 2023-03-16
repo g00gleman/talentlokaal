@@ -72,6 +72,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'as' => 'dashboar
     Route::get('/single/{id}', [MatchesController::class, 'single']);
     Route::get('/admin-portal/bedrijven', [EmployerController::class, 'companies'])->name('adminportal.pages.bedrijven.index');
     Route::get('/admin-portal/bedrijven', [EmployerController::class, 'companies'])->name('adminportal.pages.bedrijven.index');
+    Route::get('/filter/{id}', [MatchesController::class, 'index']);
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'as' => 'dashboard.'], function () {
@@ -86,9 +87,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'as' => 'dashboard.']
 
     Route::get('/werkzoekende', [profileController::class, 'getAll'])->name('adminportal.pages.werkzoekende.index');
 
-    Route::get('/matches', function () {
-        return view('adminportal.pages.matches.index');
-    });
+    Route::resource('matches', MatchesController::class);
+
     Route::get('/nieuws', function () {
         return view('adminportal.pages.news.index');
     });
