@@ -86,7 +86,7 @@
             @csrf
 
             <div>
-                <x-jet-input id="email" class=" font-sans focus:ring-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="email" name="email" :value="old('email')"  placeholder="Email-adres" required autofocus />
+                <x-jet-input id="email" class=" font-sans focus:ring-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl" type="email" name="email" :value="old('email')"  placeholder="Emaiadres" required autofocus />
             </div>
             
 
