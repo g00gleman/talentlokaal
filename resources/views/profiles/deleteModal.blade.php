@@ -63,12 +63,16 @@
             <div class="box-top">
                 Weet u zeker dat u uw account wilt verwijderen?
             </div>
-            <div class="box-content">
-                <a href="#" class="box-content-btn"> Ja </a>
-                <button class="box-content-btn" onclick="closeModalUserDel()">
-                    Nee
-                </button>
-            </div>
+            <form action="{{ route('dashboard.manageProfile.destroy', $user->id) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <div class="box-content">
+                    <button type="submit" class="box-content-btn"> Ja </button>
+                    <a href="#" class="box-content-btn" onclick="closeModalUserDel()">
+                        Nee
+                    </a>
+                </div>
+            </form>
         </div>
     </div>
 </div>

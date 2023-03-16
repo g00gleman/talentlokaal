@@ -296,7 +296,7 @@
             <!-- <a href="/dashboard/admin-portal/vacatures" class="link"
                 >Vacatures</a
             > -->
-            <a href="/admin/matches" class="link link" id="matches">Matches</a>
+            <a href="{{ route('dashboard.matches.index') }}" class="link link" id="matches">Matches</a>
             <a href="/admin/nieuws" class="link link" id="nieuws">Nieuws</a>
             <a href="#" class="link link-last">Log uit</a>
         </div>

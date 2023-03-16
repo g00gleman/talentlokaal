@@ -19,5 +19,6 @@ class jobOffer extends Model
     }
     protected $fillable = [
         'matchPercentage',
+        'filterJoboffer'
     ];
 }
