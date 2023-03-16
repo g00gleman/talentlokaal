@@ -86,6 +86,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'as' => 'dashboard.']
 
     Route::get('/werkzoekende', [profileController::class, 'getAll'])->name('adminportal.pages.werkzoekende.index');
 
+    Route::get('/matches', function () {
+        return view('adminportal.pages.matches.index');
+    });
     Route::get('/nieuws', function () {
         return view('adminportal.pages.news.index');
     });
