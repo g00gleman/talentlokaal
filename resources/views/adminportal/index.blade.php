@@ -41,12 +41,14 @@
             table caption {
                 font-size: 1.5em;
                 margin: 0.5em 0 0.75em;
+                color: black;
             }
 
             table tr {
                 background-color: #f8f8f8;
                 border: 1px solid #ddd;
                 padding: 0.35em;
+                /* box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; */
             }
 
             table th,
@@ -69,7 +71,7 @@
                 table caption {
                     font-size: 1.5em;
                     font-weight: bold;
-                    color: white;
+                    color: black;
                 }
 
                 table thead {
@@ -118,6 +120,11 @@
                 display: flex;
                 justify-content: center;
                 margin-top: 25px;
+                background-color: white;
+                margin-left: 25px;
+                margin-right: 25px;
+                border-radius: 14px;
+                box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
             }
         </style>
     </head>
@@ -137,10 +144,10 @@
                                     <th scope="col">Bedrijfsnaam</th>
                                     <th scope="col">Contactpersoon</th>
                                     <th scope="col">Functie</th>
-                                    <th scope="col">Telefoonummer</th>
+                                    <!-- <th scope="col">Telefoonummer</th>
                                     <th scope="col">Adres</th>
                                     <th scope="col">E-mail</th>
-                                    <th scope="col">Website</th>
+                                    <th scope="col">Website</th> -->
                                 </tr>
                             </thead>
                             <tbody>
@@ -155,7 +162,7 @@
                                     <td data-label="Functie">
                                         {{ $employer->jobCategorie->categoryName }}
                                     </td>
-                                    <td data-label="Telefoonummer">
+                                    <!-- <td data-label="Telefoonummer">
                                         {{ $employer->user->phoneNumber }}
                                     </td>
                                     <td data-label="Adres">
@@ -186,7 +193,7 @@
                                                 }
                                             </script>
                                         </a>
-                                    </td>
+                                    </td> -->
                                 </tr>
                                 @endforeach
                             </tbody>

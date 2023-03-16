@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\employer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\URL;
 
 class MatchesController extends Controller
 {
@@ -75,9 +76,39 @@ class MatchesController extends Controller
                 // add the match to an array where you can see all the matches in
             }
         }
+
         return view('matches/index',[
             'joboffersEmployee' => $joboffersEmployee->where('filterJoboffer',true),
         ]);
+        //        if ($id == 1){
+//            $joboffersEmployee = $joboffersEmployee->sortBy('created_at');
+//        }
+//        elseif ($id == 2){
+//            $joboffersEmployee->sortBy('created_at');
+//        }elseif ($id == 3){
+//
+//        }elseif($id == 4){
+//            $joboffersEmployee->orderBy('created_at', 'desc');
+//        }else{
+//            return view('matches/index',[
+//                'joboffersEmployee' => $jobofferEmployee,
+//            ]);
+//        }
+//        $currentUrl = url()->current();
+$url = URL::current();
+$parts = Explode('/', $url);
+$id = $parts[count($parts) - 2];
+if ($id == "dashboard"){
+    return view('matches/index',[
+        'joboffersEmployee' => $joboffersEmployee,
+    ]);
+}elseif($id == "admin"){
+    return view('adminportal/pages/matches/index',[
+        'joboffersEmployee' => $joboffersEmployee,
+    ]);
+}else{
+
+}
     }
     public function show($id){
         $match = answers::find($id);
