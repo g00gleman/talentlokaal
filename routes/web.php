@@ -57,15 +57,19 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'as' => 'dashboar
     // update your profile with a description, files or cv
     Route::put('/description/{id}', [profileController::class, 'description']);
 
+    Route::get('/introduction', [profileController::class, 'viewDescription']);
+
     // rousource routes
     // update profile info
     Route::resource('manageProfile', profileController::class);
+    Route::get('manageProfile/{id}', [profileController::class, 'destroy']);
     Route::resource('jobOffer', JobOfferController::class);
 
     //click on survey button to see the survey
     Route::get('/survey', [surveyController::class, 'displaySurvey']);
     Route::post('/survey', [surveyController::class, 'saveSurvey']);
     Route::get('/logout', [profileController::class, 'logout']);
+    Route::post('/destroy/{id}', [profileController::class, 'destroy']);
 
 
     Route::resource('matches', MatchesController::class);
@@ -91,4 +95,4 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'as' => 'dashboard.']
     });
 });
 
-Route::get('/introduction', [profileController::class, 'viewDescription']);
+
