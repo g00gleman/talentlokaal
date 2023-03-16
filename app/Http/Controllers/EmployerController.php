@@ -18,34 +18,28 @@ class EmployerController extends Controller
         $employers = Employer::all();
         return view('adminportal.pages.bedrijven.index', [
             'employers' => $employers,
-            'jobcategory' => $jobCategory,
+            '   ' => $jobCategory,
         ]);
     }
 
-    public function tenEmployers(jobCategory $jobCategory)
+    public function getEdit(Employer $employers)
     {
-        $employers = Employer::all()->take(10);
-        return view('adminportal.index', [
-            'employers' => $employers,
-            'jobcategory' => $jobCategory,
+        $jobCategory = jobCategory::all();
+        return view('adminportal.pages.bedrijven.edit', [
+            'employer' => $employers,
+            'jobcategorys' => $jobCategory,
+
         ]);
     }
-
-    public function getEdit( Employer $employers){
-        $jobCategory = jobCategory::all();
-        return view('adminportal.pages.bedrijven.edit',[
-        'employer' => $employers,
-        'jobcategorys' => $jobCategory,
-
-    ]);
-}
-public function putEdit($id, Request $request)
-{
+    public function putEdit($id, Request $request)
+    {
 
         // validation errors for all form inputs
         $this->validate(request(), [
             'naam' => 'required|string|max:255',
             'adres' => 'required|string|max:255',
+            'email' => 'required|string|max:255',
+            'telefoonummer' => 'required|string|max:255',
             // 'profielfoto' => 'image',
             'pitch' => 'file|mimetypes:video/mp4',
             'beschrijving' => 'string',
@@ -70,18 +64,16 @@ public function putEdit($id, Request $request)
         $updateUser->adress = $request->get('adres');
         $updateUser->save();
 
-            $this->validate(request(), [
-                'bedrijfsnaam' => 'required|string|max:255',
-                'websitelink' => 'string|active_url|max:255',
-            ]);
-            // update employer table
-            $updateEmployee->companyName = $request->get('bedrijfsnaam');
-            $updateEmployee->websiteUrl = $request->get('websitelink');
-            $updateEmployee->save();
+        $this->validate(request(), [
+            'bedrijfsnaam' => 'required|string|max:255',
+            'websitelink' => 'string|active_url|max:255',
+        ]);
+        // update employer table
+        $updateEmployee->companyName = $request->get('bedrijfsnaam');
+        $updateEmployee->websiteUrl = $request->get('websitelink');
+        $updateEmployee->save();
 
 
         return redirect(route('/bedrijven'));
     }
 }
-
-
