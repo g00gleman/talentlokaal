@@ -144,10 +144,6 @@
                                     <th scope="col">Bedrijfsnaam</th>
                                     <th scope="col">Contactpersoon</th>
                                     <th scope="col">Functie</th>
-                                    <!-- <th scope="col">Telefoonummer</th>
-                                    <th scope="col">Adres</th>
-                                    <th scope="col">E-mail</th>
-                                    <th scope="col">Website</th> -->
                                 </tr>
                             </thead>
                             <tbody>
@@ -162,38 +158,6 @@
                                     <td data-label="Functie">
                                         {{ $employer->jobCategorie->categoryName }}
                                     </td>
-                                    <!-- <td data-label="Telefoonummer">
-                                        {{ $employer->user->phoneNumber }}
-                                    </td>
-                                    <td data-label="Adres">
-                                        {{ $employer->user->adress }}
-                                    </td>
-                                    <td data-label="E-mail">
-                                        {{ $employer->user->email }}
-                                    </td>
-                                    <td data-label="Website">
-                                        <a
-                                            href="{{ $employer->websiteUrl }}"
-                                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                                        >
-                                            <script>
-                                                urlFixer(
-                                                    "{{ $employer->websiteUrl }}"
-                                                );
-
-                                                function urlFixer(websiteLink) {
-                                                    const wLink = websiteLink;
-
-                                                    const fixer =
-                                                        wLink.split("/")[
-                                                            (0, 1, 2)
-                                                        ];
-
-                                                    document.write(fixer);
-                                                }
-                                            </script>
-                                        </a>
-                                    </td> -->
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -210,8 +174,6 @@
                                 <tr>
                                     <th scope="col">Naam</th>
                                     <th scope="col">Telefoonnummer</th>
-                                    <th scope="col">Adres</th>
-                                    <th scope="col">E-mail</th>
                                     <th scope="col">Functie</th>
                                 </tr>
                             </thead>
@@ -223,12 +185,6 @@
                                     </td>
                                     <td data-label="Telefoonnummer">
                                         {{ $employee->user->phoneNumber }}
-                                    </td>
-                                    <td data-label="Adres">
-                                        {{ $employee->user->adress }}
-                                    </td>
-                                    <td data-label="E-mail">
-                                        {{ $employee->user->email }}
                                     </td>
                                     <td data-label="Functie">
                                         {{ $employee->jobCategoryEmployee->categoryName }}

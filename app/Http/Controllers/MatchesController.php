@@ -8,13 +8,15 @@ use App\Models\jobCategory;
 use App\Models\jobOffer;
 use App\Models\User;
 use App\Models\employer;
+use App\Models\news;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class MatchesController extends Controller
 {
     //
-    public function index(){
+    public function index()
+    {
         // check if the user is an employer or employee
         $user = User::with('employee', 'employer')->find(Auth::id());
         $employee = $user->employee;
@@ -30,24 +32,24 @@ class MatchesController extends Controller
 
         $answersEmployee = $employee->answers;
 
-        if (isset($employee)){
+        if (isset($employee)) {
             // get the answers of the employee survey
 
             // the joboffers from the sector which the employee also has
             $joboffersEmployee = $employee->jobCategorie->jobOffer;
             // of all the joboffers as a single joboffer
-            foreach ($joboffersEmployee as $jobofferEmployee){
+            foreach ($joboffersEmployee as $jobofferEmployee) {
                 // get all the answers of one joboffer
                 $jobOfferEmployeeId = $jobofferEmployee->id;
 
                 $answersJoboffer = answers::where('jobOfferId', $jobOfferEmployeeId)->get();
 
-//                dd($answersJoboffer);
+                //                dd($answersJoboffer);
                 // compare the 9 answers from the joboffer with the 9 answers from the employee in the survey
-                foreach ($answersJoboffer as $answerJoboffer){
-                    foreach($answersEmployee as $answerEmployee){
+                foreach ($answersJoboffer as $answerJoboffer) {
+                    foreach ($answersEmployee as $answerEmployee) {
                         // calculate the diff between the 2 scores
-                        if($answerEmployee->questionId == $answerJoboffer->questionId){
+                        if ($answerEmployee->questionId == $answerJoboffer->questionId) {
                             $scoredifference = $answerEmployee->score - $answerJoboffer->score;
 
 
@@ -60,10 +62,9 @@ class MatchesController extends Controller
 
                             $score = $score + $addScore;
                         }
-
                     }
                 }
-                $matchPercentage = $score/$ScoreTotal*100;
+                $matchPercentage = $score / $ScoreTotal * 100;
                 $jobofferEmployee->matchPercentage = (int)$matchPercentage;
                 $score = 0;
                 // for each joboffer calculate the match
@@ -71,29 +72,33 @@ class MatchesController extends Controller
             }
         }
 
-        return view('matches/index',[
+        return view('matches/index', [
             'joboffersEmployee' => $joboffersEmployee,
         ]);
     }
-    public function show($id){
+    public function show($id)
+    {
         $match = answers::find($id);
 
         return view('matches/single')->with('match', $match);
     }
-    public function home(){
+    public function home()
+    {
         $user = Auth::user();
+        $items = news::all();
         $employee = $user->employee;
-        if($employee){
-        $joboffers = $employee->jobCategorie->jobOffer;
-        return view('homepage')->with([
-            'joboffers' => $joboffers,
-        ]);
-        }else{
+        if ($employee) {
+            $joboffers = $employee->jobCategorie->jobOffer;
+            return view('homepage')->with([
+                'items' => $items,
+                'joboffers' => $joboffers,
+            ]);
+        } else {
             return view('homepage');
         }
-
     }
-    public function single($id){
+    public function single($id)
+    {
         $jobOffer = jobOffer::with('employer')->find($id);
         $user = $jobOffer->employer->user;
         return view('matches.single', [
