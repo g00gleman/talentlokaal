@@ -11,6 +11,7 @@ use App\Models\employer;
 use App\Models\news;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\URL;
 
 class MatchesController extends Controller
 {
@@ -28,7 +29,7 @@ class MatchesController extends Controller
         // the max score for each question
         $scoreMax = 3;
         // the max total score means 9 questions times the maxscore of the question (9*4)
-        $ScoreTotal = 36;
+        $ScoreTotal = 27;
 
         $answersEmployee = $employee->answers;
 
@@ -65,6 +66,11 @@ class MatchesController extends Controller
                     }
                 }
                 $matchPercentage = $score / $ScoreTotal * 100;
+                if ($matchPercentage < 75) {
+                    $jobofferEmployee->filterJoboffer = false;
+                } else {
+                    $jobofferEmployee->filterJoboffer = true;
+                }
                 $jobofferEmployee->matchPercentage = (int)$matchPercentage;
                 $score = 0;
                 // for each joboffer calculate the match
@@ -73,8 +79,36 @@ class MatchesController extends Controller
         }
 
         return view('matches/index', [
-            'joboffersEmployee' => $joboffersEmployee,
+            'joboffersEmployee' => $joboffersEmployee->where('filterJoboffer', true),
         ]);
+        //        if ($id == 1){
+        //            $joboffersEmployee = $joboffersEmployee->sortBy('created_at');
+        //        }
+        //        elseif ($id == 2){
+        //            $joboffersEmployee->sortBy('created_at');
+        //        }elseif ($id == 3){
+        //
+        //        }elseif($id == 4){
+        //            $joboffersEmployee->orderBy('created_at', 'desc');
+        //        }else{
+        //            return view('matches/index',[
+        //                'joboffersEmployee' => $jobofferEmployee,
+        //            ]);
+        //        }
+        //        $currentUrl = url()->current();
+        $url = URL::current();
+        $parts = Explode('/', $url);
+        $id = $parts[count($parts) - 2];
+        if ($id == "dashboard") {
+            return view('matches/index', [
+                'joboffersEmployee' => $joboffersEmployee,
+            ]);
+        } elseif ($id == "admin") {
+            return view('adminportal/pages/matches/index', [
+                'joboffersEmployee' => $joboffersEmployee,
+            ]);
+        } else {
+        }
     }
     public function show($id)
     {
@@ -88,9 +122,8 @@ class MatchesController extends Controller
         $items = news::all();
         $employee = $user->employee;
         if ($employee) {
-            $joboffers = $employee->jobCategorie->jobOffer;
+            $joboffers = $employee->jobCategorie->jobOffer->take(5);
             return view('homepage')->with([
-                'items' => $items,
                 'joboffers' => $joboffers,
             ]);
         } else {
