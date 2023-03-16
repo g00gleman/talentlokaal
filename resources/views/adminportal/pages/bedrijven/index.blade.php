@@ -150,9 +150,9 @@
                                 <td data-label="Contactpersoon">
                                     {{ $employer->user->name }}
                                 </td>
-                                <td data-label="Functie">
-                                    {{ $employer->jobCategorie->categoryName }}
-                                </td>
+{{--                                <td data-label="Functie">--}}
+{{--                                    {{ $employer->jobCategorie->categoryName }}--}}
+{{--                                </td>--}}
                                 <td data-label="Telefoonummer">
                                     {{ $employer->user->phoneNumber }}
                                 </td>

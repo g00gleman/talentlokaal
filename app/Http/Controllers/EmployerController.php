@@ -18,70 +18,64 @@ class EmployerController extends Controller
         $employers = Employer::all();
         return view('adminportal.pages.bedrijven.index', [
             'employers' => $employers,
-            'jobcategory' => $jobCategory,
+            '   ' => $jobCategory,
         ]);
     }
 
-    public function tenEmployers(jobCategory $jobCategory)
+    public function getEdit(Employer $employers)
     {
-        $employers = Employer::all()->take(10);
-        return view('adminportal.index', [
-            'employers' => $employers,
-            'jobcategory' => $jobCategory,
-        ]);
-    }
-
-    public function getEdit( Employer $employers){
         $jobCategory = jobCategory::all();
-        return view('adminportal.pages.bedrijven.edit',[
-        'employer' => $employers,
-        'jobcategorys' => $jobCategory,
+        return view('adminportal.pages.bedrijven.edit', [
+            'employer' => $employers,
+            'jobcategorys' => $jobCategory,
 
-    ]);
-}
-public function putEdit($id, Request $request)
-{
-
-        // validation errors for all form inputs
-        $this->validate(request(), [
-            'naam' => 'required|string|max:255',
-            'adres' => 'required|string|max:255',
-            // 'profielfoto' => 'image',
-            'pitch' => 'file|mimetypes:video/mp4',
-            'beschrijving' => 'string',
         ]);
+    }
+    public function putEdit($id, Request $request)
+    {
 
-        // update user table
-        $updateEmployee = Employer::find($id);
-        $updateUser = User::find($updateEmployee->user->id);
+       // validation errors for all form inputs
+       $this->validate(request(), [
+        'naam' => 'required|string|max:255',
+        'adres' => 'required|string|max:255',
+        'email' => 'required|string|max:255',
+        'telefoonnummer' => 'required|string|max:255',
+        //'profielfoto' => 'image',
+        'pitch' => 'file|mimetypes:video/mp4',
+        'beschrijving' => 'string',
+    ]);
 
-        $image = $request->file('profielfoto');
-        if (isset($image)) {
-            // new file name for image
-            $imageNewFileName = time() . "." . $image->extension();
+    // update user table
+    $updateEmployee = Employer::find($id);
+    $updateUser = User::find($updateEmployee->user->id);
 
-            // replace old filename with the new one and save it into storage/public
-            Storage::disk('local')->put($imageNewFileName,  $image->get());
-            $updateUser->profile_photo_path = $imageNewFileName;
-        }
+    $image = $request->file('profielfoto');
+    if (isset($image)) {
+        // new file name for image
+        $imageNewFileName = time() . "." . $image->extension();
 
-        $updateUser->name = $request->get('naam');
-        $updateUser->description = $request->get('beschrijving');
-        $updateUser->adress = $request->get('adres');
-        $updateUser->save();
+        // replace old filename with the new one and save it into storage/public
+        Storage::disk('local')->put($imageNewFileName,  $image->get());
+        $updateUser->profile_photo_path = $imageNewFileName;
+    }
 
-            $this->validate(request(), [
-                'bedrijfsnaam' => 'required|string|max:255',
-                'websitelink' => 'string|active_url|max:255',
-            ]);
-            // update employer table
-            $updateEmployee->companyName = $request->get('bedrijfsnaam');
-            $updateEmployee->websiteUrl = $request->get('websitelink');
-            $updateEmployee->save();
+    $updateUser->name = $request->get('naam');
+    $updateUser->description = $request->get('beschrijving');
+    $updateUser->email = $request->get('email');
+    $updateUser->phoneNumber = $request->get('telefoonnummer');
+    $updateUser->adress = $request->get('adres');
+    $updateUser->save();
+
+    $this->validate(request(), [
+        'bedrijfsnaam' => 'required|string|max:255',
+        'websitelink' => 'string|active_url|max:255',
+    ]);
+    // update employer table
+    $updateEmployee->companyName = $request->get('bedrijfsnaam');
+    $updateEmployee->websiteUrl = $request->get('websitelink');
+    $updateEmployee->save();
 
 
-        return redirect(route('/bedrijven'));
+    return redirect('/admin/bedrijven');
     }
 }
-
-

@@ -177,8 +177,9 @@
                                         <div class="font-bold text-talent-green text-xl">Match {{ $matches }}</div>
                                         <div class="opacity-30 text-sm italic"> Match 2 dagen geleden</div>
                                     </div>
-                                    <div clas=" ml-20">
-                                        <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Vanamo_Logo.png"
+                                    <div class=" ml-20">
+                                        <img class="h-15 w-15 rounded-full object-cover"
+                                            src="{{ $joboffer->employer->user->getProfilePhotoUrlAttribute() }}"
                                             width="50px" height="5  0px ">
                                     </div>
                                 </div>
@@ -195,9 +196,11 @@
                                 </div>
                             </div>
                         </div>
+
                     @endforeach
                 @endif
             @endif
+
         </div>
     </body>
 

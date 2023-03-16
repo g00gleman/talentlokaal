@@ -41,15 +41,22 @@
     }
 
     .link-last {
-        margin-top: 200px;
+        margin-top: 150px;
     }
 
     .closeBtn {
         height: 0;
     }
 
+    @media only screen and (max-width: 450px) {
+        .link-last {
+            margin-top: 100px;
+        }
+    }
+
     @media only screen and (max-width: 825px) {
         .navbar {
+            display: none;
             position: absolute;
             width: 100vw;
             height: 100vh;
@@ -93,7 +100,7 @@
         }
 
         .link-last {
-            margin-top: 150px;
+            margin-top: 50px;
         }
 
         .closeBtn {
@@ -294,6 +301,7 @@
             <!-- <a href="/dashboard/admin-portal/vacatures" class="link"
                 >Vacatures</a
             > -->
+            <a href="{{ route('dashboard.matches.index') }}" class="link link" id="matches">Matches</a>
             <a href="/admin/nieuws" class="link link" id="nieuws">Nieuws</a>
             <a href="#" class="link link-last">Log uit</a>
         </div>
@@ -302,12 +310,12 @@
 
 <script>
     window.addEventListener("resize", function () {
-        if (window.matchMedia("(min-width: 450px)").matches) {
+        if (window.matchMedia("(min-width: 825px)").matches) {
             document.getElementById("navbar").style.display = "block";
             // document
             //     .getElementById("bedrijfContent")
             //     .classList.remove("hidden");
-        } else if (window.matchMedia("(max-width: 450px)").matches) {
+        } else if (window.matchMedia("(max-width: 825px)").matches) {
             // document.getElementById("bedrijfContent").classList.add("hidden");
         }
     });
@@ -330,6 +338,8 @@
         document.getElementById("bedrijven").classList.add("active");
     } else if (lastSegment == "werkzoekende") {
         document.getElementById("werkzoekende").classList.add("active");
+    } else if (lastSegment == "matches") {
+        document.getElementById("matches").classList.add("active");
     } else if (lastSegment == "nieuws") {
         document.getElementById("nieuws").classList.add("active");
     }
