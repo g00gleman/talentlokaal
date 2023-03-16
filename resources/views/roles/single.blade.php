@@ -187,7 +187,7 @@
                             placeholder="*Vul hier uw telefoonnummer in" />
                     </div>
                     <div class="text-sm flex justify-center items-center text-talent-red">
-                        @error('telefoonummer')
+                        @error('telefoonnummer')
                         {{$message}}
                         @enderror
                         </div>
