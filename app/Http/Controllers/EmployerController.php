@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Employer;
 use App\Models\jobCategory;
 use App\Models\User;
+use Database\Seeders\employer as SeedersEmployer;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -46,8 +47,8 @@ class EmployerController extends Controller
     ]);
 
     // update user table
-    $updateEmployee = Employer::find($id);
-    $updateUser = User::find($updateEmployee->user->id);
+    $updateEmployer = Employer::find($id);
+    $updateUser = User::find($updateEmployer->user->id);
 
     $image = $request->file('profielfoto');
     if (isset($image)) {
@@ -69,13 +70,28 @@ class EmployerController extends Controller
     $this->validate(request(), [
         'bedrijfsnaam' => 'required|string|max:255',
         'websitelink' => 'string|active_url|max:255',
+        'jobCategory' => 'required',
     ]);
     // update employer table
-    $updateEmployee->companyName = $request->get('bedrijfsnaam');
-    $updateEmployee->websiteUrl = $request->get('websitelink');
-    $updateEmployee->save();
+    $updateEmployer->companyName = $request->get('bedrijfsnaam');
+    $updateEmployer->websiteUrl = $request->get('websitelink');
+    $updateEmployer->jobCategory = $request->get('jobCategory');
+    $updateEmployer->save();
 
 
     return redirect('/admin/bedrijven');
+    }
+    
+
+    public function delete($id)
+    {
+
+       ;
+
+        $user = User::find($id);
+
+            $user->destroy($id);
+            $user->employer->delete();
+        return redirect('/admin/bedrijven');
     }
 }

@@ -7,6 +7,7 @@ use App\Http\Controllers\rolesController;
 use App\Http\Controllers\surveyController;
 use App\Http\Controllers\userFileController;
 use App\Http\Controllers\EmployerController;
+use App\Http\Controllers\EmployeeController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Redirect;
 
@@ -83,8 +84,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'as' => 'dashboard.']
     Route::get('/bedrijven', [EmployerController::class, 'companies'])->name('adminportal.pages.bedrijven.index');
     Route::get('/bedrijven/edit/{employers}', [EmployerController::class, 'getEdit'])->name('adminportal.pages.bedrijven.edit');
     Route::put('/bedrijven/edit/{employers}', [EmployerController::class, 'putEdit'])->name('adminportal.pages.bedrijven.edit.put');
+    Route::delete('/bedrijven/delete/{employers}', [EmployerController::class, 'delete'])->name('adminportal.pages.bedrijven.delete');
 
     Route::get('/werkzoekende', [profileController::class, 'getAll'])->name('adminportal.pages.werkzoekende.index');
+    Route::get('/werkzoekende/edit/{employee}', [EmployeeController::class, 'getEdit'])->name('adminportal.pages.werkzoekende.edit');
+    Route::put('/werkzoekende/edit/{employee}', [EmployeeController::class, 'putEdit'])->name('adminportal.pages.werkzoekende.edit.put');
+    Route::delete('/werkzoekende/delete/{employee}', [EmployeeController::class, 'delete'])->name('adminportal.pages.werkzoekende.delete');
 
     Route::get('/nieuws', function () {
         return view('adminportal.pages.news.index');
