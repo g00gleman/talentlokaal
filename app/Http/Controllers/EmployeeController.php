@@ -27,25 +27,26 @@ class EmployeeController extends Controller
             'adres' => 'required|string|max:255',
             'email' => 'required|string|max:255',
             'telefoonnummer' => 'required|string|max:255',
-            //'profielfoto' => 'image',
+            // 'profielfoto' => 'image',
             'pitch' => 'file|mimetypes:video/mp4',
             'beschrijving' => 'string',
         ]);
     
         // update user table
-        $updateEmployee = Employee::find($id);
+        $updateEmployee = employee::find($id);
         $updateUser = User::find($updateEmployee->user->id);
     
-        $image = $request->file('profielfoto');
-        if (isset($image)) {
-            // new file name for image
-            $imageNewFileName = time() . "." . $image->extension();
-    
-            // replace old filename with the new one and save it into storage/public
-            Storage::disk('local')->put($imageNewFileName,  $image->get());
-            $updateUser->profile_photo_path = $imageNewFileName;
-        }
-    
+       
+    $image = $request->file('profielfoto');
+    if (isset($image)) {
+        // new file name for image
+        $imageNewFileName = time() . "." . $image->extension();
+
+        // replace old filename with the new one and save it into storage/public
+        Storage::disk('local')->put($imageNewFileName,  $image->get());
+        $updateUser->profile_photo_path = $imageNewFileName;
+    }
+
         $updateUser->name = $request->get('naam');
         $updateUser->description = $request->get('beschrijving');
         $updateUser->email = $request->get('email');
@@ -58,7 +59,6 @@ class EmployeeController extends Controller
             'diploma' => 'string|max:255',
             'geboortedatum' => 'required|before:today|Date',
         ]);
-        // update employer table
 
         $updateEmployee->jobCategory = $request->get('jobCategory');
         $updateEmployee->certificate = $request->get('diploma');

@@ -1,11 +1,15 @@
 <x-guest-layout>
-   
-    <form action="/admin/werkzoekende/edit/{{ $employee->id }}" method="post">
+    <form action="/admin/werkzoekende/edit/{{ $employee->id }}" method="post"  enctype="multipart/form-data">
+      
         {{ csrf_field() }}
         @method('put')
         <div class="flex justify-center items-center">
+            
             <div
                 class=" bg-talent-light-green ml-2 mr-2 flex-col rounded-xl flex justify-center items-center mt-12 mb-5 w-96">
+                <div class=" flex justify-center items-center text-talent-orange mt-10 text-2xl">
+                    Wijzigen werkzoekende
+                </div>
                     {{-- name --}}
                     <div class=" flex mt-4">
                             <svg version="1.0" xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 mr-5"
@@ -150,10 +154,10 @@
                           </svg>
                           
 
-                        <x-jet-input id="beschrijving"
-                            class=" font-sans focus:ring-talent-orange underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange"
+                        <textarea
+                            class=" font-sans focus:ring-talent-orange underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-3xl shadow-xl placeholder:text-talent-orange"
                             type="text" name="beschrijving" value="{{ $employee->user->description }}"  autofocus
-                            placeholder="Vul hier je beschrijving in " />
+                            placeholder="Vul hier je beschrijving in "></textarea>
                     </div>
                     <div class="text-sm flex justify-center items-center text-talent-red">
                     @error('beschrijving')
@@ -255,4 +259,11 @@
             </div>
     </div>
 </form>
+
+<script>
+    function showFileName(input) {
+    const fileName = input.files[0].name;
+    document.getElementById("file-name").innerHTML = fileName;
+    }
+</script> 
 </x-guest-layout>

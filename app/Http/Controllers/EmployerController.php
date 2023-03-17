@@ -41,11 +41,11 @@ class EmployerController extends Controller
         'adres' => 'required|string|max:255',
         'email' => 'required|string|max:255',
         'telefoonnummer' => 'required|string|max:255',
-        //'profielfoto' => 'image',
+        // 'profielfoto' => 'image',
         'pitch' => 'file|mimetypes:video/mp4',
         'beschrijving' => 'string',
     ]);
-
+    
     // update user table
     $updateEmployer = Employer::find($id);
     $updateUser = User::find($updateEmployer->user->id);
@@ -70,12 +70,10 @@ class EmployerController extends Controller
     $this->validate(request(), [
         'bedrijfsnaam' => 'required|string|max:255',
         'websitelink' => 'string|active_url|max:255',
-        'jobCategory' => 'required',
     ]);
     // update employer table
     $updateEmployer->companyName = $request->get('bedrijfsnaam');
     $updateEmployer->websiteUrl = $request->get('websitelink');
-    $updateEmployer->jobCategory = $request->get('jobCategory');
     $updateEmployer->save();
 
 

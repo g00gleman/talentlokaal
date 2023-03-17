@@ -1,11 +1,14 @@
 <x-guest-layout>
    
-        <form action="/admin/bedrijven/edit/{{ $employer->id }}" method="post">
+        <form action="/admin/bedrijven/edit/{{ $employer->id }}" method="post" enctype="multipart/form-data">
             {{ csrf_field() }}
             @method('put')
             <div class="flex justify-center items-center">
                 <div
                     class=" bg-talent-light-green ml-2 mr-2 flex-col rounded-xl flex justify-center items-center mt-12 mb-5 w-96">
+                    <div class=" flex justify-center items-center text-talent-orange mt-10 text-2xl ">
+                        Wijzigen bedrijven
+                    </div>
                         {{-- companyname --}}
                         <div class=" flex mt-4">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -16,7 +19,7 @@
     
                             <x-jet-input id="companyName"
                                 class=" font-sans focus:ring-talent-orange underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange"
-                                type="text" name="bedrijfsnaam"  autofocus
+                                type="text" name="bedrijfsnaam" value="{{ $employer->companyName}}"   autofocus
                                 placeholder="Vul hier uw bedrijfsnaam in" />
                         </div>
                         <div class="text-sm flex justify-center items-center text-talent-red">
@@ -38,7 +41,7 @@
                             </svg>
                             <x-jet-input id="name"
                                 class=" font-sans focus:ring-talent-orange underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange"
-                                type="text" name="naam" :value="old('naam')"  autofocus
+                                type="text" name="naam" :value="old('naam')" value="{{ $employer->user->name}}"   autofocus
                                 placeholder="Vul hier uw contactpersoon in " />
                         </div>
                         <div class="text-sm flex justify-center items-center text-talent-red">
@@ -55,7 +58,7 @@
         
                                 <x-jet-input id="email"
                                     class=" font-sans focus:ring-talent-orange underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange"
-                                    type="email" name="email" :value="old('email')"
+                                    type="email" name="email" value="{{ $employer->user->email }}"  :value="old('email')"
                                     placeholder="Vul hier uw email in" />
                             </div>
                             <div class="text-sm flex justify-center items-center text-talent-red">
@@ -79,7 +82,7 @@
         
                                 <x-jet-input id="adres"
                                     class="font-sans focus:ring-talent-orange underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange"
-                                    type="text" name="adres" :value="old('adres')"  autofocus
+                                    type="text" name="adres" :value="old('adres')" value="{{ $employer->user->adress }}"   autofocus
                                     placeholder="Vul hier uw adres in" />
                             </div>
                             <div class="text-sm flex justify-center items-center text-talent-red">
@@ -97,7 +100,7 @@
     
                             <x-jet-input id="phoneNumber"
                                 class=" font-sans focus:ring-talent-orange underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange"
-                                type="tel" name="telefoonnummer" :value="old('telefoonnummer')"  autofocus
+                                type="tel" name="telefoonnummer" :value="old('telefoonnummer')" value="{{ $employer->user->phoneNumber }}"  autofocus
                                 placeholder="Vul hier uw telefoonnummer in" />
                         </div>
                         <div class="text-sm flex justify-center items-center text-talent-red">
@@ -109,12 +112,11 @@
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10 mr-5">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
                               </svg>
-                              
 
-                            <x-jet-input id="beschrijving"
-                                class=" font-sans focus:ring-talent-orange underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange"
-                                type="text" name="beschrijving" :value="old('beschrijving')"  autofocus
-                                placeholder="Vul hier je beschrijving in " />
+                            <textarea
+                                class=" font-sans focus:ring-talent-orange underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-3xl shadow-xl placeholder:text-talent-orange"
+                                type="text" name="beschrijving" :value="old('beschrijving')" value="{{ $employer->user->description }}"   autofocus
+                                placeholder="Vul hier je beschrijving in " ></textarea>
                         </div>
                         <div class="text-sm flex justify-center items-center text-talent-red">
                         @error('beschrijving')
@@ -147,10 +149,10 @@
                                 </g>
                             </svg>
                             <div
-                                class=" font-sans px-5 flex items-center border-none content-center  mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange bg-talent-white text-talent-orange underline">
-                                <input type="file" name="profielfoto" id="upload" accept=".jpg,.jpeg,.png,.bmp,.gif,.svg,.webp" onchange="showFileName(this)" hidden/>
-                                    <label for="upload" class="" id="file-name">Upload hier uw bedrijfslogo</label>
-                            </div>
+                            class=" font-sans px-5 flex items-center border-none content-center  mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange bg-talent-white text-talent-orange underline">
+                            <input type="file" name="profielfoto" id="upload" accept=".jpg,.jpeg,.png,.bmp,.gif,.svg,.webp" onchange="showFileName(this)" hidden/>
+                                <label for="upload" class="" id="file-name">Upload hier uw bedrijfslogo</label>
+                        </div>
                         </div>
                         <div class="text-sm flex justify-center items-center text-talent-red">
                         @error('profielfoto')
@@ -166,7 +168,7 @@
 
                             <x-jet-input id="websiteUrl"
                                 class=" font-sans focus:ring-talent-orange underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange"
-                                type="text" name="websitelink" :value="old('websitelink')"  autofocus
+                                type="text" name="websitelink" :value="old('websitelink')" value="{{ $employer->websiteUrl }}"   autofocus
                                 placeholder="Link naar website" />
                         </div>
                         <div class="text-sm flex justify-center items-center text-talent-red">
@@ -184,4 +186,10 @@
             </div>
         </div>
 </form>
+<script>
+    function showFileName(input) {
+    const fileName = input.files[0].name;
+    document.getElementById("file-name").innerHTML = fileName;
+    }
+</script>
 </x-guest-layout>

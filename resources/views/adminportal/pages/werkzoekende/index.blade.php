@@ -155,7 +155,7 @@
                                     {{ $employee->user->email }}
                                 </td>
                                 <td data-label="Functie">
-                                    {{ $employee->jobCategoryEmployee->categoryName }}
+                                    {{ $employee->jobCategory }}
                                 </td>
                                 <td data-label="Edit">
                                     <a href="/admin/werkzoekende/edit/{{ $employee->id }}"

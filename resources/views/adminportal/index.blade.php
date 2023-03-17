@@ -158,7 +158,6 @@
                                     <td data-label="Contactpersoon">
                                         {{ $employer->user->name }}
                                     </td>
-<<<<<<< HEAD
                                     <td data-label="Telefoonummer">
                                         {{ $employer->user->phoneNumber }}
                                     </td>
@@ -190,10 +189,6 @@
                                                 }
                                             </script>
                                         </a>
-=======
-                                    <td data-label="Functie">
-                                        {{ $employer->jobCategorie->categoryName }}
->>>>>>> 8f99b16ad3af340c728a831a4818e3395b567c3d
                                     </td>
                                 </tr>
                                 @endforeach
