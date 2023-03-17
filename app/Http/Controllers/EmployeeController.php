@@ -11,6 +11,14 @@ use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
 {
+    public function getAll(jobCategory $jobCategory)
+    {
+        $employees = employee::all();
+        return view('adminportal.pages.werkzoekende.index', [
+            'employees' => $employees,
+            'jobcategory' => $jobCategory,
+        ]);
+    }
     public function getEdit(Employee $employee)
     {
         $jobCategory = jobCategory::all();

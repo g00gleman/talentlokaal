@@ -33,14 +33,6 @@ class profileController extends Controller
         }
     }
 
-    public function getAll(jobCategory $jobCategory)
-    {
-        $employees = employee::all();
-        return view('adminportal.pages.werkzoekende.index', [
-            'employees' => $employees,
-            'jobcategory' => $jobCategory,
-        ]);
-    }
 
     public function tenOfEach(jobCategory $jobCategory)
     {

@@ -94,7 +94,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'as' => 'dashboard.']
     Route::put('/bedrijven/edit/{employers}', [EmployerController::class, 'putEdit'])->name('adminportal.pages.bedrijven.edit.put');
     Route::delete('/bedrijven/delete/{employers}', [EmployerController::class, 'delete'])->name('adminportal.pages.bedrijven.delete');
 
-    Route::get('/werkzoekende', [profileController::class, 'getAll'])->name('adminportal.pages.werkzoekende.index');
+    Route::get('/werkzoekende', [EmployeeController::class, 'getAll'])->name('adminportal.pages.werkzoekende.index');
     Route::get('/werkzoekende/edit/{employee}', [EmployeeController::class, 'getEdit'])->name('adminportal.pages.werkzoekende.edit');
     Route::put('/werkzoekende/edit/{employee}', [EmployeeController::class, 'putEdit'])->name('adminportal.pages.werkzoekende.edit.put');
     Route::delete('/werkzoekende/delete/{employee}', [EmployeeController::class, 'delete'])->name('adminportal.pages.werkzoekende.delete');

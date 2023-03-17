@@ -14,12 +14,11 @@ use Spatie\LaravelIgnition\Recorders\DumpRecorder\Dump;
 
 class EmployerController extends Controller
 {
-    public function companies(jobCategory $jobCategory)
+    public function companies()
     {
         $employers = Employer::all();
         return view('adminportal.pages.bedrijven.index', [
             'employers' => $employers,
-            '   ' => $jobCategory,
         ]);
     }
 
