@@ -8,6 +8,7 @@ use App\Http\Controllers\surveyController;
 use App\Http\Controllers\userFileController;
 use App\Http\Controllers\EmployerController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\NewsController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Redirect;
 
@@ -58,21 +59,28 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'as' => 'dashboar
     // update your profile with a description, files or cv
     Route::put('/description/{id}', [profileController::class, 'description']);
 
+    Route::get('/introduction', [profileController::class, 'viewDescription']);
+
     // rousource routes
     // update profile info
     Route::resource('manageProfile', profileController::class);
+    Route::get('manageProfile/{id}', [profileController::class, 'destroy']);
     Route::resource('jobOffer', JobOfferController::class);
 
     //click on survey button to see the survey
     Route::get('/survey', [surveyController::class, 'displaySurvey']);
     Route::post('/survey', [surveyController::class, 'saveSurvey']);
     Route::get('/logout', [profileController::class, 'logout']);
+    Route::post('/destroy/{id}', [profileController::class, 'destroy']);
 
 
     Route::resource('matches', MatchesController::class);
     Route::get('/single/{id}', [MatchesController::class, 'single']);
+    Route::get('/introduction', [profileController::class, 'viewDescription']);
+
     Route::get('/admin-portal/bedrijven', [EmployerController::class, 'companies'])->name('adminportal.pages.bedrijven.index');
     Route::get('/admin-portal/bedrijven', [EmployerController::class, 'companies'])->name('adminportal.pages.bedrijven.index');
+    Route::get('/filter/{id}', [MatchesController::class, 'index']);
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'as' => 'dashboard.'], function () {
@@ -91,9 +99,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'as' => 'dashboard.']
     Route::put('/werkzoekende/edit/{employee}', [EmployeeController::class, 'putEdit'])->name('adminportal.pages.werkzoekende.edit.put');
     Route::delete('/werkzoekende/delete/{employee}', [EmployeeController::class, 'delete'])->name('adminportal.pages.werkzoekende.delete');
 
+    Route::get('/matches', function () {
+        return view('adminportal.pages.matches.index');
+    });
+
+    Route::get('/nieuws', [NewsController::class, 'getNews'])->name('adminportal.pages.nieuws.index');
+    Route::resource('matches', MatchesController::class);
+
     Route::get('/nieuws', function () {
         return view('adminportal.pages.news.index');
     });
 });
-
-Route::get('/introduction', [profileController::class, 'viewDescription']);

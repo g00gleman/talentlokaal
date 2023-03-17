@@ -232,14 +232,14 @@
                     <i class="fas fa-cloud-upload-alt"></i>Kies bestand
                 </label>
                 <input id="file-upload-pfp" name="profielfoto" type="file" accept=".jpg,.jpeg,.png,.bmp,.gif,.svg,.webp" onchange="showFileNamepfp(this)"/>
-            
+
 
                 <br/>
                 <br/>
             </div>
             <div class="input-ken-txt truncate" id="file-name-pfp"></div>
         </div>
-        
+
         <!-- <div class="flex">
             <div class="px-5 flex items-center border-none content-center mt-1 w-full rounded-full shadow-xl placeholder:text-talent-orange bg-talent-white text-talent-orange underline">
                 <input type="file" name="profielfoto" id="upload" accept=".jpg,.jpeg,.png,.bmp,.gif,.svg,.webp" onchange="showFileName(this)" hidden/>
@@ -541,7 +541,7 @@
         <div class="col-span-5 text-center mt-4">
             <button
                 class="bg-talent-white shadow-md w-11/12 pt-2 pb-2 font-bold rounded-full"
-                onclick="openModalUserDel()"
+                onclick="openModalUserDel( {{$user->id}} )"
             >
                 Verwijder account
             </button>
@@ -577,7 +577,7 @@
             const fileName = input.files[0].name;
             document.getElementById("file-name").innerHTML = fileName;
             }
-            
+
             function showFileNamepfp(input) {
             const fileName = input.files[0].name;
             document.getElementById("file-name-pfp").innerHTML = fileName;

@@ -8,13 +8,15 @@ use App\Models\jobCategory;
 use App\Models\jobOffer;
 use App\Models\User;
 use App\Models\employer;
+use App\Models\news;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\URL;
 
 class MatchesController extends Controller
 {
     //
-    public function index(){
+    public function index($id = null){
         // check if the user is an employer or employee
         $user = User::with('employee', 'employer')->find(Auth::id());
         $employee = $user->employee;
@@ -26,28 +28,27 @@ class MatchesController extends Controller
         // the max score for each question
         $scoreMax = 3;
         // the max total score means 9 questions times the maxscore of the question (9*4)
-        $ScoreTotal = 36;
+        $ScoreTotal = 27;
 
         $answersEmployee = $employee->answers;
 
-        if (isset($employee)){
+        if (isset($employee)) {
             // get the answers of the employee survey
 
             // the joboffers from the sector which the employee also has
             $joboffersEmployee = $employee->jobCategorie->jobOffer;
             // of all the joboffers as a single joboffer
-            foreach ($joboffersEmployee as $jobofferEmployee){
+            foreach ($joboffersEmployee as $jobofferEmployee) {
                 // get all the answers of one joboffer
                 $jobOfferEmployeeId = $jobofferEmployee->id;
 
                 $answersJoboffer = answers::where('jobOfferId', $jobOfferEmployeeId)->get();
 
-//                dd($answersJoboffer);
                 // compare the 9 answers from the joboffer with the 9 answers from the employee in the survey
-                foreach ($answersJoboffer as $answerJoboffer){
-                    foreach($answersEmployee as $answerEmployee){
+                foreach ($answersJoboffer as $answerJoboffer) {
+                    foreach ($answersEmployee as $answerEmployee) {
                         // calculate the diff between the 2 scores
-                        if($answerEmployee->questionId == $answerJoboffer->questionId){
+                        if ($answerEmployee->questionId == $answerJoboffer->questionId) {
                             $scoredifference = $answerEmployee->score - $answerJoboffer->score;
 
 
@@ -60,10 +61,14 @@ class MatchesController extends Controller
 
                             $score = $score + $addScore;
                         }
-
                     }
                 }
-                $matchPercentage = $score/$ScoreTotal*100;
+                $matchPercentage = $score / $ScoreTotal * 100;
+                if ($matchPercentage < 75) {
+                    $jobofferEmployee->filterJoboffer = false;
+                } else {
+                    $jobofferEmployee->filterJoboffer = true;
+                }
                 $jobofferEmployee->matchPercentage = (int)$matchPercentage;
                 $score = 0;
                 // for each joboffer calculate the match
@@ -71,29 +76,66 @@ class MatchesController extends Controller
             }
         }
 
+
+        if ($id == 1){
         return view('matches/index',[
-            'joboffersEmployee' => $joboffersEmployee,
+            'joboffersEmployee' => $joboffersEmployee->where('filterJoboffer',true)->sortByDesc('created_at'),
         ]);
+       }
+       elseif ($id == 2){
+        return view('matches/index',[
+            'joboffersEmployee' => $joboffersEmployee->where('filterJoboffer',true)->sortBy('created_at'),
+        ]);
+       }elseif ($id == 3){
+        return view('matches/index',[
+            'joboffersEmployee' => $joboffersEmployee->where('filterJoboffer',true)->sortByDesc('matchPercentage'),
+        ]);
+       }elseif($id == 4){
+        return view('matches/index',[
+            'joboffersEmployee' => $joboffersEmployee->where('filterJoboffer',true)->sortBy('matchPercentage'),
+        ]);
+       }else{
+           return view('matches/index',[
+               'joboffersEmployee' => $joboffersEmployee->where('filterJoboffer',true),
+           ]);
+       }
+        $url = URL::current();
+        $parts = Explode('/', $url);
+        $id = $parts[count($parts) - 2];
+        if ($id == "dashboard"){
+            return view('matches/index',[
+                'joboffersEmployee' => $joboffersEmployee->where('filterJoboffer',true),
+            ]);
+        }elseif($id == "admin"){
+            return view('adminportal/pages/matches/index',[
+                'joboffersEmployee' => $joboffersEmployee,
+            ]);
+        }else{
+
+        }
     }
-    public function show($id){
+    public function show($id)
+    {
         $match = answers::find($id);
 
         return view('matches/single')->with('match', $match);
     }
-    public function home(){
+    public function home()
+    {
         $user = Auth::user();
+        $items = news::all();
         $employee = $user->employee;
-        if($employee){
-        $joboffers = $employee->jobCategorie->jobOffer;
-        return view('homepage')->with([
-            'joboffers' => $joboffers,
-        ]);
-        }else{
+        if ($employee) {
+            $joboffers = $employee->jobCategorie->jobOffer->take(5);
+            return view('homepage')->with([
+                'joboffers' => $joboffers,
+            ]);
+        } else {
             return view('homepage');
         }
-
     }
-    public function single($id){
+    public function single($id)
+    {
         $jobOffer = jobOffer::with('employer')->find($id);
         $user = $jobOffer->employer->user;
         return view('matches.single', [

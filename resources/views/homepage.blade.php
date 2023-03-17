@@ -25,7 +25,7 @@
                 <!-- Logo -->
                 <div class=" mt-3">
                     <div class="flex justify-between w-screen">
-                       <svg id="Laag_1" xmlns="http://www.w3.org/2000/svg"
+                        <?xml version="1.0" encoding="UTF-8"?><svg id="Laag_1" xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 559.14 263.07" class="w-36 ml-5">
                             <defs>
                                 <style>
@@ -103,24 +103,26 @@
             Nieuws
         </div>
         <!-- *News Slider -->
-        @if(Auth::user()->employee())
         <div class="snap-x snap-mandatory w-full flex overflow-scroll scrollbar-hide">
-            <!-- *Vragenlijst MSG -->
-            <!-- TODO: Moet nog in een if state -->
-            <div class="snap-start w-full pl-10 pr-10 flex items-center justify-center flex-shrink-0 ">
-                <a href="/dashboard/survey" class="w-80 bg-talent-white rounded-xl p-5">
-                    <div class="flex justify-between">
-                        <div class="flex flex-col">
-                            <div class="font-bold text-talent-green text-xl">Vragenlijst</div>
-                            <div class="opacity-30 text-sm italic">belangrijk!</div>
+            @if(!Auth::user()->employer)
+                @if(count(Auth::user()->employee->answers) == 0)
+                <!-- *Vragenlijst MSG -->
+                <!-- TODO: Moet nog in een if state -->
+                <div class="snap-start w-full pl-10 pr-10 flex items-center justify-center flex-shrink-0 ">
+                    <a href="/dashboard/survey" class="w-80 bg-talent-white rounded-xl p-5">
+                        <div class="flex justify-between">
+                            <div class="flex flex-col">
+                                <div class="font-bold text-talent-green text-xl">Vragenlijst</div>
+                                <div class="opacity-30 text-sm italic">belangrijk!</div>
+                            </div>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 text-talent-red">
+                                <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zM12 8.25a.75.75 0 01.75.75v3.75a.75.75 0 01-1.5 0V9a.75.75 0 01.75-.75zm0 8.25a.75.75 0 100-1.5.75.75 0 000 1.5z" clip-rule="evenodd" />
+                            </svg>
                         </div>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 text-talent-red">
-                            <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zM12 8.25a.75.75 0 01.75.75v3.75a.75.75 0 01-1.5 0V9a.75.75 0 01.75-.75zm0 8.25a.75.75 0 100-1.5.75.75 0 000 1.5z" clip-rule="evenodd" />
-                        </svg>
-                    </div>
-                    <div class="mt-5">Om specifiekere matches te kunnen genereren, vul de vragenlijst dan in op de profiel pagina.</div>
-                </a>
-            </div>
+                        <div class="mt-5">Om specifiekere matches te kunnen genereren, vul de vragenlijst dan in op de profiel pagina.</div>
+                    </a>
+                </div>
+                @endif
             @endif
 
             <!-- *other msgs -->
@@ -159,42 +161,47 @@
 
         <!-- slider voor matches -->
         <div class="snap-x snap-mandatory w-full flex overflow-scroll mt-6 mb-6 scrollbar-hide">
-        <?php
-        $matches = 0;
-        ?>
-        @if(Auth::user()->employee)
-        @foreach($joboffers as $joboffer)
-        <?php
-        $matches += 1;
-        ?>
-            <div class="snap-start w-full pl-10 pr-10 flex items-center justify-center flex-shrink-0 ">
-                <div class="w-80 bg-talent-white rounded-xl p-5">
-                    <div class="flex">
-                        <div class="flex flex-col">
-                            <div class="font-bold text-talent-green text-xl">Match {{ $matches }}</div>
-                            <div class="opacity-30 text-sm italic"> Match 2 dagen geleden</div>
+            <?php
+            $matches = 0;
+            ?>
+            @if(!Auth::user()->employer)
+                @if(count(Auth::user()->employee->answers) > 1)
+                    @foreach($joboffers as $joboffer)
+                        <?php
+                        $matches += 1;
+                        ?>
+                        <div class="snap-start w-full pl-10 pr-10 flex items-center justify-center flex-shrink-0">
+                            <div class="w-80 bg-talent-white rounded-xl p-5">
+                                <div class="flex">
+                                    <div class="flex flex-col">
+                                        <div class="font-bold text-talent-green text-xl">Match {{ $matches }}</div>
+                                        <div class="opacity-30 text-sm italic"> Match 2 dagen geleden</div>
+                                    </div>
+                                    <div class=" ml-20">
+                                        <img class="h-15 w-15 rounded-full object-cover"
+                                            src="{{ $joboffer->employer->user->getProfilePhotoUrlAttribute() }}"
+                                            width="50px" height="5  0px ">
+                                    </div>
+                                </div>
+                                <div class=" grid grid-cols-2 mt-5">
+                                    <div class=" font-bold">Functie:</div>
+                                    <div class="">{{$joboffer->function}}</div>
+                                    <div class=" font-bold">Bedrijf:</div>
+                                    <div class="">{{$joboffer->employer->companyName}}</div>
+                                    <div class=" font-bold">Status:</div>
+                                    <div class="">Verzonden</div>
+                                </div>
+                                <div class=" overflow-y-auto h-32 mt-5">
+                                    {{$joboffer->description}}
+                                </div>
+                            </div>
                         </div>
-                        <div class=" ml-20">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Vanamo_Logo.png"
-                                width="50px" height="5  0px ">
-                        </div>
-                    </div>
-                    <div class=" grid grid-cols-2 mt-5">
-                        <div class=" font-bold">Functie:</div>
-                        <div class="">{{$joboffer->function}}</div>
-                        <div class=" font-bold">Bedrijf:</div>
-                        <div class="">{{$joboffer->employer->companyName}}</div>
-                        <div class=" font-bold">Status:</div>
-                        <div class="">Verzonden</div>
-                    </div>
-                    <div class=" overflow-y-auto h-32 mt-5">
-                    {{$joboffer->description}}
-                    </div>
-                </div>
-            </div>
-            @endforeach
+
+                    @endforeach
+                @endif
+            @endif
+
         </div>
-        @endif
     </body>
 
     </html>

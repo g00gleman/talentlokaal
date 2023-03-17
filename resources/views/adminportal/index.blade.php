@@ -41,12 +41,14 @@
             table caption {
                 font-size: 1.5em;
                 margin: 0.5em 0 0.75em;
+                color: black;
             }
 
             table tr {
                 background-color: #f8f8f8;
                 border: 1px solid #ddd;
                 padding: 0.35em;
+                /* box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; */
             }
 
             table th,
@@ -69,7 +71,7 @@
                 table caption {
                     font-size: 1.5em;
                     font-weight: bold;
-                    color: white;
+                    color: black;
                 }
 
                 table thead {
@@ -118,6 +120,11 @@
                 display: flex;
                 justify-content: center;
                 margin-top: 25px;
+                background-color: white;
+                margin-left: 25px;
+                margin-right: 25px;
+                border-radius: 14px;
+                box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
             }
         </style>
     </head>
@@ -151,6 +158,7 @@
                                     <td data-label="Contactpersoon">
                                         {{ $employer->user->name }}
                                     </td>
+<<<<<<< HEAD
                                     <td data-label="Telefoonummer">
                                         {{ $employer->user->phoneNumber }}
                                     </td>
@@ -182,6 +190,10 @@
                                                 }
                                             </script>
                                         </a>
+=======
+                                    <td data-label="Functie">
+                                        {{ $employer->jobCategorie->categoryName }}
+>>>>>>> 8f99b16ad3af340c728a831a4818e3395b567c3d
                                     </td>
                                 </tr>
                                 @endforeach
@@ -199,8 +211,6 @@
                                 <tr>
                                     <th scope="col">Naam</th>
                                     <th scope="col">Telefoonnummer</th>
-                                    <th scope="col">Adres</th>
-                                    <th scope="col">E-mail</th>
                                     <th scope="col">Functie</th>
                                 </tr>
                             </thead>
@@ -212,12 +222,6 @@
                                     </td>
                                     <td data-label="Telefoonnummer">
                                         {{ $employee->user->phoneNumber }}
-                                    </td>
-                                    <td data-label="Adres">
-                                        {{ $employee->user->adress }}
-                                    </td>
-                                    <td data-label="E-mail">
-                                        {{ $employee->user->email }}
                                     </td>
                                     <td data-label="Functie">
                                         {{ $employee->jobCategoryEmployee->categoryName }}
