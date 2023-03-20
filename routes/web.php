@@ -98,10 +98,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'as' => 'dashboard.']
         return view('adminportal.pages.matches.index');
     });
 
-    Route::get('/nieuws', [NewsController::class, 'getNews'])->name('adminportal.pages.nieuws.index');
+    Route::get('/nieuws', [NewsController::class, 'getNews']);
     Route::resource('matches', MatchesController::class);
-
-    Route::get('/nieuws', function () {
-        return view('adminportal.pages.news.index');
-    });
 });

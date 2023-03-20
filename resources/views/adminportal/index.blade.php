@@ -134,7 +134,7 @@
             @include('adminportal.components.navbar.index')
             <div class="content">
                 <section class="bedrijvenSec">
-                    <div class="center-table">
+                    <a href="/admin/bedrijven" class="center-table">
                         <table>
                             <caption class="tableTitle">
                                 Bedrijven
@@ -155,17 +155,17 @@
                                     <td data-label="Contactpersoon">
                                         {{ $employer->user->name }}
                                     </td>
-                                    <td data-label="Functie">
-                                        {{ $employer->jobCategorie->categoryName }}
+                                    <td data-label="Telefoonnummer">
+                                        {{ $employer->user->phoneNumber }}
                                     </td>
                                 </tr>
                                 @endforeach
                             </tbody>
                         </table>
-                    </div>
+                    </a>
                 </section>
                 <section class="werkzoekendeSec">
-                    <div class="center-table">
+                    <a href="/admin/werkzoekende" class="center-table">
                         <table>
                             <caption class="tableTitle">
                                 Werkzoekende
@@ -193,7 +193,7 @@
                                 @endforeach
                             </tbody>
                         </table>
-                    </div>
+                    </a>
                 </section>
             </div>
         </div>

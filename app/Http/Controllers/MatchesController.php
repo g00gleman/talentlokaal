@@ -125,6 +125,7 @@ class MatchesController extends Controller
             $joboffers = $employee->jobCategorie->jobOffer->take(5);
             return view('homepage')->with([
                 'joboffers' => $joboffers,
+                'items' => $items,
             ]);
         } else {
             return view('homepage');
