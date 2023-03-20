@@ -266,7 +266,7 @@
                     </div>
                     <div class="nav-content-end">Matches</div>
                 </a>
-                <a href="/inbox" class="nav-content-btn" id="inbox">
+                <a href="{{ route('dashboard.jobOffer.index') }}" class="nav-content-btn" id="inbox">
                     <div class="nav-content-end">
                         <svg
                             version="1.0"
@@ -298,7 +298,7 @@
                             </g>
                         </svg>
                     </div>
-                    <div class="nav-content-end">Inbox</div>
+                    <div class="nav-content-end">Overzicht vacatures</div>
                 </a>
                 <a
                     href="/dashboard/support"

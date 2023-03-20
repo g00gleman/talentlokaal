@@ -143,7 +143,10 @@
                                 <tr>
                                     <th scope="col">Bedrijfsnaam</th>
                                     <th scope="col">Contactpersoon</th>
-                                    <th scope="col">Functie</th>
+                                    <th scope="col">Telefoonummer</th>
+                                    <th scope="col">Adres</th>
+                                    <th scope="col">E-mail</th>
+                                    <th scope="col">Website</th>
                                 </tr>
                             </thead>
                             <tbody>

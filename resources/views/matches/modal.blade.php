@@ -99,7 +99,7 @@
     let actionValue = document.getElementById('filter-form');
     btnFilterList.forEach((btnFilter) => {
         btnFilter.addEventListener("click", () => {
-            actionValue.setAttribute("action", '/dashboard/filter/'+btnFilter.value);
+            actionValue.setAttribute("action", '/dashboard/'+btnFilter.value);
             document.querySelector(".active")?.classList.remove("active");
             btnFilter.classList.add("active");
         });

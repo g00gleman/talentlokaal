@@ -132,7 +132,6 @@
                         <tr>
                             <th scope="col">Bedrijfsnaam</th>
                             <th scope="col">Contactpersoon</th>
-                            <th scope="col">Functie</th>
                             <th scope="col">Telefoonummer</th>
                             <th scope="col">Adres</th>
                             <th scope="col">E-mail</th>
@@ -150,9 +149,6 @@
                                 <td data-label="Contactpersoon">
                                     {{ $employer->user->name }}
                                 </td>
-{{--                                <td data-label="Functie">--}}
-{{--                                    {{ $employer->jobCategorie->categoryName }}--}}
-{{--                                </td>--}}
                                 <td data-label="Telefoonummer">
                                     {{ $employer->user->phoneNumber }}
                                 </td>
@@ -186,8 +182,11 @@
                                         class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                                 </td>
                                 <td data-label="Delete">
-                                    <a href=""
-                                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</a>
+                                    <form action="/admin/bedrijven/delete/{{$employer->user->id}}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach

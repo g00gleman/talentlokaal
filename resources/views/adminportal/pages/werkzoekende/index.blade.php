@@ -155,15 +155,18 @@
                                     {{ $employee->user->email }}
                                 </td>
                                 <td data-label="Functie">
-                                    {{ $employee->jobCategoryEmployee->categoryName }}
+                                    {{ $employee->jobCategory }}
                                 </td>
                                 <td data-label="Edit">
-                                    <a href=""
+                                    <a href="/admin/werkzoekende/edit/{{ $employee->id }}"
                                         class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                                 </td>
                                 <td data-label="Delete">
-                                    <a href=""
-                                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</a>
+                                    <form action="/admin/werkzoekende/delete/{{$employee->user->id}}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach

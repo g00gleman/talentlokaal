@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Employer;
 use App\Models\jobCategory;
 use App\Models\User;
+use Database\Seeders\employer as SeedersEmployer;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,12 +14,11 @@ use Spatie\LaravelIgnition\Recorders\DumpRecorder\Dump;
 
 class EmployerController extends Controller
 {
-    public function companies(jobCategory $jobCategory)
+    public function companies()
     {
         $employers = Employer::all();
         return view('adminportal.pages.bedrijven.index', [
             'employers' => $employers,
-            '   ' => $jobCategory,
         ]);
     }
 
@@ -40,14 +40,14 @@ class EmployerController extends Controller
         'adres' => 'required|string|max:255',
         'email' => 'required|string|max:255',
         'telefoonnummer' => 'required|string|max:255',
-        //'profielfoto' => 'image',
+        // 'profielfoto' => 'image',
         'pitch' => 'file|mimetypes:video/mp4',
         'beschrijving' => 'string',
     ]);
-
+    
     // update user table
-    $updateEmployee = Employer::find($id);
-    $updateUser = User::find($updateEmployee->user->id);
+    $updateEmployer = Employer::find($id);
+    $updateUser = User::find($updateEmployer->user->id);
 
     $image = $request->file('profielfoto');
     if (isset($image)) {
@@ -71,11 +71,24 @@ class EmployerController extends Controller
         'websitelink' => 'string|active_url|max:255',
     ]);
     // update employer table
-    $updateEmployee->companyName = $request->get('bedrijfsnaam');
-    $updateEmployee->websiteUrl = $request->get('websitelink');
-    $updateEmployee->save();
+    $updateEmployer->companyName = $request->get('bedrijfsnaam');
+    $updateEmployer->websiteUrl = $request->get('websitelink');
+    $updateEmployer->save();
 
 
     return redirect('/admin/bedrijven');
+    }
+    
+
+    public function delete($id)
+    {
+
+       ;
+
+        $user = User::find($id);
+
+            $user->destroy($id);
+            $user->employer->delete();
+        return redirect('/admin/bedrijven');
     }
 }
