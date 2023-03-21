@@ -86,9 +86,8 @@
     </svg>
                 <ul id="search">
                 @foreach ($employees as $employeee)
-                    <a href="/dashboard/single/{{ $employeee->id }}">
-                        <li class="jobFunction">
-                            <div class=" shadow-lg w-80 bg-talent-white rounded-xl flex items-center mb-6 h-32">
+                    <a href="/dashboard/employee/{{ $employeee->id }}">
+                        <div class=" shadow-lg -mb-6 w-72 bg-talent-white rounded-xl mt-10 flex items-center ">
 
                                 <div class="text-sm font-sans font-bold flex-1 ml-5 mt-5 text-talent-green">
                                 Naam: {{ $employeee->user->name }}<br />
@@ -120,7 +119,7 @@
                     filter = input.value.toUpperCase();
                     ul = document.getElementById("search");
                     li = ul.getElementsByTagName('li');
-                
+
                     for (i = 0; i < li.length; i++) {
                         txtValue = li[i].textContent || li[i].innerText;
                         if (txtValue.toUpperCase().indexOf(filter) > -1) {

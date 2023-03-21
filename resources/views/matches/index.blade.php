@@ -91,7 +91,7 @@
                                 <div class=" shadow-lg w-80 bg-talent-white rounded-xl flex items-center mb-6 h-32">
 
                                 <div class="text-sm font-sans font-bold flex-1 ml-5 mt-5 text-talent-green">
-                            
+
                                 Bedrijf: {{ $jobofferEmployee->employer->companyName }}<br />
 
                                 Functie:{{ $jobofferEmployee->function }}
@@ -106,13 +106,13 @@
                                     <img class="h-20 w-20 rounded-full object-cover"
                                         src="{{ $jobofferEmployee->employer->user->getProfilePhotoUrlAttribute() }}"
                                         alt="{{ Auth::user()->name }}" />
-                                </div>  
+                                </div>
                             </div>
                         </li>
                         </a>
                     @endforeach
                 </ul>
-        </div> 
+        </div>
         </div>
                 </div>
                 <script>
@@ -122,7 +122,7 @@
                     filter = input.value.toUpperCase();
                     ul = document.getElementById("search");
                     li = ul.getElementsByTagName('li');
-                
+
                     for (i = 0; i < li.length; i++) {
                         txtValue = li[i].textContent || li[i].innerText;
                         if (txtValue.toUpperCase().indexOf(filter) > -1) {

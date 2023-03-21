@@ -128,7 +128,7 @@ class MatchesController extends Controller
         $ScoreTotal = 27;
 
         $filterEmployeesArray = [];
-        $filters = [];
+
         foreach ($jobOffers as $jobOffer){
 
             $answersJoboffer = $jobOffer->answers;
@@ -176,6 +176,7 @@ class MatchesController extends Controller
                 $filterEmployeesArray = [$filterEmployee];
             }
         }
+
         // if there is no filter
         if ($id == null) {
             return view('matches/employermatch', [
@@ -227,6 +228,13 @@ class MatchesController extends Controller
         return view('matches.single', [
             'jobOffer' => $jobOffer,
             'user' => $user
+        ]);
+    }
+
+    public function singeEmployer($id){
+        $employee = employee::with('user')->find($id);
+        return view('matches.singleEmployer', [
+            'employee' => $employee,
         ]);
     }
 
