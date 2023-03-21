@@ -117,6 +117,7 @@
         <?php
             $count = 0;
         ?>
+        @if(!empty($items)) 
         @foreach ($items as $item)
         @if ($item->isImportant == 1)
             <?php
@@ -124,6 +125,7 @@
             ?>
         @endif
         @endforeach
+        @endif
         @if (count(Auth::user()->employee->answers) == 0)
         <?php
                 $count += 1;
@@ -250,7 +252,7 @@
                                     <div class=" font-bold">Bedrijf:</div>
                                     <div class="">{{ $joboffer->employer->companyName }}</div>
                                     <div class=" font-bold">Status:</div>
-                                    <div class="">Verzonden</div>
+                                    <div class="">Lopend</div>
                                 </div>
                                 <div class=" overflow-y-auto h-32 mt-5">
                                     {{ $joboffer->description }}
