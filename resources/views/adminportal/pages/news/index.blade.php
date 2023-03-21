@@ -172,17 +172,24 @@
                             </td>
                             <td data-label="Edit">
                                 <a
-                                    href="#"
+                                    href="/admin/nieuws/edit/{{$item->id}}"
                                     class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                                     >Edit</a
                                 >
                             </td>
                             <td data-label="Delete">
-                                <a
-                                    href="#"
-                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                                    >Delete</a
+                                <form
+                                    action="/admin/nieuws/delete/{{$item->id}}"
+                                    method="post"
                                 >
+                                    @csrf @method('delete')
+                                    <button
+                                        type="submit"
+                                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                                    >
+                                        Delete
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                         @endforeach

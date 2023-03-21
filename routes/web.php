@@ -111,7 +111,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'as' => 'dashboard.']
     Route::post('/nieuws/create', [NewsController::class, 'postNews']);
 
     Route::get('/nieuws/edit/{id}', [NewsController::class, 'getEdit']);
-    Route::put('/nieuws/edit/{id}', [NewsController::class, 'getNews']);
+    Route::put('/nieuws/edit/{id}', [NewsController::class, 'putEdit']);
+
+    Route::delete('/nieuws/delete/{id}', [NewsController::class, 'delete']);
 
     Route::resource('matches', MatchesController::class);
 });
