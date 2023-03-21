@@ -126,10 +126,12 @@
         @endif
         @endforeach
         @endif
-        @if (count(Auth::user()->employee->answers) == 0)
-        <?php
-                $count += 1;
-            ?>
+        @if (!Auth::user()->employer)
+            @if (count(Auth::user()->employee->answers) == 0)
+            <?php
+                    $count += 1;
+                ?>
+            @endif
         @endif
         <div class="flex justify-center text-talent-white text-2xl font-bold mt-2">
             <div class="w-min flex relative">
