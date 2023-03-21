@@ -46,6 +46,7 @@
         display: flex;
         gap: 5px;
         flex-direction: column;
+        text-align: center;
         justify-content: center;
         align-items: center;
         height: 30vh;

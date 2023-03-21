@@ -52,25 +52,23 @@
                 </div>
             </div>
         </div>
-        <div class="mt-12 flex justify-center text-2xl text-talent-green font-bold">
+        <div class="mt-12 flex justify-center text-4xl font-sans text-talent-green font-bold">
             Matches
         </div>
         <div class="flex gap-4 justify-center items-center mt-10 ">
 
-            <a href="tel:{{ $user->phoneNumber }}" target="_blank" class=" text-talent-white bg-talent-orange w-28 rounded-full h-8 text-sm "><i
-                    class=" mr-2 fa-solid fa-phone text-talent-white"></i>Bellen</a>
-            <a href="mailto:{{ $user->email }}" class=" text-talent-white bg-talent-orange w-28 rounded-full h-8 text-sm"> <i
-                    class=" mr-2 fa-regular fa-envelope text-talent-white"></i>Mailen </a>
+        <button class=" text-talent-white bg-talent-orange w-28 rounded-full h-8 text-sm "><i class=" mr-2 fa-solid fa-phone text-talent-white"></i> <a href="tel:{{ $user->phoneNumber }}" target="_blank" >Bellen</a></button>
+        <button class=" text-talent-white bg-talent-orange w-28 rounded-full h-8 text-sm "><i class=" mr-2 fa-regular fa-envelope text-talent-white"></i><a href="mailto:{{ $user->email }}" >Mailen </a></button>
 
         </div>
         <div class=" flex justify-center items-center">
         <div class=" rounded-xl bg-talent-light-green h-auto w-80 mt-24 shadow-lg shadow-black">
             <div class=" flex justify-center mt-5 mb-2">
                 <img class="h-20 w-20 rounded-full object-cover"
-                     src="{{ $user->getProfilePhotoUrlAttribute() }}"
-                     alt="{{ Auth::user()->name }}" />
+                    src="{{ $user->getProfilePhotoUrlAttribute() }}"
+                    alt="{{ Auth::user()->name }}" />
             </div>
-            <div class="text-talent-orange text-center font-bold text-3xl">{{ $jobOffer->function }}</div>
+            <div class="text-talent-orange text-center font-bold text-3xl">{{ $user->employer->companyName }}</div>
             <div class="text-talent-green text-sm overflow-y-auto h-32 mt-5 ml-5 mr-5 mb-7">{{ $jobOffer->description }}</div>
         </div>
         </div>
