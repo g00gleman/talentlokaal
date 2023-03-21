@@ -35,6 +35,10 @@
                 left: 15px;
                 position: absolute;
             }
+
+            .test{
+                min-height: 200px;
+            } 
         </style>
     </head>
 
@@ -126,10 +130,12 @@
         @endif
         @endforeach
         @endif
-        @if (count(Auth::user()->employee->answers) == 0)
-        <?php
+        @if (!Auth::user()->employer)
+            @if (count(Auth::user()->employee->answers) == 0)
+            <?php
                 $count += 1;
             ?>
+            @endif
         @endif
         <div class="flex justify-center text-talent-white text-2xl font-bold mt-2">
             <div class="w-min flex relative">
@@ -139,17 +145,18 @@
                         clip-rule="evenodd" />
                     <path d="M18.75 6.75h1.875c.621 0 1.125.504 1.125 1.125V18a1.5 1.5 0 01-3 0V6.75z" />
                 </svg>
+                @if (!$count == 0)
                 <div class="notifier-pos">
                     <div class="notifier">
                         {{$count}}
                     </div>
                 </div>
+                @endif
                 Nieuws
             </div>
         </div>
-        
         <!-- *News Slider -->
-        <div class="snap-x snap-mandatory w-full flex overflow-scroll scrollbar-hide">
+        <div class="snap-x snap-mandatory w-full flex overflow-scroll scrollbar-hide test">
             @if (!Auth::user()->employer)
                 @if (count(Auth::user()->employee->answers) == 0)
                     <!-- *Vragenlijst MSG -->
@@ -172,7 +179,8 @@
                         </a>
                     </div>
                 @endif
-                
+            @endif
+            @if (!count($items) == 0)
                 @foreach ($items as $item)
                     <!-- TODO: Moet nog in een if state -->
                     <div class="snap-start w-full pl-10 pr-10 flex items-center justify-center flex-shrink-0 ">

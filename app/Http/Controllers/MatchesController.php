@@ -16,7 +16,8 @@ use Illuminate\Support\Facades\URL;
 class MatchesController extends Controller
 {
     //
-    public function index($id = null){
+    public function index($id = null)
+    {
 
 
         // check if the user is an employer or employee
@@ -87,33 +88,31 @@ class MatchesController extends Controller
             }
             // filters
             // get the best 60 procent jobOffers
-            $filteredJobOffers = $joboffersEmployee->where('filterJoboffer',true);
+            $filteredJobOffers = $joboffersEmployee->where('filterJoboffer', true);
             // apply these filters on the best 60 procent jobOffers
-            $filters = [1 => $filteredJobOffers->sortByDesc('created_at'),
-                        2 => $filteredJobOffers->sortBy('created_at'),
-                        3 => $filteredJobOffers->sortByDesc('created_at'),
-                        4 => $filteredJobOffers->sortBy('matchPercentage')
-                        ];
+            $filters = [
+                1 => $filteredJobOffers->sortByDesc('created_at'),
+                2 => $filteredJobOffers->sortBy('created_at'),
+                3 => $filteredJobOffers->sortByDesc('created_at'),
+                4 => $filteredJobOffers->sortBy('matchPercentage')
+            ];
 
             // if there is no filter
-            if ($id == null){
-                return view('matches/index',[
+            if ($id == null) {
+                return view('matches/index', [
                     'joboffersEmployee' => $filteredJobOffers,
                 ]);
 
-            // if there is a filter get the id of the filter
-            }else{
-                return view('matches/index',[
+                // if there is a filter get the id of the filter
+            } else {
+                return view('matches/index', [
                     'joboffersEmployee' => $filters[$id],
                 ]);
             }
-
         }
         // if the url is admin do all the following things
-        elseif ($urlId == "admin"){
-            return view('adminportal/pages/matches/index', [
-
-            ]);
+        elseif ($urlId == "admin") {
+            return view('adminportal/pages/matches/index', []);
         }
     }
 
@@ -126,7 +125,7 @@ class MatchesController extends Controller
     public function home()
     {
         $user = Auth::user();
-        $items = news::all();
+        $items = news::all()->take(10);
         $employee = $user->employee;
         if ($employee) {
             $joboffers = $employee->jobCategorie->jobOffer->take(5);
@@ -135,7 +134,9 @@ class MatchesController extends Controller
                 'items' => $items,
             ]);
         } else {
-            return view('homepage');
+            return view('homepage')->with([
+                'items' => $items,
+            ]);
         }
     }
     public function single($id)
