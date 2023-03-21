@@ -58,7 +58,7 @@
             <div class="mt-12 flex justify-center text-2xl text-talent-green font-bold">
                 Matches
             </div>
-            <div class=" flex justify-center mt-8 mr-24">
+            <div class=" flex justify-center items-center mt-8 mr-16">
                 <form>
                     <label for="default-search"
                         class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
@@ -70,29 +70,33 @@
                                     d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                             </svg>
                         </div>
-                        <input type="search" id="default-search"
-                            class="block shadow-lg h-10 p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-full bg-gray-50 focus:ring-talent-green focus:border-talent-green dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-talent-green dark:focus:border-talent-green w-64"
-                            placeholder="Zoek match..." required>
+                        <input type="text" id="searchInput" class="block shadow-lg h-10 p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-full bg-gray-50 focus:ring-talent-green focus:border-talent-green dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-talent-green dark:focus:border-talent-green w-64" onkeyup="searchFunction()" placeholder="Zoek match...">
 
                     </div>
                 </form>
             </div>
         </div>
         </div>
-        <div class="flex justify-center items-center">
-            <div class="flex">
-
-                <div class="flex flex-col justify-center items-center">
+        <div class="flex flex-col justify-center items-center ">
+            <svg onclick="openModalMatch()" xmlns="http://www.w3.org/2000/svg" fill="none"
+            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+            class=" text-talent-white h-14 ml-96 mr-12">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
+        </svg>
+        <ul id="search">
                     @foreach ($joboffersEmployee as $jobofferEmployee)
                         <a href="/dashboard/single/{{ $jobofferEmployee->id }}">
-                            <div class=" shadow-lg -mb-6 w-72 bg-talent-white rounded-xl mt-10 flex items-center ">
+                            <li class="jobFunction">
+                                <div class=" shadow-lg w-80 bg-talent-white rounded-xl flex items-center mb-6 h-32">
 
-                                <div class="text-sm flex-1 ml-5 mt-5 text-talent-green">
-                                    Bedrijf: {{ $jobofferEmployee->employer->companyName }}<br />
+                                <div class="text-sm font-sans font-bold flex-1 ml-5 mt-5 text-talent-green">
+                            
+                                Bedrijf: {{ $jobofferEmployee->employer->companyName }}<br />
 
-                                    Functie: {{ $jobofferEmployee->function }}
+                                Functie:{{ $jobofferEmployee->function }}
 
-                                    <div class="  text-sm mb-5 text-talent-orange">
+                                    <div class=" font-sans font-bold  text-sm mb-5 text-talent-orange">
                                         Match percentage: {{ $jobofferEmployee->matchPercentage }}%
                                     </div>
 
@@ -102,22 +106,31 @@
                                     <img class="h-20 w-20 rounded-full object-cover"
                                         src="{{ $jobofferEmployee->employer->user->getProfilePhotoUrlAttribute() }}"
                                         alt="{{ Auth::user()->name }}" />
-                                </div>
-
+                                </div>  
                             </div>
+                        </li>
                         </a>
                     @endforeach
-
-                    <svg onclick="openModalMatch()" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                        class=" text-talent-white h-14 ml-4">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
-                    </svg>
-
-
-
-
+                </ul>
+        </div> 
+        </div>
                 </div>
-
+                <script>
+                function searchFunction() {
+                    var input, filter, ul, li, a, i, txtValue;
+                    input = document.getElementById('searchInput');
+                    filter = input.value.toUpperCase();
+                    ul = document.getElementById("search");
+                    li = ul.getElementsByTagName('li');
+                
+                    for (i = 0; i < li.length; i++) {
+                        txtValue = li[i].textContent || li[i].innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            li[i].style.display = "";
+                        } else {
+                            li[i].style.display = "none";
+                        }
+                    }
+                }
+                </script>
 </x-guest-layout>
