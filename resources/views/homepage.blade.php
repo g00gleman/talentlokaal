@@ -8,13 +8,37 @@
         <title>Home</title>
         @vite('resources/css/app.css')
         <style>
-            .scrollbar-hide{
-                -ms-overflow-style: none;  /* IE and Edge */
-                scrollbar-width: none;  /* Firefox */
+            .scrollbar-hide {
+                -ms-overflow-style: none;
+                /* IE and Edge */
+                scrollbar-width: none;
+                /* Firefox */
             }
+
             .scrollbar-hide::-webkit-scrollbar {
                 display: none;
             }
+
+            .notifier{
+                background-color: red;
+                color: white;
+                border-radius: 666px;
+                width: 15px;
+                height: 15px;
+                font-size: 10px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .notifier-pos{
+                left: 15px;
+                position: absolute;
+            }
+
+            .test{
+                min-height: 200px;
+            } 
         </style>
     </head>
 
@@ -94,62 +118,108 @@
             </div>
             </a>
         </div>
-        <!-- *News -->
+        <?php
+            $count = 0;
+        ?>
+        @if(!empty($items)) 
+        @foreach ($items as $item)
+        @if ($item->isImportant == 1)
+            <?php
+                $count += 1;
+            ?>
+        @endif
+        @endforeach
+        @endif
+        @if (!Auth::user()->employer)
+            @if (count(Auth::user()->employee->answers) == 0)
+            <?php
+                $count += 1;
+            ?>
+            @endif
+        @endif
         <div class="flex justify-center text-talent-white text-2xl font-bold mt-2">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="mt-0.5 mr-1 w-7 h-7">
-                <path fill-rule="evenodd" d="M4.125 3C3.089 3 2.25 3.84 2.25 4.875V18a3 3 0 003 3h15a3 3 0 01-3-3V4.875C17.25 3.839 16.41 3 15.375 3H4.125zM12 9.75a.75.75 0 000 1.5h1.5a.75.75 0 000-1.5H12zm-.75-2.25a.75.75 0 01.75-.75h1.5a.75.75 0 010 1.5H12a.75.75 0 01-.75-.75zM6 12.75a.75.75 0 000 1.5h7.5a.75.75 0 000-1.5H6zm-.75 3.75a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5H6a.75.75 0 01-.75-.75zM6 6.75a.75.75 0 00-.75.75v3c0 .414.336.75.75.75h3a.75.75 0 00.75-.75v-3A.75.75 0 009 6.75H6z" clip-rule="evenodd" />
-                <path d="M18.75 6.75h1.875c.621 0 1.125.504 1.125 1.125V18a1.5 1.5 0 01-3 0V6.75z" />
-            </svg>
-            Nieuws
-        </div>
-        <!-- *News Slider -->
-        <div class="snap-x snap-mandatory w-full flex overflow-scroll scrollbar-hide">
-            @if(!Auth::user()->employer)
-                @if(count(Auth::user()->employee->answers) == 0)
-                <!-- *Vragenlijst MSG -->
-                <!-- TODO: Moet nog in een if state -->
-                <div class="snap-start w-full pl-10 pr-10 flex items-center justify-center flex-shrink-0 ">
-                    <a href="/dashboard/survey" class="w-80 bg-talent-white rounded-xl p-5">
-                        <div class="flex justify-between">
-                            <div class="flex flex-col">
-                                <div class="font-bold text-talent-green text-xl">Vragenlijst</div>
-                                <div class="opacity-30 text-sm italic">belangrijk!</div>
-                            </div>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 text-talent-red">
-                                <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zM12 8.25a.75.75 0 01.75.75v3.75a.75.75 0 01-1.5 0V9a.75.75 0 01.75-.75zm0 8.25a.75.75 0 100-1.5.75.75 0 000 1.5z" clip-rule="evenodd" />
-                            </svg>
-                        </div>
-                        <div class="mt-5">Om specifiekere matches te kunnen genereren, vul de vragenlijst dan in op de profiel pagina.</div>
-                    </a>
+            <div class="w-min flex relative">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="mt-0.5 mr-1 w-7 h-7">
+                    <path fill-rule="evenodd"
+                        d="M4.125 3C3.089 3 2.25 3.84 2.25 4.875V18a3 3 0 003 3h15a3 3 0 01-3-3V4.875C17.25 3.839 16.41 3 15.375 3H4.125zM12 9.75a.75.75 0 000 1.5h1.5a.75.75 0 000-1.5H12zm-.75-2.25a.75.75 0 01.75-.75h1.5a.75.75 0 010 1.5H12a.75.75 0 01-.75-.75zM6 12.75a.75.75 0 000 1.5h7.5a.75.75 0 000-1.5H6zm-.75 3.75a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5H6a.75.75 0 01-.75-.75zM6 6.75a.75.75 0 00-.75.75v3c0 .414.336.75.75.75h3a.75.75 0 00.75-.75v-3A.75.75 0 009 6.75H6z"
+                        clip-rule="evenodd" />
+                    <path d="M18.75 6.75h1.875c.621 0 1.125.504 1.125 1.125V18a1.5 1.5 0 01-3 0V6.75z" />
+                </svg>
+                @if (!$count == 0)
+                <div class="notifier-pos">
+                    <div class="notifier">
+                        {{$count}}
+                    </div>
                 </div>
                 @endif
+                Nieuws
+            </div>
+        </div>
+        <!-- *News Slider -->
+        <div class="snap-x snap-mandatory w-full flex overflow-scroll scrollbar-hide test">
+            @if (!Auth::user()->employer)
+                @if (count(Auth::user()->employee->answers) == 0)
+                    <!-- *Vragenlijst MSG -->
+                    <div class="snap-start w-full pl-10 pr-10 flex items-center justify-center flex-shrink-0 ">
+                        <a href="/dashboard/survey" class="w-80 bg-talent-white rounded-xl p-5">
+                            <div class="flex justify-between">
+                                <div class="flex flex-col">
+                                    <div class="font-bold text-talent-green text-xl">Vragenlijst</div>
+                                    <div class="opacity-30 text-sm italic">belangrijk!</div>
+                                </div>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                    class="w-8 h-8 text-talent-red">
+                                    <path fill-rule="evenodd"
+                                        d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zM12 8.25a.75.75 0 01.75.75v3.75a.75.75 0 01-1.5 0V9a.75.75 0 01.75-.75zm0 8.25a.75.75 0 100-1.5.75.75 0 000 1.5z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <div class="mt-5">Om specifiekere matches te kunnen genereren, vul de vragenlijst dan in
+                                op de profiel pagina.</div>
+                        </a>
+                    </div>
+                @endif
             @endif
-
-            <!-- *other msgs -->
-            <div
-                class="snap-start w-full pl-10 pr-10 h-56 flex items-center justify-center flex-shrink-0 text-talent-green">
-                <div class="w-72 h-48 bg-talent-white rounded-xl p-5">
-                    News Item
-                </div>
-            </div>
-            <div
-                class="snap-start w-full pl-10 pr-10 h-56 flex items-center justify-center flex-shrink-0 text-talent-green">
-                <div class="w-72 h-48 bg-talent-white rounded-xl p-5">
-                    News Item
-                </div>
-            </div>
-            <div
-                class="snap-start w-full pl-10 pr-10 h-56 flex items-center justify-center flex-shrink-0 text-talent-green">
-                <div class="w-72 h-48 bg-talent-white rounded-xl p-5">
-                    News Item
-                </div>
-            </div>
+            @if (!count($items) == 0)
+                @foreach ($items as $item)
+                    <!-- TODO: Moet nog in een if state -->
+                    <div class="snap-start w-full pl-10 pr-10 flex items-center justify-center flex-shrink-0 ">
+                        <div href="/dashboard/survey" class="w-80 bg-talent-white rounded-xl p-5">
+                            <div class="flex justify-between">
+                                <div class="flex flex-col">
+                                    <div class="font-bold text-talent-green text-xl">{{ $item->title }}</div>
+                                    <div class="opacity-30 text-sm italic">
+                                        @if ($item->isImportant == 1)
+                                            <?php
+                                                $count += 1;
+                                            ?>
+                                            Belangrijk
+                                        @else
+                                            <br />
+                                        @endif
+                                    </div>
+                                </div>
+                                @if ($item->isImportant == 1)
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                        class="w-8 h-8 text-talent-red">
+                                        <path fill-rule="evenodd"
+                                            d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zM12 8.25a.75.75 0 01.75.75v3.75a.75.75 0 01-1.5 0V9a.75.75 0 01.75-.75zm0 8.25a.75.75 0 100-1.5.75.75 0 000 1.5z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                @endif
+                            </div>
+                            <div class="mt-5">{{ $item->description }}</div>
+                        </div>
+                    </div>
+                @endforeach
+            @endif
         </div>
 
         <!-- *Matches -->
         <div class="flex justify-center">
             <div class="text-talent-white">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class=" mt-0.5 mr-0.5 w-7 h-7">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                    class=" mt-0.5 mr-0.5 w-7 h-7">
                     <path fill-rule="evenodd"
                         d="M5.25 9a6.75 6.75 0 0113.5 0v.75c0 2.123.8 4.057 2.118 5.52a.75.75 0 01-.297 1.206c-1.544.57-3.16.99-4.831 1.243a3.75 3.75 0 11-7.48 0 24.585 24.585 0 01-4.831-1.244.75.75 0 01-.298-1.205A8.217 8.217 0 005.25 9.75V9zm4.502 8.9a2.25 2.25 0 104.496 0 25.057 25.057 0 01-4.496 0z"
                         clip-rule="evenodd" />
@@ -164,9 +234,9 @@
             <?php
             $matches = 0;
             ?>
-            @if(!Auth::user()->employer)
-                @if(count(Auth::user()->employee->answers) > 1)
-                    @foreach($joboffers as $joboffer)
+            @if (!Auth::user()->employer)
+                @if (count(Auth::user()->employee->answers) > 1)
+                    @foreach ($joboffers as $joboffer)
                         <?php
                         $matches += 1;
                         ?>
@@ -174,7 +244,8 @@
                             <div class="w-80 bg-talent-white rounded-xl p-5">
                                 <div class="flex">
                                     <div class="flex flex-col">
-                                        <div class="font-bold text-talent-green text-xl">Match {{ $matches }}</div>
+                                        <div class="font-bold text-talent-green text-xl">Match {{ $matches }}
+                                        </div>
                                         <div class="opacity-30 text-sm italic"> Match 2 dagen geleden</div>
                                     </div>
                                     <div class=" ml-20">
@@ -185,18 +256,17 @@
                                 </div>
                                 <div class=" grid grid-cols-2 mt-5">
                                     <div class=" font-bold">Functie:</div>
-                                    <div class="">{{$joboffer->function}}</div>
+                                    <div class="">{{ $joboffer->function }}</div>
                                     <div class=" font-bold">Bedrijf:</div>
-                                    <div class="">{{$joboffer->employer->companyName}}</div>
+                                    <div class="">{{ $joboffer->employer->companyName }}</div>
                                     <div class=" font-bold">Status:</div>
-                                    <div class="">Verzonden</div>
+                                    <div class="">Lopend</div>
                                 </div>
                                 <div class=" overflow-y-auto h-32 mt-5">
-                                    {{$joboffer->description}}
+                                    {{ $joboffer->description }}
                                 </div>
                             </div>
                         </div>
-
                     @endforeach
                 @endif
             @endif
