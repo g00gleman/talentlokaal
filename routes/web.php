@@ -104,5 +104,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'as' => 'dashboard.']
     });
 
     Route::get('/nieuws', [NewsController::class, 'getNews']);
+
+    Route::get('/nieuws/create', [NewsController::class, 'getCreate']);
+    Route::post('/nieuws/create', [NewsController::class, 'postNews']);
+
+    Route::get('/nieuws/edit/{id}', [NewsController::class, 'getEdit']);
+    Route::put('/nieuws/edit/{id}', [NewsController::class, 'getNews']);
+
     Route::resource('matches', MatchesController::class);
 });
