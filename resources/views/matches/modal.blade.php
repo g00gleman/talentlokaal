@@ -99,7 +99,10 @@
     let actionValue = document.getElementById('filter-form');
     btnFilterList.forEach((btnFilter) => {
         btnFilter.addEventListener("click", () => {
+            @if(Auth::user()->employee)
             actionValue.setAttribute("action", '/dashboard/'+btnFilter.value);
+            @elseif(Auth::user()->employer)
+            @endif
             document.querySelector(".active")?.classList.remove("active");
             btnFilter.classList.add("active");
         });

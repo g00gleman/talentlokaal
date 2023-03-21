@@ -75,6 +75,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'as' => 'dashboar
 
 
     Route::resource('matches', MatchesController::class);
+    Route::get('matchesEmployer', [MatchesController::class, 'employer']);
     Route::get('/single/{id}', [MatchesController::class, 'single']);
     Route::get('/introduction', [profileController::class, 'viewDescription']);
 
@@ -104,5 +105,4 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'as' => 'dashboard.']
     });
 
     Route::get('/nieuws', [NewsController::class, 'getNews']);
-    Route::resource('matches', MatchesController::class);
 });
