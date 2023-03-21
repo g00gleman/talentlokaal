@@ -26,4 +26,8 @@ class employee extends Model
     public function answers(){
         return $this->hasMany(answers::class, 'employeeId');
     }
+    protected $fillable = [
+        'matchPercentage',
+        'filterEmployee'
+    ];
 }

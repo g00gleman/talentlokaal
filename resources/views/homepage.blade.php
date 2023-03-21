@@ -38,7 +38,7 @@
 
             .test{
                 min-height: 200px;
-            } 
+            }
         </style>
     </head>
 
@@ -121,7 +121,7 @@
         <?php
             $count = 0;
         ?>
-        @if(!empty($items)) 
+        @if(!empty($items))
         @foreach ($items as $item)
         @if ($item->isImportant == 1)
             <?php
@@ -155,6 +155,7 @@
                 Nieuws
             </div>
         </div>
+
         <!-- *News Slider -->
         <div class="snap-x snap-mandatory w-full flex overflow-scroll scrollbar-hide test">
             @if (!Auth::user()->employer)
@@ -234,7 +235,7 @@
             <?php
             $matches = 0;
             ?>
-            @if (!Auth::user()->employer)
+            @if (Auth::user()->employee)
                 @if (count(Auth::user()->employee->answers) > 1)
                     @foreach ($joboffers as $joboffer)
                         <?php
@@ -269,7 +270,41 @@
                         </div>
                     @endforeach
                 @endif
-            @endif
+
+            @else
+                    @foreach ($firstEmployerofJoboffers as $employee)
+                    <?php
+                    $matches += 1;
+                    ?>
+                        <div class="snap-start w-full pl-10 pr-10 flex items-center justify-center flex-shrink-0">
+                            <div class="w-80 bg-talent-white rounded-xl p-5">
+                                <div class="flex">
+                                    <div class="flex flex-col">
+                                        <div class="font-bold text-talent-green text-xl">Match {{ $matches }}
+                                        </div>
+                                        <div class="opacity-30 text-sm italic"> Match 2 dagen geleden</div>
+                                    </div>
+                                    <div class=" ml-20">
+                                        <img class="h-15 w-15 rounded-full object-cover"
+                                             src="{{ $employee->user->getProfilePhotoUrlAttribute() }}"
+                                             width="50px" height="5  0px ">
+                                    </div>
+                                </div>
+                                <div class=" grid grid-cols-2 mt-5">
+                                    <div class=" font-bold">Sector:</div>
+                                    <div class="">{{ $employee->jobCategorie->categoryName }}</div>
+                                    <div class=" font-bold">Naam:</div>
+                                    <div class="">{{ $employee->user->name }}</div>
+                                    <div class=" font-bold">Status:</div>
+                                    <div class="">Lopend</div>
+                                </div>
+                                <div class=" overflow-y-auto h-32 mt-5">
+                                    {{ $employee->user->description }}
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
 
         </div>
     </body>

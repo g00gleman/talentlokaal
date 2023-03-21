@@ -67,7 +67,7 @@ class JobOfferController extends Controller
             }
         }
 
-        return redirect(route('dashboard.manageProfile.index'));
+        return redirect(route('dashboard.jobOffer.index'));
 
     }
     public function edit($id){

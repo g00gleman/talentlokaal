@@ -237,7 +237,9 @@
                     <div class="nav-content-end">Profiel</div>
                 </a>
                 <a
-                    href="{{ route('dashboard.matches.index') }}"
+                    @if(Auth::user()->employee) href="{{ route('dashboard.matches.index') }}"
+                    @elseif(Auth::user()->employer) href="/dashboard/matchesEmployer"
+                    @endif
                     class="nav-content-btn"
                     id="matches"
                 >
@@ -266,40 +268,42 @@
                     </div>
                     <div class="nav-content-end">Matches</div>
                 </a>
-                <a href="{{ route('dashboard.jobOffer.index') }}" class="nav-content-btn" id="inbox">
-                    <div class="nav-content-end">
-                        <svg
-                            version="1.0"
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="w-12 h-12 mb-2 mr-4"
-                            viewBox="0 0 64.000000 64.000000"
-                            preserveAspectRatio="xMidYMid meet"
-                        >
-                            <g
-                                transform="translate(0.000000,64.000000) scale(0.100000,-0.100000)"
-                                fill="#000000"
-                                stroke="none"
+                @if(Auth::user()->employer)
+                    <a href="{{ route('dashboard.jobOffer.index') }}" class="nav-content-btn" id="inbox">
+                        <div class="nav-content-end">
+                            <svg
+                                version="1.0"
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="w-12 h-12 mb-2 mr-4"
+                                viewBox="0 0 64.000000 64.000000"
+                                preserveAspectRatio="xMidYMid meet"
                             >
-                                <path
-                                    d="M310 464 l0 -85 -31 21 c-46 33 -50 13 -5 -26 22 -19 42 -34 46 -34
-                       4 0 24 15 46 34 45 39 41 59 -5 26 l-31 -21 0 85 c0 51 -4 86 -10 86 -6 0 -10
-                       -35 -10 -86z"
-                                />
-                                <path
-                                    d="M148 448 c-8 -7 -31 -43 -52 -80 -31 -57 -36 -75 -36 -132 0 -136 18
-                       -146 260 -146 197 0 226 6 248 55 21 47 15 146 -14 211 -34 78 -59 104 -101
-                       104 -44 0 -42 -16 2 -24 29 -6 39 -15 60 -56 14 -27 25 -54 25 -60 0 -6 -25
-                       -10 -58 -10 -57 0 -59 -1 -75 -35 l-17 -36 -73 3 c-71 3 -72 4 -86 36 -14 31
-                       -17 32 -73 32 -32 0 -58 3 -58 8 0 4 14 30 30 59 22 39 37 53 60 58 16 4 30
-                       11 30 16 0 13 -54 11 -72 -3z m57 -178 c14 -43 45 -60 111 -60 66 0 106 21
-                       119 60 5 17 15 20 61 20 l54 0 0 -68 c0 -107 0 -107 -230 -107 -230 0 -230 0
-                       -230 107 l0 68 54 0 c46 0 56 -3 61 -20z"
-                                />
-                            </g>
-                        </svg>
-                    </div>
-                    <div class="nav-content-end">Overzicht vacatures</div>
-                </a>
+                                <g
+                                    transform="translate(0.000000,64.000000) scale(0.100000,-0.100000)"
+                                    fill="#000000"
+                                    stroke="none"
+                                >
+                                    <path
+                                        d="M310 464 l0 -85 -31 21 c-46 33 -50 13 -5 -26 22 -19 42 -34 46 -34
+                           4 0 24 15 46 34 45 39 41 59 -5 26 l-31 -21 0 85 c0 51 -4 86 -10 86 -6 0 -10
+                           -35 -10 -86z"
+                                    />
+                                    <path
+                                        d="M148 448 c-8 -7 -31 -43 -52 -80 -31 -57 -36 -75 -36 -132 0 -136 18
+                           -146 260 -146 197 0 226 6 248 55 21 47 15 146 -14 211 -34 78 -59 104 -101
+                           104 -44 0 -42 -16 2 -24 29 -6 39 -15 60 -56 14 -27 25 -54 25 -60 0 -6 -25
+                           -10 -58 -10 -57 0 -59 -1 -75 -35 l-17 -36 -73 3 c-71 3 -72 4 -86 36 -14 31
+                           -17 32 -73 32 -32 0 -58 3 -58 8 0 4 14 30 30 59 22 39 37 53 60 58 16 4 30
+                           11 30 16 0 13 -54 11 -72 -3z m57 -178 c14 -43 45 -60 111 -60 66 0 106 21
+                           119 60 5 17 15 20 61 20 l54 0 0 -68 c0 -107 0 -107 -230 -107 -230 0 -230 0
+                           -230 107 l0 68 54 0 c46 0 56 -3 61 -20z"
+                                    />
+                                </g>
+                            </svg>
+                        </div>
+                        <div class="nav-content-end">Overzicht vacatures</div>
+                    </a>
+                @endif
                 <a
                     href="/dashboard/support"
                     class="nav-content-btn"

@@ -17,6 +17,9 @@ class jobOffer extends Model
     {
         return $this->hasOne(jobCategory::class, 'id', 'jobCategoryId');
     }
+    public function answers(){
+        return $this->hasMany(answers::class, 'jobOfferId');
+    }
     protected $fillable = [
         'matchPercentage',
         'filterJoboffer'
