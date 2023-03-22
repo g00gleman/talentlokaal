@@ -75,12 +75,14 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'as' => 'dashboar
 
 
     Route::resource('matches', MatchesController::class);
+    Route::get('matchesEmployer', [MatchesController::class, 'employer']);
     Route::get('/single/{id}', [MatchesController::class, 'single']);
     Route::get('/introduction', [profileController::class, 'viewDescription']);
 
     Route::get('/admin-portal/bedrijven', [EmployerController::class, 'companies'])->name('adminportal.pages.bedrijven.index');
     Route::get('/admin-portal/bedrijven', [EmployerController::class, 'companies'])->name('adminportal.pages.bedrijven.index');
     Route::get('/{id}', [MatchesController::class, 'index']);
+    Route::get('employee/{id}', [MatchesController::class, 'singeEmployer']);
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'as' => 'dashboard.'], function () {
@@ -104,5 +106,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'as' => 'dashboard.']
     });
 
     Route::get('/nieuws', [NewsController::class, 'getNews']);
+
+    Route::get('/nieuws/create', [NewsController::class, 'getCreate']);
+    Route::post('/nieuws/create', [NewsController::class, 'postNews']);
+
+    Route::get('/nieuws/edit/{id}', [NewsController::class, 'getEdit']);
+    Route::put('/nieuws/edit/{id}', [NewsController::class, 'putEdit']);
+
+    Route::delete('/nieuws/delete/{id}', [NewsController::class, 'delete']);
+
     Route::resource('matches', MatchesController::class);
 });

@@ -58,6 +58,12 @@
                 border-radius: 8px;
             }
 
+            .nieuwsbutton{
+                background-color: #1e796a !important;
+                border: 0px;
+
+            }
+
             table {
                 border: 1px solid #ccc;
                 border-collapse: collapse;
@@ -158,6 +164,18 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <tr class="nieuwsbutton">
+                            <td>
+                                <a href="/admin/nieuws/create">
+                                    <div class="flex w-32 h-8 bg-talent-orange rounded-full">
+                                        <div
+                                            class="flex ml-10 text-center h-full items-center text-xs select-none text-talent-white font-bold">
+                                            Create
+                                        </div>
+                                    </div>
+                                </a>
+                            </td>
+                        </tr>
                         @foreach ($items as $item)
                         <tr>
                             <td data-label="Title">
@@ -172,17 +190,24 @@
                             </td>
                             <td data-label="Edit">
                                 <a
-                                    href="#"
+                                    href="/admin/nieuws/edit/{{$item->id}}"
                                     class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                                     >Edit</a
                                 >
                             </td>
                             <td data-label="Delete">
-                                <a
-                                    href="#"
-                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                                    >Delete</a
+                                <form
+                                    action="/admin/nieuws/delete/{{$item->id}}"
+                                    method="post"
                                 >
+                                    @csrf @method('delete')
+                                    <button
+                                        type="submit"
+                                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                                    >
+                                        Delete
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                         @endforeach
