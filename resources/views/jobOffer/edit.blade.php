@@ -76,6 +76,7 @@
         Overzicht vacatures
     </div>
 </div>
+<div class=" flex justify-center items-center mt-10">
     <form action="{{ route('dashboard.jobOffer.update', $jobOffer->id) }}" method="post">
         @csrf
         @method('put')
@@ -94,7 +95,9 @@
                 placeholder="Korte beschrijving vacature"
             ></textarea>
         </div>
-        <button type="submit">Wijzig</button>
+        <div class=" flex justify-center items-center">
+        <button type="submit" class="font-bold focus:ring-talent-orange ml-4 font-sans bg-talent-orange w-44 m-5 rounded-full text-talent-white justify-center shadow-xl">Wijzig</button>
+        </div>
     </form>
 
 </body>

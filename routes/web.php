@@ -101,9 +101,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'as' => 'dashboard.']
     Route::put('/werkzoekende/edit/{employee}', [EmployeeController::class, 'putEdit'])->name('adminportal.pages.werkzoekende.edit.put');
     Route::delete('/werkzoekende/delete/{employee}', [EmployeeController::class, 'delete'])->name('adminportal.pages.werkzoekende.delete');
 
-    Route::get('/matches', function () {
-        return view('adminportal.pages.matches.index');
-    });
+    // Route::get('/matches', function () {
+    //     return view('adminportal.pages.matches.index');
+    // });
 
     Route::get('/nieuws', [NewsController::class, 'getNews']);
 
@@ -115,5 +115,5 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'as' => 'dashboard.']
 
     Route::delete('/nieuws/delete/{id}', [NewsController::class, 'delete']);
 
-    Route::resource('matches', MatchesController::class);
+    // Route::resource('matches', MatchesController::class);
 });

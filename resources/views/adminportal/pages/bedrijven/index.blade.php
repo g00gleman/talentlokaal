@@ -136,6 +136,7 @@
                             <th scope="col">Adres</th>
                             <th scope="col">E-mail</th>
                             <th scope="col">Website</th>
+                            <th scope="col">Beschrijving</th>
                             <th scope="col">Edit</th>
                             <th scope="col">Delete</th>
                         </tr>
@@ -157,6 +158,9 @@
                                 </td>
                                 <td data-label="E-mail">
                                     {{ $employer->user->email }}
+                                </td>
+                                <td data-label="Beschrijving"><br/>
+                                    {{ $employer->user->description }}
                                 </td>
                                 <td data-label="Website">
                                     <a href="{{ $employer->websiteUrl }}"

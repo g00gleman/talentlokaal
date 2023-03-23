@@ -133,8 +133,11 @@
                             <th scope="col">Naam</th>
                             <th scope="col">Telefoonnummer</th>
                             <th scope="col">Adres</th>
+                            <th scope="col">Geboortedatum</th>
                             <th scope="col">E-mail</th>
-                            <th scope="col">Functie</th>
+                            <th scope="col">Sector</th>
+                            <th scope="col">Beschrijving</th>
+                            <th scope="col">Diploma</th>
                             <th scope="col">Edit</th>
                             <th scope="col">Delete</th>
                         </tr>
@@ -151,11 +154,20 @@
                                 <td data-label="Adres">
                                     {{ $employee->user->adress }}
                                 </td>
+                                <td data-label="geboortedatum">
+                                    {{ $employee->birthDate }}
+                                </td>
                                 <td data-label="E-mail">
                                     {{ $employee->user->email }}
                                 </td>
                                 <td data-label="Functie">
-                                    {{ $employee->jobCategory }}
+                                    {{ $employee->jobCategorie->categoryName }}
+                                </td>
+                                <td data-label="beschrijving">
+                                    {{ $employee->user->description }}
+                                </td>
+                                <td data-label="diploma">
+                                    {{ $employee->certificate }}
                                 </td>
                                 <td data-label="Edit">
                                     <a href="/admin/werkzoekende/edit/{{ $employee->id }}"
