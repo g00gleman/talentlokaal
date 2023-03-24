@@ -21,10 +21,10 @@ function check() {
         document.getElementById("home").classList.add("active");
     } else if (lastSegment == "manageProfile") {
         document.getElementById("profile").classList.add("active");
-    } else if (lastSegment == "matches") {
+    } else if (lastSegment == "matchesEmployer") {
         document.getElementById("matches").classList.add("active");
-    } else if (lastSegment == "inbox") {
-        document.getElementById("inbox").classList.add("active");
+    } else if (lastSegment == "jobOffer") {
+        document.getElementById("jobOffer").classList.add("active");
     } else if (lastSegment == "support") {
         document.getElementById("support").classList.add("active");
     }
