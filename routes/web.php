@@ -9,6 +9,7 @@ use App\Http\Controllers\userFileController;
 use App\Http\Controllers\EmployerController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\SupportController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Redirect;
 
@@ -114,6 +115,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'as' => 'dashboard.']
     Route::put('/nieuws/edit/{id}', [NewsController::class, 'putEdit']);
 
     Route::delete('/nieuws/delete/{id}', [NewsController::class, 'delete']);
+
+
+    Route::get('/support', [SupportController::class, 'getSupport']);
+
+    Route::get('/support/edit/{id}', [SupportController::class, 'getEdit']);
+    Route::put('/support/edit/{id}', [SupportController::class, 'putEdit']);
 
     // Route::resource('matches', MatchesController::class);
 });
