@@ -86,7 +86,8 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'as' => 'dashboar
     Route::get('employee/{id}', [MatchesController::class, 'singeEmployer']);
 });
 
-Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'as' => 'dashboard.'], function () {
+
+Route::group(['prefix' => 'admin', 'middleware' => 'admin', 'as' => 'dashboard.'], function () {
     Route::get('/dashboard', function () {
         return view('adminportal.index');
     });
@@ -124,3 +125,4 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'as' => 'dashboard.']
 
     // Route::resource('matches', MatchesController::class);
 });
+

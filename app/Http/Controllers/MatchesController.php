@@ -199,14 +199,14 @@ class MatchesController extends Controller
         $user = Auth::user();
         $items = news::all()->take(10);
         $employee = $user->employee;
+        $employer = $user->employer;
         if ($employee) {
             $joboffers = $employee->jobCategorie->jobOffer->take(5);
             return view('homepage')->with([
                 'joboffers' => $joboffers,
                 'items' => $items,
             ]);
-        } else {
-            $employer = $user->employer;
+        } elseif($employer) {
             $jobOffers = $employer->jobOffers;
             $firstEmployerofJoboffers = [];
             foreach ($jobOffers as $jobOffer){
@@ -219,6 +219,8 @@ class MatchesController extends Controller
                 'firstEmployerofJoboffers' => $firstEmployerofJoboffers,
                 'items' => $items,
             ]);
+        }else{
+            return redirect('/admin/dashboard');
         }
     }
     public function single($id)
