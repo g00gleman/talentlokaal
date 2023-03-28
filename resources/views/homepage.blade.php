@@ -39,6 +39,42 @@
             .test{
                 min-height: 200px;
             }
+
+        .dots {
+            position: fixed;
+            top: 65%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: row;
+            gap: 1rem;
+            left: 47rem;
+            cursor: pointer;
+        }
+
+        @media only screen and (max-width: 600px) {
+        .dots {
+            position: fixed;
+            top: 65%;
+            left: 12rem;
+            cursor: pointer;
+        }
+        }
+
+
+
+        .dot {
+            width: 0.75rem;
+            height: 0.75rem;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            opacity: 0.5;
+            background-color: transparent;
+            transition: background-color 0.3s ease;
+        }
+
+        .dot.active {
+            background-color: #fff;
+        }
         </style>
     </head>
 
@@ -157,11 +193,13 @@
         </div>
 
         <!-- *News Slider -->
-        <div class="snap-x snap-mandatory w-full flex overflow-scroll scrollbar-hide test">
+        <div class="dots"></div>
+
+        <div class="slider snap-x snap-mandatory w-full flex overflow-scroll scrollbar-hide test" id="slider">
             @if (!Auth::user()->employer)
                 @if (count(Auth::user()->employee->answers) == 0)
                     <!-- *Vragenlijst MSG -->
-                    <div class="snap-start w-full pl-10 pr-10 flex items-center justify-center flex-shrink-0 ">
+                    <div class="snap-start w-full pl-10 pr-10 flex items-center justify-center flex-shrink-0">
                         <a href="/dashboard/survey" class="w-80 bg-talent-white rounded-xl p-5">
                             <div class="flex justify-between">
                                 <div class="flex flex-col">
@@ -217,7 +255,7 @@
         </div>
 
         <!-- *Matches -->
-        <div class="flex justify-center">
+        <div class="flex justify-center mt-5">
             <div class="text-talent-white">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                     class=" mt-0.5 mr-0.5 w-7 h-7">
@@ -307,6 +345,37 @@
                 @endif
 
         </div>
+
+        <script>
+            const slider = document.querySelector("#slider");
+            const dotsContainer = document.querySelector(".dots");
+            const cards = document.querySelectorAll(".slider > div");
+
+            const numItems = cards.length;
+
+            for (let i = 0; i < numItems; i++) {
+                const dot = document.createElement("div");
+                dot.classList.add("dot");
+                dotsContainer.appendChild(dot);
+                dot.addEventListener("click", () => {
+                    slider.scroll({
+                        left: i * slider.offsetWidth,
+                        behavior: "smooth"
+                    });
+                });
+            }
+
+            const dots = document.querySelectorAll(".dot");
+            dots[0].classList.add("active");
+
+            slider.addEventListener("scroll", () => {
+                const index = Math.round(slider.scrollLeft / slider.offsetWidth);
+
+                dots.forEach(dot => dot.classList.remove("active"));
+
+                dots[index].classList.add("active");
+            });
+        </script>
     </body>
 
     </html>
