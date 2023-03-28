@@ -21,7 +21,7 @@ class JobOfferController extends Controller
     public function create(){
         // $questions = questions::all();
         $questions = questions::where('id', '>=', 10)->limit(9)->get();
-        dd($questions);
+        // dd($questions);
         $jobCategories = jobCategory::all();
         return view('jobOffer.create',[
             'jobCategories' => $jobCategories,
