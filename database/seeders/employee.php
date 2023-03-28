@@ -22,7 +22,7 @@ class employee extends Seeder
                 'jobCategory' => 2,
                 'birthDate' => now(),
                 'certificate' => 'MBO',
-                'user_Id' => 1,
+                'user_Id' => 2,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
