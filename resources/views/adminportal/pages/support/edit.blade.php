@@ -85,7 +85,7 @@
                         <textarea
                             class="desc"
                             name="text"
-                            id=""
+                            id="text"
                             placeholder="Support pagina tekst"
                             >{{ $oldNews->text }}</textarea
                         ><br />
@@ -93,15 +93,15 @@
                             class="title"
                             type="text"
                             name="email"
-                            id=""
+                            id="email"
                             value="{{ $oldNews->email }}"
                             placeholder="email"
                         /><br />
                         <input
                             class="title"
                             type="text"
-                            name="phoneNumber"
-                            id=""
+                            name="phonenumber"
+                            id="phonenumber"
                             value="{{ $oldNews->phonenumber }}"
                             placeholder="Telefoonnummer"
                         /><br />
@@ -109,7 +109,7 @@
                             class="title"
                             type="text"
                             name="website"
-                            id=""
+                            id="website"
                             value="{{ $oldNews->website }}"
                             placeholder="Website"
                         /><br />

@@ -43,6 +43,7 @@
 
     .link-last {
         margin-top: 150px;
+        width: 100%;
     }
 
     .closeBtn {
@@ -366,6 +367,7 @@
                 >Matches</a
             > -->
             <a href="/admin/nieuws" class="link link" id="nieuws">Nieuws</a>
+            <a href="/admin/support" class="link link" id="support">Support</a>
             <button
                 class="link link-last"
                 onclick="openModal(); closeMobileMenu();"
@@ -432,5 +434,7 @@
         document.getElementById("matches").classList.add("active");
     } else if (lastSegment == "nieuws") {
         document.getElementById("nieuws").classList.add("active");
+    } else if (lastSegment == "support") {
+        document.getElementById("support").classList.add("active");
     }
 </script>

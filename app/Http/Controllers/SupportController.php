@@ -28,7 +28,12 @@ class SupportController extends Controller
         $text = $request->get('text');
         $email = $request->get('email');
         $phonenumber = $request->get('phonenumber');
-        $website = $request->get('website');
+        // $website = $request->get('website');
+        $url = $request->get('website');
+
+        if (stripos($url, "http://") === false && stripos($url, "https://") === false) {
+            $url = "http://" . $url;
+        }
 
         $request->validate([
             'text' => ['required'],
@@ -37,13 +42,21 @@ class SupportController extends Controller
             'website' => ['required'],
         ]);
 
+
         $updateItem = support::find($id);
         $updateItem->text = $text;
         $updateItem->email = $email;
         $updateItem->phonenumber = $phonenumber;
-        $updateItem->website = $website;
+        $updateItem->website = $url;
         $updateItem->save();
 
         return redirect('/admin/support');
     }
+
+    // public function delete($id)
+    // {
+    //     support::find($id)->delete();
+
+    //     return redirect('/admin/support');
+    // }
 }

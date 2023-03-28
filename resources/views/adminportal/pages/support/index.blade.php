@@ -115,6 +115,7 @@
         <div class="body-flex">
             @include('adminportal.components.navbar.index')
             <div class="content">
+                <!-- TODO: Create social media button, Edit and delete Social media, Social Media has an image and a link -->
                 <table>
                     <caption class="tableTitle">
                         Support
@@ -126,7 +127,7 @@
                             <th scope="col">Description</th>
                             <th scope="col">Description</th>
                             <th scope="col">Edit</th>
-                            <th scope="col">Delete</th>
+                            <!-- <th scope="col">Delete</th> -->
                         </tr>
                     </thead>
                     <tbody>
@@ -166,20 +167,6 @@
                                     class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                                     >Edit</a
                                 >
-                            </td>
-                            <td data-label="Delete">
-                                <form
-                                    action="/admin/support/delete/{{$item->id}}"
-                                    method="post"
-                                >
-                                    @csrf @method('delete')
-                                    <button
-                                        type="submit"
-                                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                                    >
-                                        Delete
-                                    </button>
-                                </form>
                             </td>
                         </tr>
                         @endforeach
