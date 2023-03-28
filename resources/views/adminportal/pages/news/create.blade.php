@@ -106,7 +106,7 @@
                             class="desc"
                             name="description"
                             id=""
-                            placeholder="Beschrijving van de nieuws item"
+                            placeholder="Beschrijving van het nieuwsitem"
                         ></textarea
                         ><br />
                         <div class="justifyEnd">
