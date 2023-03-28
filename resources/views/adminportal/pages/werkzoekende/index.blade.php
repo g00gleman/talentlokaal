@@ -124,7 +124,7 @@
                 }
             </style>
             <div class="content">
-                <table>
+            <table id="myTable">
                     <caption class="tableTitle">
                         Werkzoekende
                         <div class=" flex justify-center items-center mt-8 mr-16">
@@ -209,26 +209,31 @@
 
 </html>
 <script>
-function myFunction() {
-      // Declare variables
-      var input, filter, table, tr, td, i, txtValue;
-      input = document.getElementById("myInput");
-      filter = input.value.toUpperCase();
-      table = document.getElementById("myTable");
-      tr = table.getElementsByTagName("tr");
-    
-      // Loop through all table rows, and hide those who don't match the search query
-      for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[0];
-        if (td) {
-          txtValue = td.textContent || td.innerText;
-          if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            tr[i].style.display = "";
-          } else {
-            tr[i].style.display = "none";
-          }
+        function myFunction() {
+
+        var input, filter, table, tr, td, i, j, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementsByTagName("table")[0];
+        tr = table.getElementsByTagName("tr");
+
+        for (i = 0; i < tr.length; i++) {
+ 
+            for (j = 0; j < tr[i].cells.length; j++) {
+            td = tr[i].getElementsByTagName("td")[j];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+                break; 
+                } else {
+                tr[i].style.display = "none";
+                }
+            }
+            }
         }
-      }
-    }
+        }
+
+
 
         </script>
