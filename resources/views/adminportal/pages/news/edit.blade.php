@@ -91,7 +91,7 @@
                         id="" />
                     Is belangrijk voor gebruikers?<br />
 
-                    <textarea class="desc" name="description" id="" placeholder="Beschrijving van de nieuws item">{{ $oldNews->description }}</textarea><br />
+                    <textarea class="desc" name="description" id="" placeholder="Beschrijving van het nieuwsitem">{{ $oldNews->description }}</textarea><br />
                     <div class="justifyEnd">
                         <button type="submit" class="submit">
                             Opslaan

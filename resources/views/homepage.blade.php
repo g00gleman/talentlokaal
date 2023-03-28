@@ -151,8 +151,10 @@
                             Profiel
                         </div>
                     </div>
+                </a>
             </div>
-            </a>
+
+
         </div>
         <?php
             $count = 0;

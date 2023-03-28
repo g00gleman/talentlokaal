@@ -19,6 +19,17 @@ class user extends Seeder
         $users = [
             [
                 'id' => 1,
+                'name' => 'TalentLokaal',
+                'email' => 'talent@lokaal',
+                'phoneNumber' => '0612345677',
+                'adress' => 'talentlokaal adress',
+                'description' => '',
+                'password' => bcrypt('adminadmin'),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'id' => 2,
                 'name' => 'werknemer',
                 'email' => 'werknemer@admin',
                 'phoneNumber' => '0612345678',
@@ -29,12 +40,12 @@ class user extends Seeder
                 'updated_at' => Carbon::now(),
             ],
             [
-                'id' => 2,
+                'id' => 3,
                 'name' => 'werkgever',
                 'email' => 'werkgever@admin.com',
                 'phoneNumber' => '0612345671',
                 'adress' => 'achtersteven 71 9275BF Eindhoven',
-                'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus luctus dictum ante, porta gravida velit. Praesent aliquet turpis vitae nulla dignissim tempus. Nullam volutpat erat id convallis vulputate. Morbi auctor nulla eu neque mollis tincidunt. Morbi et arcu congue, luctus leo a, euismod massa. Donec urna sem, ornare sit amet aliquam sit amet, scelerisque eget arcu. Nullam facilisis quis odio.',
+                  'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus luctus dictum ante, porta gravida velit. Praesent aliquet turpis vitae nulla dignissim tempus. Nullam volutpat erat id convallis vulputate. Morbi auctor nulla eu neque mollis tincidunt. Morbi et arcu congue, luctus leo a, euismod massa. Donec urna sem, ornare sit amet aliquam sit amet, scelerisque eget arcu. Nullam facilisis quis odio.',
                 'password' => bcrypt('adminadmin'),
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),

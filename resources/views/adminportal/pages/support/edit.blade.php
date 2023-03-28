@@ -45,17 +45,13 @@
             .title {
                 border-radius: 111px;
                 border: 2px solid #1e796a;
+                margin-top: 10px;
             }
 
             .desc {
                 border-radius: 14px;
                 border: 2px solid #1e796a;
                 min-height: 100px;
-            }
-
-            .check {
-                border: 2px solid #1e796a;
-                margin-block: 10px;
             }
 
             .submit {
@@ -81,34 +77,42 @@
             <div class="content">
                 <div class="form">
                     <form
-                        action="/admin/nieuws/create"
+                        action="/admin/support/edit/{{ $oldNews->id }}"
                         method="post"
                         class="formNews"
                     >
-                        @csrf
+                        @csrf @method('PUT')
+                        <textarea
+                            class="desc"
+                            name="text"
+                            id=""
+                            placeholder="Support pagina tekst"
+                            >{{ $oldNews->text }}</textarea
+                        ><br />
                         <input
                             class="title"
                             type="text"
-                            name="title"
+                            name="email"
                             id=""
-                            placeholder="Titel"
+                            value="{{ $oldNews->email }}"
+                            placeholder="email"
                         /><br />
-
                         <input
-                            class="check"
-                            type="checkbox"
-                            name="isImportant"
+                            class="title"
+                            type="text"
+                            name="phoneNumber"
                             id=""
-                        />
-                        Is belangrijk voor gebruikers?<br />
-
-                        <textarea
-                            class="desc"
-                            name="description"
+                            value="{{ $oldNews->phonenumber }}"
+                            placeholder="Telefoonnummer"
+                        /><br />
+                        <input
+                            class="title"
+                            type="text"
+                            name="website"
                             id=""
-                            placeholder="Beschrijving van het nieuwsitem"
-                        ></textarea
-                        ><br />
+                            value="{{ $oldNews->website }}"
+                            placeholder="Website"
+                        /><br />
                         <div class="justifyEnd">
                             <button type="submit" class="submit">
                                 Opslaan
