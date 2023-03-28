@@ -43,6 +43,7 @@
 
     .link-last {
         margin-top: 150px;
+        width: 100%;
     }
 
     .closeBtn {
@@ -96,6 +97,17 @@
 
         .link-last {
             margin-top: 50px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            border-radius: 666px;
+            padding-top: 7.5px;
+            padding-bottom: 7.5px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            font-size: large;
+            color: #1f796a;
+            background-color: #bcd7d2;
         }
 
         .closeBtn {
@@ -161,6 +173,61 @@
 
     .active {
         color: #ef840c;
+    }
+
+    .modal {
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        display: none;
+    }
+
+    .modal-content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .modal-content-overlay {
+        height: 100vh;
+        background-color: black;
+        opacity: 0.5;
+        z-index: 1;
+    }
+
+    .modal-content-box {
+        height: 25vh;
+        width: 80vw;
+        background-color: white;
+        z-index: 2;
+        position: absolute;
+        top: 32.5vh;
+        left: 10vw;
+        border-radius: 16px;
+    }
+
+    .box-top {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 12.5vh;
+        color: #1e796a;
+        font-weight: bold;
+    }
+    .box-content {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        height: 7.5vh;
+    }
+    .box-content-btn {
+        background-color: #ef840c;
+        padding-left: 40px;
+        padding-right: 40px;
+        padding-top: 3px;
+        padding-bottom: 3px;
+        border-radius: 100px;
+        color: white;
     }
 </style>
 
@@ -300,7 +367,28 @@
                 >Matches</a
             > -->
             <a href="/admin/nieuws" class="link link" id="nieuws">Nieuws</a>
-            <a href="#" class="link link-last">Log uit</a>
+            <a href="/admin/support" class="link link" id="support">Support</a>
+            <button
+                class="link link-last"
+                onclick="openModal(); closeMobileMenu();"
+            >
+                Log uit
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="modal">
+    <div class="modal-content">
+        <div class="modal-content-overlay" onclick="closeModal()"></div>
+        <div class="modal-content-box">
+            <div class="box-top">Weet u zeker dat u wilt uitloggen?</div>
+            <div class="box-content">
+                <a href="/dashboard/logout" class="box-content-btn"> Ja </a>
+                <button class="box-content-btn" onclick="closeModal()">
+                    Nee
+                </button>
+            </div>
         </div>
     </div>
 </div>
@@ -325,6 +413,13 @@
         document.getElementById("navbar").style.display = "block";
     }
 
+    function openModal() {
+        document.getElementById("modal").style.display = "block";
+    }
+    function closeModal() {
+        document.getElementById("modal").style.display = "none";
+    }
+
     const url = window.location.href;
 
     const lastSegment = url.split("/").pop();
@@ -339,5 +434,7 @@
         document.getElementById("matches").classList.add("active");
     } else if (lastSegment == "nieuws") {
         document.getElementById("nieuws").classList.add("active");
+    } else if (lastSegment == "support") {
+        document.getElementById("support").classList.add("active");
     }
 </script>

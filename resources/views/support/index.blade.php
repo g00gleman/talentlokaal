@@ -100,8 +100,18 @@
             Support
         </div>
         <div class="flex gap-4 justify-center items-center mt-10">
-            <button class=" text-talent-white bg-talent-orange w-28 rounded-full h-8 text-sm "><i class=" mr-2 fa-solid fa-phone text-talent-white"></i> <a href="tel:065454646" target="_blank" >Bellen</a></button>
-            <button class=" text-talent-white bg-talent-orange w-28 rounded-full h-8 text-sm "><i class=" mr-2 fa-regular fa-envelope text-talent-white"></i><a href="mailto:info@talentlokaal.nl" >Mailen </a></button>
+            <button
+                class="text-talent-white bg-talent-orange w-28 rounded-full h-8 text-sm"
+            >
+                <i class="mr-2 fa-solid fa-phone text-talent-white"></i>
+                <a href="tel:065454646" target="_blank">Bellen</a>
+            </button>
+            <button
+                class="text-talent-white bg-talent-orange w-28 rounded-full h-8 text-sm"
+            >
+                <i class="mr-2 fa-regular fa-envelope text-talent-white"></i
+                ><a href="mailto:info@talentlokaal.nl">Mailen </a>
+            </button>
         </div>
 
         <style>
@@ -125,18 +135,54 @@
 
         <div class="content">
             <div class="customCard">
-                Heb je vragen voor de app, of nog andere vragen? Neem dan
-                gcontact op met onze recruiters.
+                <div class="text">
+                    Heb je vragen voor de app, of nog andere vragen? Neem dan
+                    contact op met onze recruiters.
+                </div>
                 <br />
                 <br />
-                Email: info@talentlokaal.nl
+                <div class="email">Email: info@talentlokaal.nl</div>
                 <br />
-                Telefoon: 065454646
+                <div class="phone">Telefoon: 065454646</div>
                 <br />
-                Website:
-                <a href="https://www.talentlokaal.nl/" class="underline"
-                    >www.talentlokaal.nl</a
-                >
+                <div class="website">
+                    Wesbite:
+                    <a href="https://www.talentlokaal.nl/" class="underline"
+                        >www.talentlokaal.nl
+                    </a>
+                </div>
+                <br />
+                <style>
+                    .socialMedia {
+                        display: grid;
+                        grid-template-columns: repeat(
+                            auto-fit,
+                            minmax(50px, 50px)
+                        );
+                        gap: 15px;
+                    }
+                    .socialMedia__Item {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        max-width: 75px;
+                        max-height: 75px;
+                    }
+                </style>
+                <div class="socialMedia">
+                    <a href="#" class="socialMedia__Item">
+                        <img src="/images/LinkedIn.png" alt="" />
+                    </a>
+                    <a href="#" class="socialMedia__Item">
+                        <img src="/images/YT.png" alt="" />
+                    </a>
+                    <a href="#" class="socialMedia__Item">
+                        <img src="/images/Insta.png" alt="" />
+                    </a>
+                    <a href="#" class="socialMedia__Item">
+                        <img src="/images/TWT.png" alt="" />
+                    </a>
+                </div>
             </div>
         </div>
     </div>

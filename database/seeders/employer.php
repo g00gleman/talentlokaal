@@ -21,7 +21,7 @@ class employer extends Seeder
                 'id' => 1,
                 'companyName' => 'Curio',
                 'websiteURL' => 'https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley',
-                'user_Id' => 2,
+                'user_Id' => 3,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
