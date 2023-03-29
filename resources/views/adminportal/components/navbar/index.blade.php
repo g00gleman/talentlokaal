@@ -367,7 +367,11 @@
                 >Matches</a
             > -->
             <a href="/admin/nieuws" class="link link" id="nieuws">Nieuws</a>
+
             <a href="/admin/support" class="link link" id="support">Support</a>
+
+            <a href="/admin/matches" class="link link" id="nieuws">Matches</a>
+
             <button
                 class="link link-last"
                 onclick="openModal(); closeMobileMenu();"

@@ -104,9 +104,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin', 'as' => 'dashboard.'
     Route::put('/werkzoekende/edit/{employee}', [EmployeeController::class, 'putEdit'])->name('adminportal.pages.werkzoekende.edit.put');
     Route::delete('/werkzoekende/delete/{employee}', [EmployeeController::class, 'delete'])->name('adminportal.pages.werkzoekende.delete');
 
-    // Route::get('/matches', function () {
-    //     return view('adminportal.pages.matches.index');
-    // });
+    Route::get('/matches', [MatchesController::class, 'matchesAdmin']);
 
     Route::get('/nieuws', [NewsController::class, 'getNews']);
 
