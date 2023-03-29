@@ -367,7 +367,11 @@
                 >Matches</a
             > -->
             <a href="/admin/nieuws" class="link link" id="nieuws">Nieuws</a>
+
             <a href="/admin/support" class="link link" id="support">Support</a>
+
+            <a href="/admin/matches" class="link link" id="nieuws">Matches</a>
+
             <button
                 class="link link-last"
                 onclick="openModal(); closeMobileMenu();"
@@ -385,7 +389,10 @@
             <div class="box-top">Weet u zeker dat u wilt uitloggen?</div>
             <div class="box-content">
                 <a href="/dashboard/logout" class="box-content-btn"> Ja </a>
-                <button class="box-content-btn" onclick="closeModal()">
+                <button
+                    class="box-content-btn"
+                    onclick="closeModal(); openMobileMenu();"
+                >
                     Nee
                 </button>
             </div>

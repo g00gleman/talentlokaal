@@ -131,6 +131,18 @@
                 height: auto;
                 max-width: 600px;
             }
+
+            .smallText {
+                font-size: 10px;
+                font-weight: bold;
+                width: 100vw;
+                display: flex;
+                justify-content: center;
+                position: absolute;
+                bottom: 0;
+                color: #bcd7d2;
+                margin-bottom: 10px;
+            }
         </style>
 
         <div class="content">
@@ -184,6 +196,9 @@
                     </a>
                 </div>
             </div>
+        </div>
+        <div class="smallText">
+            Made by: "Bram, Rik, Gyllian, Gino, Ruben, Tahar".
         </div>
     </div>
 </x-guest-layout>
