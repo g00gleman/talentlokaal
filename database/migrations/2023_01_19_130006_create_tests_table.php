@@ -13,8 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('match', function (Blueprint $table) {
+        Schema::create('matches', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('jobOfferId');
+            $table->bigInteger('employeeId');
+            $table->tinyInteger('matchPercentage');
             $table->timestamps();
         });
     }
