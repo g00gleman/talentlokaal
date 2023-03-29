@@ -385,7 +385,10 @@
             <div class="box-top">Weet u zeker dat u wilt uitloggen?</div>
             <div class="box-content">
                 <a href="/dashboard/logout" class="box-content-btn"> Ja </a>
-                <button class="box-content-btn" onclick="closeModal()">
+                <button
+                    class="box-content-btn"
+                    onclick="closeModal(); openMobileMenu();"
+                >
                     Nee
                 </button>
             </div>

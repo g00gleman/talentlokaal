@@ -15,6 +15,44 @@ class SupportController extends Controller
         ]);
     }
 
+    public function getCreate()
+    {
+        return view('adminportal.pages.support.create');
+    }
+    public function getCreateMedia()
+    {
+        return view('adminportal.pages.support.socialMedia.create');
+    }
+
+    public function postSupport(Request $request)
+    {
+        $text = $request->get('text');
+        $email = $request->get('email');
+        $phonenumber = $request->get('phonenumber');
+        // $website = $request->get('website');
+        $url = $request->get('website');
+
+        if (stripos($url, "http://") === false && stripos($url, "https://") === false) {
+            $url = "http://" . $url;
+        }
+
+        $request->validate([
+            'text' => ['required'],
+            'email' => ['required'],
+            'phonenumber' => ['required'],
+            'website' => ['required'],
+        ]);
+
+        $newItem = new support();
+        $newItem->text = $text;
+        $newItem->email = $email;
+        $newItem->phonenumber = $phonenumber;
+        $newItem->website = $url;
+        $newItem->save();
+
+        return redirect('/admin/support');
+    }
+
     public function getEdit($id)
     {
         $oldNews = support::find($id);

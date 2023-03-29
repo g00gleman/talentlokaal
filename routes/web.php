@@ -121,9 +121,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin', 'as' => 'dashboard.'
 
     Route::get('/support', [SupportController::class, 'getSupport']);
 
+    Route::get('/support/create', [SupportController::class, 'getCreate']);
+    Route::post('/support/create', [SupportController::class, 'postSupport']);
+
     Route::get('/support/edit/{id}', [SupportController::class, 'getEdit']);
     Route::put('/support/edit/{id}', [SupportController::class, 'putEdit']);
 
     Route::delete('/support/delete/{id}', [SupportController::class, 'delete']);
-});
 
+    Route::get('/support/create/media', [SupportController::class, 'getCreateMedia']);
+    Route::post('/support/create/media', [SupportController::class, 'postSupportMedia']);
+});
