@@ -171,16 +171,13 @@ class MatchesController extends Controller
             // filters
             // get the best 60 procent jobOffers
             $filterEmployees = $employeesJoboffer->where('filterEmployee', true);
-            foreach ($filterEmployees as $filterEmployee){
+            $filterEmployeesArray = [$filterEmployees];
 
-                $filterEmployeesArray = [$filterEmployee];
-            }
         }
-
         // if there is no filter
         if ($id == null) {
             return view('matches/employermatch', [
-                'employees' => $filterEmployeesArray,
+                'employees' => $filterEmployeesArray[0],
             ]);
 
             // if there is a filter get the id of the filter
