@@ -40,23 +40,23 @@
                 min-height: 200px;
             }
 
+            .dots-cont{
+                display: flex;
+                justify-content:center;
+            }
+
         .dots {
-            position: fixed;
-            top: 65%;
             transform: translateY(-50%);
             display: flex;
             flex-direction: row;
             gap: 1rem;
-            left: 47rem;
             cursor: pointer;
+            margin-top: 10px;
         }
 
         @media only screen and (max-width: 600px) {
-        .dots {
-            position: fixed;
-            top: 65%;
-            left: 12rem;
-            cursor: pointer;
+         {
+
         }
         }
 
@@ -195,7 +195,6 @@
         </div>
 
         <!-- *News Slider -->
-        <div class="dots"></div>
 
         <div class="slider snap-x snap-mandatory w-full flex overflow-scroll scrollbar-hide test" id="slider">
             @if (!Auth::user()->employer)
@@ -254,6 +253,10 @@
                     </div>
                 @endforeach
             @endif
+        </div>
+
+        <div class="dots-cont">
+            <div class="dots"></div>
         </div>
 
         <!-- *Matches -->
