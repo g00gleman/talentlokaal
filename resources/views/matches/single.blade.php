@@ -62,7 +62,7 @@
 
         </div>
         <div class=" flex justify-center items-center">
-        <div class=" rounded-xl bg-talent-light-green h-auto w-80 mt-24 shadow-lg shadow-black">
+        <div class=" rounded-xl bg-talent-light-green h-72 w-96 mt-24 shadow-lg shadow-black">
             <div class=" flex justify-center mt-5 mb-2">
                 <img class="h-20 w-20 rounded-full object-cover"
                     src="{{ $user->getProfilePhotoUrlAttribute() }}"
@@ -73,7 +73,7 @@
         </div>
         </div>
         <div class=" flex justify-center items-center">
-            <div class=" rounded-xl bg-talent-light-green h-72 w-80 mt-14 shadow-lg shadow-black">
+            <div class=" rounded-xl bg-talent-light-green h-72 w-96 mt-14 shadow-lg shadow-black">
                 <div class="text-talent-green text-center font-bold text-xl mt-5">Kennismaking pitch</div>
                 <div class=" flex justify-center mt-5">
                     @if (isset($user->pitch))
@@ -85,7 +85,7 @@
             </div>
             </div>
             <div class=" flex justify-center items-center">
-            <div class=" rounded-xl bg-talent-light-green h-72 w-80 mt-14  shadow-lg shadow-black">
+            <div class=" rounded-xl bg-talent-light-green h-72 w-96 mt-14  shadow-lg shadow-black">
             <div class="text-talent-green text-center font-bold text-xl mt-5">Bedrijfsgegevens</div>
             <div class="flex justify-center mt-8">
                 <div class="grid grid-cols-5 gap-2 ml-16">
