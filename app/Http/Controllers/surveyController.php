@@ -12,7 +12,7 @@ class surveyController extends Controller
 {
     // return view of Survey
     public function displaySurvey(){
-        $questions = questions::all();
+        $questions = questions::all()->take(9);
         return view('survey.index')->with([
             'questions' => $questions,
         ]);
@@ -41,15 +41,15 @@ class surveyController extends Controller
                     $answer->questionId = $i;
                     $answer->employeeId = Auth::user()->employee->id;
                     $answer->score = (int)$request->input('vraag'.$i);
-                    $answer->save(); 
+                    $answer->save();
                 }else{
                     $answer = answers::where('questionId', $i)->where('employeeId',Auth::user()->employee->id)->first();
                     $answer->questionId = $i;
                     $answer->employeeId = Auth::user()->employee->id;
                     $answer->score = (int)$request->input('vraag'.$i);
-                    $answer->save(); 
+                    $answer->save();
                 }
-               
+
             }
             return redirect('/dashboard/manageProfile');
 
@@ -57,8 +57,8 @@ class surveyController extends Controller
         // elseif(Auth::user()->employer){
         //     for($i < 10; $i++;){
         //         $answer = new answers();
-    
-                
+
+
         //         $answer->score = $request->input('vraag'.$i);
         //         $answer->save();
         //     }
