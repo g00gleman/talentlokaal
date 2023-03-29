@@ -18,6 +18,7 @@ class question extends Seeder
     {
         //
         $questions = [
+            //vragen voor werknemer
             [
                 'question' => 'Mijn ideale organisatie legt de nadruk op doelen stellen',
                 'created_at' => Carbon::now(),
@@ -63,7 +64,54 @@ class question extends Seeder
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
-        
+
+            //werkgever vragen
+            [
+                'question' => 'Mijn organisatie legt de nadruk op doelen stellen',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'question' => 'Mijn organisatie legt de nadruk op stabiliteit en efficientie',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'question' => 'Mijn organisatie legt de nadruk op persoonlijke ontwikkeling',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'question' => 'Mijn organisatie legt de nadruk op creativiteit',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'question' => 'Mijn organisatie staat voor waarden en tradities',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'question' => 'Mijn organisatie staat voor saamhorigheid',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'question' => 'Mijn organisatie staat voor een gezonde planeet',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'question' => 'Mijn organisatie staat voor persoonlijke welvaart',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'question' => 'In onze organisatie word er wekelijks vergaderd',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+
 
         ];
         DB::table('questions')->insert($questions);
