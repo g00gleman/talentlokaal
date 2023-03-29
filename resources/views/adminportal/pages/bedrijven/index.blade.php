@@ -128,7 +128,7 @@
                 <table  id="myTable">
                     <caption class="tableTitle">
                         Bedrijven
-                        <div class=" flex justify-center items-center mt-8 mr-16">
+                        <div class=" flex justify-center items-center mt-8">
                             <form>
                                 <label for="default-search"
                                     class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>

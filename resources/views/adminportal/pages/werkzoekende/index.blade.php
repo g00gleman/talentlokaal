@@ -127,7 +127,7 @@
             <table id="myTable">
                     <caption class="tableTitle">
                         Werkzoekende
-                        <div class=" flex justify-center items-center mt-8 mr-16">
+                        <div class=" flex justify-center items-center mt-8 ">
                             <form>
                                 <label for="default-search"
                                     class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white ">Search</label>
@@ -181,7 +181,7 @@
                                 <td data-label="Functie">
                                     {{ $employee->jobCategorie->categoryName }}
                                 </td>
-                                <td data-label="beschrijving">
+                                <td data-label="beschrijving"><br/>
                                     {{ $employee->user->description }}
                                 </td>
                                 <td data-label="diploma">
