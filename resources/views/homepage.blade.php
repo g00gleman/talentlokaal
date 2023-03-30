@@ -54,14 +54,6 @@
             margin-top: 10px;
         }
 
-        @media only screen and (max-width: 600px) {
-         {
-
-        }
-        }
-
-
-
         .dot {
             width: 0.75rem;
             height: 0.75rem;
@@ -75,6 +67,36 @@
         .dot.active {
             background-color: #fff;
         }
+
+
+
+        .dots-contm{
+                display: flex;
+                justify-content:center;
+            }
+
+        .dotsm {
+            margin-top: -16px;
+            display: flex;
+            flex-direction: row;
+            gap: 1rem;
+            cursor: pointer;
+        }
+
+        .dotm {
+            width: 0.75rem;
+            height: 0.75rem;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            opacity: 0.5;
+            background-color: transparent;
+            transition: background-color 0.3s ease;
+        }
+
+        .dotm.active {
+            background-color: #fff;
+        }
+        
         </style>
     </head>
 
@@ -274,7 +296,7 @@
         </div>
 
         <!-- slider voor matches -->
-        <div class="snap-x snap-mandatory w-full flex overflow-scroll mt-6 mb-6 scrollbar-hide">
+        <div class="slidermatch snap-x snap-mandatory w-full flex overflow-scroll mt-6 mb-6 scrollbar-hide" id="slidermatch">
             <?php
             $matches = 0;
             ?>
@@ -349,14 +371,27 @@
                     @endforeach
                 @endif
 
+                
         </div>
 
+        <div class="dots-contm">
+            <div class="dotsm"></div>
+        </div> 
+
         <script>
+
             const slider = document.querySelector("#slider");
             const dotsContainer = document.querySelector(".dots");
             const cards = document.querySelectorAll(".slider > div");
+  
+            const slidermatch = document.querySelector("#slidermatch");
+            const matchdotsContainer = document.querySelector(".dotsm");
+            const matchcards = document.querySelectorAll(".slidermatch > div");
+
 
             const numItems = cards.length;
+ 
+            const nummatchItems = matchcards.length;
 
             for (let i = 0; i < numItems; i++) {
                 const dot = document.createElement("div");
@@ -370,8 +405,24 @@
                 });
             }
 
+            for (let i = 0; i < nummatchItems; i++) {
+                const dotm = document.createElement("div");
+                dotm.classList.add("dotm");
+                matchdotsContainer.appendChild(dotm);
+                dotm.addEventListener("click", () => {
+                    slidermatch.scroll({
+                        left: i * matchslider.offsetWidth,
+                        behavior: "smooth"
+                    });
+                });
+            }
+
             const dots = document.querySelectorAll(".dot");
             dots[0].classList.add("active");
+
+      
+            const dotsm = document.querySelectorAll(".dotm");
+            dotsm[0].classList.add("active");
 
             slider.addEventListener("scroll", () => {
                 const index = Math.round(slider.scrollLeft / slider.offsetWidth);
@@ -380,6 +431,16 @@
 
                 dots[index].classList.add("active");
             });
+
+            slidermatch.addEventListener("scroll", () => {
+                const index = Math.round(slidermatch.scrollLeft / slidermatch.offsetWidth);
+
+                dotsm.forEach(dotm => dotm.classList.remove("active"));
+              
+                dotsm[index].classList.add("active");
+            });
+
+           
         </script>
     </body>
 

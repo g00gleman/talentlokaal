@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('socialmedia', function (Blueprint $table) {
             $table->id();
+            $table->string('website');
+            $table->longText('socialIconPath');
             $table->timestamps();
         });
     }

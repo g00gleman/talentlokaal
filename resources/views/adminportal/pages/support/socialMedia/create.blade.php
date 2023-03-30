@@ -23,6 +23,7 @@
 
             .content {
                 padding-top: 25px;
+                margin-inline: 20px;
                 width: 100%;
                 display: flex;
                 justify-content: center;
@@ -35,6 +36,7 @@
                 background-color: white;
                 display: flex;
                 align-items: center;
+                justify-content: center;
                 min-height: 50vh;
                 padding-inline: 25px;
                 padding-block: 25px;
@@ -77,11 +79,18 @@
             <div class="content">
                 <div class="form">
                     <form
-                        action="/admin/support/create"
+                        action="/admin/support/create/media"
                         method="post"
+                        enctype="multipart/form-data"
                         class="formNews"
                     >
                         @csrf
+                        <input
+                            type="file"
+                            name="photo"
+                            id="photo"
+                            class="fileInput"
+                        />
                         <input
                             class="title"
                             type="text"
