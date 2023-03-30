@@ -58,10 +58,9 @@
                 border-radius: 8px;
             }
 
-            .nieuwsbutton{
+            .nieuwsbutton {
                 background-color: #1e796a !important;
                 border: 0px;
-
             }
 
             table {
@@ -96,7 +95,7 @@
                 text-transform: uppercase;
             }
 
-            @media screen and (max-width: 1600px) {
+            @media screen and (max-width: 4000px) {
                 table {
                     border: 0;
                 }
@@ -167,9 +166,12 @@
                         <tr class="nieuwsbutton">
                             <td>
                                 <a href="/admin/nieuws/create">
-                                    <div class="flex w-32 h-8 bg-talent-orange rounded-full">
+                                    <div
+                                        class="flex w-32 h-8 bg-talent-orange rounded-full"
+                                    >
                                         <div
-                                            class="flex ml-10 text-center h-full items-center text-xs select-none text-talent-white font-bold">
+                                            class="flex ml-10 text-center h-full items-center text-xs select-none text-talent-white font-bold"
+                                        >
                                             Create
                                         </div>
                                     </div>

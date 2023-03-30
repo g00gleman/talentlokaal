@@ -69,7 +69,7 @@
                     text-transform: uppercase;
                 }
 
-                @media screen and (max-width: 2000px) {
+                @media screen and (max-width: 4000px) {
                     table {
                         border: 0;
                     }
