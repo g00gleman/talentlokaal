@@ -6,6 +6,7 @@ use App\Models\answers;
 use App\Models\employee;
 use App\Models\jobCategory;
 use App\Models\jobOffer;
+use App\Models\support;
 use App\Models\User;
 use App\Models\employer;
 use App\Models\news;
@@ -175,6 +176,7 @@ class MatchesController extends Controller
 
         }
         // if there is no filter
+        if (empty($filterEmployeesArray)) $filterEmployeesArray[0] = [];
         if ($id == null) {
             return view('matches/employermatch', [
                 'employees' => $filterEmployeesArray[0],
@@ -224,16 +226,20 @@ class MatchesController extends Controller
     {
         $jobOffer = jobOffer::with('employer')->find($id);
         $user = $jobOffer->employer->user;
+        $support = support::first();
         return view('matches.single', [
             'jobOffer' => $jobOffer,
-            'user' => $user
+            'user' => $user,
+            'support' => $support
         ]);
     }
 
     public function singeEmployer($id){
         $employee = employee::with('user')->find($id);
+        $support = support::first();
         return view('matches.singleEmployer', [
             'employee' => $employee,
+            'support' => $support
         ]);
     }
 

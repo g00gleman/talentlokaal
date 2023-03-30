@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class SupportController extends Controller
 {
+    public function viewSupport(){
+        $support = support::first();
+        return view('support/index', [
+            'support' => $support
+        ]);
+    }
     public function getSupport()
     {
         $items = support::all();
