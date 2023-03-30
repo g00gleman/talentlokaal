@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\socialmedia;
 use App\Models\support;
 use Illuminate\Http\Request;
 
 class SupportController extends Controller
 {
-    public function viewSupport(){
+    public function viewSupport()
+    {
         $support = support::first();
         return view('support/index', [
             'support' => $support
@@ -53,6 +55,35 @@ class SupportController extends Controller
         $newItem->text = $text;
         $newItem->email = $email;
         $newItem->phonenumber = $phonenumber;
+        $newItem->website = $url;
+        $newItem->save();
+
+        return redirect('/admin/support');
+    }
+
+    public function postSupportMedia(Request $request)
+    {
+        $image = $request->file('photo');
+        $url = $request->get('mediaLink');
+
+        if (stripos($url, "http://") === false && stripos($url, "https://") === false) {
+            $url = "http://" . $url;
+        }
+
+        $request->validate([
+            'mediaLink' => ['required'],
+            'photo' => ['required']
+        ]);
+
+        $newItem = new socialmedia();
+
+
+        $image = time() . $image->getClientOriginalName();
+
+        $request->photo->move(public_path('img'), $image);
+        $newItem->socialIconPath = $image;
+
+
         $newItem->website = $url;
         $newItem->save();
 
