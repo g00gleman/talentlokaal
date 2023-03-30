@@ -2,17 +2,92 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\socialmedia;
 use App\Models\support;
 use Illuminate\Http\Request;
 
 class SupportController extends Controller
 {
+    public function viewSupport()
+    {
+        $support = support::first();
+        return view('support/index', [
+            'support' => $support
+        ]);
+    }
     public function getSupport()
     {
         $items = support::all();
         return view('adminportal.pages.support.index', [
             'items' => $items,
         ]);
+    }
+
+    public function getCreate()
+    {
+        return view('adminportal.pages.support.create');
+    }
+    public function getCreateMedia()
+    {
+        return view('adminportal.pages.support.socialMedia.create');
+    }
+
+    public function postSupport(Request $request)
+    {
+        $text = $request->get('text');
+        $email = $request->get('email');
+        $phonenumber = $request->get('phonenumber');
+        // $website = $request->get('website');
+        $url = $request->get('website');
+
+        if (stripos($url, "http://") === false && stripos($url, "https://") === false) {
+            $url = "http://" . $url;
+        }
+
+        $request->validate([
+            'text' => ['required'],
+            'email' => ['required'],
+            'phonenumber' => ['required'],
+            'website' => ['required'],
+        ]);
+
+        $newItem = new support();
+        $newItem->text = $text;
+        $newItem->email = $email;
+        $newItem->phonenumber = $phonenumber;
+        $newItem->website = $url;
+        $newItem->save();
+
+        return redirect('/admin/support');
+    }
+
+    public function postSupportMedia(Request $request)
+    {
+        $image = $request->file('photo');
+        $url = $request->get('mediaLink');
+
+        if (stripos($url, "http://") === false && stripos($url, "https://") === false) {
+            $url = "http://" . $url;
+        }
+
+        $request->validate([
+            'mediaLink' => ['required'],
+            'photo' => ['required']
+        ]);
+
+        $newItem = new socialmedia();
+
+
+        $image = time() . $image->getClientOriginalName();
+
+        $request->photo->move(public_path('img'), $image);
+        $newItem->socialIconPath = $image;
+
+
+        $newItem->website = $url;
+        $newItem->save();
+
+        return redirect('/admin/support');
     }
 
     public function getEdit($id)

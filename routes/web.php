@@ -44,9 +44,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'as' => 'dashboar
 
     // loads the page after being logged in
     Route::get('/', [MatchesController::class, 'home']);
-    Route::get('/support', function () {
-        return view('support.index');
-    });
+    Route::get('/support', [SupportController::class, 'viewSupport']);
 
 
     Route::get('/redirect', function () {
@@ -104,9 +102,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin', 'as' => 'dashboard.'
     Route::put('/werkzoekende/edit/{employee}', [EmployeeController::class, 'putEdit'])->name('adminportal.pages.werkzoekende.edit.put');
     Route::delete('/werkzoekende/delete/{employee}', [EmployeeController::class, 'delete'])->name('adminportal.pages.werkzoekende.delete');
 
-    // Route::get('/matches', function () {
-    //     return view('adminportal.pages.matches.index');
-    // });
+    Route::get('/matches', [MatchesController::class, 'matchesAdmin']);
 
     Route::get('/nieuws', [NewsController::class, 'getNews']);
 
@@ -121,9 +117,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin', 'as' => 'dashboard.'
 
     Route::get('/support', [SupportController::class, 'getSupport']);
 
+    Route::get('/support/create', [SupportController::class, 'getCreate']);
+    Route::post('/support/create', [SupportController::class, 'postSupport']);
+
     Route::get('/support/edit/{id}', [SupportController::class, 'getEdit']);
     Route::put('/support/edit/{id}', [SupportController::class, 'putEdit']);
 
     Route::delete('/support/delete/{id}', [SupportController::class, 'delete']);
-});
 
+    Route::get('/support/create/media', [SupportController::class, 'getCreateMedia']);
+    Route::post('/support/create/media', [SupportController::class, 'postSupportMedia']);
+});

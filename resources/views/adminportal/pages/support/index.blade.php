@@ -25,7 +25,8 @@
                 padding-top: 25px;
                 width: 100%;
                 display: flex;
-                justify-content: center;
+                flex-direction: column;
+                align-items: center;
                 height: 100vh;
                 overflow: scroll;
             }
@@ -62,7 +63,7 @@
                 text-transform: uppercase;
             }
 
-            @media screen and (max-width: 1600px) {
+            @media screen and (max-width: 4000px) {
                 table {
                     border: 0;
                 }
@@ -109,12 +110,33 @@
                     border-bottom: 0;
                 }
             }
+            .normalBtn {
+                width: 200px;
+                height: 40px;
+                border-radius: 999px;
+                color: white;
+                font-weight: bold;
+                font-size: 16px;
+                background-color: #f0850b;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
         </style>
     </head>
     <body>
         <div class="body-flex">
             @include('adminportal.components.navbar.index')
             <div class="content">
+                @if ($items->isEmpty())
+                <a href="/admin/support/create" class="normalBtn"
+                    >Voeg data toe</a
+                >
+                @else
+                <a href="/admin/support/create/media" class="normalBtn"
+                    >Voeg social media toe</a
+                >
+                @endif
                 <!-- TODO: Create social media button, Edit and delete Social media, Social Media has an image and a link -->
                 <table>
                     <caption class="tableTitle">

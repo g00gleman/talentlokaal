@@ -69,7 +69,7 @@
                     text-transform: uppercase;
                 }
 
-                @media screen and (max-width: 2000px) {
+                @media screen and (max-width: 4000px) {
                     table {
                         border: 0;
                     }
@@ -124,28 +124,32 @@
                 }
             </style>
             <div class="content">
-            <table id="myTable">
+                <table id="myTable">
                     <caption class="tableTitle">
                         Werkzoekende
-                        <div class=" flex justify-center items-center mt-8 mr-16">
+                        <div class=" flex justify-center items-center mt-8 ">
                             <form>
                                 <label for="default-search"
                                     class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white ">Search</label>
                                 <div class="relative">
                                     <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                        <svg aria-hidden="true" class="w-5 h-5 text-talent-orange dark:text-talent-orange" fill="none"
-                                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <svg aria-hidden="true"
+                                            class="w-5 h-5 text-talent-orange dark:text-talent-orange" fill="none"
+                                            stroke="currentColor" viewBox="0 0 24 24"
+                                            xmlns="http://www.w3.org/2000/svg">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                                         </svg>
                                     </div>
-                                    <input type="text" id="myInput" onkeyup="myFunction()" class="block shadow-lg h-10 p-4 pl-10 text-sm text-talent-orange border border-gray-300 rounded-full bg-talent-green focus:ring-talent-green focus:border-talent-green dark:bg-talent-light-green dark:border-talent-green dark:placeholder-talent-orange dark:text-talent-orange dark:focus:ring-talent-green dark:focus:border-talent-green w-64" onkeyup="searchFunction()" placeholder="Zoek werkzoekende...">
-            
+                                    <input type="text" id="myInput" onkeyup="myFunction()"
+                                        class="block shadow-lg h-10 p-4 pl-10 text-sm text-talent-orange border border-gray-300 rounded-full bg-talent-green focus:ring-talent-green focus:border-talent-green dark:bg-talent-light-green dark:border-talent-green dark:placeholder-talent-orange dark:text-talent-orange dark:focus:ring-talent-green dark:focus:border-talent-green w-64"
+                                        onkeyup="searchFunction()" placeholder="Zoek werkzoekende...">
+
                                 </div>
                             </form>
                         </div>
                     </caption>
-                   
+
                     <thead>
                         <tr>
                             <th scope="col">Naam</th>
@@ -182,7 +186,10 @@
                                     {{ $employee->jobCategorie->categoryName }}
                                 </td>
                                 <td data-label="beschrijving">
-                                    {{ $employee->user->description }}
+                                    @if (!empty($$employee->user->description))
+                                        {{ $employee->user->description }}
+                                    @else-
+                                    @endif
                                 </td>
                                 <td data-label="diploma">
                                     {{ $employee->certificate }}
@@ -192,10 +199,11 @@
                                         class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                                 </td>
                                 <td data-label="Delete">
-                                    <form action="/admin/werkzoekende/delete/{{$employee->user->id}}" method="post">
+                                    <form action="/admin/werkzoekende/delete/{{ $employee->user->id }}" method="post">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</button>
+                                        <button type="submit"
+                                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</button>
                                     </form>
                                 </td>
                             </tr>
@@ -209,7 +217,7 @@
 
 </html>
 <script>
-        function myFunction() {
+    function myFunction() {
 
         var input, filter, table, tr, td, i, j, txtValue;
         input = document.getElementById("myInput");
@@ -218,22 +226,19 @@
         tr = table.getElementsByTagName("tr");
 
         for (i = 0; i < tr.length; i++) {
- 
+
             for (j = 0; j < tr[i].cells.length; j++) {
-            td = tr[i].getElementsByTagName("td")[j];
-            if (td) {
-                txtValue = td.textContent || td.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = "";
-                break; 
-                } else {
-                tr[i].style.display = "none";
+                td = tr[i].getElementsByTagName("td")[j];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                        break;
+                    } else {
+                        tr[i].style.display = "none";
+                    }
                 }
             }
-            }
         }
-        }
-
-
-
-        </script>
+    }
+</script>
