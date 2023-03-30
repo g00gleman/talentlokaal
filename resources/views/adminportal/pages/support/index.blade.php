@@ -194,6 +194,74 @@
                         @endforeach
                     </tbody>
                 </table>
+
+                <table>
+                    <caption class="tableTitle">
+                        Social Media
+                    </caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Title</th>
+                            <th scope="col">Belangrijk?</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Edit</th>
+                            <!-- <th scope="col">Delete</th> -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($media as $item)
+                        <tr>
+                            <td data-label="foto">
+                                <img
+                                    src="/img/{{$item->socialIconPath}}"
+                                    alt=""
+                                />
+                            </td>
+                            <td data-label="Website">
+                                <a
+                                    href="{{ $item->website }}"
+                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                                >
+                                    <script>
+                                        urlFixer("{{ $item->website }}");
+
+                                        function urlFixer(websiteLink) {
+                                            const wLink = websiteLink;
+
+                                            const fixer =
+                                                wLink.split("/")[(0, 1, 2)];
+
+                                            document.write(fixer);
+                                        }
+                                    </script>
+                                </a>
+                            </td>
+                            <td data-label="Edit">
+                                <a
+                                    href="/admin/support/edit/media/{{$item->id}}"
+                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                                    >Edit</a
+                                >
+                            </td>
+                            <td data-label="Delete">
+                                <form
+                                    action="/admin/support/delete/media/{{$item->id}}"
+                                    method="post"
+                                >
+                                    @csrf @method('delete')
+                                    <button
+                                        type="submit"
+                                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                                    >
+                                        Delete
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
     </body>

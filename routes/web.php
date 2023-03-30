@@ -127,4 +127,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin', 'as' => 'dashboard.'
 
     Route::get('/support/create/media', [SupportController::class, 'getCreateMedia']);
     Route::post('/support/create/media', [SupportController::class, 'postSupportMedia']);
+
+    Route::delete('/support/delete/media/{id}', [SupportController::class, 'deleteMedia']);
 });

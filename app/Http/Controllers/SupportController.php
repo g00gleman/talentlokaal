@@ -4,22 +4,28 @@ namespace App\Http\Controllers;
 
 use App\Models\socialmedia;
 use App\Models\support;
+use DragonCode\Support\Facades\Filesystem\File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class SupportController extends Controller
 {
     public function viewSupport()
     {
         $support = support::first();
+        $media = socialmedia::all();
         return view('support/index', [
-            'support' => $support
+            'support' => $support,
+            'media' => $media,
         ]);
     }
     public function getSupport()
     {
+        $media = socialmedia::all();
         $items = support::all();
         return view('adminportal.pages.support.index', [
             'items' => $items,
+            'media' => $media,
         ]);
     }
 
@@ -77,12 +83,10 @@ class SupportController extends Controller
 
         $newItem = new socialmedia();
 
-
         $image = time() . $image->getClientOriginalName();
 
         $request->photo->move(public_path('img'), $image);
         $newItem->socialIconPath = $image;
-
 
         $newItem->website = $url;
         $newItem->save();
@@ -128,10 +132,22 @@ class SupportController extends Controller
         return redirect('/admin/support');
     }
 
-    // public function delete($id)
-    // {
-    //     support::find($id)->delete();
+    public function deleteMedia($id)
+    {
+        $image = socialmedia::find($id);
 
-    //     return redirect('/admin/support');
-    // }
+        if (!$image) {
+            return response()->json(['message' => 'Image not found'], 404);
+        }
+
+        $filename = $image->socialIconPath;
+
+        $image_path = "img/" . $filename;
+
+        File::delete($image_path);
+
+        $image->delete();
+
+        return redirect('/admin/support');
+    }
 }

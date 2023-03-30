@@ -107,13 +107,14 @@
                 Support
             </div>
             <div class="flex gap-4 justify-center items-center mt-10">
-                @if(empty($support))
-                @else
+                @if(empty($support)) @else
                 <button
                     class="text-talent-white bg-talent-orange w-28 rounded-full h-8 text-sm"
                 >
                     <i class="mr-2 fa-solid fa-phone text-talent-white"></i>
-                    <a href="tel:{{ $support->phonenumber }}" target="_blank">Bellen</a>
+                    <a href="tel:{{ $support->phonenumber }}" target="_blank"
+                        >Bellen</a
+                    >
                 </button>
                 <button
                     class="text-talent-white bg-talent-orange w-28 rounded-full h-8 text-sm"
@@ -163,11 +164,12 @@
                     </div>
                     <br />
                     <br />
-                    @if(empty($support))
-                    @else
+                    @if(empty($support)) @else
                     <div class="email">Email: {{ $support->email }}</div>
                     <br />
-                    <div class="phone">Telefoon: {{ $support->phonenumber }}</div>
+                    <div class="phone">
+                        Telefoon: {{ $support->phonenumber }}
+                    </div>
                     <br />
                     <div class="website">
                         Wesbite:
@@ -195,18 +197,11 @@
                         }
                     </style>
                     <div class="socialMedia">
-                        <a href="#" class="socialMedia__Item">
-                            <img src="/images/LinkedIn.png" alt="" />
+                        @foreach($media as $item)
+                        <a href="{{$item->website}}" class="socialMedia__Item">
+                            <img src="/img/{{$item->socialIconPath}}" alt="" />
                         </a>
-                        <a href="#" class="socialMedia__Item">
-                            <img src="/images/YT.png" alt="" />
-                        </a>
-                        <a href="#" class="socialMedia__Item">
-                            <img src="/images/Insta.png" alt="" />
-                        </a>
-                        <a href="#" class="socialMedia__Item">
-                            <img src="/images/TWT.png" alt="" />
-                        </a>
+                        @endforeach
                     </div>
                 </div>
             </div>
