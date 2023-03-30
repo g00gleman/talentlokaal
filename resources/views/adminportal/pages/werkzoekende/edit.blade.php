@@ -7,7 +7,7 @@
             
             <div
                 class=" bg-talent-light-green ml-2 mr-2 flex-col rounded-xl flex justify-center items-center mt-12 mb-5 w-96">
-                <div class=" flex justify-center items-center text-talent-orange mt-10 text-2xl">
+                <div class=" flex justify-center items-center text-talent-orange mt-10 text-2xl font-bold font-sans">
                     Wijzigen werkzoekende
                 </div>
                     {{-- name --}}
@@ -67,7 +67,7 @@
     
                             <x-jet-input id="email"
                                 class=" font-sans focus:ring-talent-orange underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange"
-                                type="email" name="email" value="{{ $employee->user->email }}" 
+                                type="email" name="email" value="{{ $employee->user->email }}"
                                 placeholder="Vul hier uw email in" />
                         </div>
                         <div class="text-sm flex justify-center items-center text-talent-red">
