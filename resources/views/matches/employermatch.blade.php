@@ -88,7 +88,7 @@
                 @foreach ($employees as $employeee)
                     <a href="/dashboard/employee/{{ $employeee->id }}">
                         <li class="jobFunction">
-                        <div class=" shadow-lg -mb-6 w-80 bg-talent-white rounded-xl  flex items-center h-32 ">
+                        <div class=" shadow-lg w-80 bg-talent-white rounded-xl  flex items-center mb-6 h-32 ">
 
                                 <div class="text-sm font-sans font-bold flex-1 ml-5 mt-5 text-talent-green">
                                 Naam: {{ $employeee->user->name }}<br />
