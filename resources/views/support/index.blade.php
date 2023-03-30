@@ -107,18 +107,21 @@
                 Support
             </div>
             <div class="flex gap-4 justify-center items-center mt-10">
+                @if(empty($support))
+                @else
                 <button
                     class="text-talent-white bg-talent-orange w-28 rounded-full h-8 text-sm"
                 >
                     <i class="mr-2 fa-solid fa-phone text-talent-white"></i>
-                    <a href="tel:065454646" target="_blank">Bellen</a>
+                    <a href="tel:{{ $support->phonenumber }}" target="_blank">Bellen</a>
                 </button>
                 <button
                     class="text-talent-white bg-talent-orange w-28 rounded-full h-8 text-sm"
                 >
                     <i class="mr-2 fa-regular fa-envelope text-talent-white"></i
-                    ><a href="mailto:info@talentlokaal.nl">Mailen </a>
+                    ><a href="mailto:{{ $support->email }}">Mailen </a>
                 </button>
+                @endif
             </div>
 
             <style>
@@ -160,16 +163,19 @@
                     </div>
                     <br />
                     <br />
-                    <div class="email">Email: info@talentlokaal.nl</div>
+                    @if(empty($support))
+                    @else
+                    <div class="email">Email: {{ $support->email }}</div>
                     <br />
-                    <div class="phone">Telefoon: 065454646</div>
+                    <div class="phone">Telefoon: {{ $support->phonenumber }}</div>
                     <br />
                     <div class="website">
                         Wesbite:
                         <a href="https://www.talentlokaal.nl/" class="underline"
-                            >www.talentlokaal.nl
+                            >{{ $support->website }}
                         </a>
                     </div>
+                    @endif
                     <br />
                     <style>
                         .socialMedia {

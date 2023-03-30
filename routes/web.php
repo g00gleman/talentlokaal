@@ -44,9 +44,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth', 'as' => 'dashboar
 
     // loads the page after being logged in
     Route::get('/', [MatchesController::class, 'home']);
-    Route::get('/support', function () {
-        return view('support.index');
-    });
+    Route::get('/support', [SupportController::class, 'viewSupport']);
 
 
     Route::get('/redirect', function () {
