@@ -57,8 +57,11 @@
         </div>
         <div class="flex gap-4 justify-center items-center mt-10 ">
 
-            <button class=" text-talent-white bg-talent-orange w-28 rounded-full h-8 text-sm "><i class=" mr-2 fa-solid fa-phone text-talent-white"></i> <a href="tel:{{ $employee->user->phoneNumber }}" target="_blank" >Bellen</a></button>
-            <button class=" text-talent-white bg-talent-orange w-28 rounded-full h-8 text-sm "><i class=" mr-2 fa-regular fa-envelope text-talent-white"></i><a href="mailto:{{ $employee->user->email }}" >Mailen </a></button>
+            @if(empty($support))
+            @else
+                <button class=" text-talent-white bg-talent-orange w-28 rounded-full h-8 text-sm "><i class=" mr-2 fa-solid fa-phone text-talent-white"></i> <a href="tel:{{ $support->phonenumber }}" target="_blank" >Bellen</a></button>
+                <button class=" text-talent-white bg-talent-orange w-28 rounded-full h-8 text-sm "><i class=" mr-2 fa-regular fa-envelope text-talent-white"></i><a href="mailto:{{ $support->email }}" >Mailen </a></button>
+            @endif
 
         </div>
         <div class=" flex justify-center items-center">
