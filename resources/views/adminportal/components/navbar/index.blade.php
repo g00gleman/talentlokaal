@@ -42,7 +42,7 @@
     }
 
     .link-last {
-        margin-top: 150px;
+        margin-top: 75px;
         width: 100%;
     }
 
