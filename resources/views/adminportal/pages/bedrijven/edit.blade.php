@@ -6,7 +6,7 @@
             <div class="flex justify-center items-center">
                 <div
                     class=" bg-talent-light-green ml-2 mr-2 flex-col rounded-xl flex justify-center items-center mt-12 mb-5 w-96">
-                    <div class=" flex justify-center items-center text-talent-orange mt-10 text-2xl ">
+                    <div class=" flex justify-center items-center text-talent-orange mt-10 text-2xl font-bold font-sans ">
                         Wijzigen bedrijven
                     </div>
                         {{-- companyname --}}
@@ -58,7 +58,7 @@
         
                                 <x-jet-input id="email"
                                     class=" font-sans focus:ring-talent-orange underline decoration-talent-orange px-5 border-none block mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange"
-                                    type="email" name="email" value="{{ $employer->user->email }}"  :value="old('email')"
+                                    type="email" name="email"  :value="old('email')" value="{{ $employer->user->email }}"
                                     placeholder="Vul hier uw email in" />
                             </div>
                             <div class="text-sm flex justify-center items-center text-talent-red">
@@ -151,7 +151,7 @@
                             <div
                             class=" font-sans px-5 flex items-center border-none content-center  mt-1 w-64 rounded-full shadow-xl placeholder:text-talent-orange bg-talent-white text-talent-orange underline">
                             <input type="file" name="profielfoto" id="upload" accept=".jpg,.jpeg,.png,.bmp,.gif,.svg,.webp" onchange="showFileName(this)" hidden/>
-                                <label for="upload" class="" id="file-name">Upload hier uw bedrijfslogo</label>
+                                <label for="upload"  class="" id="file-name">Upload hier uw bedrijfslogo</label>
                         </div>
                         </div>
                         <div class="text-sm flex justify-center items-center text-talent-red">
